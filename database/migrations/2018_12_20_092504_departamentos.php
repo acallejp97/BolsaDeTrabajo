@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Alumnos extends Migration
+class Departamentos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class Alumnos extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('alumnos');
-        Schema::create('alumnos', function (Blueprint $table) {
+        Schema::dropIfExists('departamentos');
+        Schema::create('departamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_user');
-            $table->string('anio_fin');
-            
-            $table->foreign('id_user')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->string('nombre');
+  
             $table->timestamps();
+            
         });
     }
     
@@ -32,6 +31,6 @@ class Alumnos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alumnos');
+        Schema::dropIfExists('departamentos');
     }
 }

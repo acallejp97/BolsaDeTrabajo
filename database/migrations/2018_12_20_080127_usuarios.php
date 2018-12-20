@@ -20,7 +20,7 @@ class Usuarios extends Migration
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('passwd');
-
+           
             $table->timestamps();
         });
     }

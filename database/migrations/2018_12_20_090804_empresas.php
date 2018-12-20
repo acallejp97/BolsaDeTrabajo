@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Departamentos extends Migration
+class Empresas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class Departamentos extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('departamentos');
-        Schema::create('departamentos', function (Blueprint $table) {
+        Schema::dropIfExists('empresas');
+        Schema::create('empresas', function (Blueprint $table) {
             $table->increments('id');
-        
             $table->string('nombre');
+            $table->string('direccion');
+            $table->string('email');
+            $table->string('url');
+            $table->integer('telefono');
     
-
             $table->timestamps();
+            
         });
     }
     
@@ -32,7 +35,6 @@ class Departamentos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamentos');
+        Schema::dropIfExists('empresas');
     }
 }
-

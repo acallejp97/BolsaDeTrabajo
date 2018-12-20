@@ -19,6 +19,7 @@ class Grados extends Migration
             $table->unsignedInteger('id_depar');
             $table->string('nombre');
             $table->string('abreviacion');
+           
             $table->foreign('id_depar')->references('id')->on('departamentos');
             $table->timestamps();
         });

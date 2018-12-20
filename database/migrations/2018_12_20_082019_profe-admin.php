@@ -13,13 +13,15 @@ class ProfeAdmin extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('profeAdmin');
-        Schema::create('profeAdmin', function (Blueprint $table) {
+        Schema::dropIfExists('profeadmin');
+        Schema::create('profeadmin', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_user');
-            $table->unsignedInteger('depar_id');
+            $table->unsignedInteger('id_depar');
             $table->integer('rango');
-            $table->foreign('id_user', 'depar_id')->references('id', 'id')->on('usuarios', 'departamentos')->onDelete('cascade', '');
+            
+            $table->foreign('id_user')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('id_depar')->references('id')->on('departamentos');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class ProfeAdmin extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profeAdmin');
+        Schema::dropIfExists('profeadmin');
     }
 }
