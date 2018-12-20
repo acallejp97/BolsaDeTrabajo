@@ -15,9 +15,9 @@ class AlumnoGrado extends Migration
     {
         Schema::dropIfExists('alumno_grado');
         Schema::create('alumno_grado', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('id_alumno');
-            $table->unsignedInteger('id_grado');
+            $table->increments('id',5);
+            $table->unsignedInteger('id_alumno',5);
+            $table->unsignedInteger('id_grado',5);
             
             $table->foreign('id_alumno')->references('id')->on('alumnos');
             $table->foreign('id_grado')->references('id')->on('grados');

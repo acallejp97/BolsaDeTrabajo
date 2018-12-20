@@ -15,10 +15,10 @@ class Grados extends Migration
     {
         Schema::dropIfExists('grados');
         Schema::create('grados', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('id_depar');
-            $table->string('nombre');
-            $table->string('abreviacion');
+            $table->increments('id',5);
+            $table->unsignedInteger('id_depar',5);
+            $table->string('nombre',300);
+            $table->string('abreviacion',30);
            
             $table->foreign('id_depar')->references('id')->on('departamentos');
             $table->timestamps();

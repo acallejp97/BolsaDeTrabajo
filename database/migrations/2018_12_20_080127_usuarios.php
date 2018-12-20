@@ -15,11 +15,11 @@ class Usuarios extends Migration
     {
         Schema::dropIfExists('usuarios');
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('email');
-            $table->string('nombre');
-            $table->string('apellidos');
-            $table->string('passwd');
+            $table->increments('id',3);
+            $table->string('email',90);
+            $table->string('nombre',30);
+            $table->string('apellidos',30);
+            $table->string('passwd',30);
            
             $table->timestamps();
         });

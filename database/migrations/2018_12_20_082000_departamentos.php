@@ -15,8 +15,8 @@ class Departamentos extends Migration
     {
         Schema::dropIfExists('departamentos');
         Schema::create('departamentos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre');
+            $table->increments('id',5);
+            $table->string('nombre',300);
   
             $table->timestamps();
             

@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <!-- <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -77,7 +77,7 @@
                         @endif
                     @endauth
                 </div>
-            @endif
+            @endif -->
 
           <div class="content">
                 
@@ -93,12 +93,9 @@
                   
                     
                      <tr>
-                    <td>{{$perro->id}}</td>
-                    <td>{{$perro->nombre}}</td>
-                    <td> {{$perro->color}}</td>
-                    <td>{{$perro->anios}}</td>
-                    <td> {{$perro->raza}}</td>
-          
+                    <td>{{$alumno->id}}</td>
+                    <td>{{$alumno->anio_fin}}</td>
+                   
                     </tr>
                   
                   

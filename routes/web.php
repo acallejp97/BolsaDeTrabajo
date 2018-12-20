@@ -18,11 +18,11 @@ Route::get ('/inicio', "Paginas@inicio");
 
 
 //Busca el Perro con la id que le meta
-Route::get ('/VerAnimal/{id}', "AnimalesController@VerAnimal");
-Route::get ('/VerAnimales', "AnimalesController@VerAnimales");
-Route::get ('/aniadirAnimales', "AnimalesController@aniadirAnimales");
-Route::get ('/duenio/aniadir', "AnimalesController@irAniadirDuenio");
-Route::post ('/aniadirDuenio', "AnimalesController@aniadirDuenio");
+Route::get ('/VerAlumno/{id}', "AlumnoController@VerAlumno");
+// Route::get ('/VerAnimales', "AnimalesController@VerAnimales");
+// Route::get ('/aniadirAnimales', "AnimalesController@aniadirAnimales");
+// Route::get ('/duenio/aniadir', "AnimalesController@irAniadirDuenio");
+// Route::post ('/aniadirDuenio', "AnimalesController@aniadirDuenio");
 
 
 // Route::get('alumnos/{slug}', function ($slug) {

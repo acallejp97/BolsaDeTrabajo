@@ -15,15 +15,13 @@ class Ofertas extends Migration
     {
         Schema::dropIfExists('ofertas');
         Schema::create('ofertas', function (Blueprint $table) {
-            $table->increments('id');
-          
-            $table->string('titulo');
-
-            $table->string('descripcion');
-            $table->unsignedInteger('id_empresa');
-            $table->unsignedInteger('id_grado');
-            $table->unsignedInteger('id_profesor');
-            $table->integer('puestos-vacantes');
+            $table->increments('id',5);
+            $table->string('titulo',300);
+            $table->string('descripcion',3000);
+            $table->unsignedInteger('id_empresa',5);
+            $table->unsignedInteger('id_grado',5);
+            $table->unsignedInteger('id_profesor',5);
+            $table->integer('puestos-vacantes',5);
            
             $table->foreign('id_empresa')->references('id')->on('empresas');
             $table->foreign('id_grado')->references('id')->on('grados');
