@@ -15,7 +15,7 @@ use App\Curriculum;
 use App\Services\CurriculumService;
 use App\Model\Alumno;
 
-class AlumnosController extends Controller
+class AlumnoController extends Controller
 {
 
     public function __construct()

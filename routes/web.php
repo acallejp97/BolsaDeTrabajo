@@ -10,8 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
- Route::get ('/', "HomeController@index");
-Route::get ('/inicio', "Paginas@inicio");
+//  Route::get ('/', "HomeController@index");
+// Route::get ('/inicio', "Paginas@inicio");
 // Route::get ('/quieneSomos', "Paginas@quieneSomos");
 // Route::get ('/dondeEstamos', "Paginas@dondeEstamos");
 // Route::get ('/foro', "Paginas@foro");
@@ -19,6 +19,7 @@ Route::get ('/inicio', "Paginas@inicio");
 
 //Busca el Perro con la id que le meta
 Route::get ('/VerAlumno/{id}', "AlumnoController@VerAlumno");
+
 // Route::get ('/VerAnimales', "AnimalesController@VerAnimales");
 // Route::get ('/aniadirAnimales', "AnimalesController@aniadirAnimales");
 // Route::get ('/duenio/aniadir', "AnimalesController@irAniadirDuenio");
@@ -30,10 +31,10 @@ Route::get ('/VerAlumno/{id}', "AlumnoController@VerAlumno");
 // })-> where (['slug'=>'create|delete|update']);
 
 
-// Route::get('/', function()
-// {
-//     return view('home', array('nombre' => 'Javi'));
-// });
+ Route::get('', function()
+{
+     return view('home', array('nombre' => 'Javi'));
+ });
 
 // //cuando el parametro es opcional se pone interrogracion, 
 // //o se pone valor por defecto o igual a null

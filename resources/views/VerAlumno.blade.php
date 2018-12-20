@@ -85,16 +85,15 @@
                        <tr class="title m-b-md">
                        <td>ID</td>
                            <td>Nombre</td>
-                           <td>Color</td>
-                           <td>Años</td>
-                           <td>Raza</td>
+                           <td>anio_fin</td>
+                           <!-- <td>Años</td>
+                           <td>Raza</td> -->
                      </tr>
                      
                   
                     
                      <tr>
-                    <td>{{$alumno->id}}</td>
-                    <td>{{$alumno->anio_fin}}</td>
+                  
                    
                     </tr>
                   
