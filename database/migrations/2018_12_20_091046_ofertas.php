@@ -27,7 +27,7 @@ class Ofertas extends Migration
            
             $table->foreign('id_empresa')->references('id')->on('empresas');
             $table->foreign('id_grado')->references('id')->on('grados');
-            $table->foreign('id_profesor')->references('id')->on('profeAdmin');
+            $table->foreign('id_profesor')->references('id')->on('profe-admin');
             $table->timestamps();
             
         });

@@ -13,8 +13,8 @@ class ProfeAdmin extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('profeadmin');
-        Schema::create('profeadmin', function (Blueprint $table) {
+        Schema::dropIfExists('profe-admin');
+        Schema::create('profe-admin', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_user');
             $table->unsignedInteger('id_depar');
@@ -33,6 +33,6 @@ class ProfeAdmin extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profeadmin');
+        Schema::dropIfExists('profe-admin');
     }
 }
