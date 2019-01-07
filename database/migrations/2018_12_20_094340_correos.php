@@ -16,7 +16,7 @@ class Correos extends Migration
         Schema::dropIfExists('correos');
         Schema::create('correos', function (Blueprint $table) {
             $table->increments('id',5);
-            $table->unsignedInteger('id_remit',5);
+            $table->unsignedInteger('id_remit')->unique();
             $table->string('asunto',30);
             $table->string('descripcion',3000);
            
