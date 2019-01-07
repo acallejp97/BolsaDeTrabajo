@@ -16,9 +16,9 @@ class ProfeAdmin extends Migration
         Schema::dropIfExists('profe-admin');
         Schema::create('profe-admin', function (Blueprint $table) {
             $table->increments('id',5);
-            $table->unsignedInteger('id_user',5);
-            $table->unsignedInteger('id_depar',5);
-            $table->integer('rango',5);
+            $table->unsignedInteger('id_user')->unique();
+            $table->unsignedInteger('id_depar')->unique();
+            $table->unsignedInteger('rango')->unique();
             
             $table->foreign('id_user')->references('id')->on('usuarios')->onDelete('cascade');
             $table->foreign('id_depar')->references('id')->on('departamentos');

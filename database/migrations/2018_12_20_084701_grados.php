@@ -16,7 +16,7 @@ class Grados extends Migration
         Schema::dropIfExists('grados');
         Schema::create('grados', function (Blueprint $table) {
             $table->increments('id',5);
-            $table->unsignedInteger('id_depar',5);
+            $table->unsignedInteger('id_depar')->unique();
             $table->string('nombre',300);
             $table->string('abreviacion',30);
            
