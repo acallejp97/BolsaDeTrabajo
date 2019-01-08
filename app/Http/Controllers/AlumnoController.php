@@ -26,10 +26,7 @@ class AlumnoController extends Controller
         $ofertas =Oferta::all();
         if (!$ofertas) {
             return view("alumnos/ofertas");
-        }
-
-        
-
+        }     
         return view("alumnos/ofertas")-> with('ofertas', $ofertas);
     }
     public function VerAlumnos()

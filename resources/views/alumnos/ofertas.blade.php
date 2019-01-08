@@ -1,5 +1,3 @@
-
-
 @extends('layouts.alumno')
 
 @section('content')
@@ -21,4 +19,3 @@
       </div>
       @endforeach
 @endsection
-[]
