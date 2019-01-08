@@ -1,8 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 use App\Model\Alumno;
+use App\Model\Oferta;
+use App\Services\OfertaService;
 
 //Importando las classes de modelo y servicios
 
@@ -18,23 +23,26 @@ class AlumnoController extends Controller
 //return view ("VerAnimales");
 
 //Meto en la variable alumno toda la info con la variable que meta en rutas
-        $alumno = Alumno::where('id', '=', $id)->first();
-        if (!$alumno) {
+        $ofertas =Oferta::all();
+        if (!$ofertas) {
             return view("alumnos/ofertas");
         }
 
-        return view("alumnos/ofertas", compact('alumno'));
+        
+
+        return view("alumnos/ofertas")-> with('ofertas', $ofertas);
     }
     public function VerAlumnos()
     {
         //return view ("VerAlumnos");
-
-        //Saco toda la tabla de alumnos
-        // $alumnos =DB::table('alumnos')->get();   //el otro sistema
-        $alumnos = Alumno::all(); //metodo eloquent
-        if (!$alumnos) {
-            return view("alumnos/ofertas");
+        $ofertas =Oferta::all(); //metodo eloquent
+        if(!$ofertas){
+            return view ("alumnos/ofertas");
         }
+        
+         return view ("Veralumnos",array(),compact('ofertas'));
+         
+     
 
 //llamo a la funcion ver animales y regreso a la vista VerAnimales
         return $this->VerAlumnos();
