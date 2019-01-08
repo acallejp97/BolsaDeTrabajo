@@ -15,10 +15,10 @@ class ProfeAdmin extends Migration
     {
         Schema::dropIfExists('profe-admin');
         Schema::create('profe-admin', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('id_user');
-            $table->unsignedInteger('id_depar');
-            $table->integer('rango');
+            $table->increments('id',5);
+            $table->unsignedInteger('id_user',5);
+            $table->unsignedInteger('id_depar',5);
+            $table->integer('rango',5);
             
             $table->foreign('id_user')->references('id')->on('usuarios')->onDelete('cascade');
             $table->foreign('id_depar')->references('id')->on('departamentos');

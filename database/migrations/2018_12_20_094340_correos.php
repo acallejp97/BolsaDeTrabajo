@@ -15,10 +15,10 @@ class Correos extends Migration
     {
         Schema::dropIfExists('correos');
         Schema::create('correos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('id_remit');
-            $table->string('asunto');
-            $table->string('descripcion');
+            $table->increments('id',5);
+            $table->unsignedInteger('id_remit',5);
+            $table->string('asunto',30);
+            $table->string('descripcion',3000);
            
             $table->foreign('id_remit')->references('id')->on('usuarios');
             $table->timestamps();

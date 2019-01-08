@@ -15,9 +15,9 @@ class Alumnos extends Migration
     {
         Schema::dropIfExists('alumnos');
         Schema::create('alumnos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('id_user');
-            $table->string('anio_fin');
+            $table->increments('id',5);
+            $table->unsignedInteger('id_user',5);
+            $table->string('anio_fin',5);
             
             $table->foreign('id_user')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();
