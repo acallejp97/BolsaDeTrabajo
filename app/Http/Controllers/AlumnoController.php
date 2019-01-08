@@ -44,11 +44,7 @@ public function VerAlumnos(){
         return view ("welcome");
     }
     
-    return view ("alumnos/home",array(),compact('alumnos'));
-    }
-public function aniadirAlumnos(){
     //return view ("VerAlumnos");
-    //Para ver si añade
     $alumno =new Alumno(); 
     $alumno->nombre='Benito';
 $alumno->color='marron';
