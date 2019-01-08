@@ -20,23 +20,25 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        
-        <a class="nav-link active" href="VerOfertas">Alta Empresas</a>
+      <li class="nav-item">
+        <a class="nav-link" href="Perfil">Ver Perfil</a>
+      </li>
+        <a class="nav-link active" href="AñadirEmpresas">Alta Empresas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="ActualizarCV">Alta Usuarios</a>
+        <a class="nav-link " href="AñadirUsuarios">Alta Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="VerPerfil">Usuarios</a>
+        <a class="nav-link" href="Usuarios">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Contacto">Empresas</a>
+        <a class="nav-link" href="Empresas">Empresas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Contacto">Ofertas</a>
+        <a class="nav-link" href="Ofertas">Ofertas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Contacto">Cursos</a>
+        <a class="nav-link" href="Cursos">Cursos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="Contacto">Contacto</a>
