@@ -18,7 +18,7 @@ class AlumnoController extends Controller
     {
         //$this->middleware('auth', ['only' => ['aniadirUsuario', 'aniadirCurriculum', 'aniadirGrado']]);
     }
-    public function VerAlumno($id)
+    public function VerOfertas()
     {
 //return view ("VerAnimales");
 
@@ -29,20 +29,35 @@ class AlumnoController extends Controller
         }     
         return view("alumnos/ofertas")-> with('ofertas', $ofertas);
     }
-    public function VerAlumnos()
+    public function Contacto()
     {
         //return view ("VerAlumnos");
-        $ofertas =Oferta::all(); //metodo eloquent
-        if(!$ofertas){
-            return view ("alumnos/ofertas");
-        }
+       
+            return view ("alumnos/contacto");
         
-         return view ("Veralumnos",array(),compact('ofertas'));
+        
+    }
          
+    public function VerPerfil()
+    {
+        //return view ("VerAlumnos");
+       
+            return view ("alumnos/perfil");
+        
+        
+    }
+    public function ActualizarCV()
+    {
+        //return view ("VerAlumnos");
+       
+            return view ("alumnos/curriculum");
+        
+        
+    }
      
 
 //llamo a la funcion ver animales y regreso a la vista VerAnimales
-        return $this->VerAlumnos();
-    }
+        
+    
 }
  

@@ -18,8 +18,10 @@
 
 
 //Busca el Perro con la id que le meta
-Route::get ('/VerAlumno/{id}', "AlumnoController@VerAlumno");
-
+Route::get ('/VerOfertas', "AlumnoController@VerOfertas");
+Route::get ('/Contacto', "AlumnoController@Contacto");
+Route::get ('/VerPerfil', "AlumnoController@VerPerfil");
+Route::get ('/ActualizarCV', "AlumnoController@ActualizarCV");
 // Route::get ('/VerAnimales', "AnimalesController@VerAnimales");
 // Route::get ('/aniadirAnimales', "AnimalesController@aniadirAnimales");
 // Route::get ('/duenio/aniadir', "AnimalesController@irAniadirDuenio");

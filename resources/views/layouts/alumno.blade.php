@@ -20,16 +20,16 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Ofertas</a>
+        <a class="nav-link active" href="VerOfertas">Ofertas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Actualizar CV</a>
+        <a class="nav-link" href="ActualizarCV">Actualizar CV</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Ver Perfil</a>
+        <a class="nav-link" href="VerPerfil">Ver Perfil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contacto</a>
+        <a class="nav-link" href="Contacto">Contacto</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Cerrar Sesion</a>
