@@ -1,0 +1,13 @@
+app/http/controller -> Funciones
+
+app/modelo/ejemplo.php
+
+app/services -> Servicios(Update create y delete) Una por cada modelo todas iguales -> EjemploServices.php
+
+database/migration -> Tablas -> php artisan Make:nombreTabla -> Ahi metemos las tablas
+
+routes/web.php -> Modificar rutas 
+
+resources/view/añadirVista.blade.php
+
+alumno  grado departamentos usuarios profesores ofertas empresas correos curriculum 
