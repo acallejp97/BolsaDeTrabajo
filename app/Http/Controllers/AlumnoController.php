@@ -20,7 +20,7 @@ class AlumnoController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',['only'=>['aniadirUsuario' , 'aniadirCurriculum' , 'aniadirGrado']]);
+        // $this->middleware('auth',['only'=>['aniadirUsuario' , 'aniadirCurriculum' , 'aniadirGrado']]);
     }
 public function VerAlumno($id){
 //return view ("VerAnimales");
@@ -28,7 +28,7 @@ public function VerAlumno($id){
 //Meto en la variable alumno toda la info con la variable que meta en rutas
 $alumno =Alumno::where('id','=',$id)->first(); 
 if(!$alumno){
-    return view ("welcome");
+    return view ("alumnos/home");
 }
 
 
@@ -41,18 +41,9 @@ public function VerAlumnos(){
     // $alumnos =DB::table('alumnos')->get();   //el otro sistema
     $alumnos =Alumno::all(); //metodo eloquent
     if(!$alumnos){
-        return view ("welcome");
+        return view ("alumnos/home");
     }
     
-    //return view ("VerAlumnos");
-    $alumno =new Alumno(); 
-    $alumno->nombre='Benito';
-$alumno->color='marron';
-$alumno->anios=1;
-$alumno->raza='buldog';
-$alumno->duenio_id=2;
-$alumnoService=new AlumnoService();
-$alumnoService->Create($alumno);
 
 //llamo a la funcion ver animales y regreso a la vista VerAnimales
 return $this->VerAlumnos();
