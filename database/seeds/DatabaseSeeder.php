@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,15 +10,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('01_UsuariosSeeder');
-        $this->call('02_AlumnosSeeder');
-        $this->call('03_DepartamentosSeeder');
-        $this->call('04_ProfeAdminSeeder');
-        $this->call('05_GradosSeeder');
-        $this->call('06_CurriculumsSeeder');
-        $this->call('07_EmpresasSeeder');
-        $this->call('08_CorreosSeeder');
-        $this->call('09_OfertasSeeder');
+        $this->call('UsuariosSeeder');
+        $this->call('AlumnosSeeder');
+        $this->call('DepartamentosSeeder');
+        $this->call('ProfeAdminSeeder');
+        $this->call('GradosSeeder');
+        $this->call('CurriculumsSeeder');
+        $this->call('EmpresasSeeder');
+        $this->call('CorreosSeeder');
+        $this->call('OfertasSeeder');
     }
 }
 
