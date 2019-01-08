@@ -1,7 +1,8 @@
 @extends('layouts.alumno')
 
 @section('content')
-@foreach($ofertas as $oferta)
+
+@foreach($oferta as $ofer)
 
 <div class="row">
         <div class="col-md-7">
@@ -10,9 +11,9 @@
           </a>
         </div>
         <div class="col-md-5">
-          <h3>$oferta->$titulo</h3>
-          <p>$oferta->$descripcion</p>
-          <p>$oferta->$puestos-vacantes</p>
+          <h3>$ofer->$titulo</h3>
+          <p>$ofer->$descripcion</p>
+          <p>$ofer->$puestos-vacantes</p>
           <a class="btn btn-primary" href="#">Inscribirse</a>
         </div>
       </div>
