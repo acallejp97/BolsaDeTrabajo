@@ -17,6 +17,7 @@ class ProfeAdminSeeder extends Seeder
         DB::table('profe-admin')->delete();
         for ($i = 0; $i != 3; $i++) {
             DB::table('profe-admin')->insert(array(
+                'id_user' => (2+$i),
                 'id_depar' => $faker->numberBetween(0, 2),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),

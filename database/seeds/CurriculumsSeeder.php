@@ -15,8 +15,9 @@ class CurriculumsSeeder extends Seeder
         $faker = Faker\Factory::create();
 
         DB::table('curriculums')->delete();
-        for ($i = 0; $i != 3; $i++) {
+        for ($i = 1; $i != 2; $i++) {
             DB::table('curriculums')->insert(array(
+                'id_alumno'=> $i,
                 'nombre' => $faker->name,
                 'apellidos' => $faker->name,
                 'experiencia' => $faker->paragraph(),

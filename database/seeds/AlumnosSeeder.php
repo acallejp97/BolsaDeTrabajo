@@ -17,7 +17,8 @@ class AlumnosSeeder extends Seeder
         DB::table('alumnos')->delete();
         for ($i = 0; $i != 2; $i++) {
             DB::table('alumnos')->insert(array(
-                'anio_fin' => $faker->dateTimeThisYear(),
+                'id_user' => preguntar a julia como hacer lo de las foreign key,
+                'anio_fin' => $faker->numberBetween(2000,2019),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
             ));
