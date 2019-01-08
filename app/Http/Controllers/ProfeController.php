@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Model\Usuario;
+use App\Model\Empresa;
 class ProfeController extends Controller
 {
     public function __construct()
@@ -21,9 +22,11 @@ class ProfeController extends Controller
     }
     public function Empresas()
     {
-        //return view ("VerAlumnos");
-       
-            return view ("profesores/empresas");
+        $empresas =Empresa::all();
+        if (!$empresas) {
+            return view("profesores/empresas");
+        }     
+        return view("profesores/empresas")-> with('empresas', $empresas);
         
         
     }
@@ -70,9 +73,11 @@ class ProfeController extends Controller
     }
     public function Usuarios()
     {
-        //return view ("VerAlumnos");
-       
-            return view ("profesores/usuarios");
+        $usuarios =Usuario::all();
+        if (!$usuarios) {
+            return view("profesores/usuarios");
+        }     
+        return view("profesores/usuarios")-> with('usuarios', $usuarios);
         
         
     }
