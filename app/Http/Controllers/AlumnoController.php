@@ -32,7 +32,7 @@ if(!$alumno){
 }
 
 
-return view ("VerAlumno",compact('alumno'));
+return view ("alumnos/home",compact('alumno'));
 }
 public function VerAlumnos(){
     //return view ("VerAlumnos");
@@ -44,11 +44,7 @@ public function VerAlumnos(){
         return view ("welcome");
     }
     
-    return view ("VerAlumnos",array(),compact('alumnos'));
-    }
-public function aniadirAlumnos(){
     //return view ("VerAlumnos");
-    //Para ver si añade
     $alumno =new Alumno(); 
     $alumno->nombre='Benito';
 $alumno->color='marron';

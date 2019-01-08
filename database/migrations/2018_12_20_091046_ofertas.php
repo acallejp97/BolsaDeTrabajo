@@ -18,10 +18,10 @@ class Ofertas extends Migration
             $table->increments('id',5);
             $table->string('titulo',300);
             $table->string('descripcion',3000);
-            $table->unsignedInteger('id_empresa',5);
-            $table->unsignedInteger('id_grado',5);
-            $table->unsignedInteger('id_profesor',5);
-            $table->integer('puestos-vacantes',5);
+            $table->unsignedInteger('id_empresa')->unique();
+            $table->unsignedInteger('id_grado')->unique();
+            $table->unsignedInteger('id_profesor')->unique();
+            $table->unsignedInteger('puestos-vacantes')->unique();
            
             $table->foreign('id_empresa')->references('id')->on('empresas');
             $table->foreign('id_grado')->references('id')->on('grados');
