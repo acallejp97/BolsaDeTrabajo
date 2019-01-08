@@ -1,0 +1,11 @@
+
+1. Cambiamos los integer de las migraciones
+   Formato anterior -> unsignedInteger("valor",5);
+   Formato actual   -> unsignedInteger("valor")->unique();
+
+2. Añadimos bootstrap al proyecto mediante composer con el siguiente comando: composer require twbs/bootstrap
+   Ahora cuando cambiamos de ordenador para hacer el proyecto hacemos composer install
+
+3. Empezamos a hacer la interfaz de alumno. La estructura a utilizar recomendada es dependiendo de cada tipo de usuario añadir una carpeta.
+   Creamos un layout para alumno, donde guardaremos la barra de navegacion para mostrarla independientemente de donde estemos
+   
