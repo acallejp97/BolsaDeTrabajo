@@ -20,10 +20,11 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
+        
         <a class="nav-link active" href="VerOfertas">Ofertas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="ActualizarCV">Actualizar CV</a>
+        <a class="nav-link " href="ActualizarCV">Actualizar CV</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="VerPerfil">Ver Perfil</a>
@@ -46,3 +47,17 @@
 </div>
 </body>
 </html>
+<script>
+      
+      switch(routes: ) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+} 
+        
+        </script>
