@@ -1,72 +1,48 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-//Importando las classes de modelo y servicios
-use App\Usuario;
-use App\Services\UsuarioService;
-use App\Grado;
-use App\Services\GradoService;
-use App\Curriculum;
-use App\Services\CurriculumService;
 use App\Model\Alumno;
+use App\Model\Oferta;
+use App\Services\OfertaService;
+
+//Importando las classes de modelo y servicios
 
 class AlumnoController extends Controller
 {
 
     public function __construct()
     {
-        // $this->middleware('auth',['only'=>['aniadirUsuario' , 'aniadirCurriculum' , 'aniadirGrado']]);
+        //$this->middleware('auth', ['only' => ['aniadirUsuario', 'aniadirCurriculum', 'aniadirGrado']]);
     }
-public function VerAlumno($id){
+    public function VerAlumno($id)
+    {
 //return view ("VerAnimales");
 
 //Meto en la variable alumno toda la info con la variable que meta en rutas
-$alumno =Alumno::where('id','=',$id)->first(); 
-if(!$alumno){
-    return view ("alumnos/home");
-}
-
-
-return view ("alumnos/home",compact('alumno'));
-}
-public function VerAlumnos(){
-    //return view ("VerAlumnos");
-    
-    //Saco toda la tabla de alumnos
-    // $alumnos =DB::table('alumnos')->get();   //el otro sistema
-    $alumnos =Alumno::all(); //metodo eloquent
-    if(!$alumnos){
-        return view ("alumnos/home");
+        $ofertas =Oferta::all();
+        if (!$ofertas) {
+            return view("alumnos/ofertas");
+        }     
+        return view("alumnos/ofertas")-> with('ofertas', $ofertas);
     }
-    
+    public function VerAlumnos()
+    {
+        //return view ("VerAlumnos");
+        $ofertas =Oferta::all(); //metodo eloquent
+        if(!$ofertas){
+            return view ("alumnos/ofertas");
+        }
+        
+         return view ("Veralumnos",array(),compact('ofertas'));
+         
+     
 
 //llamo a la funcion ver animales y regreso a la vista VerAnimales
-return $this->VerAlumnos();
+        return $this->VerAlumnos();
     }
 }
-/*
-    public function irAniadirAlumno(){
-
-    return view('aniadirAlumno');
-        }
-        public function aniadirAlumno(){
-            //return view ("VerAlumnos");
-            Log::info('aniadirAlumno');
-        $alumno =new Duenio(); 
-        $alumno->nombre='hola';
-        $alumno->usuario='fs';
-        $alumno->contrasenia=123456;
-        Log::info('aniadirAlumno');
-        $alumnoService=new AlumnoService();
-        $alumnoService->Create($alumno);
-        
-        //llamo a la funcion ver animales y regreso a la vista VerAnimales
-     
-            }
-}
-*/
+ 

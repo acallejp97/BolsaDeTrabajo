@@ -12,5 +12,16 @@ class Oferta extends Model
 
     //AQUI SOLO SI HAY RELACIONES
     // //1-N     //N-M          //1-1
+    // public function grado(){
+    //     return $this->belongsTo('App\Model\Grado');
+    //   }
+
+    //   public function departamento(){
+    //     return $this->belongsTo('App\Model\Departamento');
+    //   }
+
+    //   public function profe_admin(){
+    //     return $this->belongsTo('App\Model\Profe_Admin');
+    //   }
 
 }
