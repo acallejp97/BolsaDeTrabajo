@@ -151,9 +151,10 @@ $(".file-upload").on('change', function(){
   		<div class="col-sm-3"><!--left col-->
               
 
-      <div class="text-center">
+      <div class="text-center w-1">
         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
         <input type="file" class="text-center center-block file-upload">
+    
       </div></hr><br>
 
 <!--                
@@ -186,64 +187,71 @@ $(".file-upload").on('change', function(){
                       <div class="form-group">
                           
                           <div class="col-xs-4">
-                              <label for="first_name"><h4>Nombre</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                              <label for="nombre"><h4>Nombre</h4></label>
+                              <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" title="Introduce tu nombre, si tienes.">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-4">
-                            <label for="last_name"><h4>Apellido</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                            <label for="apellido"><h4>Apellido</h4></label>
+                              <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" title="Introduce tu apellido, si tienes.">
                           </div>
                       </div>
           
                       <div class="form-group">
                           
                           <div class="col-xs-4">
-                              <label for="phone"><h4>Telefono</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                              <label for="teléfono"><h4>Telefono</h4></label>
+                              <input type="text" class="form-control" name="teléfono" id="teléfono" placeholder="Introduce Teléfono" title="Introduce tu telefono, si tienes.">
                           </div>
                       </div>
           
                       <div class="form-group">
                           <div class="col-xs-12">
-                             <label for="mobile"><h4>Direccion</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                             <label for="direccion"><h4>Dirección</h4></label>
+                              <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Introduce dirección" title="Introduce tu dirección.">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-4">
-                              <label for="email"><h4>Localidad</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                              <label for="localidad"><h4>Localidad</h4></label>
+                              <input type="text" class="form-control" name="localidad" id="localidad" placeholder="Lugar" title="Introduce tu lugar de residencia.">
                           </div>
                       </div>
                       <div class="form-group">
                           
-                          <div class="col-xs-8">
+                          <div class="col-xs-3">
+                              <label for="codigo_postal"><h4>Código Postal</h4></label>
+                              <input type="text" class="form-control" name="codigo_postal" id="codigopostal" placeholder="Ej: 48902" title="Introduce tu codigo postal.">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-5">
                               <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                              <input type="email" class="form-control" id="email" placeholder="you@email.com" title="Introduce tu correo electrónico.">
                           </div>
                       </div>
                    
                          
                       <div class="panel-body">                
                     <form accept-charset="UTF-8" action="" method="POST">
-                    <label for="email"><h4>Formación Académica</h4></label>
-                        <textarea class="form-control counted" name="message" placeholder="Type in your message" rows="5" style="margin-bottom:10px;"></textarea>
+                    <label for="formacion"><h4>Formación Académica</h4></label>
+                        <textarea class="form-control counted" name="message" placeholder="Formación academica" rows="5" style="margin-bottom:10px;"></textarea>
                     </form>
                 </div>
                       <div class="panel-body">                
                     <form accept-charset="UTF-8" action="" method="POST">
-                    <label for="email"><h4>Experiencia</h4></label>
-                        <textarea class="form-control counted" name="message" placeholder="Type in your message" rows="5" style="margin-bottom:10px;"></textarea>
+                    <label for="experiencia"><h4>Experiencia</h4></label>
+                        <textarea class="form-control counted" name="message" placeholder="Experiencia Laboral" rows="5" style="margin-bottom:10px;"></textarea>
                     </form>
                 </div>
                 <div class="panel-body">                
                     <form accept-charset="UTF-8" action="" method="POST">
-                    <label for="email"><h4>Otros datos</h4></label>
-                        <textarea class="form-control counted" name="message" placeholder="Type in your message" rows="5" style="margin-bottom:10px;"></textarea>
+                    <label for="otros"><h4>Otros datos</h4></label>
+                        <textarea class="form-control counted" name="message" placeholder="Otros datos" rows="5" style="margin-bottom:10px;"></textarea>
                     </form>
                 </div>
                       <div class="form-group">
