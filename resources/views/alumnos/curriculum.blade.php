@@ -188,14 +188,14 @@ $(".file-upload").on('change', function(){
                           
                           <div class="col-xs-4">
                               <label for="nombre"><h4>Nombre</h4></label>
-                              <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" title="Introduce tu nombre, si tienes.">
+                              <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" title="Introduce tu nombre.">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-4">
                             <label for="apellido"><h4>Apellido</h4></label>
-                              <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" title="Introduce tu apellido, si tienes.">
+                              <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" title="Introduce tu apellido.">
                           </div>
                       </div>
           
@@ -203,7 +203,7 @@ $(".file-upload").on('change', function(){
                           
                           <div class="col-xs-4">
                               <label for="teléfono"><h4>Telefono</h4></label>
-                              <input type="text" class="form-control" name="teléfono" id="teléfono" placeholder="Introduce Teléfono" title="Introduce tu telefono, si tienes.">
+                              <input type="text" class="form-control" name="teléfono" id="teléfono" placeholder="Introduce Teléfono" title="Introduce tu telefono.">
                           </div>
                       </div>
           

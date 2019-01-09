@@ -16,22 +16,22 @@
 
                             <div class="form-group col-lg-12">
                                 <label>Nombre del alumno :</label>
-                                <input type="text" name="cname" class="form-control" placeholder="Enter Course Name" required="Plz Enter">
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" title="Introduce el nombre del alumno."  >
                             </div>
                             
                             <div class="form-group col-lg-12">
                                 <label>Apellido del alumno :</label>
-                                <input type="text" name="intro" class="form-control" placeholder="Enter Course Introduction" required="Plz Enter">
+                                <input type="text" name="apellido" class="form-control" placeholder="Apellidos" title="Introduce los apellidos del alumno.">
                             </div>
                             
                             <div class="form-group col-lg-12">
                                 <label>Email del alumno :</label>
-                                <input type="text" name="heading1" class="form-control" placeholder="Enter First Heading" required="Plz Enter">
+                                <input type="text" name="email" class="form-control" placeholder="Email" title="Introduce el email del alumno.">
                             </div>
                             
                             <div class="form-group col-lg-12">
                                 <label>Año de finalización :</label>
-                                <input type="text" name="heading2" class="form-control" placeholder="Enter secound Heading" required="Plz Enter">
+                                <input type="text" name="aniofin" class="form-control" placeholder="Año Finalizacion" title="Introduce el año de finalizacion del alumno.">
                             </div>
                             
             	

@@ -60,15 +60,15 @@
                       <div class="form-group">
                           
                           <div class="col-xs-11">
-                              <label for="first_name"><h4>Nombre</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                              <label for="nombre"><h4>Nombre</h4></label>
+                              <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" title="Introduce tu nombre.">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-11">
-                            <label for="last_name"><h4>Apellidos</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                            <label for="apellido"><h4>Apellidos</h4></label>
+                              <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellidos" title="Introduce tu apellidosCourseCourse.">
                           </div>
                       </div>
           
@@ -76,7 +76,7 @@
                           
                           <div class="col-xs-11">
                               <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="Introduce tu email.">
                           </div>
                       </div>
                     
@@ -84,14 +84,14 @@
                           
                           <div class="col-xs-11">
                               <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                              <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" title="Introduce la contraseña.">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-11">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                            <label for="password2"><h4>Confirmar contraseña</h4></label>
+                              <input type="password" class="form-control" name="password2" id="password2" placeholder="Repite Contraseña" title="Confirma tu contraseña por favor.">
                           </div>
                       </div>
                       <div class="form-group">
