@@ -24,7 +24,7 @@ class Usuario extends Model
     /**
      * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * @var 
      */
     protected $hidden = [
         'passwd', 'remember_token',
