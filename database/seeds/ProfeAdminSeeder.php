@@ -13,12 +13,19 @@ class ProfeAdminSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
+        DB::table('profe-admin')->insert(array(
+            'id_user' => 1,
+            'rango' => 0,
+            'created_at' => date('Y-m-d H:m:s'),
+            'updated_at' => date('Y-m-d H:m:s'),
+        ));
 
         DB::table('profe-admin')->delete();
-        for ($i = 0; $i != 3; $i++) {
+        for ($i = 2; $i < 4; $i++) {
             DB::table('profe-admin')->insert(array(
-                'id_user' => (2+$i),
-                'id_depar' => $faker->numberBetween(0, 2),
+                'id_user' => $i,
+                'rango'=>1,
+                'id_depar' => $faker->numberBetween(1,6),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
             ));

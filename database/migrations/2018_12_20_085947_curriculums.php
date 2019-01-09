@@ -23,12 +23,15 @@ class Curriculums extends Migration
             $table->string('competencias',300);
             $table->string('idiomas',300);
             $table->string('otros_datos',3000);
-            $table->unsignedInteger('telefono');
+            $table->string('telefono',200);
            
             $table->foreign('id_alumno')->references('id')->on('alumnos');
             $table->timestamps();
             
         });
+
+        DB::statement("ALTER TABLE curriculums 
+        ADD imagen MEDIUMBLOB AFTER apellidos");
     }
     
 

@@ -20,7 +20,7 @@ class Empresas extends Migration
             $table->string('direccion',90);
             $table->string('email',30);
             $table->string('url',300);
-            $table->unsignedInteger('telefono')->unique();
+            $table->string('telefono',200);
     
             $table->timestamps();
             

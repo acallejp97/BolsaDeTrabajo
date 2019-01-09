@@ -19,9 +19,9 @@ class OfertasSeeder extends Seeder
             DB::table('ofertas')->insert(array(
                 'titulo' => $faker->jobTitle,
                 'descripcion' => $faker->paragraph(),
-                'id_empresa' => $faker->numberBetween(0, 2),
-                'id_grado' => $faker->numberBetween(0, 2),
-                'id_profesor' => $faker->numberBetween(0, 2),
+                'id_empresa' =>$faker->numberBetween(1,6),
+                'id_grado' => $faker->numberBetween(1,10),
+                'id_profesor' => $faker->numberBetween(2,3),
                 'puestos-vacantes' => $faker->numberBetween(1, 30),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),

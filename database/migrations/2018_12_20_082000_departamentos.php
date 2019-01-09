@@ -19,7 +19,6 @@ class Departamentos extends Migration
             $table->string('nombre',300);
   
             $table->timestamps();
-            
         });
     }
     
