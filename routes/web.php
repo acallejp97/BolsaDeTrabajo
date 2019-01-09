@@ -26,14 +26,18 @@ Route::get ('/ActualizarCV', "AlumnoController@ActualizarCV");
 
 
 //RUTAS PROFESOR
-Route::get ('/Ofertas', "ProfeController@Ofertas");
-Route::get ('/Empresas', "ProfeController@Empresas");
-Route::get ('/AñadirEmpresas', "ProfeController@AñadirEmpresas");
-Route::get ('/AñadirUsuarios', "ProfeController@Usuarios");
-Route::get ('/Usuarios', "ProfeController@Usuarios");
-Route::get ('/Perfil', "ProfeController@Perfil");
-Route::get ('/Cursos', "ProfeController@Cursos");
-Route::get ('/Contacto', "ProfeController@Contacto");
+Route::get ('/Ofertas', "Profe_AdminController@Ofertas");
+Route::get ('/Empresas', "Profe_AdminController@Empresas");
+Route::get ('/AñadirEmpresas', "Profe_AdminController@AñadirEmpresas");
+Route::get ('/AñadirUsuarios', "Profe_AdminController@AñadirUsuarios");
+Route::get ('/Usuarios', "Profe_AdminController@Usuarios");
+Route::get ('/Perfil', "Profe_AdminController@Perfil");
+Route::get ('/Cursos', "Profe_AdminController@Cursos");
+Route::get ('/Contacto', "Profe_AdminController@Contacto");
+
+//RUTAS ADMIN
+Route::get ('/Buzon', "Profe_AdminController@Buzon");
+Route::get ('/AñadirProfesor', "Profe_AdminController@AñadirProfesor");
 
 // Route::get ('/VerAnimales', "AnimalesController@VerAnimales");
 // Route::get ('/aniadirAnimales', "AnimalesController@aniadirAnimales");

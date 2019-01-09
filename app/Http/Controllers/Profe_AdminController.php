@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Usuario;
 use App\Model\Empresa;
-class ProfeController extends Controller
+use App\Model\Oferta;
+class Profe_AdminController extends Controller
 {
     public function __construct()
     {
@@ -13,11 +14,11 @@ class ProfeController extends Controller
     }
     public function Ofertas()
     {
-//return view ("VerAnimales");
-
-//Meto en la variable alumno toda la info con la variable que meta en rutas
-       
+        $ofertas =Oferta::all();
+        if (!$ofertas) {
             return view("profesores/añadirofertas");
+        }     
+        return view("profesores/añadirofertas")-> with('ofertas', $ofertas);
             
     }
     public function Empresas()
@@ -78,6 +79,24 @@ class ProfeController extends Controller
             return view("profesores/usuarios");
         }     
         return view("profesores/usuarios")-> with('usuarios', $usuarios);
+        
+        
+    }
+
+    //******* */FUNCIONES DE ADMIN********************
+    public function AñadirProfesor()
+    {
+        //return view ("VerAlumnos");
+       
+            return view ("profesores/añadirprofesor");
+        
+        
+    }
+    public function Buzon()
+    {
+        //return view ("VerAlumnos");
+       
+            return view ("profesores/buzon");
         
         
     }
