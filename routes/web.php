@@ -85,16 +85,12 @@ Route::get ('/', function(){
             return redirect('/profe');
         }
         else{
-            return redirect('/alumno');
+        return redirect('/alumno');
         }
     }else{
         return redirect('/login');
     }   
 });
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/alumnos/home', 'AlumnoController@VerAlumnos')->name('/Alumnos/alumno');
