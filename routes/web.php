@@ -74,6 +74,23 @@ Route::get ('/VerAlumno/{id}', "AlumnoController@VerAlumno");
 
 Auth::routes();
 
+
+//-----------DEPENDIENDO DEL USUARIO LOGUEADO LLEVARÁ A UNA PÁGINA U OTRA-------//
+Route::get ('/', function(){
+    if (Auth::user()){ //se valida si está logueado
+        if(Auth::user()->rango =='0'){
+            return redirect('/admin');
+        }
+        else if(Auth::user()->rango =='1'){
+            return redirect('/profe');
+        }
+        else{
+            return redirect('/alumno');
+        }
+    }else{
+        return redirect('/login');
+    }   
+});
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
@@ -81,3 +98,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/alumnos/home', 'AlumnoController@VerAlumnos')->name('/Alumnos/alumno');
+Route::get('/profesores/home', 'ProfesorController@VerProfesores')->name('/Profesores/profesor');
+Route::get('/administradores/home', 'AdministradorController@VerAdministrador')->name('/Administradores/administrador');
+
