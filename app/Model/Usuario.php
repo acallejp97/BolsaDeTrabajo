@@ -16,7 +16,6 @@ class Usuario extends Model
      *
      * @var array
      */
-    protected $table = "usuarios";
     protected $fillable = [
         'email', 'nombre', 'apellidos' ,'passwd',
     ];
