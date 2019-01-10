@@ -16,9 +16,9 @@ class Profe_AdminController extends Controller
     {
         $ofertas =Oferta::all();
         if (!$ofertas) {
-            return view("profesores/añadirofertas");
+            return view("profesores/anadirofertas");
         }     
-        return view("profesores/añadirofertas")-> with('ofertas', $ofertas);
+        return view("profesores/anadirofertas")-> with('ofertas', $ofertas);
             
     }
     public function Empresas()
@@ -31,19 +31,19 @@ class Profe_AdminController extends Controller
         
         
     }
-    public function AñadirEmpresas()
+    public function AnadirEmpresas()
     {
         //return view ("VerAlumnos");
        
-            return view ("profesores/añadirempresas");
+            return view ("profesores/anadirempresas");
         
         
     }
-    public function AñadirUsuarios()
+    public function AnadirUsuarios()
     {
         //return view ("VerAlumnos");
        
-            return view ("profesores/añadirusuarios");
+            return view ("profesores/anadirusuarios");
         
         
     }
@@ -84,11 +84,11 @@ class Profe_AdminController extends Controller
     }
 
     //******* */FUNCIONES DE ADMIN********************
-    public function AñadirProfesor()
+    public function AnadirProfesor()
     {
         //return view ("VerAlumnos");
        
-            return view ("profesores/añadirprofesor");
+            return view ("profesores/anadirprofesor");
         
         
     }
