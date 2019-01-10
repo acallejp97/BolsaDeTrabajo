@@ -17,27 +17,8 @@
 // Route::get ('/foro', "Paginas@foro");
 
 
-//RUTAS ALUMNOS
-Route::get ('/VerOfertas', "AlumnoController@VerOfertas");
-Route::get ('/Contacto', "AlumnoController@Contacto");
-Route::get ('/VerPerfil', "AlumnoController@VerPerfil");
-Route::get ('/ActualizarCV', "AlumnoController@ActualizarCV");
-
-
-
-//RUTAS PROFESOR
-Route::get ('/Ofertas', "Profe_AdminController@Ofertas");
-Route::get ('/Empresas', "Profe_AdminController@Empresas");
-Route::get ('/AñadirEmpresas', "Profe_AdminController@AñadirEmpresas");
-Route::get ('/AñadirUsuarios', "Profe_AdminController@AñadirUsuarios");
-Route::get ('/Usuarios', "Profe_AdminController@Usuarios");
-Route::get ('/Perfil', "Profe_AdminController@Perfil");
-Route::get ('/Cursos', "Profe_AdminController@Cursos");
-Route::get ('/Contacto', "Profe_AdminController@Contacto");
-
-//RUTAS ADMIN
-Route::get ('/Buzon', "Profe_AdminController@Buzon");
-Route::get ('/AñadirProfesor', "Profe_AdminController@AñadirProfesor");
+//Busca el Perro con la id que le meta
+Route::get ('/VerAlumno/{id}', "AlumnoController@VerAlumno");
 
 // Route::get ('/VerAnimales', "AnimalesController@VerAnimales");
 // Route::get ('/aniadirAnimales', "AnimalesController@aniadirAnimales");
@@ -93,10 +74,26 @@ Route::get ('/AñadirProfesor', "Profe_AdminController@AñadirProfesor");
 
 Auth::routes();
 
+
+//-----------DEPENDIENDO DEL USUARIO LOGUEADO LLEVARÁ A UNA PÁGINA U OTRA-------//
+Route::get ('/', function(){
+    if (Auth::user()){ //se valida si está logueado
+        if(Auth::user()->rango =='0'){
+            return redirect('/admin');
+        }
+        else if(Auth::user()->rango =='1'){
+            return redirect('/profe');
+        }
+        else{
+        return redirect('/alumno');
+        }
+    }else{
+        return redirect('/login');
+    }   
+});
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::get('/alumnos/home', 'AlumnoController@VerAlumnos')->name('/Alumnos/alumno');
+Route::get('/profesores/home', 'ProfesorController@VerProfesores')->name('/Profesores/profesor');
+Route::get('/administradores/home', 'AdministradorController@VerAdministrador')->name('/Administradores/administrador');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/alumnos/home', 'AlumnoController@VerAlumnos');
