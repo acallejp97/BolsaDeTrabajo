@@ -8,6 +8,6 @@ database/migration -> Tablas -> php artisan Make:nombreTabla -> Ahi metemos las 
 
 routes/web.php -> Modificar rutas 
 
-resources/view/añadirVista.blade.php
+resources/view/anadirVista.blade.php
 
 alumno  grado departamentos usuarios profesores ofertas empresas correos curriculum 

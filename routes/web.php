@@ -1,24 +1,82 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-//  Route::get ('/', "HomeController@index");
-// Route::get ('/inicio', "Paginas@inicio");
-// Route::get ('/quieneSomos', "Paginas@quieneSomos");
-// Route::get ('/dondeEstamos', "Paginas@dondeEstamos");
-// Route::get ('/foro', "Paginas@foro");
 
 
-//Busca el Perro con la id que le meta
-Route::get ('/VerAlumno/{id}', "AlumnoController@VerAlumno");
+
+
+//RUTAS ALUMNOS
+
+
+
+
+Route::get ('/VerOfertas', "AlumnoController@VerOfertas");
+
+
+Route::get ('/Contacto', "AlumnoController@Contacto");
+
+
+Route::get ('/VerPerfil', "AlumnoController@VerPerfil");
+
+
+Route::get ('/ActualizarCV', "AlumnoController@ActualizarCV");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//RUTAS PROFESOR
+
+
+Route::get ('/Ofertas', "Profe_AdminController@Ofertas");
+
+
+Route::get ('/Empresas', "Profe_AdminController@Empresas");
+
+
+Route::get ('/AnadirEmpresas', "Profe_AdminController@AnadirEmpresas");
+
+
+Route::get ('/AnadirUsuarios', "Profe_AdminController@AnadirUsuarios");
+
+
+Route::get ('/Usuarios', "Profe_AdminController@Usuarios");
+
+
+Route::get ('/Perfil', "Profe_AdminController@Perfil");
+
+
+Route::get ('/Cursos', "Profe_AdminController@Cursos");
+
+
+Route::get ('/Contacto', "Profe_AdminController@Contacto");
+
+
+
+
+
+
+//RUTAS ADMIN
+
+
+Route::get ('/Buzon', "Profe_AdminController@Buzon");
+
+
+Route::get ('/AnadirProfesor', "Profe_AdminController@AnadirProfesor");
+
+
+
+
+
+
 
 // Route::get ('/VerAnimales', "AnimalesController@VerAnimales");
 // Route::get ('/aniadirAnimales', "AnimalesController@aniadirAnimales");
@@ -79,10 +137,10 @@ Auth::routes();
 Route::get ('/', function(){
     if (Auth::user()){ //se valida si está logueado
         if(Auth::user()->rango =='0'){
-            return redirect('/admin');
+            return redirect('/profesores/anadirofertas');
         }
         else if(Auth::user()->rango =='1'){
-            return redirect('/profe');
+            return redirect('/profesores/anadirofertas');
         }
         else{
         return redirect('/alumno');
@@ -94,6 +152,5 @@ Route::get ('/', function(){
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/alumnos/home', 'AlumnoController@VerAlumnos')->name('/Alumnos/alumno');
-Route::get('/profesores/home', 'ProfesorController@VerProfesores')->name('/Profesores/profesor');
-Route::get('/administradores/home', 'AdministradorController@VerAdministrador')->name('/Administradores/administrador');
+Route::get('/profesores/home', 'Profe_AdminController@');//->name('/Profesores/profesor');
 

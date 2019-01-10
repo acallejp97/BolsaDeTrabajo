@@ -23,13 +23,13 @@
       <li class="nav-item">
         <a class="nav-link" href="Perfil">Ver Perfil</a>
       </li>
-        <a class="nav-link active" href="AñadirEmpresas">Alta Empresas</a>
+        <a class="nav-link active" href="AnadirEmpresas">Alta Empresas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="AñadirUsuarios">Alta Usuarios</a>
+        <a class="nav-link " href="AnadirUsuarios">Alta Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="AñadirUsuarios">Alta Profesores</a>
+        <a class="nav-link " href="AnadirUsuarios">Alta Profesores</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="Usuarios">Usuarios</a>

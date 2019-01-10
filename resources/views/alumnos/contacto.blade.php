@@ -20,7 +20,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="name">Nombre</label>
               <div class="col-md-9">
-                <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
+                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control">
               </div>
             </div>
     
@@ -28,14 +28,14 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="email">Asunto</label>
               <div class="col-md-9">
-                <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+                <input id="email" name="email" type="text" placeholder="Email" class="form-control">
               </div>
             </div>
           <!-- Message body -->
           <div class="form-group">
               <label class="col-md-3 control-label" for="message">Tu mensaje</label>
               <div class="col-md-9">
-                <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
+                <textarea class="form-control" id="mensaje" name="mensaje" placeholder="Introduce tu mensaje aqui, por favor..." rows="5"></textarea>
               </div>
             </div>
     
