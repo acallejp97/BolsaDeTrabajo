@@ -18,7 +18,7 @@ class Empresas extends Migration
             $table->increments('id',5);
             $table->string('nombre',300);
             $table->string('direccion',90);
-            $table->string('email',30);
+            $table->string('email',300);
             $table->string('url',300);
             $table->unsignedInteger('telefono');
     
