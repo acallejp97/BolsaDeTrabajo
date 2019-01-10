@@ -69,11 +69,7 @@ class RegisterController extends Controller
             Session::forget('email');
             return view('home');
         }
-        protected   function login(Request $request){
-            $user = app('App\Http\Controllers\UsersController')->getUser($request->input('uid'));
-            Log::info("login",array($request->all(), $user));
-            return ['kind' => $user['kind'], 'uid' => $request->input('uid')];
-        }
+     
         
         protected  function register(Request $request){
             Log::info("Usuario",array($request->all()));

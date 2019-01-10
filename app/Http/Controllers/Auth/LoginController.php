@@ -16,7 +16,7 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
     use AuthenticatesUsers;
 
@@ -27,6 +27,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
+
     /**
      * Create a new controller instance.
      *
@@ -36,4 +37,26 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $rango)
+    {
+        
+            $user = app('App\Http\Controllers\LoginController')->getUser($rango->input('rango'));
+            Log::info("rango",array($rango->all(), $user));
+            
+
+        if (session('status')) {
+
+            session('status');
+
+            if (session::get('rango') == '0') {
+                return view('profesores/anadirofertas');
+            } elseif (session::get('rango') == '1') {
+                return view('profesores/anadirofertas');
+            } else {
+                return view('VerOfertas');
+            }
+        }
+    }
+
 }
