@@ -124,3 +124,14 @@
 
 	   
 @endsection
+
+<!-- <script>
+data = "ADad";
+$.ajax({
+type: 'post',
+url: '{{url("/anadir")}}',
+data: data
+});
+
+
+</script> -->

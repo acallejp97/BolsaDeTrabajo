@@ -35,9 +35,10 @@
                
           <div class="panel panel-default">
             <div class="panel-heading">Registrado desde <i class="fa fa-link fa-1x"></i></div>
-            <div class="panel-body">/ poner la sentencia bbdd</div>
+            <div class="panel-body">{{$usuarios['created_at']}}</div>
           </div>
           
+
           
           <ul class="list-group">
             <li class="list-group-item text-muted">Actividad <i class="fa fa-dashboard fa-1x"></i></li>

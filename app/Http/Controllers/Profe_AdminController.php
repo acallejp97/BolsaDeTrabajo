@@ -44,8 +44,24 @@ class Profe_AdminController extends Controller
         //return view ("VerAlumnos");
 
         return view("profesores/anadirusuarios");
-
     }
+    //        public function aniadir(){
+    //                 //return view ("VerAnimales");
+    //                 Log::info('aniadirDuenio');
+    //             $duenio =new Duenio(); 
+    //             $duenio->nombre='hola';
+    //             $duenio->usuario='fs';
+    //             $duenio->contrasenia=123456;
+    //             Log::info('aniadirDuenio');
+    //             $DuenioService=new DuenioService();
+    //             $DuenioService->Create($duenio);
+                
+    //             //llamo a la funcion ver animales y regreso a la vista VerAnimales
+             
+                    
+
+    // }
+
     public function Cursos()
     {
         //return view ("VerAlumnos");
@@ -62,11 +78,14 @@ class Profe_AdminController extends Controller
 
     public function Perfil()
     {
-        //return view ("VerAlumnos");
-
-        return view("profesores/perfil");
-
+        $usuarios =Usuario::all(); 
+        // $usuarios =array('created_at'=>"2018");
+        if(!$usuarios){
+            return view("profesores/perfil");
+        }
+        return view("profesores/perfil")->with('usuarios', $usuarios);
     }
+    
     public function Contacto()
     {
         //return view ("VerAlumnos");
