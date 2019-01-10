@@ -29,6 +29,9 @@ class Curriculums extends Migration
             $table->timestamps();
             
         });
+
+        DB::statement("ALTER TABLE curriculums 
+        ADD imagen MEDIUMBLOB AFTER apellidos");
     }
     
 

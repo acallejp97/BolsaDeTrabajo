@@ -13,15 +13,15 @@ class EmpresasSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        DB::table('empresas')->delete();
 
-        for ($i = 0; $i != 3; $i++) {
+        DB::table('empresas')->delete();
+        for ($cantidadEmpresas = 0; $cantidadEmpresas != 6; $cantidadEmpresas++) {
             DB::table('empresas')->insert(array(
-                'nombre' => $faker->name,
+                'nombre' => $faker->company,
                 'direccion' => $faker->address,
-                'email' => $faker->email,
+                'email' => $faker->companyEmail,
                 'url' => $faker->url,
-                'telefono' => $faker->phoneNumber,
+                'telefono' => $faker->numberBetween(600000000,699999999),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
             ));

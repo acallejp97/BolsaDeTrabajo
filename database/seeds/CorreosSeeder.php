@@ -15,9 +15,9 @@ class CorreosSeeder extends Seeder
         $faker = Faker\Factory::create();
         DB::table('correos')->delete();
 
-        for ($i = 0; $i != 3; $i++) {
+        for ($cantidadCorreos = 0; $cantidadCorreos != 9; $cantidadCorreos++) {
             DB::table('correos')->insert(array(
-                'id_remit' => $faker->numberBetween(0, 4),
+                'id_remit' => $faker->numberBetween(1,30),
                 'asunto' => $faker->title,
                 'descripcion' => $faker->paragraph(),
                 'created_at' => date('Y-m-d H:m:s'),

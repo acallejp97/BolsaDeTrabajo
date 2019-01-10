@@ -16,11 +16,11 @@ class Empresas extends Migration
         Schema::dropIfExists('empresas');
         Schema::create('empresas', function (Blueprint $table) {
             $table->increments('id',5);
-            $table->string('nombre',30);
+            $table->string('nombre',300);
             $table->string('direccion',90);
             $table->string('email',30);
             $table->string('url',300);
-            $table->unsignedInteger('telefono')->unique();
+            $table->unsignedInteger('telefono');
     
             $table->timestamps();
             
