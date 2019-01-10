@@ -17,7 +17,7 @@ class Alumnos extends Migration
         Schema::create('alumnos', function (Blueprint $table) {
             $table->increments('id', 5);
             $table->unsignedInteger('id_user')->unique();
-            $table->string('anio_fin', 5);
+            $table->unsignedInteger('anio_fin');
 
             $table->foreign('id_user')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();

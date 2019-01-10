@@ -14,7 +14,7 @@ class UsuariosSeeder extends Seeder
     {
         DB::table('usuarios')->delete();
         $faker = Faker\Factory::create();
-       
+
         DB::table('usuarios')->insert(array(
             'email' => 'admin@fptxurdinaga.com',
             'nombre' => 'admin',
@@ -24,7 +24,8 @@ class UsuariosSeeder extends Seeder
             'updated_at' => date('Y-m-d H:m:s'),
         ));
 
-        for ($i = 0; $i != 30; $i++) {
+        //Cantidad de usuarios a crear
+        for ($numeroUsuarios = 0; $numeroUsuarios != 90; $numeroUsuarios++) {
             $nombre = explode(' ', trim($faker->name));
             DB::table('usuarios')->insert(array(
                 'email' => $faker->email,

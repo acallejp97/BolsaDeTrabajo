@@ -23,7 +23,7 @@ class Curriculums extends Migration
             $table->string('competencias',300);
             $table->string('idiomas',300);
             $table->string('otros_datos',3000);
-            $table->string('telefono',200);
+            $table->unsignedInteger('telefono');
            
             $table->foreign('id_alumno')->references('id')->on('alumnos');
             $table->timestamps();

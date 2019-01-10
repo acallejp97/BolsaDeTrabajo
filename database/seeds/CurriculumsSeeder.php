@@ -16,16 +16,16 @@ class CurriculumsSeeder extends Seeder
         $nombre=explode(' ',trim($faker->name));
 
         DB::table('curriculums')->delete();
-        for ($i = 1; $i <=25; $i++) {
+        for ($cantidadCurriculum = 1; $cantidadCurriculum !=25; $cantidadCurriculum++) {
             DB::table('curriculums')->insert(array(
-                'id_alumno'=> $i,
+                'id_alumno'=> ($cantidadCurriculum),
                 'nombre' => $nombre[0],
                 'apellidos' => $faker->name,
                 'experiencia' => $faker->paragraph,
                 'competencias' => $faker->paragraph,
                 'idiomas' => $faker->paragraph,
                 'otros_datos' => $faker->paragraph,
-                'telefono' => $faker->phoneNumber,
+                'telefono' => $faker->numberBetween(600000000,699999999),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
             ));

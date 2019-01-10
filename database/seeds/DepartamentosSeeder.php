@@ -18,9 +18,9 @@ class DepartamentosSeeder extends Seeder
 
         DB::table('departamentos')->delete();
 
-        for ($i = 0; $i < 6; $i++) {
+        for ($numeroDepartamento = 0; $numeroDepartamento < count($this->arrayDepartamentos); $numeroDepartamento++) {
             DB::table('departamentos')->insert(array(
-                'nombre' => $this->arrayDepartamentos[$i],
+                'nombre' => $this->arrayDepartamentos[$numeroDepartamento],
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
             ));

@@ -30,11 +30,11 @@ class GradosSeeder extends Seeder
 
         DB::table('grados')->delete();
 
-        for ($i = 0; $i < count($this->grados); $i++) {
+        for ($insertarGrado = 0; $insertarGrado < count($this->grados); $insertarGrado++) {
             DB::table('grados')->insert(array(
-                'id_depar' => $this->selectDepart($i),
-                'nombre' => $this->grados[$i],
-                'abreviacion' => $this->abreviacion[$i],
+                'id_depar' => $this->selectDepart($insertarGrado),
+                'nombre' => $this->grados[$insertarGrado],
+                'abreviacion' => $this->abreviacion[$insertarGrado],
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
             ));

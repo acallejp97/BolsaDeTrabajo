@@ -15,9 +15,9 @@ class AlumnosSeeder extends Seeder
         $faker = Faker\Factory::create();
 
         DB::table('alumnos')->delete();
-        for ($i = 4; $i <= 30; $i++) {
+        for ($numeroAlumnos = 4; $numeroAlumnos != 30; $numeroAlumnos++) {
             DB::table('alumnos')->insert(array(
-                'id_user' => $i,
+                'id_user' => $numeroAlumnos,
                 'anio_fin' => $faker->numberBetween(2000,2019),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
