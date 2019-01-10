@@ -1,0 +1,4 @@
+Vamos a rellenar la base de datos con Seed. Para ello lo que hemos hecho ha sido mediante el composer instalar Faker, 
+un proyecto que nos permite falsificar los datos que vamos a introducir en la base de datos. Mediante "composer require 
+fzaninotto/faker" lo añadimos a nuestro proyecto de laravel. Para crear una clase de Seeder mediante referencias, se hará a 
+traves de la consola de comandos
