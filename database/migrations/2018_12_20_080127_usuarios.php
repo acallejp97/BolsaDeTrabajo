@@ -13,8 +13,8 @@ class Usuarios extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('usuarios');
-        Schema::create('usuarios', function (Blueprint $table) {
+        Schema::dropIfExists('user');
+        Schema::create('user', function (Blueprint $table) {
             $table->increments('id',3);
             $table->string('email',90);
             $table->string('nombre',30);
@@ -35,5 +35,6 @@ class Usuarios extends Migration
     public function down()
     {
         Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('user');
     }
 }

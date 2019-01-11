@@ -12,10 +12,10 @@ class UsuariosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('usuarios')->delete();
+        DB::table('user')->delete();
         $faker = Faker\Factory::create();
 
-        DB::table('usuarios')->insert(array(
+        DB::table('user')->insert(array(
             'email' => 'admin@fptxurdinaga.com',
             'nombre' => 'admin',
             'rango' => 0,
@@ -34,7 +34,7 @@ class UsuariosSeeder extends Seeder
             }
 
             $nombre = explode(' ', trim($faker->name));
-            DB::table('usuarios')->insert(array(
+            DB::table('user')->insert(array(
                 'email' => $faker->email,
                 'nombre' => $nombre[0],
                 'apellidos' => $faker->name,

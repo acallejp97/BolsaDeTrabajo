@@ -20,7 +20,7 @@ class Correos extends Migration
             $table->string('asunto',30);
             $table->string('descripcion',3000);
            
-            $table->foreign('id_remit')->references('id')->on('usuarios');
+            $table->foreign('id_remit')->references('id')->on('user');
             $table->timestamps();
         });
     }
