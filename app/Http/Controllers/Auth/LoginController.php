@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Profe_AdminController;
 
 class LoginController extends Controller
 {
@@ -41,20 +43,20 @@ class LoginController extends Controller
     public function login(Request $rango)
     {
         
-            $user = app('App\Http\Controllers\LoginController')->getUser($rango->input('rango'));
-            Log::info("rango",array($rango->all(), $user));
-            
 
-        if (session('status')) {
+            // $user = app('App\Http\Controllers\LoginController')->getUser($rango->input('rango'));
+            // Log::info("rango",array($rango->all(), $user));
+            // Sentry
 
-            session('status');
-
-            if (session::get('rango') == '0') {
-                return view('profesores/anadirofertas');
-            } elseif (session::get('rango') == '1') {
-                return view('profesores/anadirofertas');
-            } else {
-                return view('VerOfertas');
+        if (session()) {
+            if (session()->get('rango') == 0) {
+                return Profe_AdminController::Ofertas();
+            } elseif (session()->get('rango') == 1) {
+                return view('/profesores/anadirofertas');
+            } elseif (session()->get('rango')==2) {
+                return view('/alumnos/ofertas');
+            }else{
+                return view('login');
             }
         }
     }

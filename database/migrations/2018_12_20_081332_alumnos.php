@@ -19,7 +19,7 @@ class Alumnos extends Migration
             $table->unsignedInteger('id_user')->unique();
             $table->unsignedInteger('anio_fin');
 
-            $table->foreign('id_user')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('user')->onDelete('cascade');
             $table->timestamps();
         });
     }

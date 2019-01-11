@@ -19,7 +19,7 @@ class ProfeAdmin extends Migration
             $table->unsignedInteger('id_user')->unique();
             $table->unsignedInteger('id_depar')->nullable();
             
-            $table->foreign('id_user')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('user')->onDelete('cascade');
             $table->foreign('id_depar')->references('id')->on('departamentos');
             $table->timestamps();
         });

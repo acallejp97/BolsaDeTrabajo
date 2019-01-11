@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
+$IDActual = session()->get('id');
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
-use App\Model\Usuario;
-
+use App\User;
 class Profe_AdminController extends Controller
 {
+
     public function __construct()
     {
         //$this->middleware('auth', ['only' => ['aniadirUsuario', 'aniadirCurriculum', 'aniadirGrado']]);
     }
-    public function Ofertas()
+    public static function Ofertas()
     {
         $ofertas = Oferta::all();
         if (!$ofertas) {
@@ -39,28 +40,12 @@ class Profe_AdminController extends Controller
         return view("profesores/anadirempresas");
 
     }
-    public function AnadirUsuarios()
+    public function Anadiruser()
     {
         //return view ("VerAlumnos");
 
-        return view("profesores/anadirusuarios");
+        return view("profesores/anadiruser");
     }
-    //        public function aniadir(){
-    //                 //return view ("VerAnimales");
-    //                 Log::info('aniadirDuenio');
-    //             $duenio =new Duenio(); 
-    //             $duenio->nombre='hola';
-    //             $duenio->usuario='fs';
-    //             $duenio->contrasenia=123456;
-    //             Log::info('aniadirDuenio');
-    //             $DuenioService=new DuenioService();
-    //             $DuenioService->Create($duenio);
-                
-    //             //llamo a la funcion ver animales y regreso a la vista VerAnimales
-             
-                    
-
-    // }
 
     public function Cursos()
     {
@@ -78,12 +63,14 @@ class Profe_AdminController extends Controller
 
     public function Perfil()
     {
-        $usuarios =Usuario::all(); 
-        // $usuarios =array('created_at'=>"2018");
-        if(!$usuarios){
+
+        //Aqui coge todos los usurios, hacer que coja solo uno 
+
+        $user =User::selectProfile(); 
+        if(!$user){
             return view("profesores/perfil");
         }
-        return view("profesores/perfil")->with('usuarios', $usuarios);
+        return view("profesores/perfil")->with('user', $user);
     }
     
     public function Contacto()
@@ -93,13 +80,13 @@ class Profe_AdminController extends Controller
         return view("profesores/contacto");
 
     }
-    public function Usuarios()
+    public function Usuario()
     {
-        $usuarios = Usuario::all();
-        if (!$usuarios) {
+        $user = User::all();
+        if (!$user) {
             return view("profesores/usuarios");
         }
-        return view("profesores/usuarios")->with('usuarios', $usuarios);
+        return view("profesores/usuarios")->with('user', $user);
 
     }
 
