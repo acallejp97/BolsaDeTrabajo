@@ -1,5 +1,7 @@
 git add .
 
+git pull
+
 echo 'Introduce el mensaje del Commit:'
 read commitMessage
 
