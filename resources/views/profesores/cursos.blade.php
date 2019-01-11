@@ -12,26 +12,33 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container demo">
+
 
     @foreach ($grados_depar['departamentos'] as $departamento)
+    
+    <div class="container demo m-top">
         <div class="mrgn_btm_50">
-        <li><h3 class="text-justify text-uppercase p-4"><strong> <td>  {{$departamento['nombre']}} </td></strong> </h3></li>
-        <a class="btn icon-btn btn-primary" href="#"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-primary"></span>Añadir Grado</a>
+            <li class="float-left "><h3 class=" text-uppercase  d-inline "><strong> <td>  {{$departamento['nombre']}} </td></strong> </h3> <a class="btn icon-btn btn-primary d-inline" href="#"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-dark"></span>Añadir Grado</a></li>
+            <hr><br>
         @foreach ($grados_depar['grados'] as $grado)
-            <div class="list3">
-            <ul class="list-unstyled text-justify">
-            @if($departamento['id']==$grado['id_depar'])
-                <li>{{$grado['nombre']}}</li>
-            @endif
+        
+        @if($departamento['id']==$grado['id_depar'])
+        <div class="list3 text-left m-4">
+            <ul class="list-unstyled ">
+                    <a class="btn icon-btn btn-danger float-right " href="#"><span class="glyphicon btn-glyphicon glyphicon-minus img-circle text-dark"></span>Eliminar Grado</a>
+                <br>
+                <li >{{$grado['nombre']}}</li>
+           
             </ul>
             </div>
+            @endif
+            @endforeach
             </div>
-        @endforeach
-    @endforeach
+      
+    
 
     </div><!-- panel-group -->
-
+    @endforeach
 
 </div><!-- container -->
 
