@@ -151,8 +151,8 @@ body{
 }
                                     </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-<section class="content inbox">
-    <div class="container-fluid">
+
+    <!-- <div class="container-fluid">
         <div class="row clearfix">
             <div class="col-lg-12">
                 <div class="card action_bar">
@@ -178,51 +178,37 @@ body{
                     </div>
                 </div>
             </div>           
-        </div>        
-        <div class="row clearfix">
-            <div class="col-md-12 col-lg-12 col-xl-12">
-                <ul class="mail_list list-group list-unstyled">
-                    <li class="list-group-item">
-                        <div class="media">
-                            <div class="pull-left">                                
-                                <div class="controls">
-                                    <div class="checkbox">
-                                        <input type="checkbox" id="basic_checkbox_1">
-                                        <label for="basic_checkbox_1"></label>
-                                    </div>
-                                    <a href="javascript:void(0);" class="favourite text-muted hidden-sm-down" data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
-                                </div>
-                                <div class="thumb hidden-sm-down m-r-20"> <img src="assets/images/xs/avatar1.jpg" class="rounded-circle" alt=""> </div>
-                            </div>
-
-
+        </div>         -->
 
 <!--aqui el foreach-->
+@foreach ($user_correos['correos'] as $correo)
+                                @foreach ($user_correos['user'] as $usuarios)
+                                @if($correo['id_remit']==$usuarios['id'])
+
                             <div class="media-body">
                                 <div class="media-heading">
-                                <a href="#" class="pull-left">
+                                
+                                <a href="#" class="pull-left"> </a>
                                         <img alt="..." src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object" style="float:left; width:50px"> 
-                                    </a>
-                                    <a href="mail-single.html" class="m-r-10">Velit a labore</a>
-                                    <span class="badge bg-blue">Family</span>
+                                   
+                                    <a href="mail-single.html" class="m-r-10">{{$correo['asunto']}}</a>
+            
+                                    <span class="badge bg-blue">{{$usuarios['nombre']}}</span>
                                     <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">12:35 AM</time><i class="zmdi zmdi-attachment-alt"></i> </small>
                                 </div>
-                                <p class="msg">Lorem Ipsum is simply dumm dummy text of the printing and typesetting industry. </p>
+                                <p class="msg">{{$correo['descripcion']}} </p>
                             </div>
                         </div>
                     </li>
-                  
-                            
-                            <div class="pull-left">
-                               
-                                <div class="thumb hidden-sm-down m-r-20"> <img src="assets/images/xs/avatar2.jpg" class="rounded-circle" alt=""> </div>
-                            </div>
-                          
-                        </div>
-                    </li>
-                </ul>
-
-                <!--aqui el foreach-->
+                    <div class="pull-left">
+                        
+                        <div class="thumb hidden-sm-down m-r-20"> <img src="assets/images/xs/avatar2.jpg" class="rounded-circle" alt=""> </div>
+                        
+                    </div>
+                </div>
+                @endif
+                @endforeach
+                @endforeach  
 
                 <div class="card m-t-5">
                     <div class="body">

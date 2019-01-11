@@ -7,6 +7,8 @@ use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
 use App\User;
+use App\Model\Correo;
+
 
 class Profe_AdminController extends Controller
 {
@@ -39,11 +41,11 @@ class Profe_AdminController extends Controller
         return view("profesores/anadirempresas");
 
     }
-    public function Anadiruser()
+    public function AnadirUsuarios()
     {
         //return view ("VerAlumnos");
 
-        return view("profesores/anadiruser");
+        return view("profesores/anadirusuarios");
     }
     //        public function aniadir(){
     //                 //return view ("VerAnimales");
@@ -95,13 +97,13 @@ class Profe_AdminController extends Controller
         return view("profesores/contacto");
 
     }
-    public function user()
+    public function Usuarios()
     {
         $user = User::all();
         if (!$user) {
-            return view("profesores/user");
+            return view("profesores/usuarios");
         }
-        return view("profesores/user")->with('user', $user);
+        return view("profesores/usuarios")->with('users', $user);
 
     }
 
@@ -116,8 +118,15 @@ class Profe_AdminController extends Controller
     public function Buzon()
     {
         //return view ("VerAlumnos");
+        $correos = Correo::all();
+        $user = User::all();
+        $user_correos = array('correos' => $correos, 'user' => $user);
+        if (!$correos) {
+            return view("profesores/buzon");
+        }
 
-        return view("profesores/buzon");
+        return view("profesores/buzon")->with('user_correos', $user_correos);
+
 
     }
 }

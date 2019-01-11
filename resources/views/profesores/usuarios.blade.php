@@ -49,7 +49,7 @@
 							</tr>
 						</thead>
 						<tbody>
-                            @foreach ($user as $usuario)
+                            @foreach ($users as $usuario)
 							<tr>
 								<td>{{$usuario['id']}}</td>
 								<td>{{$usuario['nombre']}}</td>
