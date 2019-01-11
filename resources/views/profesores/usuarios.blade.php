@@ -13,7 +13,7 @@
 			<div class="widget stacked widget-table action-table">
 				<div class="page-header">
 					<h1>
-						Lista de user
+						Lista de Usuarios
 					</h1>
 				</div>
 				<div class="row">
@@ -49,7 +49,7 @@
 							</tr>
 						</thead>
 						<tbody>
-                            @foreach ($user as $usuario)
+                            @foreach ($users as $usuario)
 							<tr>
 								<td>{{$usuario['id']}}</td>
 								<td>{{$usuario['nombre']}}</td>
