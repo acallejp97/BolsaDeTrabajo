@@ -1,8 +1,8 @@
 <?php namespace App\Services;
 
-use App\Model\Usuario;
+use App\User;
 
-class UsuarioService {
+class userervice {
     public function update( Usuario $usuario) {
         if ( !$usuario->save() ) {
             return 'error';

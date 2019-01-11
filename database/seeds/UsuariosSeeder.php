@@ -3,7 +3,7 @@ require_once 'vendor/fzaninotto/faker/src/autoload.php';
 
 use Illuminate\Database\Seeder;
 
-class UsuariosSeeder extends Seeder
+class userSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,9 +25,9 @@ class UsuariosSeeder extends Seeder
             'updated_at' => date('Y-m-d H:m:s'),
         ));
 
-        //Cantidad de usuarios a crear
-        for ($numeroUsuarios = 0; $numeroUsuarios != 90; $numeroUsuarios++) {
-            if ($numeroUsuarios <= 5) {
+        //Cantidad de user a crear
+        for ($numerouser = 0; $numerouser != 90; $numerouser++) {
+            if ($numerouser <= 5) {
                 $rango = 1;
             } else {
                 $rango = 2;

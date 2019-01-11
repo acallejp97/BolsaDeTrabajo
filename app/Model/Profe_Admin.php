@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profe_Admin extends Model
 {
     protected $table = "profe-admin";
-    protected $fillable = ['rango'];
+    protected $fillable = ['id_user','id_depar'];
 
 
     //AQUI SOLO SI HAY RELACIONES

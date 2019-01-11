@@ -26,13 +26,13 @@
         <a class="nav-link active" href="AnadirEmpresas">Alta Empresas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="AnadirUsuarios">Alta Usuarios</a>
+        <a class="nav-link " href="Anadiruser">Alta user</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="AnadirUsuarios">Alta Profesores</a>
+        <a class="nav-link " href="Anadiruser">Alta Profesores</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Usuarios">Usuarios</a>
+        <a class="nav-link" href="user">user</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="Empresas">Empresas</a>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Usuarios extends Migration
+class user extends Migration
 {
     /**
      * Run the migrations.
@@ -34,7 +34,7 @@ class Usuarios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('user');
         Schema::dropIfExists('user');
     }
 }

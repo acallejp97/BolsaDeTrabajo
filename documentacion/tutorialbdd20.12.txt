@@ -10,4 +10,4 @@ routes/web.php -> Modificar rutas
 
 resources/view/anadirVista.blade.php
 
-alumno  grado departamentos usuarios profesores ofertas empresas correos curriculum 
+alumno  grado departamentos user profesores ofertas empresas correos curriculum 

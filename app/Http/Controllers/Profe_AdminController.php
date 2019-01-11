@@ -6,7 +6,7 @@ use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
-use App\Model\Usuario;
+use App\User;
 
 class Profe_AdminController extends Controller
 {
@@ -14,7 +14,7 @@ class Profe_AdminController extends Controller
     {
         //$this->middleware('auth', ['only' => ['aniadirUsuario', 'aniadirCurriculum', 'aniadirGrado']]);
     }
-    public function Ofertas()
+    public static function Ofertas()
     {
         $ofertas = Oferta::all();
         if (!$ofertas) {
@@ -39,11 +39,11 @@ class Profe_AdminController extends Controller
         return view("profesores/anadirempresas");
 
     }
-    public function AnadirUsuarios()
+    public function Anadiruser()
     {
         //return view ("VerAlumnos");
 
-        return view("profesores/anadirusuarios");
+        return view("profesores/anadiruser");
     }
     //        public function aniadir(){
     //                 //return view ("VerAnimales");
@@ -78,12 +78,14 @@ class Profe_AdminController extends Controller
 
     public function Perfil()
     {
-        $usuarios =Usuario::all(); 
-        // $usuarios =array('created_at'=>"2018");
-        if(!$usuarios){
+
+        //Aqui coge todos los usurios, hacer que coja solo uno 
+
+        $user =User::findOr; 
+        if(!$user){
             return view("profesores/perfil");
         }
-        return view("profesores/perfil")->with('usuarios', $usuarios);
+        return view("profesores/perfil")->with('user', $user);
     }
     
     public function Contacto()
@@ -93,13 +95,13 @@ class Profe_AdminController extends Controller
         return view("profesores/contacto");
 
     }
-    public function Usuarios()
+    public function user()
     {
-        $usuarios = Usuario::all();
-        if (!$usuarios) {
-            return view("profesores/usuarios");
+        $user = User::all();
+        if (!$user) {
+            return view("profesores/user");
         }
-        return view("profesores/usuarios")->with('usuarios', $usuarios);
+        return view("profesores/user")->with('user', $user);
 
     }
 
