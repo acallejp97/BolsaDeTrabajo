@@ -14,7 +14,7 @@
         <div class="col-md-5">
           <h3>{{$oferta['titulo']}}</h3>
           <p>{{$oferta['descripcion']}}</p>
-          <p>{{$oferta['puestos-vacantes']}}</p>
+          <p><b> Puestos Vacantes : </b>{{$oferta['puestos-vacantes']}}</p>
           <a class="btn btn-primary" href="#">Inscribirse</a>
         </div>
       </div>
