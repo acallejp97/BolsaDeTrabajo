@@ -49,9 +49,9 @@ Route::get ('/Cursos', "Profe_AdminController@Cursos");
 Route::get ('/Contacto', "Profe_AdminController@Contacto");
 
 
+Route::get('upload', 'BudgetController@showForm');
 
-
-
+Route::post('upload', 'BudgetController@store');
 
 //RUTAS ADMIN
 
