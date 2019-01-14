@@ -22,17 +22,6 @@ Route::get ('/ActualizarCV', "AlumnoController@ActualizarCV");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //RUTAS PROFESOR
 
 

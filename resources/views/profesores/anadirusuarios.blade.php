@@ -60,8 +60,8 @@
               
               
               <div class="form-group files">
-                <label>Upload Your File </label>
-                <input type="file" class="form-control" multiple="">
+                <label >Upload Your File </label>
+                <input id="subir"#type="file" class="form-control" multiple="">
               </div>
               
               </form>
@@ -125,13 +125,37 @@
 	   
 @endsection
 
-<!-- <script>
-data = "ADad";
-$.ajax({
-type: 'post',
-url: '{{url("/anadir")}}',
-data: data
-});
+<script>
+// data = "ADad";
+// $.ajax({
+// type: 'post',
+// url: '{{url("/anadir")}}',
+// data: data
+// });
+
+$("#subir").click(function () {
+          //return view ("VerAlumnos");        //return view ("VerAlumnos");
+if(($handle = fopen(public_patch() .. '/usuarios.csv','r')) !==FALSE)
+{
+//RECORREMOS EL ARCHIVO Y VAMOS ALMACENANDO LO LEIDO EN $DATA
+while (($data = fgetcsv ($handle, 1000, ',')) !==FALSE)
+{
+$scifi =new User();
+$scifi ->email =$data[0];
+$scifi ->nombre =$data[1];
+$scifi ->rango =$data[2];
+$scifi ->apellidos =$data[3];
+$scifi ->save();
+}
+fclose($handle);
+}
+return User::all();
+
+    });
+
+
+
 
 
 </script> -->
+

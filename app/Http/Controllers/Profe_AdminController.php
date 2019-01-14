@@ -8,12 +8,9 @@ use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
 use App\User;
-<<<<<<< HEAD
 use App\Model\Correo;
 
 
-=======
->>>>>>> cfe5fc1e252c08a9ea2421ba72543ab262173235
 class Profe_AdminController extends Controller
 {
 
@@ -86,21 +83,13 @@ class Profe_AdminController extends Controller
         return view("profesores/contacto");
 
     }
-<<<<<<< HEAD
     public function Usuarios()
-=======
-    public function Usuario()
->>>>>>> cfe5fc1e252c08a9ea2421ba72543ab262173235
     {
         $user = User::all();
         if (!$user) {
             return view("profesores/usuarios");
         }
-<<<<<<< HEAD
         return view("profesores/usuarios")->with('users', $user);
-=======
-        return view("profesores/usuarios")->with('user', $user);
->>>>>>> cfe5fc1e252c08a9ea2421ba72543ab262173235
 
     }
 
