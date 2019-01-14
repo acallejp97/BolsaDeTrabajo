@@ -40,29 +40,4 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $iniciado)
-    {
-
-        // $user = app('App\Http\Controllers\LoginController')->getUser($rango->input('rango'));
-        // Log::info("rango",array($rango->all(), $user));
-        // Sentry
-
-        // Añadir a controlador user consulta a la base de datos para hacer la sentencia
-        // Averiguar como coger el correo y la passwd
-        
-
-        if ($iniciado) {
-
-            if (session()->get('rango') == 0) {
-                Log::warning('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!' . session()->get('rango'));
-                return Profe_AdminController::Ofertas();
-            } elseif (session()->get('rango') == 1) {
-                return view('/profesores/anadirofertas');
-            } elseif (session()->get('rango') == 2) {
-                return view('/alumnos/ofertas');
-            }
-        } else {
-            return view('/auth/login');
-        }
-    }
 }
