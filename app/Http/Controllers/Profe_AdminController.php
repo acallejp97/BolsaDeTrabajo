@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Correo;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
-use Illuminate\Support\Facades\Log;
 use App\User;
-use App\Model\Correo;
+use Illuminate\Support\Facades\Log;
 
 class Profe_AdminController extends Controller
 {
@@ -66,8 +66,6 @@ class Profe_AdminController extends Controller
     public function Perfil()
     {
         $sessionID = session('id');
-        Log::warning('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' . $sessionID);
-        $user = User::selectProfile($sessionID);
         // $user = array('created_at'=>2018);
         if (!$user) {
             return view("profesores/perfil");
@@ -82,7 +80,7 @@ class Profe_AdminController extends Controller
         return view("profesores/contacto");
 
     }
-    public function Usuario()
+    public function Usuarios()
     {
         $user = User::all();
         if (!$user) {
@@ -111,7 +109,6 @@ class Profe_AdminController extends Controller
         }
 
         return view("profesores/buzon")->with('user_correos', $user_correos);
-
 
     }
 }

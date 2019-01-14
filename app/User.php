@@ -26,9 +26,4 @@ class User extends Authenticatable
     protected $hidden = [
         'passwd', 'remember_token',
     ];
-
-    protected function selectProfile($id){
-        $usuario=DB::table('user')->select('*')->where('id',$id)->first()->get();
-        return $usuario;
-    }
 }
