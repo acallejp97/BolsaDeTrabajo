@@ -45,10 +45,10 @@ Route::get ('/Empresas', "Profe_AdminController@Empresas");
 Route::get ('/AnadirEmpresas', "Profe_AdminController@AnadirEmpresas");
 
 
-Route::get ('/Anadiruser', "Profe_AdminController@Anadiruser");
+Route::get ('/AnadirUsuarios', "Profe_AdminController@AnadirUsuarios");
 
 
-Route::get ('/user', "Profe_AdminController@user");
+Route::get ('/Usuarios', "Profe_AdminController@Usuarios");
 
 
 Route::get ('/Perfil', "Profe_AdminController@Perfil");

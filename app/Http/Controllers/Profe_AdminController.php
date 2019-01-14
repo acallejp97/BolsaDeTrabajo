@@ -8,6 +8,7 @@ use App\Model\Grado;
 use App\Model\Oferta;
 use Illuminate\Support\Facades\Log;
 use App\User;
+use App\Model\Correo;
 
 class Profe_AdminController extends Controller
 {
@@ -41,11 +42,11 @@ class Profe_AdminController extends Controller
         return view("profesores/anadirempresas");
 
     }
-    public function Anadiruser()
+    public function AnadirUsuarios()
     {
         //return view ("VerAlumnos");
 
-        return view("profesores/anadiruser");
+        return view("profesores/anadirusuarios");
     }
 
     public function Cursos()
@@ -102,8 +103,15 @@ class Profe_AdminController extends Controller
     public function Buzon()
     {
         //return view ("VerAlumnos");
+        $correos = Correo::all();
+        $user = User::all();
+        $user_correos = array('correos' => $correos, 'user' => $user);
+        if (!$correos) {
+            return view("profesores/buzon");
+        }
 
-        return view("profesores/buzon");
+        return view("profesores/buzon")->with('user_correos', $user_correos);
+
 
     }
 }
