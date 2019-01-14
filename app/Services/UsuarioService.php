@@ -2,7 +2,7 @@
 
 use App\User;
 
-class userervice {
+class UsuarioService {
     public function update( Usuario $usuario) {
         if ( !$usuario->save() ) {
             return 'error';
