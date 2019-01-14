@@ -20,8 +20,9 @@ class Usuarios extends Migration
             $table->string('nombre',30);
             $table->unsignedInteger('rango')->default(2);
             $table->string('apellidos',90);
-            $table->string('passwd',300);
-           
+            $table->string('password',300);
+            $table->rememberToken();
+
             $table->timestamps();
         });
     }

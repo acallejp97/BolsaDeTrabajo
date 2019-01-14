@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'nombre' => 'admin',
             'rango' => 0,
             'apellidos' => 'admininstrador',
-            'passwd' => Hash::make('admin'),
+            'password' => Hash::make('admin'),
             'created_at' => date('Y-m-d H:m:s'),
             'updated_at' => date('Y-m-d H:m:s'),
         ));
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
                 'nombre' => $nombre[0],
                 'apellidos' => $faker->name,
                 'rango' => $rango,
-                'passwd' => Hash::make('prueba'),
+                'password' => Hash::make('prueba'),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
             ));

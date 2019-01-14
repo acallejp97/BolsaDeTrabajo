@@ -2,14 +2,12 @@
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
-
+    Route::get('/logout', 'HomeController@logout'); //->redirect('/');
     Route::get('/', function () {
         if (Auth::check()) {
             switch (Auth::user()->rango) {
-
                 case 0:
                     Route::get('/home', 'Profe_AdminController@Ofertas');
-                    Route::get('/ofertas', "Profe_AdminController@Ofertas");
                     Route::get('/empresas', "Profe_AdminController@Empresas");
                     Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas");
                     Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios");
@@ -20,12 +18,11 @@ Route::group(['middleware' => 'auth'], function () {
                     Route::get('/buzon', "Profe_AdminController@Buzon");
                     Route::get('/anadirProfesor', "Profe_AdminController@AnadirProfesor");
 
-                    return Redirect::action('Profe_AdminController@VerOfertas');
+                    return Redirect::action('Profe_AdminController@Ofertas');
                     break;
 
                 case 1:
                     Route::get('/home', 'Profe_AdminController@Ofertas');
-                    Route::get('/ofertas', "Profe_AdminController@Ofertas");
                     Route::get('/empresas', "Profe_AdminController@Empresas");
                     Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas");
                     Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios");
@@ -38,13 +35,12 @@ Route::group(['middleware' => 'auth'], function () {
                     break;
 
                 case 2:
-                    Route::get('/home', 'AlumnoController@VerAlumnos');
-                    Route::get('/ofertas', "AlumnoController@VerOfertas");
+                    Route::get('/home', "AlumnoController@VerOfertas");
                     Route::get('/contacto', "AlumnoController@Contacto");
                     Route::get('/perfil', "AlumnoController@VerPerfil");
                     Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
 
-                    return Redirect::action('AlumnoController@Ofertas');
+                    return Redirect::action('AlumnoController@VerOfertas');
                     break;
 
                 default:

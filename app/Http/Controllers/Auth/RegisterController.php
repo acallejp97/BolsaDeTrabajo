@@ -63,11 +63,6 @@ class RegisterController extends Controller
      * @return \App\User
      */
     
-    protected  function logout(){
-            Log::info("logout",array(Session::get('email')));
-            Session::forget('email');
-            return view('home');
-        }
      
         
         protected  function register(Request $request){

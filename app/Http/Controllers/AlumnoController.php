@@ -13,6 +13,7 @@ class AlumnoController extends Controller
     {
         //$this->middleware('auth', ['only' => ['aniadirUsuario', 'aniadirCurriculum', 'aniadirGrado']]);
     }
+    
     public function VerOfertas()
     {
 //return view ("VerAnimales");
@@ -20,10 +21,11 @@ class AlumnoController extends Controller
 //Meto en la variable alumno toda la info con la variable que meta en rutas
         $ofertas = Oferta::all();
         if (!$ofertas) {
-            return view("alumnos/ofertas");
+            return view("home");
         }
-        return view("alumnos/ofertas")->with('ofertas', $ofertas);
+        return view("home")->with('ofertas', $ofertas);
     }
+    
     public function Contacto()
     {
         //return view ("VerAlumnos");
@@ -39,6 +41,7 @@ class AlumnoController extends Controller
         return view("alumnos/perfil");
 
     }
+
     public function ActualizarCV()
     {
         //return view ("VerAlumnos");
