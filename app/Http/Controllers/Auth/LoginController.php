@@ -49,7 +49,7 @@ class LoginController extends Controller
 
         // Añadir a controlador user consulta a la base de datos para hacer la sentencia
         // Averiguar como coger el correo y la passwd
-        ksdhciudsiuchñidshcdsaklg
+        
 
         if ($iniciado) {
 
