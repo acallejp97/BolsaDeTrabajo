@@ -61,7 +61,7 @@
               
               <div class="form-group files">
                 <label >Upload Your File </label>
-                <input id="subir"#type="file" class="form-control" multiple="">
+                <input type="file" class="form-control" multiple="">
               </div>
               
               </form>
@@ -70,7 +70,7 @@
 
 
 <div class="col-md-6">   
- <form action="DetailS" method="Post">
+ <form action="Usuarios" method="Post">
             <div class="container-fluid">
                 <section class="container">
                     <div class="container-page">				
@@ -106,7 +106,7 @@
                      -->
                             
                         <div class="form-group col-md-12">
-                            <center><button type="submit" class="btn btn-primary">Submit</button></center>
+                            <center><button id="subir" type="submit" class="btn btn-primary">Submit</button></center>
                         </div>
                             
                         </div>
