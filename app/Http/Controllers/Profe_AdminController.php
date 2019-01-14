@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-$IDActual = session()->get('id');
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
+use Illuminate\Support\Facades\Log;
 use App\User;
 use App\Model\Correo;
-
 
 class Profe_AdminController extends Controller
 {
@@ -66,16 +65,16 @@ class Profe_AdminController extends Controller
 
     public function Perfil()
     {
-
-        //Aqui coge todos los usurios, hacer que coja solo uno 
-
-        $user =User::selectProfile(); 
-        if(!$user){
+        $sessionID = session('id');
+        Log::warning('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' . $sessionID);
+        $user = User::selectProfile($sessionID);
+        // $user = array('created_at'=>2018);
+        if (!$user) {
             return view("profesores/perfil");
         }
         return view("profesores/perfil")->with('user', $user);
     }
-    
+
     public function Contacto()
     {
         //return view ("VerAlumnos");
@@ -83,7 +82,7 @@ class Profe_AdminController extends Controller
         return view("profesores/contacto");
 
     }
-    public function Usuarios()
+    public function Usuario()
     {
         $user = User::all();
         if (!$user) {

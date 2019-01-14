@@ -1,7 +1,7 @@
 <?php
-
 namespace App;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'passwd', 'remember_token',
     ];
+
+    protected function selectProfile($id){
+        $usuario=DB::table('user')->select('*')->where('id',$id)->first()->get();
+        return $usuario;
+    }
 }
