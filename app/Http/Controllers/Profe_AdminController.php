@@ -7,6 +7,7 @@ use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
+use App\Model\Profe_Admin;
 use App\User;
 use Auth;
 
@@ -79,20 +80,7 @@ class Profe_AdminController extends Controller
 
     }
 
-    //******* */FUNCIONES DE ADMIN********************
-    public function AnadirProfesor()
-    {
-        return view("profesores/anadirprofesor");
-    }
+  
 
-    public function Buzon()
-    {
-        $correos = Correo::all();
-        $user = User::all();
-        $user_correos = array('correos' => $correos, 'user' => $user);
-        if (!$correos) {
-            return view("profesores/buzon");
-        }
-        return view("profesores/buzon")->with('user_correos', $user_correos);
-    }
+    
 }

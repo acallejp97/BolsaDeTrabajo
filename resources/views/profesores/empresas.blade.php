@@ -35,11 +35,11 @@
 						</a>
 					</div>
 				</div><br><br>
-				<div class="widget-content">
-					<table class="table table-striped table-bordered">
+				<div class="widget-content" >
+					<table class="table table-striped table-bordered" >
 						<thead>
-							<tr>
-								<th id="table_id">empresa ID
+							<tr style="background: #b50045; color:white;">
+								<th id="table_id" >empresa ID
 								</th><th id="">Nombre
 								</th><th id="">Apellidos
 								</th><th id="">Email

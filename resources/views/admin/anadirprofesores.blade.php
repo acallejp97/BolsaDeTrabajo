@@ -1,6 +1,9 @@
-@extends('layouts.profesor')
+
+@extends('layouts.admin')
+
 
 @section('content')
+
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -36,6 +39,9 @@
 				<div class="widget-content">
 					<table class="table table-striped table-bordered">
 						<thead>
+						@foreach ($profesores['profe_admin'] as $profesor)
+                                @foreach ($profesores['user'] as $usuarios)
+                                @if($profesor['id_user']==$usuarios['id'])
 							<tr style="background: #b50045; color:white;">
 								<th id="table_id">Usuario ID
 								</th><th id="">Nombre
@@ -49,13 +55,10 @@
 							</tr>
 						</thead>
 						<tbody>
-                            @foreach ($users as $usuario)
+                            
 							<tr>
-								<td>{{$usuario['id']}}</td>
-								<td>{{$usuario['nombre']}}</td>
-								<td>{{$usuario['apellidos']}}</td>
-								<td>{{$usuario['email']}}</td>
-								<td>{{$usuario['anio_fin']}}</td>
+								<td>{{$user['nombre']}}</td>
+								<td>{{$profe['id']}}</td>
 								<td>2014-01-10</td>
 								<td>2014-06-14</td>
 								<td>Active</td>
@@ -71,7 +74,9 @@
 									</a>
 								</td>
                             </tr>
-                            @endforeach
+							@endif
+                @endforeach
+                @endforeach  
 						</tbody>
 					</table>
 				</div> <!-- /widget-content -->

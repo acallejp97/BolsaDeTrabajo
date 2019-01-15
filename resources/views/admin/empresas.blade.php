@@ -1,6 +1,8 @@
-@extends('layouts.profesor')
+@extends('layouts.admin')
 
 @section('content')
+
+
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -13,7 +15,7 @@
 			<div class="widget stacked widget-table action-table">
 				<div class="page-header">
 					<h1>
-						Lista de Usuarios
+						Lista de Empresas
 					</h1>
 				</div>
 				<div class="row">
@@ -33,11 +35,11 @@
 						</a>
 					</div>
 				</div><br><br>
-				<div class="widget-content">
-					<table class="table table-striped table-bordered">
+				<div class="widget-content" >
+					<table class="table table-striped table-bordered" >
 						<thead>
 							<tr style="background: #b50045; color:white;">
-								<th id="table_id">Usuario ID
+								<th id="table_id" >empresa ID
 								</th><th id="">Nombre
 								</th><th id="">Apellidos
 								</th><th id="">Email
@@ -49,13 +51,13 @@
 							</tr>
 						</thead>
 						<tbody>
-                            @foreach ($users as $usuario)
+                            @foreach ($empresas as $empresa)
 							<tr>
-								<td>{{$usuario['id']}}</td>
-								<td>{{$usuario['nombre']}}</td>
-								<td>{{$usuario['apellidos']}}</td>
-								<td>{{$usuario['email']}}</td>
-								<td>{{$usuario['anio_fin']}}</td>
+								<td>{{$empresa['id']}}</td>
+								<td>{{$empresa['nombre']}}</td>
+								<td>{{$empresa['apellidos']}}</td>
+								<td>{{$empresa['email']}}</td>
+								<td>{{$empresa['anio_fin']}}</td>
 								<td>2014-01-10</td>
 								<td>2014-06-14</td>
 								<td>Active</td>
@@ -94,3 +96,4 @@
 </div>
 
 @endsection
+

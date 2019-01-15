@@ -23,28 +23,28 @@
       <li class="nav-item">
         <a class="nav-link" href="Perfil">Ver Perfil</a>
       </li>
-        <a class="nav-link active" href="AnadirEmpresas">Alta Empresas</a>
+        <a class="nav-link active" href="anadirEmpresas">Alta Empresas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="AnadirUsuarios">Alta Usuarios</a>
+        <a class="nav-link " href="anadirUsuarios">Alta Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="Anadiruser">Alta Profesores</a>
+        <a class="nav-link " href="anadirProfesores">Alta Profesores</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Usuarios">Usuarios</a>
+        <a class="nav-link" href="usuarios">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Empresas">Empresas</a>
+        <a class="nav-link" href="empresas">Empresas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Ofertas">Ofertas</a>
+        <a class="nav-link" href="home">Ofertas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Cursos">Cursos</a>
+        <a class="nav-link" href="cursos">Cursos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Contacto">Buzon</a>
+        <a class="nav-link" href="buzon">Buzon</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Cerrar Sesion</a>
