@@ -28,6 +28,7 @@ class CurriculumsSeeder extends Seeder
                 'telefono' => $faker->numberBetween(600000000,699999999),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
+                'imagen'=> $faker->image($dir = '/tmp', $width = 640, $height = 480),
             ));
         }
     }

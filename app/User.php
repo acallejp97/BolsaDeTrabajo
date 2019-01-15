@@ -1,7 +1,6 @@
 <?php
 namespace App;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
 
-    protected $fillable = ['email', 'nombre', 'apellidos', 'rango', 'id','created_at',];
+    protected $fillable = ['email', 'nombre', 'apellidos', 'imagen', 'rango', 'id', 'created_at'];
 
     /**
      * The attributes that should be hidden for arrays.

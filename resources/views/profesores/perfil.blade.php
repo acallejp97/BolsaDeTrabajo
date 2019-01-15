@@ -24,72 +24,72 @@
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
-              
+
 
       <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-      
+        <img src="Auth::user()->imagen" class="avatar img-circle img-thumbnail" alt="avatar">
+
         <input type="file" class="text-center center-block file-upload">
       </div></hr><br>
 
-               
+
           <div class="panel panel-default">
             <div class="panel-heading">Registrado desde <i class="fa fa-link fa-1x"></i></div>
             <div class="panel-body">{{Auth::user()->created_at}}</div>
           </div>
-          
 
-          
+
+
           <ul class="list-group">
             <li class="list-group-item text-muted">Actividad <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Inscripciones</strong></span> 125</li>
-    
-        
-          </ul> 
-               
-        
-          
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Inscripciones</strong></span> </li>
+
+
+          </ul>
+
+
+
         </div><!--/col-3-->
     	<div class="col-sm-9">
-           
 
-              
+
+
         <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <hr>
                   <form class="form" action="##" method="post" id="registrationForm">
                       <div class="form-group">
-                          
+
                           <div class="col-xs-11">
                               <label for="nombre"><h4>Nombre</h4></label>
-                              <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" title="Introduce tu nombre.">
+                              <input type="text" class="form-control" value="{{Auth::user()->nombre}}" name="nombre" id="nombre" placeholder="Nombre" title="Introduce tu nombre.">
                           </div>
                       </div>
                       <div class="form-group">
-                          
+
                           <div class="col-xs-11">
                             <label for="apellido"><h4>Apellidos</h4></label>
-                              <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellidos" title="Introduce tus apellidos.">
+                              <input type="text" class="form-control" name="apellido" value="{{Auth::user()->apellidos}}" id="apellido" placeholder="Apellidos" title="Introduce tus apellidos.">
                           </div>
                       </div>
-          
+
                       <div class="form-group">
-                          
+
                           <div class="col-xs-11">
                               <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="Introduce tu email.">
+                              <input type="email" class="form-control" value="{{Auth::user()->email}}" name="email" id="email" placeholder="you@email.com" title="Introduce tu email.">
                           </div>
                       </div>
-                    
+
                       <div class="form-group">
-                          
+
                           <div class="col-xs-11">
                               <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" title="Introduce la contraseña.">
+                              <input type="password" class="form-control" value="{{Auth::user()->password}}" name="password" id="password" placeholder="Contraseña" title="Introduce la contraseña.">
                           </div>
                       </div>
                       <div class="form-group">
-                          
+
                           <div class="col-xs-11">
                             <label for="password2"><h4>Confirmar Contraseña</h4></label>
                               <input type="password" class="form-control" name="password2" id="password2" placeholder="Repite Contraseña" title="Confirma tu contraseña por favor.">
@@ -103,8 +103,8 @@
                             </div>
                       </div>
               	</form>
-              
+
               <hr>
-              
-             
+
+
 @endsection

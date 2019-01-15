@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin'),
             'created_at' => date('Y-m-d H:m:s'),
             'updated_at' => date('Y-m-d H:m:s'),
+            'imagen' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
         ));
 
         //Cantidad de user a crear
@@ -43,6 +44,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('prueba'),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
+                'imagen' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
             ));
         }
     }
