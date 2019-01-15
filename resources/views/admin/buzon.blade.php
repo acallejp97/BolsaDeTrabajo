@@ -1,226 +1,79 @@
 @extends('layouts.admin')
 
 @section('content')
-<style>
-body{
-    margin-top:20px;
-    background:#FDFDFF
-}
-.badge {
-    border-radius: 8px;
-    padding: 4px 8px;
-    text-transform: uppercase;
-    font-size: .7142em;
-    line-height: 12px;
-    background-color: transparent;
-    border: 1px solid;
-    margin-bottom: 5px;
-    border-radius: .875rem;
-}
-.bg-green {
-    background-color: #50d38a !important;
-    color: #fff;
-}
-.bg-blush {
-    background-color: #ff758e !important;
-    color: #fff;
-}
-.bg-amber {
-    background-color: #FFC107 !important;
-    color: #fff;
-}
-.bg-red {
-    background-color: #ec3b57 !important;
-    color: #fff;
-}
-.bg-blue {
-    background-color: #60bafd !important;
-    color: #fff;
-}
-.card {
-    background: #fff;
-    margin-bottom: 30px;
-    transition: .5s;
-    border: 0;
-    border-radius: .1875rem;
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    box-shadow: none;
-}
-.inbox .action_bar .delete_all {
-    margin-bottom: 0;
-    margin-top: 8px
-}
 
-.inbox .action_bar .btn,
-.inbox .action_bar .search {
-    margin: 0
-}
 
-.inbox .mail_list .list-group-item {
-    border: 0;
-    padding: 15px;
-    margin-bottom: 1px
-}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-.inbox .mail_list .list-group-item:hover {
-    background: #eceeef
-}
+   <div class="container">
+	<div class="row" >
+    	<div class="span12" >
+			<div class="widget stacked widget-table action-table" >
+				
+				<div class="row" style="margin-bottom:2em">
+					<div class="span3 side-by-side clearfix offset4" >
+						<form action="#" method="get">
+							<div class="input-group" >
+								<input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-default" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
+								</span>
+							</div>
+						</form>
+					</div>
+                 
+						<a class="btn btn-default" href="javascript:;">
+							<span class="glyphicon glyphicon-globe"></span> Buscar
+						</a>
+					
+</div>
+				<div class="widget-content">
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr style="background: #b50045; color:white;">
+								<th id="table_id">Usuario
+								</th><th class="text-center" id="">Asunto
+								</th><th id="">Nombre
+								</th><th id="">Email
+								</th><th  class="text-center"id="">Descripción
+								</th><th id="">
+								</th><th class="td-actions" id="table_action"></th>
+							</tr>
+						</thead>
+						<tbody>
 
-.inbox .mail_list .list-group-item .media {
-    margin: 0;
-    width: 100%
-}
 
-.inbox .mail_list .list-group-item .controls {
-    display: inline-block;
-    margin-right: 10px;
-    vertical-align: top;
-    text-align: center;
-    margin-top: 11px
-}
-
-.inbox .mail_list .list-group-item .controls .checkbox {
-    display: inline-block
-}
-
-.inbox .mail_list .list-group-item .controls .checkbox label {
-    margin: 0;
-    padding: 10px
-}
-
-.inbox .mail_list .list-group-item .controls .favourite {
-    margin-left: 10px
-}
-
-.inbox .mail_list .list-group-item .thumb {
-    display: inline-block
-}
-
-.inbox .mail_list .list-group-item .thumb img {
-    width: 40px
-}
-
-.inbox .mail_list .list-group-item .media-heading a {
-    color: #555;
-    font-weight: normal
-}
-
-.inbox .mail_list .list-group-item .media-heading a:hover,
-.inbox .mail_list .list-group-item .media-heading a:focus {
-    text-decoration: none
-}
-
-.inbox .mail_list .list-group-item .media-heading time {
-    font-size: 13px;
-    margin-right: 10px
-}
-
-.inbox .mail_list .list-group-item .media-heading .badge {
-    margin-bottom: 0;
-    border-radius: 50px;
-    font-weight: normal
-}
-
-.inbox .mail_list .list-group-item .msg {
-    margin-bottom: 0px
-}
-
-.inbox .mail_list .unread {
-    border-left: 2px solid
-}
-
-.inbox .mail_list .unread .media-heading a {
-    color: #333;
-    font-weight: 700
-}
-
-.inbox .btn-group {
-    box-shadow: none
-}
-
-.inbox .bg-gray {
-    background: #e6e6e6
-}
-
-@media only screen and (max-width: 767px) {
-    .inbox .mail_list .list-group-item .controls {
-        margin-top: 3px
-    }
-}
-                                    </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-
-    <!-- <div class="container-fluid">
-        <div class="row clearfix">
-            <div class="col-lg-12">
-                <div class="card action_bar">
-                    <div class="body">
-                        <div class="row clearfix">
-                            <div class="col-lg-1 col-md-2 col-3">
-                                <div class="checkbox inlineblock delete_all">
-                                    <input id="deleteall" type="checkbox">
-                                    <label for="deleteall">
-                                        All
-                                    </label>
-                                </div>                                
-                            </div>
-                            <div class="col-lg-5 col-md-4 col-6">
-                                <div class="input-group search">
-                                    <input type="text" class="form-control" placeholder="Search...">
-                                    <span class="input-group-addon">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </span>
-                                </div>
-                            </div>                                                     
-                        </div>
-                    </div>
-                </div>
-            </div>           
-        </div>         -->
-
-<!--aqui el foreach-->
 @foreach ($user_correos['correos'] as $correo)
                                 @foreach ($user_correos['user'] as $usuarios)
                                 @if($correo['id_remit']==$usuarios['id'])
-
-                            <div class="media-body">
+<tr>
+                           
                                 <div class="media-heading">
                                 
-                                <a href="#" class="pull-left"> </a>
+                                <td><a href="#" class="pull-left"> </a>
                                         <img alt="..." src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object" style="float:left; width:50px"> 
-                                   
-                                    <a href="mail-single.html" class="m-r-10">{{$correo['asunto']}}</a>
+</td>
+<td>   <a href="mail-single.html" class="m-r-10">{{$correo['asunto']}}</a> </td>
             
-                                    <span class="badge bg-blue">{{$usuarios['nombre']}}</span>
-                                    <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">12:35 AM</time><i class="zmdi zmdi-attachment-alt"></i> </small>
+<td>  <span class="badge bg-blue">{{$usuarios['nombre']}}</span></td>
+<td>  <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">12:35 AM</time><i class="zmdi zmdi-attachment-alt"></i> </small> </td>
                                 </div>
-                                <p class="msg">{{$correo['descripcion']}} </p>
-                            </div>
+                                <td>   <p class="msg">{{$correo['descripcion']}} </p></td>
+                            
+                            <td> <button> Abrir</button></td>
                         </div>
                     </li>
-                    <div class="pull-left">
-                        
-                        <div class="thumb hidden-sm-down m-r-20"> <img src="assets/images/xs/avatar2.jpg" class="rounded-circle" alt=""> </div>
-                        
-                    </div>
+                    <td> <button>Borrar</button></td>
                 </div>
                 @endif
                 @endforeach
+                </tr>
                 @endforeach  
-
-                <div class="card m-t-5">
-                    <div class="body">
-                        <ul class="pagination pagination-primary m-b-0">
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
+                
+                </table>
+                
             </div>
         </div>
     </div>

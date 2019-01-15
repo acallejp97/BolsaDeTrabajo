@@ -21,7 +21,7 @@
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
       <li class="nav-item">
-        <a class="nav-link" href="Perfil">Ver Perfil</a>
+        <a class="nav-link" href="perfil">Ver Perfil</a>
       </li>
         <a class="nav-link active" href="anadirEmpresas">Alta Empresas</a>
       </li>
@@ -51,14 +51,17 @@
       </li>
     </ul>
   </div>
+
   <div class="card-body">
     @yield('content')
+    
   </div>
 </div>
 </nav>
 <main class="py-4">
 </main>
 </div>
+
 </body>
 </html>
 <script>
