@@ -35,7 +35,7 @@
                
           <div class="panel panel-default">
             <div class="panel-heading">Registrado desde <i class="fa fa-link fa-1x"></i></div>
-            <div class="panel-body">{{$user->created_at}}</div>
+            <div class="panel-body">{{Auth::user()->created_at}}</div>
           </div>
           
 

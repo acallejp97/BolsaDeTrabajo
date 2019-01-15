@@ -8,6 +8,7 @@ use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
 use App\User;
+use Auth;
 
 class Profe_AdminController extends Controller
 {
@@ -59,10 +60,10 @@ class Profe_AdminController extends Controller
     public function Perfil()
     {
         $sessionID = session('id');
-        if (!$user) {
+        if (!Auth::user()) {
             return view("profesores/perfil");
         }
-        return view("profesores/perfil")->with('user', $user);
+        return view("profesores/perfil");
     }
 
     public function Contacto()

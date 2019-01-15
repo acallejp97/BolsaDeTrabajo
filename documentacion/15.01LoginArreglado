@@ -1,0 +1,1 @@
+Hemos consegido arreglar el Login en web.php, añadiendo el ISSET delante del AUTH, de manera que detecta si estamos iniciados correctamente.git p
