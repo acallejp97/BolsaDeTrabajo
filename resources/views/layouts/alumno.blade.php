@@ -21,19 +21,19 @@
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
         
-        <a class="nav-link active" href="VerOfertas">Ofertas</a>
+        <a class="nav-link active" href="home">Ofertas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="ActualizarCV">Actualizar CV</a>
+        <a class="nav-link " href="actualizarCV">Actualizar CV</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="VerPerfil">Ver Perfil</a>
+        <a class="nav-link" href="perfil">Ver Perfil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Contacto">Contacto</a>
+        <a class="nav-link" href="contacto">Contacto</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Cerrar Sesion</a>
+        <a class="nav-link" href="logout">Cerrar Sesion</a>
       </li>
     </ul>
   </div>
