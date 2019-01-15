@@ -21,30 +21,30 @@
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
       <li class="nav-item">
-        <a class="nav-link" href="Perfil">Ver Perfil</a>
+        <a class="nav-link" href="perfil">Ver Perfil</a>
       </li>
-        <a class="nav-link active" href="AnadirEmpresas">Alta Empresas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="AnadirUsuarios">Alta user</a>
+        <a class="nav-link active" href="anadirEmpresas">Alta Empresas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Usuarios">Usuarios</a>
+        <a class="nav-link " href="anadirUsuarios">Alta user</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Empresas">Empresas</a>
+        <a class="nav-link" href="usuarios">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Ofertas">Ofertas</a>
+        <a class="nav-link" href="empresas">Empresas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Cursos">Cursos</a>
+        <a class="nav-link" href="ofertas">Ofertas</a>
+      </li>
+      <li class="nav-item"></li>
+        <a class="nav-link" href="cursos">Cursos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Contacto">Contacto</a>
+        <a class="nav-link" href="contacto">Contacto</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Cerrar Sesion</a>
+        <a class="nav-link" href="logout">Cerrar Sesion</a>
       </li>
     </ul>
   </div>
