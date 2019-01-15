@@ -59,10 +59,8 @@ class Profe_AdminController extends Controller
 
     public function Perfil()
     {
-        $sessionID = session('id');
-        if (!Auth::user()) {
-            return view("profesores/perfil");
-        }
+        $numeroInscripciones=DB::where('status','=','1')->count();
+
         return view("profesores/perfil");
     }
 

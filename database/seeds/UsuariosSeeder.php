@@ -4,7 +4,7 @@ require_once 'vendor/fzaninotto/faker/src/autoload.php';
 
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class UsuariosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
