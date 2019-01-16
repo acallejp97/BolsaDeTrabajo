@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/contacto', "AdminController@Contacto");
             Route::get('/buzon', "AdminController@Buzon");
             Route::get('/anadirProfesores', "AdminController@AnadirProfesor");
+            Route::post('/hola', "AdminController@destroy");
             break;
 
         case 1:
