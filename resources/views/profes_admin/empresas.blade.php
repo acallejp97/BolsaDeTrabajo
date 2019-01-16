@@ -1,22 +1,14 @@
-
-@extends('layouts.admin')
-
-
+@extends('layouts.profe_admin') 
 @section('content')
 
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <div class="container">
 	<div class="row">
-    	<div class="span12">
+		<div class="span12">
 			<div class="widget stacked widget-table action-table">
 				<div class="page-header">
 					<h1>
-						Lista de Usuarios
+						Lista de Empresas
 					</h1>
 				</div>
 				<div class="row">
@@ -39,26 +31,34 @@
 				<div class="widget-content">
 					<table class="table table-striped table-bordered">
 						<thead>
-						@foreach ($profesores['profe_admin'] as $profesor)
-                                @foreach ($profesores['user'] as $usuarios)
-                                @if($profesor['id_user']==$usuarios['id'])
 							<tr style="background: #b50045; color:white;">
-								<th id="table_id">Usuario ID
-								</th><th id="">Nombre
-								</th><th id="">Apellidos
-								</th><th id="">Email
-								</th><th id="">Anio Fin
-								</th><th id="">Date Created
-								</th><th id="">Exam Date
-								</th><th id="">Status
-								</th><th class="td-actions" id="table_action">Action</th>
+								<th id="table_id">empresa ID
+								</th>
+								<th id="">Nombre
+								</th>
+								<th id="">Apellidos
+								</th>
+								<th id="">Email
+								</th>
+								<th id="">Anio Fin
+								</th>
+								<th id="">Date Created
+								</th>
+								<th id="">Exam Date
+								</th>
+								<th id="">Status
+								</th>
+								<th class="td-actions" id="table_action">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-                            
+							@foreach ($empresas as $empresa)
 							<tr>
-								<td>{{$user['nombre']}}</td>
-								<td>{{$profe['id']}}</td>
+								<td>{{$empresa['id']}}</td>
+								<td>{{$empresa['nombre']}}</td>
+								<td>{{$empresa['apellidos']}}</td>
+								<td>{{$empresa['email']}}</td>
+								<td>{{$empresa['anio_fin']}}</td>
 								<td>2014-01-10</td>
 								<td>2014-06-14</td>
 								<td>Active</td>
@@ -73,13 +73,12 @@
 										<span class="glyphicon glyphicon-search"></span> View
 									</a>
 								</td>
-                            </tr>
-							@endif
-                @endforeach
-                @endforeach  
+							</tr>
+							@endforeach
 						</tbody>
 					</table>
-				</div> <!-- /widget-content -->
+				</div>
+				<!-- /widget-content -->
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="pagination pagination-sm pull-left">
@@ -94,8 +93,7 @@
 					</div>
 				</div>
 			</div>
-	    </div>
+		</div>
 	</div>
 </div>
-
 @endsection

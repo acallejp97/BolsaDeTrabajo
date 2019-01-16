@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Correo;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -23,28 +22,28 @@ class Profe_AdminController extends Controller
     {
         $ofertas = Oferta::all();
         if (!$ofertas) {
-            return view("profesores/anadirofertas");
+            return view("profes_admin/anadirofertas");
         }
-        return view("profesores/anadirofertas")->with('ofertas', $ofertas);
+        return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
     }
 
     public function Empresas()
     {
         $empresas = Empresa::all();
         if (!$empresas) {
-            return view("profesores/empresas");
+            return view("profes_admin/empresas");
         }
-        return view("profesores/empresas")->with('empresas', $empresas);
+        return view("profes_admin/empresas")->with('empresas', $empresas);
     }
 
     public function AnadirEmpresas()
     {
-        return view("profesores/anadirempresas");
+        return view("profes_admin/anadirempresas");
     }
 
     public function AnadirUsuarios()
     {
-        return view("profesores/anadirusuarios");
+        return view("profes_admin/anadirusuarios");
     }
 
     public function Cursos()
@@ -53,9 +52,9 @@ class Profe_AdminController extends Controller
         $grados = Grado::all();
         $grados_depar = array('departamentos' => $departamentos, 'grados' => $grados);
         if (!$departamentos) {
-            return view("profesores/cursos");
+            return view("profes_admin/cursos");
         }
-        return view("profesores/cursos")->with('grados_depar', $grados_depar);
+        return view("profes_admin/cursos")->with('grados_depar', $grados_depar);
     }
 
     public function Perfil()
@@ -65,30 +64,59 @@ class Profe_AdminController extends Controller
             foreach ($id_depar as $id) {
                 $nombreDepar = Departamento::select('nombre')->where('id', $id->id_depar)->get();
             }
-            return view("profesores/perfil")->with('nombreDepar', $nombreDepar);
-
+            return view("profes_admin/perfil")->with('nombreDepar', $nombreDepar);
         } else {
-            return view("profesores/perfil");
+            return view("profes_admin/perfil");
         }
-
     }
 
     public function Contacto()
     {
-        return view("profesores/contacto");
+        return view("profes_admin/contacto");
     }
 
     public function Usuarios()
     {
         $user = User::all();
         if (!$user) {
-            return view("profesores/usuarios");
+            return view("profes_admin/usuarios");
         }
-        return view("profesores/usuarios")->with('users', $user);
-
+        return view("profes_admin/usuarios")->with('users', $user);
     }
 
-  
+    //******* */FUNCIONES DE ADMIN********************
+    public function AnadirProfesor()
+    {
+        $profesor = Profe_Admin::all();
+        $user = User::all();
+        $profesores = array('profe_admin' => $profesor, 'user' => $user);
+        if (!$profesor) {
+            return view("profes_admin/anadirprofesores");
+        }
+        return view("profes_admin/anadirprofesores")->with('profesores', $profesores);
+    }
 
-    
+    public function Buzon()
+    {
+        $correos = Correo::all();
+        $user = User::all();
+        $user_correos = array('correos' => $correos, 'user' => $user);
+        if (!$correos) {
+            return view("profes_admin/buzon");
+        }
+        return view("profes_admin/buzon")->with('user_correos', $user_correos);
+    }
+
+    public function updateUser()
+    {
+        $post = json_decode(file_get_contents('php://input'), true);
+
+        User::where('id', Auth::user()->id)->update(['nombre' => $post['nombre'],
+            'apellidos' => $post['apellido'],
+            'email' => $post['email'],
+            'password' => Hash::make($post['password1']),
+        ]);
+
+        return redirect('/perfil');
+    }
 }
