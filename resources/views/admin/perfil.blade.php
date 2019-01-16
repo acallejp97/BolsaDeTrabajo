@@ -1,4 +1,4 @@
-@extends('layouts.profesor')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -20,7 +20,7 @@
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1>{{Auth::user()->nombre . ' ' . Auth::user()->apellidos}}</h1></div>
+  		<div class="col-sm-10"><h1>NOMBRE</h1></div>
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
@@ -42,13 +42,9 @@
 
           <ul class="list-group">
             <li class="list-group-item text-muted">Actividad <i class="fa fa-dashboard fa-1x"></i></li>
-            @if(Auth::user()->rango==0)
-            <li class="list-group-item text-center"><span class="pull-center"><strong>Has gozao, eres admin</strong></span> </li>
-            @else
-            @foreach ($nombreDepar as $nimbre)
-            <li class="list-group-item text-center"><span class="pull-center"><strong>Departamento</strong><br/>{{$nimbre->nombre}}</span> </li>
-            @endforeach
-            @endif
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Inscripciones</strong></span> </li>
+
+
           </ul>
 
 

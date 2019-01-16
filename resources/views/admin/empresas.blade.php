@@ -1,25 +1,23 @@
-@extends('layouts.profesor')
+@extends('layouts.admin')
 
 @section('content')
+
+
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container">
-	<div class="row">
-    	<div class="span12">
-			<div class="widget stacked widget-table action-table">
-				<div class="page-header">
-					<h1>
-						Lista de Usuarios
-					</h1>
-				</div>
-				<div class="row">
-					<div class="span3 side-by-side clearfix offset4">
+  <div class="container">
+	<div class="row" >
+    	<div class="span12" >
+			<div class="widget stacked widget-table action-table" >
+				
+				<div class="row" style="margin-bottom:2em">
+					<div class="span3 side-by-side clearfix offset4" >
 						<form action="#" method="get">
-							<div class="input-group">
+							<div class="input-group" >
 								<input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
 								<span class="input-group-btn">
 									<button type="submit" class="btn btn-default" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
@@ -27,17 +25,17 @@
 							</div>
 						</form>
 					</div>
-					<div class="span1 side-by-side clearfix">
+                 
 						<a class="btn btn-default" href="javascript:;">
 							<span class="glyphicon glyphicon-globe"></span> Buscar
 						</a>
-					</div>
-				</div><br><br>
+					
+</div>
 				<div class="widget-content">
 					<table class="table table-striped table-bordered">
 						<thead>
 							<tr style="background: #b50045; color:white;">
-								<th id="table_id">Usuario ID
+								<th id="table_id" >empresa ID
 								</th><th id="">Nombre
 								</th><th id="">Apellidos
 								</th><th id="">Email
@@ -49,13 +47,13 @@
 							</tr>
 						</thead>
 						<tbody>
-                            @foreach ($users as $usuario)
+                            @foreach ($empresas as $empresa)
 							<tr>
-								<td>{{$usuario['id']}}</td>
-								<td>{{$usuario['nombre']}}</td>
-								<td>{{$usuario['apellidos']}}</td>
-								<td>{{$usuario['email']}}</td>
-								<td>{{$usuario['anio_fin']}}</td>
+								<td>{{$empresa['id']}}</td>
+								<td>{{$empresa['nombre']}}</td>
+								<td>{{$empresa['apellidos']}}</td>
+								<td>{{$empresa['email']}}</td>
+								<td>{{$empresa['anio_fin']}}</td>
 								<td>2014-01-10</td>
 								<td>2014-06-14</td>
 								<td>Active</td>
@@ -75,22 +73,11 @@
 						</tbody>
 					</table>
 				</div> <!-- /widget-content -->
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="pagination pagination-sm pull-left">
-							<li class="disabled"><a href="javascript:void(0)">«</a></li>
-							<li class="active"><a href="javascript:void(0)">1 <span class="sr-only">(current)</span></a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="javascript:void(0)">»</a></li>
-						</ul>
-					</div>
-				</div>
+				
 			</div>
 	    </div>
 	</div>
 </div>
 
 @endsection
+

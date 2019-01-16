@@ -16,19 +16,20 @@ Route::group(['middleware' => 'auth'], function () {
 
     switch (isset(Auth::user()->rango)) {
         case 0:
-            Route::get('/home', 'Profe_AdminController@Ofertas');
-            Route::get('/empresas', "Profe_AdminController@Empresas");
-            Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas");
-            Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios");
-            Route::get('/usuarios', "Profe_AdminController@Usuarios");
-            Route::get('/perfil', "Profe_AdminController@Perfil");
-            Route::get('/cursos', "Profe_AdminController@Cursos");
-            Route::get('/contacto', "Profe_AdminController@Contacto");
-            Route::get('/buzon', "Profe_AdminController@Buzon");
-            Route::get('/anadirProfesor', "Profe_AdminController@AnadirProfesor");
+            Route::get('/home', 'AdminController@Ofertas');
+            Route::get('/empresas', "AdminController@Empresas");
+            Route::get('/anadirEmpresas', "AdminController@AnadirEmpresas");
+            Route::get('/anadirUsuarios', "AdminController@AnadirUsuarios");
+            Route::get('/usuarios', "AdminController@Usuarios");
+            Route::get('/perfil', "AdminController@Perfil");
+            Route::get('/cursos', "AdminController@Cursos");
+            Route::get('/contacto', "AdminController@Contacto");
+            Route::get('/buzon', "AdminController@Buzon");
+            Route::get('/anadirProfesores', "AdminController@AnadirProfesor");
             break;
 
         case 1:
+        
             Route::get('/home', 'Profe_AdminController@Ofertas');
             Route::get('/empresas', "Profe_AdminController@Empresas");
             Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas");

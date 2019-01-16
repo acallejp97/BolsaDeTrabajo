@@ -7,6 +7,7 @@ use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
+use App\Model\Profe_Admin;
 use App\User;
 use Auth;
 
@@ -59,11 +60,17 @@ class Profe_AdminController extends Controller
 
     public function Perfil()
     {
-        $sessionID = session('id');
-        if (!Auth::user()) {
+        if (Auth::user()->rango == 1) {
+            $id_depar = Profe_Admin::select('id_depar')->where('id_user', Auth::user()->id)->get();
+            foreach ($id_depar as $id) {
+                $nombreDepar = Departamento::select('nombre')->where('id', $id->id_depar)->get();
+            }
+            return view("profesores/perfil")->with('nombreDepar', $nombreDepar);
+
+        } else {
             return view("profesores/perfil");
         }
-        return view("profesores/perfil");
+
     }
 
     public function Contacto()
@@ -81,20 +88,7 @@ class Profe_AdminController extends Controller
 
     }
 
-    //******* */FUNCIONES DE ADMIN********************
-    public function AnadirProfesor()
-    {
-        return view("profesores/anadirprofesor");
-    }
+  
 
-    public function Buzon()
-    {
-        $correos = Correo::all();
-        $user = User::all();
-        $user_correos = array('correos' => $correos, 'user' => $user);
-        if (!$correos) {
-            return view("profesores/buzon");
-        }
-        return view("profesores/buzon")->with('user_correos', $user_correos);
-    }
+    
 }
