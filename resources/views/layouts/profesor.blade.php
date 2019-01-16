@@ -60,7 +60,7 @@
 </html>
 <script>
       
-      switch(routes: ) {
+      switch(routes) {
   case x:
     // code block
     break;

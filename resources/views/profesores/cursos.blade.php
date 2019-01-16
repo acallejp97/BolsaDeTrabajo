@@ -31,7 +31,7 @@
         </div>
         <script>
             if(document.getElementById("{{$grado['nombre']}}")){
-                DB::table('grados')->where('id','=',$grado['id'])->delete('onCascade');
+                {{DB::table('grados')->where('id','=',$grado['id'])->delete('onCasade')}}
                 location.reload();
                 }
         </script>
