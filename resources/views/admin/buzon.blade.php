@@ -40,6 +40,7 @@
 								</th><th id="">Email
 								</th><th  class="text-center"id="">Descripción
 								</th><th id="">
+                                
 								</th><th class="td-actions" id="table_action"></th>
 							</tr>
 						</thead>
@@ -64,12 +65,13 @@
                                 <td>   <p class="msg">{{$correo['descripcion']}} </p></td>
                             
                              
-          <!-- <form action="{{action('AdminController@destroy', $correo['id'])}}" method="post">
-            @csrf
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form> -->
-        </td>
+                         
+                            
+                            <td> <button> Abrir</button></td>
+                        </div>
+                    </li>
+<td> <button>Borrar</button></td>
+        
       </tr>
                 </div>
                 @endif

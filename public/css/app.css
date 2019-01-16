@@ -45,6 +45,7 @@
     box-sizing: border-box;
 }
 html {
+
     font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -77,10 +78,11 @@ body {
     color: #212529;
     text-align: left;
     background-color: #f8fafc;
-    
-    max-height:30rem;
+    border: solid 3px;
+    min-height:100%;
     
     }
+     
     .fondo {background: url(../fondo.png);
 
         background-repeat: no-repeat;
