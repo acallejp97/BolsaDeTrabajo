@@ -1,4 +1,6 @@
+
 @extends('layouts.profesor')
+
 
 @section('content')
 

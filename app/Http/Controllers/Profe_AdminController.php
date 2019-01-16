@@ -88,20 +88,7 @@ class Profe_AdminController extends Controller
 
     }
 
-    //******* */FUNCIONES DE ADMIN********************
-    public function AnadirProfesor()
-    {
-        return view("profesores/anadirprofesor");
-    }
+  
 
-    public function Buzon()
-    {
-        $correos = Correo::all();
-        $user = User::all();
-        $user_correos = array('correos' => $correos, 'user' => $user);
-        if (!$correos) {
-            return view("profesores/buzon");
-        }
-        return view("profesores/buzon")->with('user_correos', $user_correos);
-    }
+    
 }
