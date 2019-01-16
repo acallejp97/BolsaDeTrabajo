@@ -81,6 +81,11 @@ body {
     max-height:30rem;
     
     }
+    .fondo {background: url(../fondo.png);
+
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        min-height: 625px;}
     
 
 [tabindex="-1"]:focus {
