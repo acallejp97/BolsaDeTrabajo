@@ -11,6 +11,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,11 +26,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body class="fondo">
 
     <div>
 
-        <nav class="fondo">
+        <nav>
             <div class="container">
 
                 <a class="navbar-brand" href="{{ url('http://www.fptxurdinaga.hezkuntza.net/web/Guest') }}">
@@ -43,6 +46,7 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -83,13 +87,6 @@
         <main>
             @yield('content')
             <style>
-                body {
-                    background: url(../fondo.png);
-
-                    background-repeat: no-repeat;
-                    background-size: 100% 100%;
-                    min-height: 625px;
-                }
             </style>
         </main>
 

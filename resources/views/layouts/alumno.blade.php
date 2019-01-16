@@ -16,6 +16,8 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
   <!-- Styles -->
+  <link rel="shortcut icon" href="{{ asset('logo.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 </head>

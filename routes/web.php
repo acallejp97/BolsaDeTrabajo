@@ -1,8 +1,7 @@
 <?php
 
 Auth::routes();
-// Route::get('/home', function () {return redirect('login');});
-Route::get('/logout', 'HomeController@logout'); //->redirect('/');
+Route::get('/logout', 'HomeController@logout');
 
 Route::group(['middleware' => 'auth'], function () {
 

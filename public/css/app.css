@@ -45,6 +45,7 @@
     box-sizing: border-box;
 }
 html {
+
     font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -78,9 +79,15 @@ body {
     text-align: left;
     background-color: #f8fafc;
     border: solid 3px;
-    max-height:30rem;
+    min-height:100%;
     
     }
+     
+    .fondo {background: url(../fondo.png);
+
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        min-height: 625px;}
     
 
 [tabindex="-1"]:focus {
