@@ -47,7 +47,7 @@
         <a class="nav-link" href="buzon">Buzon</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Cerrar Sesion</a>
+        <a class="nav-link" href="logout">Cerrar Sesion</a>
       </li>
     </ul>
   </div>

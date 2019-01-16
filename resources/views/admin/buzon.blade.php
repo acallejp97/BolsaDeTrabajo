@@ -7,6 +7,7 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+<div class="notificacionesusuarios" style="color:orange; font-size: 20px; margin-left:27em;" > </div>
    <div class="container">
 	<div class="row" >
     	<div class="span12" >
@@ -58,14 +59,18 @@
 <td>   <a href="mail-single.html" class="m-r-10">{{$correo['asunto']}}</a> </td>
             
 <td>  <span class="badge bg-blue">{{$usuarios['nombre']}}</span></td>
-<td>  <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">12:35 AM</time><i class="zmdi zmdi-attachment-alt"></i> </small> </td>
+<td>  <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">{{$correo['create:at']}}</time><i class="zmdi zmdi-attachment-alt"></i> </small> </td>
                                 </div>
                                 <td>   <p class="msg">{{$correo['descripcion']}} </p></td>
                             
-                            <td> <button> Abrir</button></td>
-                        </div>
-                    </li>
-                    <td> <button>Borrar</button></td>
+                             
+          <!-- <form action="{{action('AdminController@destroy', $correo['id'])}}" method="post">
+            @csrf
+            <input name="_method" type="hidden" value="DELETE">
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form> -->
+        </td>
+      </tr>
                 </div>
                 @endif
                 @endforeach
@@ -78,5 +83,31 @@
         </div>
     </div>
 </section>
+  <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-block">
+               
+                        <h4 class="card-title">
+                            {{$correo->asunto}}
+                        </h4>
+                    </a>
+                  
+                </div>
+                <a href="#">
+              
+                </a>
+                <div class="card-block">
+                   
+                    <form action="buzon" id="borrar" class="pull-xs-right5 card-link" method="POST" style="display:inline">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
+                        <input class="btn btn-sm btn-danger" type="submit" value="Delete">
+                    
+                        
+
+                    </form>
+                   
+                </div>
 
 @endsection
+

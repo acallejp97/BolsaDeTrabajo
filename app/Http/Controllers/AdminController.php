@@ -99,5 +99,20 @@ public function Buzon()
     }
     return view("admin/buzon")->with('user_correos', $user_correos);
 }
-}
 
+public function destroy( $id)
+    {
+    	// $notebook=Notebook::where('id',$id)->first();
+    	// 
+    	// $user= User::All();
+    // 	$correo=$user->correos()->find($id);
+    //     $correo->delete();
+    //     Session::flash('message', 'Successfully deleted the nerd!');
+    // 	return redirect('admin/buzon');
+    //
+            //$con = new conectarDB(); 
+        
+
+ }
+
+}
