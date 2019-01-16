@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Alumno;
+use App\Model\Correo;
+use App\Model\Curriculum;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;

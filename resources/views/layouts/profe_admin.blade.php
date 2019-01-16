@@ -17,9 +17,11 @@
   <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
   <script src="{{asset('js/user-function/app.js')}}"></script>
   <script src="{{asset('js/app.js')}}"></script>
-
+  
   <!-- Styles -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="{{ asset('logo.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
 </head>
 
 
@@ -50,7 +52,7 @@
         </li>
         @if ((Auth::user()->rango)==1)
         <li class="nav-item">
-          <a class="nav-link" href="Contacto">Contacto</a>
+          <a class="nav-link" href="contacto">Contacto</a>
         </li>
         @endif @if ((Auth::user()->rango)==0)
         <li class="nav-item">
