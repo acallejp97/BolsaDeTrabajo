@@ -19,13 +19,12 @@ class Grados extends Migration
             $table->unsignedInteger('id_depar');
             $table->string('nombre',300);
             $table->string('abreviacion',30);
-           
-            $table->foreign('id_depar')->references('id')->on('departamentos');
+            $table->foreign('id_depar')->references('id')->on('departamentos')->onDelete('cascade');
             $table->timestamps();
         });
     }
     
-
+    
     /**
      * Reverse the migrations.
      *
@@ -33,6 +32,7 @@ class Grados extends Migration
      */
     public function down()
     {
+        $table->dropForeign('ofertas_id_grado_foreign');
         Schema::dropIfExists('grados');
     }
 }
