@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use app\User;
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
+// use Maatwebsite\Excel\Facades\Excel;
+use Excel;
 
 
 class ImportController extends Controller
@@ -16,11 +20,9 @@ class ImportController extends Controller
      User::create([
      'email' => $usuario->email,
      'nombre' =>$usuario->nombre,
+     'rango' =>$usuario->rango,
      'apellidos' =>$usuario->apellidos,
      'imagen' =>$usuario->imagen,
-     'rango' =>$usuario->rango,
-     'id' =>$usuario->id,
-     'created_at' =>$usuario->created_at
      ]);
        }
  });

@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/buzon', "Profe_AdminController@Buzon");
                 Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesor");
                 Route::post('/actualizarUsuario', 'Profe_AdminController@updateUser');
-
+                Route::get('/import', 'ImportController@import');
 
             case 1:
                 Route::get('/home', 'Profe_AdminController@Ofertas');
@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/perfil', "Profe_AdminController@Perfil");
                 Route::get('/cursos', "Profe_AdminController@Cursos");
                 Route::get('/contacto', "Profe_AdminController@Contacto");
+                Route::get('/import', 'ImportController@import');
                 break;
 
             case 2:
