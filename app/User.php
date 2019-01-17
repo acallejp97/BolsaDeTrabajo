@@ -1,4 +1,6 @@
 <?php
+
+
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
 
-    protected $fillable = ['email', 'nombre', 'apellidos', 'imagen', 'rango', 'id', 'created_at'];
+    protected $fillable = ['id', 'email', 'nombre', 'rango', 'apellidos', 'imagen', 'created_at'];
 
     /**
      * The attributes that should be hidden for arrays.
