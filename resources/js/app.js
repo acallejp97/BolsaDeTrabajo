@@ -1,13 +1,12 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("../../resources/js/bootstrap");
 
-window.Vue = require('vue');
+window.Vue = require("vue");
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,7 +19,10 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue")
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,8 +31,31 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  */
 
 const app = new Vue({
-    el: '#app'
+    el: "#app"
+});
 
+new Vue({
+    el: "#botones",
+    data: {
+        nombre: "",
+        email: "",
+        password1: "",
+        password2: ""
+    },
+    methods: {
+        updateTable: function() {
+            this.$http
+                .post("/actualizarUsuario", {
+                    nombre: this.nombre,
+                    email: this.email,
+                    password1: this.password1,
+                    password2: this.password2
+                })
+                .then(function() {
+                    alert('Datos modificados correctamente');
+                });
+        },
 
-    
+        deleteUser: function() {}
+    }
 });

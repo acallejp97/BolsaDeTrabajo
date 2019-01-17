@@ -1,6 +1,4 @@
-
-@extends('layouts.profesor')
-
+@extends('layouts.profe_admin')
 
 @section('content')
 

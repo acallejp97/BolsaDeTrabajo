@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-
+use Artisan;
 class HomeController extends Controller
 {
     /**
@@ -29,6 +29,7 @@ class HomeController extends Controller
     protected function logout()
     {
         Auth::logout();
+        // Artisan::call('cache:clear');
         return redirect('login');
 
     }
