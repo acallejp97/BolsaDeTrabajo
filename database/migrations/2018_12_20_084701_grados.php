@@ -25,7 +25,7 @@ class Grados extends Migration
         });
     }
     
-
+    
     /**
      * Reverse the migrations.
      *
@@ -33,6 +33,7 @@ class Grados extends Migration
      */
     public function down()
     {
+        $table->dropForeign('ofertas_id_grado_foreign');
         Schema::dropIfExists('grados');
     }
 }
