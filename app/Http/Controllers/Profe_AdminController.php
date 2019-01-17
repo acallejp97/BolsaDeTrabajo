@@ -81,10 +81,12 @@ class Profe_AdminController extends Controller
     public function Usuarios()
     {
         $user = User::all();
+        $alumno = Alumno::all();
+        $usuarios =array('user' => $user, 'alumno' => $alumno);
         if (!$user) {
             return view("profes_admin/usuarios");
         }
-        return view("profes_admin/usuarios")->with('users', $user);
+        return view("profes_admin/usuarios")->with('usuarios', $usuarios);
     }
 
     //******* */FUNCIONES DE ADMIN********************
@@ -92,7 +94,8 @@ class Profe_AdminController extends Controller
     {
         $profesor = Profe_Admin::all();
         $user = User::all();
-        $profesores = array('profe_admin' => $profesor, 'user' => $user);
+        $departamento = Departamento::all();
+        $profesores = array('profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
         if (!$profesor) {
             return view("profes_admin/anadirprofesores");
         }
