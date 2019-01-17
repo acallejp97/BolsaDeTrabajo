@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/contacto', "AdminController@Contacto");
             Route::get('/buzon', "AdminController@Buzon");
             Route::get('/anadirProfesores', "AdminController@AnadirProfesor");
+            Route::get('/import', 'ImportController@import');
             Route::post('/hola', "AdminController@destroy");
             break;
 
@@ -38,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/usuarios', "Profe_AdminController@Usuarios");
             Route::get('/perfil', "Profe_AdminController@Perfil");
             Route::get('/cursos', "Profe_AdminController@Cursos");
+            Route::get('/import', 'ImportController@import');
             Route::get('/contacto', "Profe_AdminController@Contacto");
             break;
 
