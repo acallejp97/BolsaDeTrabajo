@@ -18,13 +18,7 @@
                     <li>{{$grado['nombre']}}</li>
                 </ul>
             </div>
-            {{--
-            <script>
-                if(document.getElementById("{{$grado['nombre']}}")){
-                                {{DB::table('grados')->where('id','=',$grado['id'])->delete('onCasade')}}
-                                alert("Tabla borrada");
-                            }
-            </script> --}} @endif @endforeach
+            @endif @endforeach @endforeach
         </div>
 
 
