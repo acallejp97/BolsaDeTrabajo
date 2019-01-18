@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call('CorreosSeeder');
         $this->call('OfertasSeeder');
         $this->call('AlumnoGradoSeeder');
+        $this->call('AlumnoOfertaSeeder');
     }
 }

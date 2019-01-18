@@ -1,5 +1,4 @@
 @extends('layouts.profe_admin')
-
 @section('content')
 
 
@@ -31,59 +30,52 @@
 				</div><br><br>
 				<div class="widget-content">
 					<table class="table table-striped table-bordered">
-						<thead>
+                        <thead>
+                                <tr style="background: #b50045; color:white;">
+    
+                                    </th><th id="">Nombre
+                                    </th><th id="">Apellidos
+                                    </th><th id="">Departamento
+                                    </th><th id="">Email
+                                    </th><th id="">Registrado
+                                 
+                                    </th><th class="td-actions" id="table_action">Accion</th>
+                                </tr>
 						@foreach ($profesores['profe_admin'] as $profesor)
-                               
-							<tr style="background: #b50045; color:white;">
-								<th id="table_id">Usuario ID
-								</th><th id="">Nombre
-								</th><th id="">Apellidos
-								</th><th id="">Email
-								</th><th id="">Anio Fin
-								</th><th id="">Date Created
-								</th><th id="">Exam Date
-								</th><th id="">Status
-								</th><th class="td-actions" id="table_action">Action</th>
-							</tr>
+                               @foreach ($profesores['user'] as $usuario)
+                               @foreach ($profesores['departamento'] as $departamento)
 						</thead>
 						<tbody>
-                            
+                        @if($profesor['id']==$usuario['id'])
+                        @if($profesor['id_depar']==$departamento['id'])
 							<tr>
 							
-								<td>{{$profesor['id']}}</td>
-								<td>2014-01-10</td>
-								<td>2014-06-14</td>
-								<td>Active</td>
+								<td>{{$usuario['nombre']}}</td>
+                                <td>{{$usuario['apellidos']}}</td>
+                                <td>{{$departamento['nombre']}}</td>
+                                <td>{{$usuario['email']}}</td>
+                                <td>{{$usuario['created_at']}}</td>
+								
+								
 								<td class="td-actions">
 									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-pencil"></span> Edit
+										<span class="glyphicon glyphicon-pencil"></span> Modificar
 									</a>
 									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-remove"></span> Remove
+										<span class="glyphicon glyphicon-remove"></span> Borrar
 									</a>
-									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-search"></span> View
-									</a>
+									
 								</td>
                             </tr>
-						
+                            @endif
+                            @endif
+                            </tbody>
                 @endforeach  
-						</tbody>
+                @endforeach  
+                @endforeach  
+						
 					</table>
 				</div> <!-- /widget-content -->
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="pagination pagination-sm pull-left">
-							<li class="disabled"><a href="javascript:void(0)">«</a></li>
-							<li class="active"><a href="javascript:void(0)">1 <span class="sr-only">(current)</span></a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="javascript:void(0)">»</a></li>
-						</ul>
-					</div>
-				</div>
 			</div>
 	    </div>
 	</div>
