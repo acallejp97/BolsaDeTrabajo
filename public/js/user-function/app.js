@@ -22,3 +22,30 @@ const app = new Vue({
         }
     }
 });
+
+
+/*
+
+window.addEventListener('enviarDatos', function () {
+    var formulario = new Vue({
+        el: ".enviarCorreo",
+        data: {
+            nombre: "",
+            email: "",
+            mensaje: ""
+        },
+        methods: {
+            enviarDatos: function() {
+                this.$http
+                    .post("/Contacto", {
+                        nombre: this.nombre,
+                        email: this.email,
+                        mensaje: this.mensaje
+                    })
+                    .then(function() {
+                        alert("Correo Enviado");
+                    });
+            }
+        }
+    });
+});*/

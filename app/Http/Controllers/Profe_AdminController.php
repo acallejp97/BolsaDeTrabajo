@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Model\Alumno;
 use App\Model\Correo;
 use App\Model\Curriculum;
@@ -12,15 +10,11 @@ use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
 use Auth;
-
 class Profe_AdminController extends Controller
 {
-
     public function __construct()
     {
-
     }
-
     public function Ofertas()
     {
         $ofertas = Oferta::all();
@@ -29,7 +23,6 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
     }
-
     public function Empresas()
     {
         $empresas = Empresa::all();
@@ -38,17 +31,14 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/empresas")->with('empresas', $empresas);
     }
-
     public function AnadirEmpresas()
     {
         return view("profes_admin/anadirempresas");
     }
-
     public function AnadirUsuarios()
     {
         return view("profes_admin/anadirusuarios");
     }
-
     public function Cursos()
     {
         $departamentos = Departamento::all();
@@ -59,7 +49,6 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/cursos")->with('grados_depar', $grados_depar);
     }
-
     public function Perfil()
     {
         if (Auth::user()->rango == 1) {
@@ -73,10 +62,18 @@ class Profe_AdminController extends Controller
         }
     }
 
+    /*-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------DATOS PARA CONTACTAR CON EL ADMINISTRADOR---------------------------------------------*/
     public function Contacto()
     {
         return view("profes_admin/contacto");
     }
+
+
+
+
+/*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------*/
 
     public function Usuarios()
     {
@@ -88,7 +85,6 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/usuarios")->with('usuarios', $usuarios);
     }
-
     //******* */FUNCIONES DE ADMIN********************
     public function AnadirProfesor()
     {
@@ -101,7 +97,6 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/anadirprofesores")->with('profesores', $profesores);
     }
-
     public function Buzon()
     {
         $correos = Correo::all();
@@ -112,17 +107,14 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/buzon")->with('user_correos', $user_correos);
     }
-
     public function updateUser()
     {
         $post = json_decode(file_get_contents('php://input'), true);
-
         User::where('id', Auth::user()->id)->update(['nombre' => $post['nombre'],
             'apellidos' => $post['apellido'],
             'email' => $post['email'],
             'password' => Hash::make($post['password1']),
         ]);
-
         return redirect('/perfil');
     }
 }
