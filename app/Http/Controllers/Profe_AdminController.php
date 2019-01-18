@@ -14,19 +14,6 @@ class Profe_AdminController extends Controller
     public function __construct()
     {
     }
-<<<<<<< HEAD
-
-    public function Ofertas()
-    {
-        $ofertas = Oferta::all();
-        if (!$ofertas) {
-            return view("profes_admin/anadirofertas");
-        }
-        return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
-    }
-
-=======
->>>>>>> 6af303939f71342a4d25fe55954dca5800d6aea4
     public function Empresas()
     {
         $empresas = Empresa::all();
@@ -45,11 +32,7 @@ class Profe_AdminController extends Controller
     {
         return view("profes_admin/anadirusuarios");
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 6af303939f71342a4d25fe55954dca5800d6aea4
     public function Cursos()
     {
         $departamentos = Departamento::all();
@@ -60,52 +43,10 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/cursos")->with('grados_depar', $grados_depar);
     }
-<<<<<<< HEAD
-
-    public function Perfil()
-    {
-        if (Auth::user()->rango == 1) {
-            $id_depar = Profe_Admin::select('id_depar')->where('id_user', Auth::user()->id)->get();
-            foreach ($id_depar as $id) {
-                $nombreDepar = Departamento::select('nombre')->where('id', $id->id_depar)->get();
-            }
-            return view("profes_admin/perfil")->with('nombreDepar', $nombreDepar);
-        } else {
-            return view("profes_admin/perfil");
-        }
-    }
-
-/*-----------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------DATOS PARA CONTACTAR CON EL ADMINISTRADOR---------------------------------------------*/
-    public function Contacto()
-    {
-        return view("profes_admin/contacto");
-    }
-
-
-/*-----------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------COGER DATOS DE CONTACTO Y METERLOS EN LA TABLA CORREOS-----------------------------------*/
-    public function store(Request $request)
-    {
-        $correo = Correo::all;
-        $correo -> $nombre = $request->input('nombre');
-        $correo -> $email = $request->input('email');
-        $correo -> $mensaje = $request->input('mensaje');
-        $correo -> save();
-        Notification::success('El correo ha sido enviado exitosamente');
-        return redirect ('alumno/contacto', "AlumnoController@Contacto");
-    }
-
-
-/*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------*/
-
-=======
    
     /*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
     ----------------------------------------------------------------------------------------------------------------------------*/
     
->>>>>>> 6af303939f71342a4d25fe55954dca5800d6aea4
     public function Usuarios()
     {
         $user = User::all();
@@ -150,7 +91,16 @@ Departamentos::insert(
     ['nombre' => $request->nombre]
     
 );
-
+public function store(Request $request)
+    {
+        $correo = Correo::all;
+        $correo -> $nombre = $request->input('nombre');
+        $correo -> $email = $request->input('email');
+        $correo -> $mensaje = $request->input('mensaje');
+        $correo -> save();
+        Notification::success('El correo ha sido enviado exitosamente');
+        return redirect ('alumno/contacto', "AlumnoController@Contacto");
+    }
 
     }
 }
