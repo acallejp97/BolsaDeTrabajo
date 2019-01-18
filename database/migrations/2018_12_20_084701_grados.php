@@ -33,7 +33,7 @@ class Grados extends Migration
      */
     public function down()
     {
-        $table->dropForeign('ofertas_id_grado_foreign');
+        //Schema::dropForeign('ofertas_id_grado_foreign');
         Schema::dropIfExists('grados');
     }
 }

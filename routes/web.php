@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/buzon', "Profe_AdminController@Buzon");
                 Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesor");
                 Route::post('/actualizarUsuario', 'Profe_AdminController@updateUser');
-                Route::get('/import', 'ImportController@import');
+
 
             case 1:
                 Route::get('/home', 'Profe_AdminController@Ofertas');
@@ -30,15 +30,14 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/contacto', "Profe_AdminController@Contacto");
                 Route::get('/import', 'ImportController@import');
                 Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartament');
-                break;
+                
+                ;
 
-
-                //Alumno
-            case 2:
+            // case 2:
                 Route::get('/home', "AlumnoController@VerOfertas");
                 Route::get('/contacto', "AlumnoController@Contacto");
                 Route::get('/perfil', "AlumnoController@VerPerfil");
                 Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
-                break;
-    }
+                // break;
+    // }
 });

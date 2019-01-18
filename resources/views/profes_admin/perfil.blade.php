@@ -1,4 +1,4 @@
-@extends('layouts.profe_admin')
+@extends('layouts.profe_admin') 
 @section('content')
 
 <div class="container ">
@@ -11,9 +11,8 @@
         <div class="col-sm-3">
             <!--left col-->
             <div class="text-center">
-                <img src="{{Auth::user()->imagen}}" class="avatar img-circle img-thumbnail" alt="avatar">
-
-                <input type="file" class="text-center center-block file-upload">
+                {{-- <img src="{{Auth::user()->imagen}}" class="avatar img-circle img-thumbnail" alt="avatar"> --}}
+                <input type="file" class="text-center center-block file-upload" accept="image/*">
             </div>
             <br>
 
@@ -32,68 +31,70 @@
             </ul>
 
         </div>
-        <div class="col-sm-9">
-
+        <div id="botones" class="col-sm-9">
             <div class="tab-content">
-                <div class="tab-pane active" id="home">
+                <div class="tab-pane active">
                     <hr>
-                    <form class="form" action="##" method="post" id="registrationForm">
-                        <div class="form-group">
+                    <div class="form-group">
 
-                            <div class="col-xs-11">
-                                <label for="nombre"><h4>Nombre</h4></label>
-                                <input type="text" class="form-control" value="{{Auth::user()->nombre}}" name="nombre" id="nombre" placeholder="Nombre" v-model="nombre"
-                                    title="Introduce tu nombre.">
-                            </div>
+                        <div class="col-xs-11">
+                            <label for="nombre"><h4>Nombre</h4></label>
+                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" v-model="nombre" value="{{Auth::user()->nombre}}"
+                                title="Introduce tu nombre.">
                         </div>
-                        <div class="form-group">
+                    </div>
+                    <div class="form-group">
 
-                            <div class="col-xs-11">
-                                <label for="apellido"><h4>Apellidos</h4></label>
-                                <input type="text" class="form-control" name="apellido" value="{{Auth::user()->apellidos}}" id="apellido" placeholder="Apellidos"
-                                    v-model="apellido" title="Introduce tus apellidos.">
-                            </div>
+                        <div class="col-xs-11">
+                            <label for="apellido"><h4>Apellidos</h4></label>
+                            <input type="text" class="form-control" name="apellido" value="{{Auth::user()->apellidos}}" id="apellido" placeholder="Apellidos"
+                                v-model="apellido" title="Introduce tus apellidos.">
                         </div>
+                    </div>
 
-                        <div class="form-group">
+                    <div class="form-group">
 
-                            <div class="col-xs-11">
-                                <label for="email"><h4>Email</h4></label>
-                                <input type="email" class="form-control" value="{{Auth::user()->email}}" name="email" id="email" placeholder="you@email.com"
-                                    v-model="email" title="Introduce tu email.">
-                            </div>
+                        <div class="col-xs-11">
+                            <label for="email"><h4>Email</h4></label>
+                            <input type="email" class="form-control" value="{{Auth::user()->email}}" name="email" id="email" placeholder="you@email.com"
+                                v-model="email" title="Introduce tu email.">
                         </div>
+                    </div>
 
-                        <div class="form-group">
+                    <div class="form-group">
 
-                            <div class="col-xs-11">
-                                <label for="password"><h4>Password</h4></label>
-                                <input type="password" class="form-control" value="{{Auth::user()->password}}" name="password" id="password" placeholder="Contraseña"
-                                    v-model="password1" title="Introduce la contraseña.">
-                            </div>
+                        <div class="col-xs-11">
+                            <label for="password"><h4>Password</h4></label>
+                            <input type="password" class="form-control" value="{{Auth::user()->password}}" name="password" id="password" placeholder="Contraseña"
+                                v-model="password1" title="Introduce la contraseña.">
                         </div>
-                        <div class="form-group">
+                    </div>
+                    <div class="form-group">
 
-                            <div class="col-xs-11">
-                                <label for="password2"><h4>Confirmar Contraseña</h4></label>
-                                <input type="password" class="form-control" name="password2" id="password2" placeholder="Repite Contraseña" v-model="password2"
-                                    title="Confirma tu contraseña por favor.">
-                            </div>
+                        <div class="col-xs-11">
+                            <label for="password2"><h4>Confirmar Contraseña</h4></label>
+                            <input type="password" class="form-control" name="password2" id="password2" placeholder="Repite Contraseña" v-model="password2"
+                                title="Confirma tu contraseña por favor.">
                         </div>
-                        <div id="botones" class="form-group col-xs-8">
-                            <div class="col-xs-8">
-                                <br>
-                                <button v-on:click="updateTable" class="btn btn-lg btn-success">
+                    </div>
+                    <div class="form-group col-xs-8">
+                        <div class="col-xs-8">
+                            <br>
+                            <button v-on:click="updateTable" class="btn btn-lg btn-success">
                                     <i class="glyphicon glyphicon-ok-sign"></i>
                                     Guardar</button>
 
-                                <button v-on:click="deleteUser" class="btn btn-lg btn-danger">
+                            <button v-on:click="deleteUser" class="btn btn-lg btn-danger">
                                     <i class="glyphicon glyphicon-remove"></i>
                                     Borrar Perfil</button>
-
-                            </div>
-
                         </div>
-                    </form>
-                    <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
 @endsection
