@@ -28,9 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/perfil', "Profe_AdminController@Perfil");
                 Route::get('/cursos', "Profe_AdminController@Cursos");
                 Route::get('/contacto', "Profe_AdminController@Contacto");
-                Route::get('/import', 'ImportController@import');
-                Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartament');
-
                 ;
 
             case 2:
