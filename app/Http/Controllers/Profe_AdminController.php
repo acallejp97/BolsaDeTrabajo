@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 use App\Model\Alumno;
 use App\Model\Correo;
-use App\Model\Curriculum;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -15,6 +14,7 @@ class Profe_AdminController extends Controller
     public function __construct()
     {
     }
+<<<<<<< HEAD
 
     public function Ofertas()
     {
@@ -25,6 +25,8 @@ class Profe_AdminController extends Controller
         return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
     }
 
+=======
+>>>>>>> 6af303939f71342a4d25fe55954dca5800d6aea4
     public function Empresas()
     {
         $empresas = Empresa::all();
@@ -43,7 +45,11 @@ class Profe_AdminController extends Controller
     {
         return view("profes_admin/anadirusuarios");
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 6af303939f71342a4d25fe55954dca5800d6aea4
     public function Cursos()
     {
         $departamentos = Departamento::all();
@@ -54,6 +60,7 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/cursos")->with('grados_depar', $grados_depar);
     }
+<<<<<<< HEAD
 
     public function Perfil()
     {
@@ -93,6 +100,12 @@ class Profe_AdminController extends Controller
 /*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------*/
 
+=======
+   
+    /*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------------------*/
+    
+>>>>>>> 6af303939f71342a4d25fe55954dca5800d6aea4
     public function Usuarios()
     {
         $user = User::all();
@@ -103,6 +116,7 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/usuarios")->with('usuarios', $usuarios);
     }
+    
     //******* */FUNCIONES DE ADMIN********************
     public function AnadirProfesor()
     {
@@ -115,6 +129,7 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/anadirprofesores")->with('profesores', $profesores);
     }
+    
     public function Buzon()
     {
         $correos = Correo::all();
@@ -125,14 +140,17 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/buzon")->with('user_correos', $user_correos);
     }
-    public function updateUser()
+
+    public function insertDepartament(Request $request)
     {
         $post = json_decode(file_get_contents('php://input'), true);
-        User::where('id', Auth::user()->id)->update(['nombre' => $post['nombre'],
-            'apellidos' => $post['apellido'],
-            'email' => $post['email'],
-            'password' => Hash::make($post['password1']),
-        ]);
-        return redirect('/perfil');
+
+Departamentos::insert(
+
+    ['nombre' => $request->nombre]
+    
+);
+
+
     }
 }

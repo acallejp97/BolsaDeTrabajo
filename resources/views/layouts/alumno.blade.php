@@ -17,6 +17,7 @@
 
   <!-- Styles -->
   <link rel="shortcut icon" href="{{ asset('logo.png') }}">
+
   <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
@@ -43,14 +44,10 @@
         </li>
       </ul>
     </div>
-    <div class="card-body">
-      @yield('content')
-    </div>
-  </div>
-  </nav>
-  <main class="py-4">
-  </main>
+    @yield('content')
+    <script src="{{asset('js/user-function/app.js')}}"></script>
   </div>
 </body>
+
 
 </html>

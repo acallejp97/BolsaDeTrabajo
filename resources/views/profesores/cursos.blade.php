@@ -29,21 +29,8 @@
 
             </ul>
         </div>
-        <script>
-            if(document.getElementById("{{$grado['nombre']}}")){
-                {{DB::table('grados')->where('id','=',$grado['id'])->delete('onCasade')}}
-                location.reload();
-                }
-        </script>
-        @endif @endforeach
+        @endforeach
     </div>
-
-
-
 </div>
-<!-- panel-group -->
 @endforeach
-
-</div>
-<!-- container -->
 @endsection
