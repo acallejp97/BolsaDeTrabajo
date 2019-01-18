@@ -12,29 +12,19 @@ Route::group(['middleware' => 'auth'], function () {
             return redirect('/login');
         }
     });
-        // switch (isset(Auth::user()->rango)) {
-            // case 0:
-            //     Route::get('/buzon', "Profe_AdminController@Buzon");
-            //     Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesor");
-            //     Route::post('/actualizarUsuario', 'Profe_AdminController@updateUser');
+    Route::get('/home', "Controller@Ofertas");
+    Route::get('/contacto', "Controller@Contacto");
+    Route::get('/perfil', "Controller@Perfil");
 
+    Route::get('/buzon', "Profe_AdminController@Buzon");
+    Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesor");
 
-            // case 1:
-            //     Route::get('/home', 'Profe_AdminController@Ofertas');
-            //     Route::get('/empresas', "Profe_AdminController@Empresas");
-            //     Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas");
-            //     Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios");
-            //     Route::get('/usuarios', "Profe_AdminController@Usuarios");
-            //     Route::get('/perfil', "Profe_AdminController@Perfil");
-            //     Route::get('/cursos', "Profe_AdminController@Cursos");
-            //     Route::get('/contacto', "Profe_AdminController@Contacto");
-            //     ;
+    Route::get('/empresas', "Profe_AdminController@Empresas");
+    Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas");
+    Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios");
+    Route::get('/usuarios', "Profe_AdminController@Usuarios");
+    Route::get('/cursos', "Profe_AdminController@Cursos");
+    Route::post('/actualizarUsuario', 'Profe_AdminController@updateUser');
 
-            // case 2:
-                Route::get('/home', "AlumnoController@VerOfertas");
-                Route::get('/contacto', "AlumnoController@Contacto");
-                Route::get('/perfil', "AlumnoController@VerPerfil");
-                Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
-                // break;
-    // }
+    Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
 });

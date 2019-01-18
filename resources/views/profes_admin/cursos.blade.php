@@ -28,10 +28,5 @@
 @endforeach
 
 </div>
-<!-- container -->
-
-<?php
-phpinfo();
-?>
 @endsection
 

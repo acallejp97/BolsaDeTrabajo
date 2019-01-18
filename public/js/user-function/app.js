@@ -1,16 +1,17 @@
 const app = new Vue({
-    el: "#botones",
+    el: "#datosPerfil",
     data: {
-        nombre: '',
-        email: '',
-        password1: '',
-        password2: ''
+        nombre: "admin",
+        apellido: "admin",
+        email: "admin@admin.com",
+        password1: "admin",
+        password2: "admin"
     },
     methods: {
-        updateTable: function() {
-            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+        updateUser: function() {
             this.$http
-                .post(asset("/actualizarUsuario"), {
+                .post("./actualizarUsuario", {
                     nombre: this.nombre,
                     email: this.email,
                     password1: this.password1,
@@ -19,33 +20,10 @@ const app = new Vue({
                 .then(function() {
                     alert("Datos modificados correctamente");
                 });
+        },
+        deleteUser: function() {},
+        mounted() {
+            this.getTasks();
         }
     }
 });
-
-
-/*
-
-window.addEventListener('enviarDatos', function () {
-    var formulario = new Vue({
-        el: ".enviarCorreo",
-        data: {
-            nombre: "",
-            email: "",
-            mensaje: ""
-        },
-        methods: {
-            enviarDatos: function() {
-                this.$http
-                    .post("/Contacto", {
-                        nombre: this.nombre,
-                        email: this.email,
-                        mensaje: this.mensaje
-                    })
-                    .then(function() {
-                        alert("Correo Enviado");
-                    });
-            }
-        }
-    });
-});*/

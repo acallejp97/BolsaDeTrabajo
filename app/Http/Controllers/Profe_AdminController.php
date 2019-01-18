@@ -15,14 +15,6 @@ class Profe_AdminController extends Controller
     public function __construct()
     {
     }
-    public function Ofertas()
-    {
-        $ofertas = Oferta::all();
-        if (!$ofertas) {
-            return view("profes_admin/anadirofertas");
-        }
-        return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
-    }
     public function Empresas()
     {
         $empresas = Empresa::all();
@@ -39,6 +31,7 @@ class Profe_AdminController extends Controller
     {
         return view("profes_admin/anadirusuarios");
     }
+    
     public function Cursos()
     {
         $departamentos = Departamento::all();
@@ -49,32 +42,26 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/cursos")->with('grados_depar', $grados_depar);
     }
-    public function Perfil()
-    {
-        if (Auth::user()->rango == 1) {
-            $id_depar = Profe_Admin::select('id_depar')->where('id_user', Auth::user()->id)->get();
-            foreach ($id_depar as $id) {
-                $nombreDepar = Departamento::select('nombre')->where('id', $id->id_depar)->get();
-            }
-            return view("profes_admin/perfil")->with('nombreDepar', $nombreDepar);
-        } else {
-            return view("profes_admin/perfil");
-        }
-    }
-
+    
+    
+    
     /*-----------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------DATOS PARA CONTACTAR CON EL ADMINISTRADOR---------------------------------------------*/
-    public function Contacto()
+    ----------------------------------------------FUNCIONES PARA ACTUALIZAR EL PERFIL-------------------------------------------*/
+    public function updateUser(Request $request)
     {
-        return view("profes_admin/contacto");
+        if(!$request->ajax())return redirect('/');
+        $task = Task::findOrFail($request->id);
+    
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->content = $request->content;
+    
+        $task->save();
     }
-
-
-
-
-/*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------*/
-
+   
+    /*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------------------*/
+    
     public function Usuarios()
     {
         $user = User::all();
@@ -85,6 +72,7 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/usuarios")->with('usuarios', $usuarios);
     }
+    
     //******* */FUNCIONES DE ADMIN********************
     public function AnadirProfesor()
     {
@@ -97,6 +85,7 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/anadirprofesores")->with('profesores', $profesores);
     }
+    
     public function Buzon()
     {
         $correos = Correo::all();
@@ -107,14 +96,5 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/buzon")->with('user_correos', $user_correos);
     }
-    public function updateUser()
-    {
-        $post = json_decode(file_get_contents('php://input'), true);
-        User::where('id', Auth::user()->id)->update(['nombre' => $post['nombre'],
-            'apellidos' => $post['apellido'],
-            'email' => $post['email'],
-            'password' => Hash::make($post['password1']),
-        ]);
-        return redirect('/perfil');
-    }
+
 }
