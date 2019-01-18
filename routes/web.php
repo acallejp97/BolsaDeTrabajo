@@ -30,14 +30,14 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/contacto', "Profe_AdminController@Contacto");
                 Route::get('/import', 'ImportController@import');
                 Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartament');
-                
+
                 ;
 
-            // case 2:
+            case 2:
                 Route::get('/home', "AlumnoController@VerOfertas");
                 Route::get('/contacto', "AlumnoController@Contacto");
                 Route::get('/perfil', "AlumnoController@VerPerfil");
                 Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
-                // break;
-    // }
+                break;
+    }
 });
