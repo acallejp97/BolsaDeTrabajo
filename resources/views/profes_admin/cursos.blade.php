@@ -29,4 +29,9 @@
 
 </div>
 <!-- container -->
+
+<?php
+phpinfo();
+?>
 @endsection
+

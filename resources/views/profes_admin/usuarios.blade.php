@@ -37,38 +37,35 @@
 								</th>
 								<th id="">Anio Fin
 								</th>
-								<th id="">Date Created
-								</th>
-								<th id="">Exam Date
-								</th>
-								<th id="">Status
-								</th>
-								<th class="td-actions" id="table_action">Action</th>
+								</th><th id="">Registrado
+                                
+                                    </th><th class="td-actions" id="table_action">Accion</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($users as $usuario)
+						
+							@foreach ($usuarios['user'] as $usuario)
+                               @foreach ($usuarios['alumno'] as $alumno)
 							<tr>
+							@if($usuario['id']==$alumno['id'])
 								<td>{{$usuario['id']}}</td>
 								<td>{{$usuario['nombre']}}</td>
 								<td>{{$usuario['apellidos']}}</td>
 								<td>{{$usuario['email']}}</td>
-								<td>{{$usuario['anio_fin']}}</td>
-								<td>2014-01-10</td>
-								<td>2014-06-14</td>
-								<td>Active</td>
+								<td>{{$alumno['anio_fin']}}</td>
+								<td>{{$usuario['created_at']}}</td>
 								<td class="td-actions">
 									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-pencil"></span> Edit
+										<span class="glyphicon glyphicon-pencil"></span> Modificar
 									</a>
 									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-remove"></span> Remove
+										<span class="glyphicon glyphicon-remove"></span> Borrar
 									</a>
-									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-search"></span> View
-									</a>
+									
 								</td>
-							</tr>
+                            </tr>
+							@endif
+							@endforeach
 							@endforeach
 						</tbody>
 					</table>
