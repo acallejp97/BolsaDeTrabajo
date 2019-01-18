@@ -26,7 +26,7 @@ class Controller extends BaseController
                     return view("profes_admin/anadirofertas");
                 }
                 return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
-                
+
                 break;
 
                 
@@ -78,5 +78,17 @@ class Controller extends BaseController
                 return view("alumnos/perfil");
                 break;
         }
+    }
+
+    public function updateUser(Request $request)
+    {
+        if(!$request->ajax())return redirect('/');
+        $task = Task::findOrFail($request->id);
+    
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->content = $request->content;
+    
+        $task->save();
     }
 }

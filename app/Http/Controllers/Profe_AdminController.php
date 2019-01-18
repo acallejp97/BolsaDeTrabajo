@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 use App\Model\Alumno;
 use App\Model\Correo;
-use App\Model\Curriculum;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -41,22 +40,6 @@ class Profe_AdminController extends Controller
             return view("profes_admin/cursos");
         }
         return view("profes_admin/cursos")->with('grados_depar', $grados_depar);
-    }
-    
-    
-    
-    /*-----------------------------------------------------------------------------------------------------------------------------------
-    ----------------------------------------------FUNCIONES PARA ACTUALIZAR EL PERFIL-------------------------------------------*/
-    public function updateUser(Request $request)
-    {
-        if(!$request->ajax())return redirect('/');
-        $task = Task::findOrFail($request->id);
-    
-        $task->name = $request->name;
-        $task->description = $request->description;
-        $task->content = $request->content;
-    
-        $task->save();
     }
    
     /*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
@@ -97,4 +80,13 @@ class Profe_AdminController extends Controller
         return view("profes_admin/buzon")->with('user_correos', $user_correos);
     }
 
+    public function insertDepartament(Request $request)
+    {
+        $post = json_decode(file_get_contents('php://input'), true);
+
+        $departamento = new Departamento;
+        $nombre->nombre = $request->nombre;
+        $nombre->save();
+
+    }
 }
