@@ -116,18 +116,17 @@ class Profe_AdminController extends Controller
         ]);
         return redirect('/perfil');
     }
-<<<<<<< HEAD
 
     public function insertDepartament(Request $request)
     {
         $post = json_decode(file_get_contents('php://input'), true);
 
-        $departamento = new Departamento;
-        $nombre->nombre = $request->nombre;
-        $nombre->save();
+Departamentos::insert(
+
+    ['nombre' => $request->nombre]
+    
+);
+
 
     }
 }
-=======
-}
->>>>>>> 304145a8d2238cabf1c0d132bfeafbbf3460f91e

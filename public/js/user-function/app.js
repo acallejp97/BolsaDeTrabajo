@@ -1,51 +1,54 @@
-const app = new Vue({
-    el: "#botones",
+const insertarCurso = new Vue({
+    el: "#modificarCursos",
     data: {
-        nombre: '',
-        email: '',
-        password1: '',
-        password2: ''
+        nombreDepartamento: "",
+        nombre: ""
     },
     methods: {
-        updateTable: function() {
-            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        aniadirDepartamento: function() {
+            console.log("aaaaa");
+            this.nombre = prompt(
+                "Introduce el nombre del departamento a añadir"
+            );
+            console.log(this.nombre);
             this.$http
-                .post(asset("/actualizarUsuario"), {
-                    nombre: this.nombre,
-                    email: this.email,
-                    password1: this.password1,
-                    password2: this.password2
+                .post("./aniadirDepartamento", {
+                    nombre: this.nombre
                 })
                 .then(function() {
-                    alert("Datos modificados correctamente");
+                    alert("Departamento insertado correctamente");
                 });
+        },
+
+        aniadirGrado: function() {
+            this.$http.post("/aniadirGrado", {
+                departamento: this.nombreDepartamento
+            });
         }
     }
 });
 
-
-/*
-
-window.addEventListener('enviarDatos', function () {
-    var formulario = new Vue({
-        el: ".enviarCorreo",
-        data: {
-            nombre: "",
-            email: "",
-            mensaje: ""
-        },
-        methods: {
-            enviarDatos: function() {
-                this.$http
-                    .post("/Contacto", {
-                        nombre: this.nombre,
-                        email: this.email,
-                        mensaje: this.mensaje
-                    })
-                    .then(function() {
-                        alert("Correo Enviado");
-                    });
-            }
-        }
-    });
-});*/
+// var app = new Vue({
+//     el: "#botones",
+//     data: {
+//         nombre: '',
+//         email: '',
+//         password1: '',
+//         password2: ''
+//     },
+//     methods: {
+//         updateTable: function() {
+//             console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//             this.$http
+//                 .post(asset("/actualizarUsuario"), {
+//                     nombre: this.nombre,
+//                     email: this.email,
+//                     password1: this.password1,
+//                     password2: this.password2
+//                 })
+//                 .then(function() {
+//                     alert("Datos modificados correctamente");
+//                 });
+//         }
+//     }
+// });
