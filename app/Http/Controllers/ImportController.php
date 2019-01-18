@@ -46,7 +46,6 @@ class ImportController extends Controller
 {
     public function export() 
     {
-<<<<<<< HEAD
     	Excel::load('usuarios.csv', function($reader) {
  
      foreach ($reader->get() as $usuario) {
@@ -60,13 +59,5 @@ class ImportController extends Controller
        }
  });
  return User::all();
-=======
-        return Excel::download(new UsersExport, 'users.xlsx');
-    }
-    
-    public function import() 
-    {
-        return Excel::import(new UsersImport, 'users.xlsx');
->>>>>>> 02041949e287db5c71c0d532e7721feccf2ced0f
     }
 }

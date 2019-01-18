@@ -15,6 +15,7 @@ class Profe_AdminController extends Controller
     public function __construct()
     {
     }
+
     public function Ofertas()
     {
         $ofertas = Oferta::all();
@@ -23,6 +24,7 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
     }
+
     public function Empresas()
     {
         $empresas = Empresa::all();
@@ -31,14 +33,17 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/empresas")->with('empresas', $empresas);
     }
+
     public function AnadirEmpresas()
     {
         return view("profes_admin/anadirempresas");
     }
+
     public function AnadirUsuarios()
     {
         return view("profes_admin/anadirusuarios");
     }
+
     public function Cursos()
     {
         $departamentos = Departamento::all();
@@ -49,6 +54,7 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/cursos")->with('grados_depar', $grados_depar);
     }
+
     public function Perfil()
     {
         if (Auth::user()->rango == 1) {
@@ -62,7 +68,7 @@ class Profe_AdminController extends Controller
         }
     }
 
-    /*-----------------------------------------------------------------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------DATOS PARA CONTACTAR CON EL ADMINISTRADOR---------------------------------------------*/
     public function Contacto()
     {
@@ -70,6 +76,18 @@ class Profe_AdminController extends Controller
     }
 
 
+/*-----------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------COGER DATOS DE CONTACTO Y METERLOS EN LA TABLA CORREOS-----------------------------------*/
+    public function store(Request $request)
+    {
+        $correo = Correo::all;
+        $correo -> $nombre = $request->input('nombre');
+        $correo -> $email = $request->input('email');
+        $correo -> $mensaje = $request->input('mensaje');
+        $correo -> save();
+        Notification::success('El correo ha sido enviado exitosamente');
+        return redirect ('alumno/contacto', "AlumnoController@Contacto");
+    }
 
 
 /*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------

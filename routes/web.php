@@ -35,6 +35,11 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/contacto', "AlumnoController@Contacto");
                 Route::get('/perfil', "AlumnoController@VerPerfil");
                 Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
+            
+            /*//RUTA BOTON ENVIAR DE CONTACTO
+                Route::post('alumnos/contacto', "AlumnoController@Contacto");
+                Route::post('profes_admin/contacto', "ProfeController@Contacto");*/
+                
                 // break;
     // }
 });
