@@ -43,13 +43,8 @@
         </li>
       </ul>
     </div>
-    <div class="card-body">
-      @yield('content')
-    </div>
-  </div>
-  </nav>
-  <main class="py-4">
-  </main>
+    @yield('content')
+    <script src="{{asset('js/user-function/app.js')}}"></script>
   </div>
 </body>
 

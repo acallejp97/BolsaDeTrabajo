@@ -2,17 +2,8 @@
 
 // namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use Illuminate\Http\Request;
-use app\User;
-use App\Exports\UsersExport;
-use App\Imports\UsersImport;
-// use Maatwebsite\Excel\Facades\Excel;
-use Excel;
-=======
 // use Illuminate\Http\Request;
 // use app\User;
->>>>>>> 02041949e287db5c71c0d532e7721feccf2ced0f
 
 
 // class ImportController extends Controller
@@ -46,27 +37,11 @@ class ImportController extends Controller
 {
     public function export() 
     {
-<<<<<<< HEAD
-    	Excel::load('usuarios.csv', function($reader) {
- 
-     foreach ($reader->get() as $usuario) {
-     User::create([
-     'email' => $usuario->email,
-     'nombre' =>$usuario->nombre,
-     'rango' =>$usuario->rango,
-     'apellidos' =>$usuario->apellidos,
-     'imagen' =>$usuario->imagen,
-     ]);
-       }
- });
- return User::all();
-=======
         return Excel::download(new UsersExport, 'users.xlsx');
     }
     
     public function import() 
     {
         return Excel::import(new UsersImport, 'users.xlsx');
->>>>>>> 02041949e287db5c71c0d532e7721feccf2ced0f
     }
 }
