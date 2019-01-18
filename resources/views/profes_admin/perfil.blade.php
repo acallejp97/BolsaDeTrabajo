@@ -83,11 +83,11 @@
                         <div id="botones" class="form-group col-xs-8">
                             <div class="col-xs-8">
                                 <br>
-                                <button v-on:click="updateTable()" class="btn btn-lg btn-success">
+                                <button v-on:click="updateTable" class="btn btn-lg btn-success">
                                     <i class="glyphicon glyphicon-ok-sign"></i>
                                     Guardar</button>
 
-                                <button v-on:click="deleteUser()" class="btn btn-lg btn-danger">
+                                <button v-on:click="deleteUser" class="btn btn-lg btn-danger">
                                     <i class="glyphicon glyphicon-remove"></i>
                                     Borrar Perfil</button>
 

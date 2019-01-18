@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Alumno;
 use App\Model\Correo;
-use App\Model\Curriculum;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -121,5 +119,15 @@ class Profe_AdminController extends Controller
         ]);
 
         return redirect('/perfil');
+    }
+
+    public function insertDepartament(Request $request)
+    {
+        $post = json_decode(file_get_contents('php://input'), true);
+
+        $departamento = new Departamento;
+        $nombre->nombre = $request->nombre;
+        $nombre->save();
+
     }
 }

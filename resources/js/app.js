@@ -30,11 +30,7 @@ Vue.component(
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: "#app"
-});
-
-new Vue({
+var perfil = new Vue({
     el: "#botones",
     data: {
         nombre: "",
@@ -52,10 +48,36 @@ new Vue({
                     password2: this.password2
                 })
                 .then(function() {
-                    alert('Datos modificados correctamente');
+                    alert("Datos modificados correctamente");
                 });
         },
 
         deleteUser: function() {}
+    }
+});
+
+var insertarCurso = new Vue({
+    el: "#modificarCursos",
+    data: {
+        nombreDepartamento: ""
+    },
+    methods: {
+        aniadirDepartamento: function() {
+            var nombre = prompt("Introduce el nombre del departamento a añadir"
+            );
+            this.$http
+                .post("/aniadirDepartamento", {
+                    nombre: nombre
+                })
+                .then(function() {
+                    alert("Departamento insertado correctamente");
+                });
+        },
+
+        aniadirGrado: function() {
+            this.$http.post("/aniadirGrado", {
+                departamento: this.nombreDepartamento
+            });
+        }
     }
 });
