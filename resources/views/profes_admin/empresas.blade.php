@@ -13,14 +13,12 @@
 				</div>
 				<div class="row">
 					<div class="span3 side-by-side clearfix offset4">
-						<form action="#" method="get">
-							<div class="input-group">
-								<input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
-								<span class="input-group-btn">
+						<div class="input-group">
+							<input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
+							<span class="input-group-btn">
 									<button type="submit" class="btn btn-default" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
 								</span>
-							</div>
-						</form>
+						</div>
 					</div>
 					<div class="span1 side-by-side clearfix">
 						<a class="btn btn-default" href="javascript:;">

@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
 use App\Model\Alumno;
 use App\Model\Correo;
-use App\Model\Curriculum;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -14,24 +11,11 @@ use App\Model\Alumno_Grado;
 use App\Model\Alumno_Oferta;
 use App\User;
 use Auth;
-
 class Profe_AdminController extends Controller
 {
-
     public function __construct()
     {
-
     }
-
-    public function Ofertas()
-    {
-        $ofertas = Oferta::all();
-        if (!$ofertas) {
-            return view("profes_admin/anadirofertas");
-        }
-        return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
-    }
-
     public function Empresas()
     {
         $empresas = Empresa::all();
@@ -50,7 +34,7 @@ class Profe_AdminController extends Controller
     {
         return view("profes_admin/anadirusuarios");
     }
-
+    
     public function Cursos()
     {
         $departamentos = Departamento::all();
@@ -61,37 +45,21 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/cursos")->with('grados_depar', $grados_depar);
     }
-
-    public function Perfil()
+   
+    /*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------------------*/
+    
+    public function Usuarios()
     {
-        if (Auth::user()->rango == 1) {
-            $id_depar = Profe_Admin::select('id_depar')->where('id_user', Auth::user()->id)->get();
-            foreach ($id_depar as $id) {
-                $nombreDepar = Departamento::select('nombre')->where('id', $id->id_depar)->get();
-            }
-            return view("profes_admin/perfil")->with('nombreDepar', $nombreDepar);
-        } else {
-            return view("profes_admin/perfil");
+        $user = User::all();
+        $alumno = Alumno::all();
+        $usuarios =array('user' => $user, 'alumno' => $alumno);
+        if (!$user) {
+            return view("profes_admin/usuarios");
         }
+        return view("profes_admin/usuarios")->with('usuarios', $usuarios);
     }
-
-    public function Contacto()
-    {
-        return view("profes_admin/contacto");
-    }
-    function usuarios()
-    {
-
-        if (!$alumnos) {
-       $results = DB::select('Select departamentos.nombre, grados.nombre, profe_admin.id, profe_admin.id_depar, departamentos.id, grados.id, grados.id_depar, alumno_grado.id_alumno, alumno_grado.id.grado, alumno_grado.id, alumno.id, alumno.id_user, user.id, user.nombre, user.apellidos, user.email FROM user, alumno, alumno-grado, departamentos, grados, profe_admin
-       Where profe_admin.id=3');
-       dd($results)
-        $alumnos = Alumno::all();
-       
-       return view("profes_admin/usuarios");
-        }
-        return view("profes_admin/anadirprofesores")->with('results', $results);
-}
+    
     //******* */FUNCIONES DE ADMIN********************
     public function AnadirProfesor()
     {
@@ -104,7 +72,7 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/anadirprofesores")->with('profesores', $profesores);
     }
-
+    
     public function Buzon()
     {
         $correos = Correo::all();
@@ -116,17 +84,34 @@ class Profe_AdminController extends Controller
         return view("profes_admin/buzon")->with('user_correos', $user_correos);
     }
 
-    public function updateUser()
+    public function insertDepartament(Request $request)
     {
         $post = json_decode(file_get_contents('php://input'), true);
 
+<<<<<<< HEAD
         User::where('id', Auth::user()->id)->update([
             'nombre' => $post['nombre'],
             'apellidos' => $post['apellido'],
             'email' => $post['email'],
             'password' => Hash::make($post['password1']),
         ]);
+=======
+Departamentos::insert(
 
-        return redirect('/perfil');
+    ['nombre' => $request->nombre]
+    
+);
+public function store(Request $request)
+    {
+        $correo = Correo::all;
+        $correo -> $nombre = $request->input('nombre');
+        $correo -> $email = $request->input('email');
+        $correo -> $mensaje = $request->input('mensaje');
+        $correo -> save();
+        Notification::success('El correo ha sido enviado exitosamente');
+        return redirect ('alumno/contacto', "AlumnoController@Contacto");
+    }
+>>>>>>> 345b439f954d12099eb712921b336a2497379eb1
+
     }
 }

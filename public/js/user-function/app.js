@@ -1,26 +1,29 @@
-window.addEventListener('updateTable', function () {
-    var formulario = new Vue({
-        el: "#botones",
-        data: {
-            nombre: "",
-            email: "",
-            password1: "",
-            password2: ""
-        },
-        methods: {
-            updateTable: function() {
-                this.$http
-                    .post("/actualizarUsuario", {
-                        nombre: this.nombre,
-                        email: this.email,
-                        password1: this.password1
-                    })
-                    .then(function() {
-                        alert("Datos modificados correctamente");
-                    });
-            },
+const app = new Vue({
+    el: "#datosPerfil",
+    data: {
+        nombre: "admin",
+        apellido: "admin",
+        email: "admin@admin.com",
+        password1: "admin",
+        password2: "admin"
+    },
+    methods: {
 
-            deleteUser: function() {}
+        updateUser: function() {
+            this.$http
+                .post("./actualizarUsuario", {
+                    nombre: this.nombre,
+                    email: this.email,
+                    password1: this.password1,
+                    password2: this.password2
+                })
+                .then(function() {
+                    alert("Departamento insertado correctamente");
+                });
+        },
+        deleteUser: function() {},
+        mounted() {
+            this.getTasks();
         }
-    });
+    }
 });

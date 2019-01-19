@@ -6,7 +6,7 @@
 	<div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="well well-sm">
-          <form class="form-horizontal" action="" method="post">
+          <form class="form-horizontal" action="{{URL::to('/')}}/contacto" method="get">
           <fieldset>
             <legend class="text-center">Contactar</legend>
     
@@ -14,7 +14,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="name">Nombre</label>
               <div class="col-md-9">
-                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control">
+                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control" value="{{Auth::user()->nombre}}">
               </div>
             </div>
     
@@ -22,7 +22,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="email">Asunto</label>
               <div class="col-md-9">
-                <input id="email" name="email" type="text" placeholder="Email" class="form-control">
+              <input id="email" name="email" type="text" placeholder="Email" class="form-control" value="{{Auth::user()->email}}">
               </div>
             </div>
           <!-- Message body -->
