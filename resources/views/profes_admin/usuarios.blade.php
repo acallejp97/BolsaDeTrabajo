@@ -44,16 +44,15 @@
 						</thead>
 						<tbody>
 						
-							@foreach ($usuarios['user'] as $usuario)
-                               @foreach ($usuarios['alumno'] as $alumno)
+				
+							
 							<tr>
-							@if($usuario['id']==$alumno['id'])
-								<td>{{$usuario['id']}}</td>
-								<td>{{$usuario['nombre']}}</td>
-								<td>{{$usuario['apellidos']}}</td>
-								<td>{{$usuario['email']}}</td>
-								<td>{{$alumno['anio_fin']}}</td>
-								<td>{{$usuario['created_at']}}</td>
+							
+								<td>{{$users['departamento.nombre']}}</td>
+								
+								<!-- <td>{{$usuario['anio_fin']}}</td> -->
+							
+								<!-- <td>{{$usuario['grado_nombre']}}</td> -->
 								<td class="td-actions">
 									<a class="btn btn-default btn-xs" href="javascript:;">
 										<span class="glyphicon glyphicon-pencil"></span> Modificar
@@ -63,10 +62,9 @@
 									</a>
 									
 								</td>
+								@endforeach
                             </tr>
-							@endif
-							@endforeach
-							@endforeach
+							
 						</tbody>
 					</table>
 				</div>

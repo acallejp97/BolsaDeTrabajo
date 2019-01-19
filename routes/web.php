@@ -18,7 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesor");
                 Route::post('/actualizarUsuario', 'Profe_AdminController@updateUser');
                 Route::get('/import', 'ImportController@import');
-
+ 
             case 1:
                 Route::get('/home', 'Profe_AdminController@Ofertas');
                 Route::get('/empresas', "Profe_AdminController@Empresas");
@@ -29,6 +29,12 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/cursos', "Profe_AdminController@Cursos");
                 Route::get('/contacto', "Profe_AdminController@Contacto");
                 Route::get('/import', 'ImportController@import');
+               Route::get("/profe_admin/{id}/departamento", function ($id){
+                   $profesores=Profe_Admin::find($id);
+                   foreach($profesores->departamentos as $departamento){
+return $departamento->nombre;
+                   }
+               });  
                 break;
 
             case 2:

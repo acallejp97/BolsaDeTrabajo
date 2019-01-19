@@ -13,4 +13,8 @@ class Empresa extends Model
     //AQUI SOLO SI HAY RELACIONES
     // //1-N     //N-M          //1-1
 
+    public function Departamentos()
+{
+    return $this->belongsTo(Departamento::class);
+}
 }

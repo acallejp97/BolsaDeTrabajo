@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Model\Alumno;
 use App\Model\Correo;
 use App\Model\Curriculum;
@@ -10,6 +10,8 @@ use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
 use App\Model\Profe_Admin;
+use App\Model\Alumno_Grado;
+use App\Model\Alumno_Oferta;
 use App\User;
 use Auth;
 
@@ -77,18 +79,19 @@ class Profe_AdminController extends Controller
     {
         return view("profes_admin/contacto");
     }
-
-    public function Usuarios()
+    function usuarios()
     {
-        $user = User::all();
-        $alumno = Alumno::all();
-        $usuarios =array('user' => $user, 'alumno' => $alumno);
-        if (!$user) {
-            return view("profes_admin/usuarios");
-        }
-        return view("profes_admin/usuarios")->with('usuarios', $usuarios);
-    }
 
+        if (!$alumnos) {
+       $results = DB::select('Select departamentos.nombre, grados.nombre, profe_admin.id, profe_admin.id_depar, departamentos.id, grados.id, grados.id_depar, alumno_grado.id_alumno, alumno_grado.id.grado, alumno_grado.id, alumno.id, alumno.id_user, user.id, user.nombre, user.apellidos, user.email FROM user, alumno, alumno-grado, departamentos, grados, profe_admin
+       Where profe_admin.id=3');
+       dd($results)
+        $alumnos = Alumno::all();
+       
+       return view("profes_admin/usuarios");
+        }
+        return view("profes_admin/anadirprofesores")->with('results', $results);
+}
     //******* */FUNCIONES DE ADMIN********************
     public function AnadirProfesor()
     {
@@ -117,7 +120,8 @@ class Profe_AdminController extends Controller
     {
         $post = json_decode(file_get_contents('php://input'), true);
 
-        User::where('id', Auth::user()->id)->update(['nombre' => $post['nombre'],
+        User::where('id', Auth::user()->id)->update([
+            'nombre' => $post['nombre'],
             'apellidos' => $post['apellido'],
             'email' => $post['email'],
             'password' => Hash::make($post['password1']),
