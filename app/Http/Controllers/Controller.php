@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Model\Departamento;
 use App\Model\Oferta;
 use App\Model\Profe_Admin;
+use App\Model\Empresa;
+use App\Model\Grado;
 use App\User;
 use Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -22,19 +24,29 @@ class Controller extends BaseController
         switch (Auth::user()->rango) {
             case 0:
             case 1:
-                if (!$ofertas) {
-                    return view("profes_admin/anadirofertas");
-                }
-                return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
+            $empresas = Empresa::all();
+            $ofertas = Oferta::all();
+            $grados = Grado::all();
+            $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados);
+      
+            if (!$empresas) {
+                return view("profes_admin/anadirofertas");
+            }
+            return view("profes_admin/anadirofertas")->with('empresa_oferta', $empresa_oferta);
 
                 break;
 
                 
             case 2:
-                if (!$ofertas) {
-                    return view("alumnos/ofertas");
-                }
-                return view("alumnos/ofertas")->with('ofertas', $ofertas);
+            $empresas = Empresa::all();
+       
+            $ofertas = Oferta::all();
+            $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas);
+            $empresas = array_unique($empresas_oferta);
+            if (!$empresas) {
+                return view("profes_admin/anadirempresas");
+            }
+            return view("profes_admin/anadirempresas")->with('empresa_oferta', $empresa_oferta);
                 break;
 
         }

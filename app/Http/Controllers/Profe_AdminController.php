@@ -27,7 +27,7 @@ class Profe_AdminController extends Controller
 
     public function AnadirEmpresas()
     {
-        return view("profes_admin/anadirempresas");
+      
     }
 
     public function AnadirUsuarios()
@@ -88,19 +88,12 @@ class Profe_AdminController extends Controller
     {
         $post = json_decode(file_get_contents('php://input'), true);
 
-<<<<<<< HEAD
-        User::where('id', Auth::user()->id)->update([
-            'nombre' => $post['nombre'],
-            'apellidos' => $post['apellido'],
-            'email' => $post['email'],
-            'password' => Hash::make($post['password1']),
-        ]);
-=======
 Departamentos::insert(
 
     ['nombre' => $request->nombre]
     
 );
+    }
 public function store(Request $request)
     {
         $correo = Correo::all;
@@ -111,7 +104,6 @@ public function store(Request $request)
         Notification::success('El correo ha sido enviado exitosamente');
         return redirect ('alumno/contacto', "AlumnoController@Contacto");
     }
->>>>>>> 345b439f954d12099eb712921b336a2497379eb1
 
     }
-}
+
