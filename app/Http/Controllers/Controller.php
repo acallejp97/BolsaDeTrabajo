@@ -22,32 +22,32 @@ class Controller extends BaseController
     {
         $ofertas = Oferta::all();
         switch (Auth::user()->rango) {
-            case 0:
+            case 0:  
+        
+           
+           
             case 1:
             $empresas = Empresa::all();
             $ofertas = Oferta::all();
             $grados = Grado::all();
             $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados);
-      
-            if (!$empresas) {
+            $result = array_unique($empresa_oferta);
+            if (!$result) {
                 return view("profes_admin/anadirofertas");
             }
-            return view("profes_admin/anadirofertas")->with('empresa_oferta', $empresa_oferta);
+            return view("profes_admin/anadirofertas")->with('result', $result);
 
                 break;
+                
 
                 
             case 2:
-            $empresas = Empresa::all();
-       
+          
             $ofertas = Oferta::all();
-            $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas);
-            $empresas = array_unique($empresas_oferta);
-            if (!$empresas) {
-                return view("profes_admin/anadirempresas");
+            if (!$ofertas) {
+                return view("alumnos/ofertas");
             }
-            return view("profes_admin/anadirempresas")->with('empresa_oferta', $empresa_oferta);
-                break;
+            return view("alumnos/ofertas")->with('ofertas', $ofertas);
 
         }
     }
