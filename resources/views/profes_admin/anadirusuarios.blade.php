@@ -62,6 +62,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
+        <div class="page-header">
+      <h3>
+      Subir un archivo
+      </h3>
+    </div>
             <form method="post" action="#" id="#">
 
                 <div class="form-group files">
@@ -76,9 +81,11 @@
                     <section class="container">
                         <div class="container-page">
                             <div class="col-md-6">
-                                <h3>
-                                    <font size="10%">Añadir Manualmente</font>
-                                </h3>
+                            <div class="page-header">
+      <h3>
+        Añadir manualmente
+      </h3>
+    </div>
                                 <div class="form-group col-lg-12">
                                     <label>Nombre del alumno :</label>
                                     <input type="text" name="nombre" class="form-control" placeholder="Nombre" title="Introduce el nombre del alumno.">

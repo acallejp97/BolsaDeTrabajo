@@ -6,9 +6,11 @@
 
     <div class="col-md-3">
       <form>
-        <h3>
-          Publicar una Oferta
-        </h3>
+      <div class="page-header">
+      <h3>
+       Publicar una oferta
+      </h3>
+    </div>
 
         <div class="form-group">
           <!-- Full Name -->
@@ -74,14 +76,43 @@
     </div>
 
 
-    <div class="row col-md-7">
+    <div class="row col-md-9">
+   
+		
+    <div class="page-header">
+      <h3>
+        Lista de ofertas
+      </h3>
+    </div>
+    <div class="row">
+      <div class="span3 side-by-side clearfix offset4">
+        <form action="#" method="get">
+          <div class="input-group col-md-3 " style="float:right">
+            <input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-default" style="background: #b50045; color:white;"data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
+            </span>
+            
+          </div>
+        </form>
+      </div>
+
+    </div><br>
       @foreach ($result['ofertas'] as $oferta)
-      <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+      <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="" style="width:30%; float:left;">
       <div class="col-md-7">
         <h3>{{$oferta['titulo']}}</h3>
         <p>{{$oferta['descripcion']}}</p>
         <p>{{$oferta['puestos-vacantes']}}</p>
-        <a class="btn btn-primary" href="#">Inscribirse</a>
+        <td class="td-actions">
+									<a class="btn btn-default btn-xs" href="javascript:;">
+										<span class="glyphicon glyphicon-pencil"></span> Modificar
+									</a>
+									<a class="btn btn-default btn-xs" style="background: #b50045; color:white;"href="javascript:;">
+										<span class="glyphicon glyphicon-remove" ></span> Borrar
+									</a>
+									
+					</td>
       </div>
 
       @endforeach
