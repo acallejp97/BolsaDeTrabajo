@@ -29,7 +29,6 @@ class Controller extends BaseController
 
                 break;
 
-                
             case 2:
                 if (!$ofertas) {
                     return view("alumnos/ofertas");
@@ -80,15 +79,35 @@ class Controller extends BaseController
         }
     }
 
+    public function mostrarUsuario(Request $request)
+    {
+        $task = array([
+            'nombre'=>Auth::user()->nombre,
+            'apellidos'=>Auth::user()->nombre,
+            'email'=>Auth::user()->nombre,
+            'rango'=>Auth::user()->nombre,
+            'password'=>Auth::user()->nombre,
+            'imagen'=>Auth::user()->nombre
+            
+            ]);
+        return $task;
+        //Esta función devolverá los datos de una tarea que hayamos seleccionado para cargar el formulario con sus datos
+    }
+
     public function updateUser(Request $request)
     {
-        if(!$request->ajax())return redirect('/');
-        $task = Task::findOrFail($request->id);
-    
-        $task->name = $request->name;
-        $task->description = $request->description;
-        $task->content = $request->content;
-    
-        $task->save();
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        $actualizarUsuario = User::findOrFail($request->id);
+
+        $actualizarUsuario->nombre = $request->nombre;
+        $actualizarUsuario->apellidos = $request->apellidos;
+        $actualizarUsuario->email = $request->email;
+        $actualizarUsuario->password = $request->password;
+        $actualizarUsuario->imagen = $request->imagen;
+
+        $actualizarUsuario->save();
     }
 }

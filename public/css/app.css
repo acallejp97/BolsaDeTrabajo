@@ -5,8 +5,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-    
-    
 :root {
     --blue: #3490dc;
     --indigo: #6574cd;
@@ -45,7 +43,6 @@
     box-sizing: border-box;
 }
 html {
-
     font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -70,7 +67,7 @@ section {
 }
 body {
     margin: 0;
-    
+
     font-family: Nunito, sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
@@ -79,16 +76,16 @@ body {
     text-align: left;
     background-color: #f8fafc;
     border: solid 3px;
-    min-height:100%;
-    
-    }
-     
-    .fondo {background: url(../fondo.png);
+    height: 100vh;
+}
 
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        min-height: 625px;}
-    
+.fondo {
+    background: url(../fondo.png);
+
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 625px;
+}
 
 [tabindex="-1"]:focus {
     outline: 0 !important;
@@ -3994,9 +3991,6 @@ input[type="submit"].btn-block {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
-.fondo {
-   
-}
 .navbar-collapse {
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -4014,7 +4008,6 @@ input[type="submit"].btn-block {
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: 0.25rem;
- 
 }
 .navbar-toggler:focus,
 .navbar-toggler:hover {
@@ -4388,7 +4381,7 @@ input[type="submit"].btn-block {
 .card-header {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
- 
+
     background-color: rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
