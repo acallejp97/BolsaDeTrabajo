@@ -23,28 +23,3 @@ const app = new Vue({
     }
 });
 
-var insertarCurso = new Vue({
-    el: "#modificarCursos",
-    data: {
-        nombreDepartamento: ""
-    },
-    methods: {
-        aniadirDepartamento: function() {
-            var nombre = prompt("Introduce el nombre del departamento a añadir"
-            );
-            this.$http
-                .post("/aniadirDepartamento", {
-                    nombre: nombre
-                })
-                .then(function() {
-                    alert("Departamento insertado correctamente");
-                });
-        },
-
-        aniadirGrado: function() {
-            this.$http.post("/aniadirGrado", {
-                departamento: this.nombreDepartamento
-            });
-        }
-    }
-});

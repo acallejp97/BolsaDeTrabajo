@@ -45,7 +45,9 @@
 						<tbody>
 
 
-							@foreach ($user_correos['correos'] as $correo) @foreach ($user_correos['user'] as $usuarios) @if($correo['id_remit']==$usuarios['id'])
+							@foreach ($user_correos['correos'] as $correo) 
+							@foreach ($user_correos['user'] as $usuarios) 
+							@if($correo['id_remit']==$usuarios['id'])
 							<tr>
 
 								<div class="media-heading">

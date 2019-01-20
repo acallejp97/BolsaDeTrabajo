@@ -11,5 +11,30 @@ class Departamento extends Model
 
     //AQUI SOLO SI HAY RELACIONES
     // //1-N     //N-M          //1-1
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+    public function profes()
+{
+    return $this->hasMany(Profe_Admin::class);
+}
+public function empresas()
+{
+    return $this->hasMany(Empresa::class);
+}
+
+public function comun() { 
+        
+    return $this->hasManyThrough('App\Model\Grado', 'App\Model\Profe_admin'); 
+
+
+}
+
+
+public function profesores()
+{
+    return $this->hasMany('App\Model\Profe_Admin');
+}
 
 }

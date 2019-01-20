@@ -23,5 +23,8 @@ class Oferta extends Model
     //   public function profe_admin(){
     //     return $this->belongsTo('App\Model\Profe_Admin');
     //   }
-
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

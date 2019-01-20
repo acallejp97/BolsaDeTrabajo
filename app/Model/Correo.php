@@ -13,4 +13,8 @@ class Correo extends Model
     //AQUI SOLO SI HAY RELACIONES
     // //1-N     //N-M          //1-1
 
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

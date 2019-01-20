@@ -18,7 +18,7 @@ const app = new Vue({
                     password2: this.password2
                 })
                 .then(function() {
-                    alert("Datos modificados correctamente");
+                    alert("Departamento insertado correctamente");
                 });
         },
         deleteUser: function() {},

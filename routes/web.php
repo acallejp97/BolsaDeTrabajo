@@ -28,7 +28,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios");
     Route::get('/usuarios', "Profe_AdminController@Usuarios");
     Route::get('/cursos', "Profe_AdminController@Cursos");
+    Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartament');
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
+/*
+    Route::post('alumnos/contacto', "AlumnoController@Contacto");
+                Route::post('profes_admin/contacto', "ProfeController@Contacto");*/
 });
