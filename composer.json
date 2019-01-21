@@ -13,6 +13,7 @@
         "fzaninotto/faker": "^1.8",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
+        "laraveles/spanish": "^1.1",
         "maatwebsite/excel": "^3.0.1",
         "maatwebsite/laravel-excel-light": "dev-master",
         "twbs/bootstrap": "^4.2"

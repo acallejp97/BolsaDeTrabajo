@@ -16,7 +16,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', "Controller@Ofertas");
     Route::get('/contacto', "Controller@Contacto");
     Route::get('/perfil', "Controller@Perfil");
-    Route::post('/actualizarUsuario', 'Profe_AdminController@updateUser');
+    Route::put('/actualizarUsuario', 'Controller@updateUser');
 
     //Admin
     Route::get('/buzon', "Profe_AdminController@Buzon");
@@ -32,4 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
+/*
+    Route::post('alumnos/contacto', "AlumnoController@Contacto");
+                Route::post('profes_admin/contacto', "ProfeController@Contacto");*/
 });

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Model\Departamento;
 use App\Model\Oferta;
 use App\Model\Profe_Admin;
+use App\Model\Empresa;
+use App\Model\Grado;
 use App\User;
 use Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -20,22 +22,31 @@ class Controller extends BaseController
     {
         $ofertas = Oferta::all();
         switch (Auth::user()->rango) {
-            case 0:
+            case 0:  
+        
+           
+           
             case 1:
-                if (!$ofertas) {
-                    return view("profes_admin/anadirofertas");
-                }
-                return view("profes_admin/anadirofertas")->with('ofertas', $ofertas);
+            $empresas = Empresa::all();
+            $ofertas = Oferta::all();
+            $grados = Grado::all();
+            $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados);
+            $result = array_unique($empresa_oferta);
+            if (!$result) {
+                return view("profes_admin/anadirofertas");
+            }
+            return view("profes_admin/anadirofertas")->with('result', $result);
 
                 break;
-
                 
+
             case 2:
-                if (!$ofertas) {
-                    return view("alumnos/ofertas");
-                }
-                return view("alumnos/ofertas")->with('ofertas', $ofertas);
-                break;
+          
+            $ofertas = Oferta::all();
+            if (!$ofertas) {
+                return view("alumnos/ofertas");
+            }
+            return view("alumnos/ofertas")->with('ofertas', $ofertas);
 
         }
     }
@@ -80,15 +91,35 @@ class Controller extends BaseController
         }
     }
 
+    public function mostrarUsuario(Request $request)
+    {
+        $task = array([
+            'nombre'=>Auth::user()->nombre,
+            'apellidos'=>Auth::user()->nombre,
+            'email'=>Auth::user()->nombre,
+            'rango'=>Auth::user()->nombre,
+            'password'=>Auth::user()->nombre,
+            'imagen'=>Auth::user()->nombre
+            
+            ]);
+        return $task;
+        //Esta función devolverá los datos de una tarea que hayamos seleccionado para cargar el formulario con sus datos
+    }
+
     public function updateUser(Request $request)
     {
-        if(!$request->ajax())return redirect('/');
-        $task = Task::findOrFail($request->id);
-    
-        $task->name = $request->name;
-        $task->description = $request->description;
-        $task->content = $request->content;
-    
-        $task->save();
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        $actualizarUsuario = User::findOrFail($request->id);
+
+        $actualizarUsuario->nombre = $request->nombre;
+        $actualizarUsuario->apellidos = $request->apellidos;
+        $actualizarUsuario->email = $request->email;
+        $actualizarUsuario->password = $request->password;
+        $actualizarUsuario->imagen = $request->imagen;
+
+        $actualizarUsuario->save();
     }
 }

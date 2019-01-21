@@ -7,6 +7,8 @@ use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
 use App\Model\Profe_Admin;
+use App\Model\Alumno_Grado;
+use App\Model\Alumno_Oferta;
 use App\User;
 use Auth;
 class Profe_AdminController extends Controller
@@ -22,10 +24,12 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/empresas")->with('empresas', $empresas);
     }
+
     public function AnadirEmpresas()
     {
-        return view("profes_admin/anadirempresas");
+      
     }
+
     public function AnadirUsuarios()
     {
         return view("profes_admin/anadirusuarios");
@@ -92,4 +96,16 @@ class Profe_AdminController extends Controller
         //Esta función guardará las tareas que enviaremos mediante vuejs
     
     }
-}
+public function store(Request $request)
+    {
+        $correo = Correo::all;
+        $correo -> $nombre = $request->input('nombre');
+        $correo -> $email = $request->input('email');
+        $correo -> $mensaje = $request->input('mensaje');
+        $correo -> save();
+        Notification::success('El correo ha sido enviado exitosamente');
+        return redirect ('alumno/contacto', "AlumnoController@Contacto");
+    }
+
+    }
+
