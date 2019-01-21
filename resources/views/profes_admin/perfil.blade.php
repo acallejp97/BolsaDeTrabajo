@@ -10,12 +10,32 @@
     <div class="row">
         <div class="col-sm-3">
             <!--left col-->
-            <div class="text-center">
-                {{-- <img src="{{Auth::user()->imagen}}" class="avatar img-circle img-thumbnail" alt="avatar"> --}}
-                <input type="file" class="text-center center-block file-upload" accept="image/*">
-            </div>
-            <br>
+            @if (Session::has('status'))
+<hr />
+<div class='text-success'>
+    {{Session::get('status')}}
+</div>
+<hr />
+@endif
+            <img src='{{url(Auth::user()->imagen)}}' class='img-responsive' style='max-width: 150px' />
 
+<h3>Opciones:</h3>
+<ul>
+    <li><a href="{{url('perfil')}}">Cambiar mi imagen de perfil</a></li>
+</ul>
+<form method='post' action='{{url("fotoperfil")}}' enctype='multipart/form-data'>
+	{{csrf_field()}}
+	<div class='form-group'>
+        <label for='image'>Imagen: </label>
+        {{Auth::user()->imagen}}
+		<input type="file" name="image" />
+		<div class='text-danger'>{{$errors->first('image')}}</div>
+	</div>
+	<button type='submit' class='btn btn-primary'>Actualizar imagen de perfil</button>
+</form>
+
+            <br>
+            
             <div class="panel panel-default">
                 <div class="panel-heading">Registrado desde <i class="fa fa-link fa-1x"></i></div>
                 <div class="panel-body">{{Auth::user()->created_at}}</div>

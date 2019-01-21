@@ -21,11 +21,12 @@ class Usuarios extends Migration
             $table->unsignedInteger('rango')->default(2);
             $table->string('apellidos', 90);
             $table->string('password', 300);
+            $table->string('imagen');
             $table->rememberToken();
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE user
-            ADD imagen MEDIUMBLOB AFTER apellidos");
+        // DB::statement("ALTER TABLE user
+        //     ADD imagen MEDIUMBLOB AFTER apellidos");
     }
 
     /**

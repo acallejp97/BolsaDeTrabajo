@@ -15,7 +15,7 @@ class Departamento extends Model
     {
         return $this->hasMany(User::class);
     }
-    public function profes()
+    public function profe_admin()
 {
     return $this->hasMany(Profe_Admin::class);
 }

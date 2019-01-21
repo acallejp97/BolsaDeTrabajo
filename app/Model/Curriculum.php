@@ -11,8 +11,8 @@ class Curriculum extends Model
 
     //AQUI SOLO SI HAY RELACIONES
     // //1-N     //N-M          //1-1
-    public function users()
+    public function user()
     {
-        return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class);
     }
 }
