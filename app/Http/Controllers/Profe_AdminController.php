@@ -83,13 +83,15 @@ class Profe_AdminController extends Controller
 
     public function insertDepartament(Request $request)
     {
-        $post = json_decode(file_get_contents('php://input'), true);
+        
+        if(!$request->ajax())return redirect('/');
+        $insertarDepartemento = new Departamento();
+        $insertarDepartemento->nombre = $request->nombre;
+        
 
-Departamentos::insert(
-
-    ['nombre' => $request->nombre]
+        $task->save();
+        //Esta función guardará las tareas que enviaremos mediante vuejs
     
-);
     }
 public function store(Request $request)
     {

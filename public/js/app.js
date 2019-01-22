@@ -24071,8 +24071,7 @@
                                   t.nextTick(function() {
                                       h(e);
                                   });
-                              })
-                            : !(function() {
+                              }):!(function() {
                                   if (e.postMessage && !e.importScripts) {
                                       var t = !0,
                                           n = e.onmessage;

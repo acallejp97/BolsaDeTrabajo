@@ -16,7 +16,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', "Controller@Ofertas");
     Route::get('/contacto', "Controller@Contacto");
     Route::get('/perfil', "Controller@Perfil");
-    Route::put('/actualizarUsuario', 'Controller@updateUser');
+    Route::post('/actualizarUsuario', "Controller@updateUser");
     Route::post('/fotoperfil', 'Controller@updateProfile');
 
     //Admin
