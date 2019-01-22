@@ -2,9 +2,11 @@
 
 
 namespace App;
+use App\Model\Alumno;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 
 class User extends Authenticatable
 {
@@ -37,13 +39,26 @@ public function grados()
     return $this->hasMany(Grado::class);
 }
 
-public function Curriculum()
+public function alumno()
 {
-    return $this->belongsTo(Curriculum::class);
+    return $this->belongsTo(Alumno::class);
 }
 
 public function Correos()
 {
     return $this->hasMany(Correo::class);
+}
+
+public function getAttribute($key)
+{
+    $profile = Alumno::where('id_user', '=', $this->attributes['id'])->first()->toArray();
+
+    foreach ($profile as $attr => $value) {
+        if (!array_key_exists($attr, $this->attributes)) {
+            $this->attributes[$attr] = $value;
+        }
+    }
+    
+    return parent::getAttribute($key);
 }
 }

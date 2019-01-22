@@ -36,6 +36,9 @@ class Alumno extends Model
     public function departamentos(){
         return $this ->belongsToMany("App/Model\Departamento");
     }
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 } 
 

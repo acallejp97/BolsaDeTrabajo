@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
-   
+    Route::post('/fotocv', 'AlumnoController@updatecv');
 /*
     Route::post('alumnos/contacto', "AlumnoController@Contacto");
                 Route::post('profes_admin/contacto', "ProfeController@Contacto");*/

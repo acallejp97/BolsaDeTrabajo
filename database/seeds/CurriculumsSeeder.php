@@ -21,6 +21,7 @@ class CurriculumsSeeder extends Seeder
                 'id_alumno'=> ($cantidadCurriculum),
                 'nombre' => $nombre[0],
                 'apellidos' => $faker->name,
+                'direccion' => $faker->address,
                 'experiencia' => $faker->paragraph,
                 'competencias' => $faker->paragraph,
                 'idiomas' => $faker->paragraph,
