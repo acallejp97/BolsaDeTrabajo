@@ -9,6 +9,10 @@ use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
 use Auth;
+use Validator;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -22,8 +26,20 @@ class Controller extends BaseController
     {
         $ofertas = Oferta::all();
         switch (Auth::user()->rango) {
-            case 0:
+            case 0:  
+            $user = User::all();
+            $empresas = Empresa::all();
+            $ofertas = Oferta::all();
+            $grados = Grado::all();
+            $empresa_oferta = array('empresas' => $empresas,'user' => $user, 'ofertas' => $ofertas, 'grados' => $grados);
+            $result = array_unique($empresa_oferta);
+            if (!$result) {
+                return view("profes_admin/anadirofertas");
+            }
+            return view("profes_admin/anadirofertas")->with('result', $result);
 
+                break;
+           
             case 1:
                 $empresas = Empresa::all();
                 $ofertas = Oferta::all();
@@ -38,14 +54,16 @@ class Controller extends BaseController
                 break;
 
             case 2:
-
-                $ofertas = Oferta::all();
-                if (!$ofertas) {
-                    return view("alumnos/ofertas");
-                }
-                return view("alumnos/ofertas")->with('ofertas', $ofertas);
+            $user = User::all();
+            $ofertas = Oferta::all();
+            
+            if (!$ofertas) {
+                return view("alumnos/ofertas");
+            }
+            return view("alumnos/ofertas")->with('ofertas', $ofertas);
 
         }
+        
     }
 
     public function Contacto()
@@ -70,6 +88,8 @@ class Controller extends BaseController
 
     public function Perfil()
     {
+
+        $user = User::all();
         switch (Auth::user()->rango) {
             case 0:case 1:
                 if (Auth::user()->rango == 1) {
@@ -79,15 +99,41 @@ class Controller extends BaseController
                     }
                     return view("profes_admin/perfil")->with('nombreDepar', $nombreDepar);
                 } else {
-                    return view("profes_admin/perfil");
+                    return view("profes_admin/perfil")->with('user', $user);
                 }
                 break;
             case 2:
                 return view("alumnos/perfil");
                 break;
+
         }
+        
     }
 
+    
+
+    public function updateProfile(Request $request){
+        $rules = ['image' => 'required|image|max:1024*1024*1',];
+        $messages = [
+            'image.required' => 'La imagen es requerida',
+            'image.image' => 'Formato no permitido',
+            'image.max' => 'El máximo permitido es 1 MB',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        
+        if ($validator->fails()){
+            return view("profes_admin/perfil")->withErrors($validator);
+        }
+        else{
+            $name = str_random(10) . '-' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->move('perfiles', $name);
+            $user = new User;
+            $user->where('email', '=', Auth::user()->email)
+                 ->update(['imagen' => $name]);
+              
+            return view("profes_admin/perfil")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
+        }
+    }
     public function mostrarUsuario(Request $request)
     {
         $task = array([
@@ -141,4 +187,21 @@ class Controller extends BaseController
         return redirect("perfil");
 
     }
+
+
+    public function search(){
+
+        if ($search = \Request::get('q')) {
+            $users = User::where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%")
+                        ->orWhere('email','LIKE',"%$search%");
+            })->paginate(20);
+        }else{
+            $users = User::latest()->paginate(5);
+        }
+
+        return $users;
+
+    }
+
 }

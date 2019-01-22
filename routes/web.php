@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/contacto', "Controller@Contacto");
     Route::get('/perfil', "Controller@Perfil");
     Route::post('/actualizarUsuario', 'Controller@updateUser');
+    Route::post('/fotoperfil', 'Controller@updateProfile');
 
     //Admin
     Route::get('/buzon', "Profe_AdminController@Buzon");
@@ -32,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
+   
 /*
     Route::post('alumnos/contacto', "AlumnoController@Contacto");
                 Route::post('profes_admin/contacto', "ProfeController@Contacto");*/

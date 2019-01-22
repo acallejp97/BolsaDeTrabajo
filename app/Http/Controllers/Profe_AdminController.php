@@ -51,13 +51,10 @@ class Profe_AdminController extends Controller
     
     public function Usuarios()
     {
-        $user = User::all();
-        $alumno = Alumno::all();
-        $usuarios =array('user' => $user, 'alumno' => $alumno);
-        if (!$user) {
-            return view("profes_admin/usuarios");
-        }
-        return view("profes_admin/usuarios")->with('usuarios', $usuarios);
+       
+        $comun = Profe_Admin::find(3)->departamento;
+
+        return view("profes_admin/usuarios")->with('comun', $comun);
     }
     
     //******* */FUNCIONES DE ADMIN********************

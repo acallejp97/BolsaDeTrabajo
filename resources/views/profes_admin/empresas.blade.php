@@ -13,18 +13,39 @@
 				</div>
 				<div class="row">
 					<div class="span3 side-by-side clearfix offset4">
-						<div class="input-group">
-							<input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
-							<span class="input-group-btn">
-									<button type="submit" class="btn btn-default" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
-								</span>
-						</div>
+				
+		<div id="app" v-cloak>
+			<input v-model="term" type="search">
+			<button @click="search">Search</button>
+			<p/>
+
+			<div v-for="result in results" class="result">
+				<img :src="result.artworkUrl100">
+				@foreach ($empresas as $empresa)
+					
+								{{$empresa['nombre']}}
+								
+
+								
+							@endforeach
+			
+				<br clear="left">
+			</div>
+
+			<div v-if="noexmpresas">
+				Sorry, but no exmpresas were found. I blame Apple.
+			</div>
+
+			<div v-if="searching">
+				<i>Searching...</i>
+			</div>
+
+		</div>
+
+		<script src="https://unpkg.com/vue"></script>
+		<script src="app.js"></script>
 					</div>
-					<div class="span1 side-by-side clearfix">
-						<a class="btn btn-default" href="javascript:;">
-							<span class="glyphicon glyphicon-globe"></span> Buscar
-						</a>
-					</div>
+				
 				</div><br><br>
 				<div class="widget-content">
 					<table class="table table-striped table-bordered">
@@ -34,18 +55,15 @@
 								</th>
 								<th id="">Nombre
 								</th>
-								<th id="">Apellidos
+								<th id="">Dirección
 								</th>
 								<th id="">Email
 								</th>
-								<th id="">Anio Fin
+								<th id="">URL
 								</th>
-								<th id="">Date Created
+								<th id="">Telefono
 								</th>
-								<th id="">Exam Date
-								</th>
-								<th id="">Status
-								</th>
+							
 								<th class="td-actions" id="table_action">Action</th>
 							</tr>
 						</thead>
@@ -54,22 +72,20 @@
 							<tr>
 								<td>{{$empresa['id']}}</td>
 								<td>{{$empresa['nombre']}}</td>
-								<td>{{$empresa['apellidos']}}</td>
+								<td>{{$empresa['direccion']}}</td>
 								<td>{{$empresa['email']}}</td>
-								<td>{{$empresa['anio_fin']}}</td>
-								<td>2014-01-10</td>
-								<td>2014-06-14</td>
-								<td>Active</td>
+								<td>{{$empresa['url']}}</td>
+								<td>{{$empresa['telefono']}}</td>
+								
+								
 								<td class="td-actions">
 									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-pencil"></span> Edit
+										<span class="glyphicon glyphicon-pencil"></span> Modificar
 									</a>
 									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-remove"></span> Remove
+										<span class="glyphicon glyphicon-remove"></span> Borrar
 									</a>
-									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-search"></span> View
-									</a>
+								
 								</td>
 							</tr>
 							@endforeach
@@ -77,21 +93,36 @@
 					</table>
 				</div>
 				<!-- /widget-content -->
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="pagination pagination-sm pull-left">
-							<li class="disabled"><a href="javascript:void(0)">«</a></li>
-							<li class="active"><a href="javascript:void(0)">1 <span class="sr-only">(current)</span></a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="javascript:void(0)">»</a></li>
-						</ul>
-					</div>
-				</div>
+			
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+Vue.filter('formatDate', function(d) {
+	if(!window.Intl) return d;
+	return new Intl.DateTimeFormat('en-US').format(new Date(d));
+}); 
+
+const app = new Vue({
+	el:'#app',
+	data:{
+		term:'',
+		results:[],
+		noResults:false,
+		searching:false
+	},
+	methods:{
+		search:function() {
+			this.searching = true;
+			fetch(`http://localhost/phpmyadmin/sql.php?server=1&db=TxJobs&table=empresas&pos=0`)
+			.then(res => res.json())
+			.then(res => {
+				this.searching = false;
+				this.results = res.results;
+				this.noResults = this.results.length === 0;
+			});
+		}
+	}
+});</script>
 @endsection

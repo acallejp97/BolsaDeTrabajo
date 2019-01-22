@@ -54,8 +54,26 @@
             <div class="form-group">
               <div class="enviarCorreo">
                 <div id="crud" class="col-md-12 text-right">
-                  <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                  {{ message }}
+                  <button type="submit" class="btn btn-primary btn-lg" v-on:click:"enviarDatos">Enviar</button>
                 </div>
+                <script src="https://unpkg.com/vue"></script>
+                <script>
+                  var crud= new Vue({
+                      // ELEMENTO
+                      el:"#crud", 
+                      data:{ 
+                        // PARÁMETROS QUE QUEREMOS QUE CONTENGA EL ELEMENTO
+                        message: 'Esto funciona';
+                      },
+                      methods: {
+                        enviarDatos: function(event){
+                          event.preventDefault();
+                          alert=('hola 1 2 3');
+                        }
+                      }
+                    })
+                <script>
               </div>
             </div>
           </fieldset>
