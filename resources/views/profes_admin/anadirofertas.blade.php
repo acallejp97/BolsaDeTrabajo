@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="row">
-
+  <h6>Bienvenid@ {{Auth::user()->nombre}}</h6>
     <div class="col-md-3">
       <form>
       <div class="page-header">
