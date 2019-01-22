@@ -30,6 +30,9 @@ public function alumnos()
     return $this->hasMany(Alumno::class);
 }  
 
+public function profe_admin(){
+    return $this->hasMany(Profe_Admin::class);
+}  
 
 public function comun() { 
         

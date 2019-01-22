@@ -4,6 +4,7 @@
 
 	<div class="row">
 		<div class="col-md-6">
+    <h6>Bienvenid@ {{Auth::user()->nombre}}</h6>
             <div class="input-group" id="adv-search">
                 <input type="text" class="form-control" placeholder="Search for snippets" />
                 <div class="input-group-btn">

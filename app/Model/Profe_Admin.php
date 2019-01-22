@@ -17,7 +17,7 @@ class Profe_Admin extends Model
 	
 public function departamentos()
 {
-    return $this->belongsTo('App\Model\Departamento');
+    return $this->belongsTo(Departamento::class);
 }
 	
 public function Correos()
@@ -25,10 +25,5 @@ public function Correos()
     return $this->belongsTo(Correo::class);
 }
 
-public function comun() { 
-        
-    return $this->hasManyThrough('App\Model\Grado', 'App\Model\Departamento'); 
 
-
-}
 }

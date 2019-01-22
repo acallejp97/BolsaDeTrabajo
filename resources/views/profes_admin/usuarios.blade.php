@@ -48,11 +48,11 @@
 							
 							<tr>
 							
-								<td>{{$users['departamento.nombre']}}</td>
+								<td>{{$comun['nombre']}}</td>
 								
-								<!-- <td>{{$usuario['anio_fin']}}</td> -->
+								 <td>{{$comun['id']}}</td> -->
 							
-								<!-- <td>{{$usuario['grado_nombre']}}</td> -->
+								
 								<td class="td-actions">
 									<a class="btn btn-default btn-xs" href="javascript:;">
 										<span class="glyphicon glyphicon-pencil"></span> Modificar
