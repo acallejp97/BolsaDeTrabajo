@@ -15,8 +15,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
-  {{-- <script src="{{asset('js/user-function/app.js')}}"></script> --}}
-  
+  {{--
+  <script src="{{asset('js/user-function/app.js')}}"></script> --}}
+
   <!-- Styles -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="shortcut icon" href="{{ asset('logo.png') }}">
@@ -66,9 +67,9 @@
         </li>
       </ul>
     </div>
-    @yield('content')
-    <script src="{{asset('js/user-function/app.js')}}"></script>
   </div>
+    @yield('content')
+  <script src="{{asset('js/user-function/app.js')}}"></script>
 </body>
 
 </html>
