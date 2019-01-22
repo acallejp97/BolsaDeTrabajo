@@ -45,7 +45,7 @@
       </ul>
     </div>
     @yield('content')
-    <script src="{{asset('js/user-function/app.js')}}"></script>
+    <script src="{{asset('js/updateUser.js')}}"></script>
   </div>
 </body>
 

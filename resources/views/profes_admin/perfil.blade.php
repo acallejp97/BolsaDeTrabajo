@@ -11,31 +11,28 @@
         <div class="col-sm-3">
             <!--left col-->
             @if (Session::has('status'))
-<hr />
-<div class='text-success'>
-    {{Session::get('status')}}
-</div>
-<hr />
-@endif
-            {{-- <img src='{{url(Auth::user()->imagen)}}' class='img-responsive' style='max-width: 150px' /> --}}
+            <hr />
+            <div class='text-success'>
+                {{Session::get('status')}}
+            </div>
+            <hr /> @endif {{-- <img src='{{url(Auth::user()->imagen)}}' class='img-responsive' style='max-width: 150px' /> --}}
 
-<h3>Opciones:</h3>
-<ul>
-    <li><a href="{{url('perfil')}}">Cambiar mi imagen de perfil</a></li>
-</ul>
-<form method='post' action='{{url("fotoperfil")}}' enctype='multipart/form-data'>
-	{{csrf_field()}}
-	<div class='form-group'>
-        <label for='image'>Imagen: </label>
-        {{Auth::user()->imagen}}
-		<input type="file" name="image" />
-		<div class='text-danger'>{{$errors->first('image')}}</div>
-	</div>
-	<button type='submit' class='btn btn-primary'>Actualizar imagen de perfil</button>
-</form>
+            <h3>Opciones:</h3>
+            <ul>
+                <li><a href="{{url('perfil')}}">Cambiar mi imagen de perfil</a></li>
+            </ul>
+            <form method='post' action='{{url("fotoperfil")}}' enctype='multipart/form-data'>
+                {{csrf_field()}}
+                <div class='form-group'>
+                    <label for='image'>Imagen: </label> {{Auth::user()->imagen}}
+                    <input type="file" name="image" />
+                    <div class='text-danger'>{{$errors->first('image')}}</div>
+                </div>
+                <button type='submit' class='btn btn-primary'>Actualizar imagen de perfil</button>
+            </form>
 
             <br>
-            
+
             <div class="panel panel-default">
                 <div class="panel-heading">Registrado desde <i class="fa fa-link fa-1x"></i></div>
                 <div class="panel-body">{{Auth::user()->created_at}}</div>
@@ -79,24 +76,25 @@
                                 title="Introduce tu email.">
                         </div>
                     </div>
-
                     <div class="form-group">
 
                         <div class="col-xs-11">
                             <label for="password"><h4>Password</h4></label>
-                            <input type="password" class="form-control" name="password1" id="password1" placeholder="Contraseña" title="Introduce la contraseña.">
+                            <input type="password" class="form-control" name="password1" id="password1" v-model="password" v-validate="'required'" placeholder="Contraseña"
+                                title="Introduce la contraseña.">
                         </div>
                     </div>
                     <div class="form-group">
 
                         <div class="col-xs-11">
                             <label for="password2"><h4>Confirmar Contraseña</h4></label>
-                            <input type="password" class="form-control" name="password2" id="password2" placeholder="Repite Contraseña" title="Confirma tu contraseña por favor.">
+                            <input type="password" class="form-control" name="password2" id="password2" v-model="reenteredPassword" v-validate="'required|confirmed:password'"
+                                placeholder="Repite Contraseña" title="Confirma tu contraseña por favor.">
                         </div>
                     </div>
                     <div class="form-group col-xs-8">
                         <div class="col-xs-8">
-                            <button id="updateUser" class="btn btn-lg btn-success">
+                            <button type="submit" id="updateUser" class="btn btn-lg btn-success">
                                     <i class="glyphicon glyphicon-ok-sign"></i>
                                     Guardar</button>
 

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- CSRF Token -->
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="csrf-token" content="{{csrf_token()}}">
 
   <!-- Titulo -->
   <title>{{ config('app.name', 'Laravel') }}</title>
@@ -69,7 +69,7 @@
     </div>
   </div>
   @yield('content')
-  <script src="{{asset('js/user-function/app.js')}}"></script>
+  <script src="{{asset('js/updateUser.js')}}"></script>
 </body>
 
 </html>
