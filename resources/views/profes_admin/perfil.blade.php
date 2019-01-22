@@ -7,12 +7,12 @@
             <h1>{{Auth::user()->nombre . ' ' . Auth::user()->apellidos}}</h1>
         </div>
     </div>
-    <div class="row">
+    <div id="datosPerfil" class="row">
         <div class="col-sm-3">
             <!--left col-->
             <div class="text-center">
                 {{-- <img src="{{Auth::user()->imagen}}" class="avatar img-circle img-thumbnail" alt="avatar"> --}}
-                <input type="file" class="text-center center-block file-upload" accept="image/*">
+                <input type="file" id="imagen" class="text-center center-block file-upload" accept="image/*">
             </div>
             <br>
 
@@ -31,7 +31,7 @@
             </ul>
 
         </div>
-        <div id="datosPerfil" class="col-sm-9">
+        <div class="col-sm-9">
             <div class="tab-content">
                 <div class="tab-pane active">
                     <hr>
@@ -39,14 +39,15 @@
 
                         <div class="col-xs-11">
                             <label for="nombre"><h4>Nombre</h4></label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="{{Auth::user()->nombre}}" v-model="nombre" title="Introduce tu nombre.">
+                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="{{Auth::user()->nombre}}" title="Introduce tu nombre.">
                         </div>
                     </div>
                     <div class="form-group">
 
                         <div class="col-xs-11">
                             <label for="apellido"><h4>Apellidos</h4></label>
-                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellidos" v-model="apellido" title="Introduce tus apellidos.">
+                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellidos" value="{{Auth::user()->apellidos}}"
+                                title="Introduce tus apellidos.">
                         </div>
                     </div>
 
@@ -54,7 +55,8 @@
 
                         <div class="col-xs-11">
                             <label for="email"><h4>Email</h4></label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" v-model="email" title="Introduce tu email.">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" value="{{Auth::user()->email}}"
+                                title="Introduce tu email.">
                         </div>
                     </div>
 
@@ -62,15 +64,14 @@
 
                         <div class="col-xs-11">
                             <label for="password"><h4>Password</h4></label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" v-model="password1" title="Introduce la contraseña.">
+                            <input type="password" class="form-control" name="password1" id="password1" placeholder="Contraseña" title="Introduce la contraseña.">
                         </div>
                     </div>
                     <div class="form-group">
 
                         <div class="col-xs-11">
                             <label for="password2"><h4>Confirmar Contraseña</h4></label>
-                            <input type="password" class="form-control" name="password2" id="password2" placeholder="Repite Contraseña" v-model="password2"
-                                title="Confirma tu contraseña por favor.">
+                            <input type="password" class="form-control" name="password2" id="password2" placeholder="Repite Contraseña" title="Confirma tu contraseña por favor.">
                         </div>
                     </div>
                     <div class="form-group col-xs-8">
@@ -89,13 +90,4 @@
         </div>
     </div>
 </div>
-<script>
-    window.onload=function(){
-        document.getElementById('nombre').value="{{Auth::user()->nombre}}";
-        document.getElementById('apellido').value="{{Auth::user()->apellidos}}";
-        document.getElementById('email').value="{{Auth::user()->email}}"
-        document.getElementById('password').value="{{Auth::user()->password}}";
-        document.getElementById('password2').value="{{Auth::user()->password}}";
-    };
-</script>
 @endsection

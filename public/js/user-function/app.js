@@ -1,29 +1,37 @@
-const app = new Vue({
+const perfil = new Vue({
     el: "#datosPerfil",
     data: {
-        nombre: "admin",
-        apellido: "admin",
-        email: "admin@admin.com",
-        password1: "admin",
-        password2: "admin"
+        nombre: $("#nombre").val(),
+        apellido: $("#apellido").val(),
+        email: $("#email").val(),
+        imagen: $("#imagen").val(),
+        password1: $("#password1").val(),
+        password2: $("#password2").val()
     },
     methods: {
-
         updateUser: function() {
-            this.$http
-                .post("./actualizarUsuario", {
+            console.log(this.imagen);
+            axios
+                .post("../public/actualizarUsuario", {
                     nombre: this.nombre,
+                    apellido: this.nombre,
                     email: this.email,
+                    imagen: this.imagen,
                     password1: this.password1,
                     password2: this.password2
                 })
                 .then(function() {
-                    alert("Departamento insertado correctamente");
-                });
-        },
-        deleteUser: function() {},
-        mounted() {
-            this.getTasks();
+                    console.log("Departamento insertado correctamente");
+                }),
+                response => {
+                    console.log(response);
+                };
         }
-    }
+    },
+    deleteUser: function() {}
 });
+
+function matchPasswd(passwd1, passwd2) {
+    if (passwd1 == passwd2) return true;
+    else return false;
+}

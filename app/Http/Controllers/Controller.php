@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Model\Departamento;
-use App\Model\Oferta;
-use App\Model\Profe_Admin;
 use App\Model\Empresa;
 use App\Model\Grado;
+use App\Model\Oferta;
+use App\Model\Profe_Admin;
 use App\User;
 use Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -22,31 +22,28 @@ class Controller extends BaseController
     {
         $ofertas = Oferta::all();
         switch (Auth::user()->rango) {
-            case 0:  
-        
-           
-           
+            case 0:
+
             case 1:
-            $empresas = Empresa::all();
-            $ofertas = Oferta::all();
-            $grados = Grado::all();
-            $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados);
-            $result = array_unique($empresa_oferta);
-            if (!$result) {
-                return view("profes_admin/anadirofertas");
-            }
-            return view("profes_admin/anadirofertas")->with('result', $result);
+                $empresas = Empresa::all();
+                $ofertas = Oferta::all();
+                $grados = Grado::all();
+                $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados);
+                $result = array_unique($empresa_oferta);
+                if (!$result) {
+                    return view("profes_admin/anadirofertas");
+                }
+                return view("profes_admin/anadirofertas")->with('result', $result);
 
                 break;
-                
 
             case 2:
-          
-            $ofertas = Oferta::all();
-            if (!$ofertas) {
-                return view("alumnos/ofertas");
-            }
-            return view("alumnos/ofertas")->with('ofertas', $ofertas);
+
+                $ofertas = Oferta::all();
+                if (!$ofertas) {
+                    return view("alumnos/ofertas");
+                }
+                return view("alumnos/ofertas")->with('ofertas', $ofertas);
 
         }
     }
@@ -94,14 +91,14 @@ class Controller extends BaseController
     public function mostrarUsuario(Request $request)
     {
         $task = array([
-            'nombre'=>Auth::user()->nombre,
-            'apellidos'=>Auth::user()->nombre,
-            'email'=>Auth::user()->nombre,
-            'rango'=>Auth::user()->nombre,
-            'password'=>Auth::user()->nombre,
-            'imagen'=>Auth::user()->nombre
-            
-            ]);
+            'nombre' => Auth::user()->nombre,
+            'apellidos' => Auth::user()->nombre,
+            'email' => Auth::user()->nombre,
+            'rango' => Auth::user()->nombre,
+            'password' => Auth::user()->nombre,
+            'imagen' => Auth::user()->nombre,
+
+        ]);
         return $task;
         //Esta función devolverá los datos de una tarea que hayamos seleccionado para cargar el formulario con sus datos
     }
@@ -112,14 +109,36 @@ class Controller extends BaseController
             return redirect('/');
         }
 
-        $actualizarUsuario = User::findOrFail($request->id);
+        $nombre = $request->nombre;
+        $apellido = $request->apellido;
+        $email = $request->email;
+        $password1 = $request->password1;
+        $password2 = $request->password2;
+        $imagen = $request->imagen;
 
-        $actualizarUsuario->nombre = $request->nombre;
-        $actualizarUsuario->apellidos = $request->apellidos;
-        $actualizarUsuario->email = $request->email;
-        $actualizarUsuario->password = $request->password;
-        $actualizarUsuario->imagen = $request->imagen;
+        $actualizarUsuario = User::findOrFail(Auth::user()->id);
+        if ($nombre != null) {
+            $actualizarUsuario->nombre = $nombre;
+        }
+
+        if ($apellido != null) {
+            $actualizarUsuario->apellidos = $apellido;
+        }
+
+        if ($email != null) {
+            $actualizarUsuario->email = $email;
+        }
+
+        if ($password1 != null) {
+            $actualizarUsuario->password = $password1;
+        }
+
+        if ($imagen != null) {
+            $actualizarUsuario->imagen = $imagen;
+        }
 
         $actualizarUsuario->save();
+        return redirect("perfil");
+
     }
 }
