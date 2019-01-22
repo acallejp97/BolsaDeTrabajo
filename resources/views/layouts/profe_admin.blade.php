@@ -68,7 +68,7 @@
       </ul>
     </div>
   </div>
-    @yield('content')
+  @yield('content')
   <script src="{{asset('js/user-function/app.js')}}"></script>
 </body>
 

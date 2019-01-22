@@ -17,7 +17,7 @@
 </div>
 <hr />
 @endif
-            <img src='{{url(Auth::user()->imagen)}}' class='img-responsive' style='max-width: 150px' />
+            {{-- <img src='{{url(Auth::user()->imagen)}}' class='img-responsive' style='max-width: 150px' /> --}}
 
 <h3>Opciones:</h3>
 <ul>
@@ -96,11 +96,11 @@
                     </div>
                     <div class="form-group col-xs-8">
                         <div class="col-xs-8">
-                            <button v-on:click="updateUser" class="btn btn-lg btn-success">
+                            <button id="updateUser" class="btn btn-lg btn-success">
                                     <i class="glyphicon glyphicon-ok-sign"></i>
                                     Guardar</button>
 
-                            <button v-on:click="deleteUser" class="btn btn-lg btn-danger">
+                            <button id="deleteUser" class="btn btn-lg btn-danger">
                                     <i class="glyphicon glyphicon-remove"></i>
                                     Borrar Perfil</button>
                         </div>
