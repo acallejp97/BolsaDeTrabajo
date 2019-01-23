@@ -148,35 +148,41 @@ class Controller extends BaseController
 
     public function updateUser(Request $request)
     {
-        $enviado = json_decode($_REQUEST['actualizacionUsuario']);
-
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $nombre = $enviado->nombre;
-        $apellido = $enviado->apellido;
-        $email = $enviado->email;
-        $password1 = $enviado->password1;
 
-        $actualizarUsuario = User::findOrFail(Auth::user()->id);
-        if ($nombre != "") {
-            $actualizarUsuario->update(['nombre' => $nombre]);
-        }
+        if (isset($_REQUEST['actualizacionUsuario'])) {
 
-        if ($apellido != "") {
-            $actualizarUsuario->update(['apellido' => $apellido]);
-        }
+            $enviado = json_decode($_REQUEST['actualizacionUsuario']);
 
-        if ($email != "") {
-            $actualizarUsuario->update(['email' => $email]);
-        }
+            $nombre = $enviado->nombre;
+            $apellido = $enviado->apellido;
+            $email = $enviado->email;
+            $password1 = $enviado->password1;
 
-        if ($password1 != "") {
-            $actualizarUsuario->update(['password1' => $password1]);
+            $actualizarUsuario = User::findOrFail(Auth::user()->id);
+            if ($nombre != "") {
+                $actualizarUsuario->update(['nombre' => $nombre]);
+            }
+
+            if ($apellido != "") {
+                $actualizarUsuario->update(['apellido' => $apellido]);
+            }
+
+            if ($email != "") {
+                $actualizarUsuario->update(['email' => $email]);
+            }
+
+            if ($password1 != "") {
+                $actualizarUsuario->update(['password1' => $password1]);
+            }
+
+        } else {
+            $actualizarUsuario = User::findOrFail(Auth::user()->id)->delete();
         }
 
     }
-
     public function search()
     {
 

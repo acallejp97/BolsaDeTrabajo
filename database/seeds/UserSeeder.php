@@ -26,6 +26,26 @@ class UserSeeder extends Seeder
             'updated_at' => date('Y-m-d H:m:s'),
             'imagen' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
         ));
+        DB::table('user')->insert(array(
+            'email' => 'a@a.com',
+            'nombre' => 'profesor',
+            'rango' => 1,
+            'apellidos' => 'profesor',
+            'password' => Hash::make('prueba'),
+            'created_at' => date('Y-m-d H:m:s'),
+            'updated_at' => date('Y-m-d H:m:s'),
+            'imagen' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+        ));
+        DB::table('user')->insert(array(
+            'email' => 'b@b.com',
+            'nombre' => 'alumno',
+            'rango' => 2,
+            'apellidos' => 'alumno',
+            'password' => Hash::make('prueba'),
+            'created_at' => date('Y-m-d H:m:s'),
+            'updated_at' => date('Y-m-d H:m:s'),
+            'imagen' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+        ));
 
         //Cantidad de user a crear
         for ($numerouser = 0; $numerouser != 90; $numerouser++) {

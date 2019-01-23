@@ -8,22 +8,17 @@
     </div>
     <div id="datosPerfil" class="row">
         <div class="col-sm-3">
-            <!--left col-->
-         
-            
+            <form method='post' action='{{url("fotoperfil")}}' enctype='multipart/form-data'>
+                {{csrf_field()}}
+                <div class='form-group'>
 
+                    <img src='{{url("./perfiles/".Auth::user()->imagen)}}' class='img-responsive' style=' height:200px; width: 200px;' />
 
-<form method='post' action='{{url("fotoperfil")}}' enctype='multipart/form-data'>
-	{{csrf_field()}}
-	<div class='form-group'>
-
-        <img src='{{url("./perfiles/".Auth::user()->imagen)}}' class='img-responsive' style=' height:200px; width: 200px;' />
-       
-		<input style="color: transparent; margin-top: 3em;" type="file" name="image" />
-		<div class='text-danger'>{{$errors->first('image')}}</div>
-	</div>
-	<button type='submit' class='btn btn-primary'>Actualizar imagen de perfil</button>
-</form>
+                    <input style="color: transparent; margin-top: 3em;" type="file" name="image" />
+                    <div class='text-danger'>{{$errors->first('image')}}</div>
+                </div>
+                <button type='submit' class='btn btn-primary'>Actualizar imagen de perfil</button>
+            </form>
             <br>
 
             <div class="panel panel-default">
@@ -75,13 +70,13 @@
                     </div>
                     <div class="form-group col-xs-8">
                         <div class="col-xs-8">
+                            <br/>
                             <button type="submit" id="updateUser" class="btn btn-lg btn-success">
                                     <i class="glyphicon glyphicon-ok-sign"></i>
-                                    Guardar</button>
-
-                            <button id="deleteUser" class="btn btn-lg btn-danger">
+                                    Guardar</button> @if(Auth::user()->rango!=0)
+                            <button type="submit" id="deleteUser" class="btn btn-lg btn-danger">
                                     <i class="glyphicon glyphicon-remove"></i>
-                                    Borrar Perfil</button>
+                                    Borrar Perfil</button> @endif
                         </div>
                     </div>
                 </div>
@@ -93,5 +88,5 @@
 <script>
     window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
 </script>
-  <script src="{{asset('js/updateUser.js')}}"></script>
+<script src="{{asset('js/updateUser.js')}}"></script>
 @endsection

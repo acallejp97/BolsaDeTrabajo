@@ -13951,9 +13951,24 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
 
 Vue.component("passwords", __webpack_require__(40));
 
-var app = new Vue({
-  el: "#passwords"
-});
+new Vue({
+    data: {
+        password: $("#password1").val(),
+        reenteredPassword: $("#password2").val()
+    },
+    computed: {
+        matchPassword: function matchPassword() {
+            return this.password === this.reenteredPassword;
+        }
+    },
+    validator: {
+        validates: {
+            match: function match(v, result) {
+                return result;
+            }
+        }
+    }
+}).$mount("#passwords");
 
 /***/ }),
 /* 13 */
@@ -56696,7 +56711,37 @@ var render = function() {
           }
         })
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.validation.reenteredPassword.dirty,
+            expression: "validation.reenteredPassword.dirty"
+          }
+        ]
+      },
+      [
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.validation.reenteredPassword.match,
+                expression: "validation.reenteredPassword.match"
+              }
+            ]
+          },
+          [_vm._v("doesn't match password")]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
