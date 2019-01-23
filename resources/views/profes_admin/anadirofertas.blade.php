@@ -14,14 +14,14 @@
 
         <div class="form-group">
           <!-- Full Name -->
-          <label for="full_name_id" class="control-label">Titulo</label>
-          <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer">
+          <label for="titulo" class="control-label">Titulo</label>
+          <input type="text" class="form-control" id="titulo" name="titulo" placeholder="John Deer">
         </div>
 
         <div class="form-group">
           <!-- Street 1 -->
-          <label for="street1_id" class="control-label">Descriptción</label>
-          <textarea type="text" class="form-control" rows="4" , cols="164" id="street1_id" name="street1" style="resize:none," placeholder="Street address, P.O. box, company name, c/o"></textarea>
+          <label for="descripcion" class="control-label">Descriptción</label>
+          <textarea type="text" name="descripcion"class="form-control" rows="4" , cols="164" id="descripcion"  style="resize:none," placeholder="Street address, P.O. box, company name, c/o"></textarea>
 
         </div>
 
@@ -29,13 +29,13 @@
 
         <div class="form-group">
           <!-- State Button -->
-          <label for="state_id" class="control-label">Grado</label>
-          <select class="form-control" id="state_id">
+          <label for="id_grado" class="control-label">Grado</label>
+          <select class="form-control" id="id_grado">
             @foreach ($result['grados'] as $grado) 
             @foreach ($result['ofertas'] as $oferta) 
             @if($grado['id']==$oferta['id_grado'])
             
-            <option value="AL">{{$grado['nombre']}}</option>
+            <option name="id_grado"value="AL">{{$grado['nombre']}}</option>
             @break
             @endif
               @endforeach
@@ -46,13 +46,13 @@
 
         <div class="form-group">
           <!-- State Button -->
-          <label for="state_id" class="control-label">Empresa</label>
-          <select class="form-control" id="state_id">
+          <label for="id_empresa" class="control-label">Empresa</label>
+          <select class="form-control"  id="id_empresa">
             @foreach ($result['empresas'] as $empresa) 
             @foreach ($result['ofertas'] as $oferta) 
             @if($empresa['id']==$oferta['id_empresa'])
             
-            <option value="AL">{{($empresa)['nombre']}}</option>
+            <option name="id_empresa" value="AL">{{($empresa)['nombre']}}</option>
             @break
             @endif
             @endforeach
@@ -62,13 +62,20 @@
 
         <div class="form-group">
           <!-- Zip Code-->
-          <label for="zip_id" class="control-label">Puestos Vacantes</label>
-          <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####">
+          <label for="puestos" class="control-label">Puestos Vacantes</label>
+          <input type="text" class="form-control" id="puestos" name="puestos" placeholder="#####">
+        </div>
+
+
+        <div class="form-group">
+          <!-- Zip Code-->
+          <label for="id_profesor" class="control-label">profesores</label>
+          <input type="text" class="form-control" id="id_profesor" name="id_profesor" placeholder="#####">
         </div>
 
         <div class="form-group">
           <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary">Publicar</button>
+          <button type="submit" style="background: #b50045; color:white;"id="updateOferta"class="btn btn-primary">Publicar</button>
         </div>
 
       </form>
@@ -119,4 +126,9 @@
     </div>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+<script>
+    window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
+</script>
+<script src="{{asset('js/insertOferta.js')}}"></script>
 @endsection

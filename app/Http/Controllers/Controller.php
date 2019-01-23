@@ -146,6 +146,65 @@ class Controller extends BaseController
         //Esta función devolverá los datos de una tarea que hayamos seleccionado para cargar el formulario con sus datos
     }
 
+    public function insertOferta(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['`insertaroferta`'])) {
+
+            $enviado = json_decode($_REQUEST['insertaroferta']);
+
+            $titulo = $enviado->titulo;
+            $descripcion = $enviado->descripcion;
+            $id_empresa = $enviado->id_empresa;
+            $id_grado = $enviado->id_grado;
+            $id_profesor = $enviado->id_profesor;
+            $puestos = $enviado->puestos;
+
+            $insertaroferta = new Oferta;
+            if ($titulo != "") {
+                $insertaroferta->update(['titulo' => $titulo]);
+            }
+
+            if ($descripcion != "") {
+                $insertaroferta->update(['descripcion' => $descripcion]);
+            }
+
+            if ($id_empresa != "") {
+                $insertaroferta->update(['id_empresa' => $id_empresa]);
+            }
+
+            if ($id_grado != "") {
+                $insertaroferta->update(['id_grado' => $id_grado]);
+            }
+            if ($id_profesor != "") {
+                $insertaroferta->update(['id_profesor' => $id_profesor]);
+            }
+
+        } else {
+           
+            // $insertaroferta = Oferta::findOrFail(Auth::user()->id)->delete();
+        }
+
+    }
+    // public function insertar(Request $request)
+    // {
+        
+    //         $titulo =  $request->string('titulo');
+    //         $descripcion =  $request->string('descripcion');
+    //         $id_empresa =  $request->string('id_empresa');
+    //         $id_grado =  $request->string('id_grado');
+    //         $id_profesor =  $request->string('id_profesor');
+    //         $puestos =  $request->string('puestos');
+    //         $oferta = new Oferta;
+    //         $oferta->update(['titulo' => $titulo, 'descripcion' => $descripcion,'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos' => $puestos ]);
+        
+
+    //         return view("profes_admin/insertaroferta")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
+    //     }
+    
     public function updateUser(Request $request)
     {
         if (!$request->ajax()) {
