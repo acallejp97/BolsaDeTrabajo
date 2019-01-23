@@ -21,22 +21,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesores")->name('anadirProfesores');
 
     //Profe y admin
-<<<<<<< HEAD
-    Route::get('/empresas', "Profe_AdminController@Empresas");
-    Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas");
-    Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios");
-    Route::get('/usuarios', "Profe_AdminController@Usuarios");
-    Route::get('/cursos', "Profe_AdminController@Cursos");
-    Route::post('/aniadirDepartamento', 'Profe_AdminController@insertDepartamento');
-    Route::post('/aniadirGrado', 'Profe_AdminController@insertGrado');
-=======
     Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
     Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas")->name('anadirEmpresas');
     Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios")->name('anadirUsuarios');
     Route::get('/usuarios', "Profe_AdminController@Usuarios")->name('usuarios');
     Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
-    Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartament')->name('anadirDepartamento');
->>>>>>> 45093b8d63a27cc20d7f717546a435db9157645e
+    Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
+    Route::post('/aniadirGrado', 'Profe_AdminController@insertGrado')->name('anadirGrado');
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
