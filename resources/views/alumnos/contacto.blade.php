@@ -4,7 +4,7 @@
 
 <div class="container">
 	<div class="row">
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-8 col-md-offset-3">
         <div class="well well-sm">
           <form class="form-horizontal" action="{{URL::to('/')}}/contacto" method="get">
           <fieldset>
@@ -36,7 +36,7 @@
             <!-- Form actions -->
             <div class="form-group">
               <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                <button type="submit" style="background: #b50045; float:right;color:white;"class="btn btn-primary btn-lg">Enviar</button>
               </div>
             </div>
           </fieldset>

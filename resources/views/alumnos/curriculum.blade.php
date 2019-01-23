@@ -21,7 +21,7 @@
 		<input style="color: transparent; margin-top: 3em;" type="file" name="image" />
 		<div class='text-danger'>{{$errors->first('image')}}</div>
 	</div>
-	<button type='submit' class='btn btn-primary'>Actualizar imagen de perfil</button>
+	<button type='submit' style="background: #b50045; color:white;"class='btn btn-primary'>Actualizar imagen de perfil</button>
 </form>
       </hr><br>
 
@@ -34,11 +34,8 @@
           
           <ul class="list-group">
             <li class="list-group-item text-muted">IDIOMAS<i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Idioma 1</strong></span> C1</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Idioma 2</strong></span> A2</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Idioma 3</strong></span> B2</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Idioma 4</strong></span> B1</li>
-          </ul> 
+
+                        <textarea class="form-control counted" name="idiomas"  placeholder="idiomas" rows="5" style="margin-bottom:10px;">{{$curriculum['idiomas']}}</textarea>          </ul> 
                
           
           
@@ -70,7 +67,7 @@
                           
                           <div class="col-xs-4">
                               <label for="teléfono"><h4>Telefono</h4></label>
-                              <input type="text" class="form-control" name="teléfono" id="teléfono" placeholder="Introduce Teléfono" title="Introduce tu telefono.">
+                              <input type="text" class="form-control" name="teléfono" value="{{$curriculum['telefono']}}" id="teléfono" placeholder="Introduce Teléfono" title="Introduce tu telefono.">
                           </div>
                       </div>
           
@@ -80,9 +77,9 @@
                               
                               <label for="direccion"><h4>Dirección</h4></label>
                               
-                             @foreach($curriculum as $curr)
+                           
                               <input type="text" class="form-control" value="{{$curriculum['direccion']}}" name="direccion" id="direccion" placeholder="Introduce dirección" title="Introduce tu dirección.">
-                           @endforeach
+                       
                                               </div>
                       </div>
                       <div class="form-group">
@@ -95,21 +92,21 @@
                    
                          
                       <div class="panel-body">                
-                    <form accept-charset="UTF-8" action="" method="POST">
+                    
                     <label for="formacion"><h4>Formación Académica</h4></label>
-                        <textarea class="form-control counted" name="message" placeholder="Formación academica" rows="5" style="margin-bottom:10px;"></textarea>
-                    </form>
+                        <textarea class="form-control counted" name="academica"  placeholder="Formación academica" rows="5" style="margin-bottom:10px;">{{$curriculum['competencias']}}</textarea>
+                    
                 </div>
                       <div class="panel-body">                
-                    <form accept-charset="UTF-8" action="" method="POST">
+                   
                     <label for="experiencia"><h4>Experiencia</h4></label>
-                        <textarea class="form-control counted" name="message" placeholder="Experiencia Laboral" rows="5" style="margin-bottom:10px;"></textarea>
-                    </form>
+                        <textarea class="form-control counted" name="experiencia" placeholder="Experiencia Laboral" rows="5" style="margin-bottom:10px;">{{$curriculum['experiencia']}}</textarea>
+                  
                 </div>
                 <div class="panel-body">                
                     <form accept-charset="UTF-8" action="" method="POST">
                     <label for="otros"><h4>Otros datos</h4></label>
-                        <textarea class="form-control counted" name="message" placeholder="Otros datos" rows="5" style="margin-bottom:10px;"></textarea>
+                        <textarea class="form-control counted" name="message"  placeholder="Otros datos" rows="5" style="margin-bottom:10px;">{{$curriculum['otros_datos']}}</textarea>
                     </form>
                 </div>
                       <div class="form-group">
@@ -119,8 +116,11 @@
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                <button class="btn btn-lg btn-success" style="background:#D8BFD8; float:right; color:black;"href="javascript:;">
+										<span class="glyphicon glyphicon-remove" ></span> Borrar
+									</button>
+                              	<button class="btn btn-lg btn-success" style="background: #b50045; float:right;color:white;"type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Guardar</button>
+                                 
                             </div>
                       </div>
                       <div class="form-group">
