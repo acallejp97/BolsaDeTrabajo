@@ -45,7 +45,7 @@
       </ul>
     </div>
     @yield('content')
-    <script src="{{asset('js/updateUser.js')}}"></script>
+  <script src="{{ asset('js/app.js') }}" defer></script>
   </div>
 </body>
 
