@@ -13,6 +13,7 @@
   <!-- Scripts -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
+  
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
   <!-- Styles -->
@@ -21,26 +22,27 @@
   <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/menu.css">
 </head>
 
 <body>
-  <div class="card text-center">
-    <div class="card-header">
+  <div class="card text-center" >
+    <div class="card-header" >
       <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('home') }}">Ofertas</a>
+        <li  class="nav-item {{ request()->is('home') ? 'active' : '' }}" >
+          <a  style="color:#b50045;"class="nav-link" href="{{ route('home') }}">Ofertas</a>
         </li>
         <li class="nav-item {{ request()->is('actualizarCV') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('actualizarCV') }}">Actualizar CV</a>
+          <a  style="color:#b50045;"class="nav-link" href="{{ route('actualizarCV') }}">Actualizar CV</a>
         </li>
         <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('perfil') }}">Ver Perfil</a>
+          <a  style="color:#b50045;"class="nav-link" href="{{ route('perfil') }}">Ver Perfil</a>
         </li>
         <li class="nav-item {{ request()->is('contacto') ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
+          <a  style="color:#b50045;"class="nav-link" href="{{ route('contacto') }}">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logout">Cerrar Sesion</a>
+          <a style="color:#b50045;"class="nav-link" href="logout">Cerrar Sesion</a>
         </li>
       </ul>
     </div>
