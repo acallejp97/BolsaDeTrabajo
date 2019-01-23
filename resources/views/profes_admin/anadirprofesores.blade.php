@@ -110,7 +110,7 @@
 								
 								
 								<td class="td-actions">
-									<a class="btn btn-default btn-xs" href="javascript:;">
+									<a style="background: #b50045; color:white;"class="btn btn-default btn-xs" href="javascript:;">
 										<span class="glyphicon glyphicon-pencil"></span> Modificar
 									</a>
 									<a class="btn btn-default btn-xs" href="javascript:;">

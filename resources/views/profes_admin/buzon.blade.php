@@ -37,8 +37,7 @@
 								</th>
 								<th class="text-center" id="">Descripción
 								</th>
-								<th id="">
-								</th>
+								
 								<th class="td-actions" id="table_action"></th>
 							</tr>
 						</thead>
