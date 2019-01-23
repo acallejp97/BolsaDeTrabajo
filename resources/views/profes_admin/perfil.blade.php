@@ -10,7 +10,6 @@
     <div id="datosPerfil" class="row">
         <div class="col-sm-3">
             <!--left col-->
-<<<<<<< HEAD
          
             
 
@@ -26,29 +25,6 @@
 	</div>
 	<button type='submit' class='btn btn-primary'>Actualizar imagen de perfil</button>
 </form>
-=======
-            @if (Session::has('status'))
-            <hr />
-            <div class='text-success'>
-                {{Session::get('status')}}
-            </div>
-            <hr /> @endif {{-- <img src='{{url(Auth::user()->imagen)}}' class='img-responsive' style='max-width: 150px' /> --}}
-
-            <h3>Opciones:</h3>
-            <ul>
-                <li><a href="{{url('perfil')}}">Cambiar mi imagen de perfil</a></li>
-            </ul>
-            <form method='post' action='{{url("fotoperfil")}}' enctype='multipart/form-data'>
-                {{csrf_field()}}
-                <div class='form-group'>
-                    <label for='image'>Imagen: </label> {{Auth::user()->imagen}}
-                    <input type="file" name="image" />
-                    <div class='text-danger'>{{$errors->first('image')}}</div>
-                </div>
-                <button type='submit' class='btn btn-primary'>Actualizar imagen de perfil</button>
-            </form>
->>>>>>> 305f55429602a3ea0bfd46d4337f4572c375920f
-
             <br>
 
             <div class="panel panel-default">
@@ -126,8 +102,4 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 305f55429602a3ea0bfd46d4337f4572c375920f
 @endsection

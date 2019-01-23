@@ -99,11 +99,11 @@
 
     </div><br>
       @foreach ($result['ofertas'] as $oferta)
-      <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="" style="width:30%; float:left;">
+     
       <div class="col-md-7">
-        <h3>{{$oferta['titulo']}}</h3>
+        <h3 class="center">{{$oferta['titulo']}}</h3>
         <p>{{$oferta['descripcion']}}</p>
-        <p>{{$oferta['puestos-vacantes']}}</p>
+        <p> <strong>Puestos vacantes: {{$oferta['puestos-vacantes']}}</strong></p>
         <td class="td-actions">
 									<a class="btn btn-default btn-xs" href="javascript:;">
 										<span class="glyphicon glyphicon-pencil"></span> Modificar
