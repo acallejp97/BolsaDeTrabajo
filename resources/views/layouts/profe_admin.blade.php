@@ -29,37 +29,37 @@
   <div class="card text-center">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link" href="perfil">Ver Perfil</a>
+        <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('perfil') }}">Ver Perfil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="anadirEmpresas">Alta Empresas</a>
+        <li class="nav-item {{ request()->is('anadirEmpresas') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('anadirEmpresas') }}">Alta Empresas</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link " href="anadirUsuarios">Alta Usuarios</a>
+        <li class="nav-item {{ request()->is('anadirUsuarios') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('anadirUsuarios') }}">Alta Usuarios</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="usuarios">Usuarios</a>
+        <li class="nav-item {{ request()->is('usuarios') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('usuarios') }}">Usuarios</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="empresas">Empresas</a>
+        <li class="nav-item {{ request()->is('empresas') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('empresas') }}">Empresas</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="home">Ofertas</a>
+        <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('home') }}">Ofertas</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="cursos">Cursos</a>
+        <li class="nav-item {{ request()->is('cursos') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('cursos') }}">Cursos</a>
         </li>
         @if ((Auth::user()->rango)==1)
-        <li class="nav-item">
-          <a class="nav-link" href="contacto">Contacto</a>
+        <li class="nav-item {{ request()->is('contacto') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
         </li>
         @endif @if ((Auth::user()->rango)==0)
-        <li class="nav-item">
-          <a class="nav-link " href="anadirProfesores">Alta Profesores</a>
+        <li class="nav-item {{ request()->is('anadirProfesores') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('anadirProfesores') }}">Alta Profesores</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="buzon">Buzon</a>
+        <li class="nav-item {{ request()->is('buzon') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('buzon') }}">Buzon</a>
         </li>
         @endif
         <li class="nav-item">
@@ -69,7 +69,7 @@
     </div>
   </div>
   @yield('content')
-  <script src="{{asset('js/updateUser.js')}}"></script>
+  <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
 </html>
