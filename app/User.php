@@ -37,13 +37,15 @@ public function grados()
     return $this->hasMany(Grado::class);
 }
 
-public function Curriculum()
+public function alumno()
 {
-    return $this->belongsTo(Curriculum::class);
+    return $this->belongsTo(Alumno::class);
 }
 
 public function Correos()
 {
     return $this->hasMany(Correo::class);
 }
+
+
 }

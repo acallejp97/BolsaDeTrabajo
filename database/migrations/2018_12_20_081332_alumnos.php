@@ -16,10 +16,11 @@ class Alumnos extends Migration
         Schema::dropIfExists('alumnos');
         Schema::create('alumnos', function (Blueprint $table) {
             $table->increments('id', 5);
-            $table->unsignedInteger('id_user')->unique();
+            $table->unsignedInteger('id_user')->unsigned()->unique('id_user', 'alumno_id_user');
+            $table->foreign('id_user')->references('id')->on('user')->onDelete('cascade');
             $table->unsignedInteger('anio_fin');
 
-            $table->foreign('id_user')->references('id')->on('user')->onDelete('cascade');
+         
             $table->timestamps();
         });
     }

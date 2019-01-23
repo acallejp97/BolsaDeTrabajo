@@ -1,24 +1,40 @@
-const app = new Vue({
-    el: "#botones",
+/*
+ *
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+require("./bootstrap");
+
+window.Vue = require("vue");
+
+import VeeValidate from "vee-validate";
+Vue.use(VeeValidate);
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+Vue.component("passwords", require("./components/passwords.vue"));
+
+new Vue({
     data: {
-        nombre: "CARACOLA",
-        email: "",
-        password1: "",
-        password2: ""
+        password: $("#password1").val(),
+        reenteredPassword: $("#password2").val()
     },
-    methods: {
-        updateTable: function() {
-            Console.console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            this.$http
-                .post("/actualizarUsuario", {
-                    nombre: this.nombre,
-                    email: this.email,
-                    password1: this.password1,
-                    password2: this.password2
-                })
-                .then(function() {
-                    alert("Datos modificados correctamente");
-                });
+    computed: {
+        matchPassword: function() {
+            return this.password === this.reenteredPassword;
+        }
+    },
+    validator: {
+        validates: {
+            match: function(v, result) {
+                return result;
+            }
         }
     }
-});
+}).$mount("#passwords");

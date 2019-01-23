@@ -53,7 +53,7 @@
 								<div class="media-heading">
 
 									<td><a href="#" class="pull-left"> </a>
-										<img alt="..." src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object" style="float:left; width:50px">
+									<img src='{{url("./perfiles/".$usuarios["imagen"])}}' class="media-object" style="float:left; height: 50px; width:50px">
 									</td>
 									<td> <a href="mail-single.html" class="m-r-10">{{$correo['asunto']}}</a> </td>
 
