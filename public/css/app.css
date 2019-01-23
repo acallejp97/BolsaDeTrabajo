@@ -4765,7 +4765,7 @@ input[type="button"].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #ffffff;
+  background-color: #f8fafc;
   border-color: #dee2e6 #dee2e6 #f8fafc;
 }
 
@@ -4800,10 +4800,6 @@ input[type="button"].btn-block {
           flex-grow: 1;
   text-align: center;
 }
-
-
-
-
 
 .tab-content > .tab-pane {
   display: none;

@@ -66,7 +66,6 @@
                     </div>
                     <div id="passwords">
                         <passwords></passwords>
-
                     </div>
                     <div class="form-group col-xs-8">
                         <div class="col-xs-8">
@@ -87,6 +86,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
 <script>
     window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
+
 </script>
 <script src="{{asset('js/updateUser.js')}}"></script>
 @endsection

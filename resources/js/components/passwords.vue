@@ -34,8 +34,8 @@
         >
       </div>
     </div>
-    <div v-show="validation.reenteredPassword.dirty">
-        <div v-show="validation.reenteredPassword.match">doesn't match password</div>
-    </div>
+    <!-- <div v-if="passwords.reenteredPassword.dirty">
+        <div v-if="passwords.reenteredPassword.match">doesn't match password</div>
+    </div> -->
   </div>
 </template>
