@@ -15,7 +15,7 @@ class Profe_Admin extends Model
  
 
 	
-public function departamentos()
+public function Departamentos()
 {
     return $this->belongsTo(Departamento::class);
 }

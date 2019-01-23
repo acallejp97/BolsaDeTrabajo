@@ -40,4 +40,14 @@ public function comun() {
 
 
 }
+
+public function alumno_grados()
+{
+    return $this->hasMany(Alumno_Grado::class);
+}
+
+public function alumno()
+{
+    return $this->belongsTo(Alumno::class);
+}
 }

@@ -30,11 +30,14 @@ public function comun() {
 
 
 }
-
+public function grados()
+{
+  return $this->hasMany(Grado::class);
+}
 
 public function profesores()
 {
-    return $this->hasMany('App\Model\Profe_Admin');
+    return $this->hasMany(Profe_Admin::class);
 }
 
 }

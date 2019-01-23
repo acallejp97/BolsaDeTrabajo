@@ -61,11 +61,25 @@ class Profe_AdminController extends Controller
     
     public function Usuarios()
     {
-       
-        $comun = Profe_Admin::find(3)->departamento;
+       switch(Auth::user()->rango){
 
-        return view("profes_admin/usuarios")->with('comun', $comun);
-    }
+           case 0:
+           break;
+           case 1:
+           $profe = Profe_Admin::where('id_user',Auth::user()->id)->first();
+           $grados= Grado::where('id_depar', $profe->id_depar);//Mas de un nombre | Pasar
+           foreach ($grados as $grado){
+               $alumnos_grado=Alumno_Grado::where('id_grado', $grado->id);
+               foreach ($alumnos_grado as $alumno_grado) {
+                   $alumno=Alumno::where('id', $alumno_grado->id_alumno)->first(); //Pasar
+                   $usuario=User::where('id',$alumno->id_user);//Pasar
+                }
+            }
+            break;
+}
+return view("profes_admin/usuarios")->with('$alumno', $alumno);
+}
+    
     
     //******* */FUNCIONES DE ADMIN********************
     public function AnadirProfesores()

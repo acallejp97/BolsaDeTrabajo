@@ -48,9 +48,9 @@
 							
 							<tr>
 							
-								<td>{{$comun['nombre']}}</td>
+								<td>{{$alumno['nombre']}}</td>
 								
-								 <td>{{$comun['id']}}</td> -->
+								 <td>{{$alumno['id']}}</td> -->
 							
 								
 								<td class="td-actions">
