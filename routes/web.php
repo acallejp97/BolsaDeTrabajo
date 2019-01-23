@@ -15,6 +15,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/perfil', "Controller@Perfil")->name('perfil');
     Route::post('/actualizarUsuario', 'Controller@updateUser')->name('actualizarUsuario');
     Route::post('/fotoperfil', 'Controller@updateProfile')->name('fotoPerfil');
+    Route::post('/insertar', 'Controller@insertar')->name('insertar');
 
     //Admin
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
@@ -27,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/usuarios', "Profe_AdminController@Usuarios")->name('usuarios');
     Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
     Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
-    Route::post('/aniadirGrado', 'Profe_AdminController@insertGrado')->name('anadiirGrado');
+    Route::post('/aniadirGrado', 'Profe_AdminController@insertGrado')->name('aniadirGrado');
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');

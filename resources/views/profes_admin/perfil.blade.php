@@ -17,7 +17,7 @@
                     <input style="color: transparent; margin-top: 3em;" type="file" name="image" />
                     <div class='text-danger'>{{$errors->first('image')}}</div>
                 </div>
-                <button type='submit' class='btn btn-primary'>Actualizar imagen de perfil</button>
+                <button type='submit' style="background: #b50045;" class='btn btn-primary'>Actualizar imagen de perfil</button>
             </form>
             <br>
 
@@ -68,14 +68,14 @@
                         <passwords></passwords>
                     </div>
                     <div class="form-group col-xs-8">
-                        <div class="col-xs-8">
-                            <br/>
-                            <button type="submit" id="updateUser" class="btn btn-lg btn-success">
-                                    <i class="glyphicon glyphicon-ok-sign"></i>
-                                    Guardar</button> @if(Auth::user()->rango!=0)
-                            <button type="submit" id="deleteUser" class="btn btn-lg btn-danger">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                    Borrar Perfil</button> @endif
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" id="updateUser" style="background: #b50045; float:right;color:white;" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Guardar</button>                                @if(Auth::user()->rango!=0)
+                                <button type="submit" class="btn btn-lg btn-success" id="deleteteUser" style="background:#D8BFD8; float:right; color:black;">
+										<span class="glyphicon glyphicon-remove" ></span> Borrar Perfil
+									</button> @endif
+                            </div>
                         </div>
                     </div>
                 </div>

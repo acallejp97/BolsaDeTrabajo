@@ -40,5 +40,10 @@ class Alumno extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function alumno_grados()
+{
+    return $this->belongsTo(Alumno_Grado::class);
+}
 } 
 
