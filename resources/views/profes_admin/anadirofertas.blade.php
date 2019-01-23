@@ -100,15 +100,15 @@
     </div><br>
       @foreach ($result['ofertas'] as $oferta)
      
-      <div class="col-md-7">
+      <div class="col-md-12">
         <h3 class="center">{{$oferta['titulo']}}</h3>
         <p>{{$oferta['descripcion']}}</p>
         <p> <strong>Puestos vacantes: {{$oferta['puestos-vacantes']}}</strong></p>
         <td class="td-actions">
-									<a class="btn btn-default btn-xs" href="javascript:;">
+									<a class="btn btn-default btn-xs" style="float:right;"href="javascript:;">
 										<span class="glyphicon glyphicon-pencil"></span> Modificar
 									</a>
-									<a class="btn btn-default btn-xs" style="background: #b50045; color:white;"href="javascript:;">
+									<a class="btn btn-default btn-xs" style="background: #b50045; float:right; color:white;"href="javascript:;">
 										<span class="glyphicon glyphicon-remove" ></span> Borrar
 									</a>
 									

@@ -1,10 +1,7 @@
 <?php
-
 Auth::routes();
 Route::get('/logout', 'HomeController@logout');
-
 Route::group(['middleware' => 'auth'], function () {
-
     Route::get('/', function () {
         if (Auth::check()) {
             return redirect('/home');
@@ -13,17 +10,18 @@ Route::group(['middleware' => 'auth'], function () {
         }
     });
     //Comunes
-    Route::get('/home', "Controller@Ofertas");
-    Route::get('/contacto', "Controller@Contacto");
-    Route::get('/perfil', "Controller@Perfil");
-    Route::post('/actualizarUsuario', "Controller@updateUser");
-    Route::post('/fotoperfil', 'Controller@updateProfile');
+    Route::get('/home', "Controller@Ofertas")->name('home');
+    Route::get('/contacto', "Controller@Contacto")->name('contacto');
+    Route::get('/perfil', "Controller@Perfil")->name('perfil');
+    Route::put('/actualizarUsuario', 'Controller@updateUser')->name('actualizarUsuario');
+    Route::post('/fotoperfil', 'Controller@updateProfile')->name('fotoPerfil');
 
     //Admin
-    Route::get('/buzon', "Profe_AdminController@Buzon");
-    Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesor");
+    Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
+    Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesores")->name('anadirProfesores');
 
     //Profe y admin
+<<<<<<< HEAD
     Route::get('/empresas', "Profe_AdminController@Empresas");
     Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas");
     Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios");
@@ -31,10 +29,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/cursos', "Profe_AdminController@Cursos");
     Route::post('/aniadirDepartamento', 'Profe_AdminController@insertDepartamento');
     Route::post('/aniadirGrado', 'Profe_AdminController@insertGrado');
+=======
+    Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
+    Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas")->name('anadirEmpresas');
+    Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios")->name('anadirUsuarios');
+    Route::get('/usuarios', "Profe_AdminController@Usuarios")->name('usuarios');
+    Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
+    Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartament')->name('anadirDepartamento');
+>>>>>>> 45093b8d63a27cc20d7f717546a435db9157645e
 
     //Alumno
-    Route::get('/actualizarCV', "AlumnoController@ActualizarCV");
-    Route::post('/fotocv', 'AlumnoController@updatecv');
+    Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
+    Route::post('/fotocv', 'AlumnoController@updatecv')->name('fotocv');
 /*
     Route::post('alumnos/contacto', "AlumnoController@Contacto");
                 Route::post('profes_admin/contacto', "ProfeController@Contacto");*/

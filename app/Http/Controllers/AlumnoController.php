@@ -37,7 +37,7 @@ class AlumnoController extends Controller
       
         foreach ($id_alumno as $id) {
             $id_cv= Curriculum::all();
-       $curriculum = Curriculum::select('*')->where('id', $id_cv->$id_alumno)->first();
+       $curriculum = Curriculum::select('*')->where('id_alumno', $id)->first();
          }
         return view("alumnos/curriculum")->with('curriculum', $curriculum);
     }

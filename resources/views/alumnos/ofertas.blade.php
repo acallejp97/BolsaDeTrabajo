@@ -2,56 +2,36 @@
 
 @section('content')
 
-	<div class="row">
-		<div class="col-md-6">
-    <h6>Bienvenid@ {{Auth::user()->nombre}}</h6>
-            <div class="input-group" id="adv-search">
-                <input type="text" class="form-control" placeholder="Search for snippets" />
-                <div class="input-group-btn">
-                    <div class="btn-group" role="group">
-                        <div class="dropdown dropdown-lg">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" role="form">
-                                  <div class="form-group">
-                                    <label for="filter">Filter by</label>
-                                    <select class="form-control">
-                                        <option value="0" selected>All Snippets</option>
-                                        <option value="1">Featured</option>
-                                        <option value="2">Most popular</option>
-                                        <option value="3">Top rated</option>
-                                        <option value="4">Most commented</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="contain">Author</label>
-                                    <input class="form-control" type="text" />
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="contain">Contains the words</label>
-                                    <input class="form-control" type="text" />
-                                  </div>
-                                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </form>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                    </div>
-                </div>
-            </div>
+
+    <div class="row col-md-12">
+   
+		
+   <div class="page-header">
+     <h3>
+       Lista de ofertas
+     </h3>
+   </div>
+   <div class="row">
+     <div class="span3 side-by-side clearfix offset4">
+       <form action="#" method="get">
+         <div class="input-group col-md-9 " style="float:right">
+         <br>
+           <input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
+           <span class="input-group-btn">
+           <button type="submit" class="btn btn-default" style="background: #b50045; color:white;" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>           </span>
+           
+         </div>
+       </form>
+     </div>
 @foreach($ofertas as $oferta)
 
-<div class="row">
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-          </a>
-        </div>
-        <div class="col-md-5">
+<div class="row col-md-10">
+       
+        <div class="col-md-10">
           <h3>{{$oferta['titulo']}}</h3>
           <p>{{$oferta['descripcion']}}</p>
           <p>{{$oferta['puestos-vacantes']}}</p>
-          <a class="btn btn-primary" href="#">Inscribirse</a>
+          <a class="btn btn-primary"style="background: #b50045; color:white;" href="#">Inscribirse</a>
         </div>
       </div>
       @endforeach

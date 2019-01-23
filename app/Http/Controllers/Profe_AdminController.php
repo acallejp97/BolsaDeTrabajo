@@ -24,10 +24,20 @@ class Profe_AdminController extends Controller
         return view("profes_admin/empresas")->with('empresas', $empresas);
     }
 
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------AÑADIR UNA NUEVA EMPRESA----------------------------------------------------------------------*/
     public function AnadirEmpresas()
     {
-
+        $empresa = Empresa::all();
+        if (!$empresa) {
+            return view("profes_admin/anadirEmpresas");
+        }
+            return view("profes_admin/anadirEmpresas")->with('empresas', $empresa);
     }
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------AÑADIR UN NUEVO USUARIO----------------------------------------------------------------------*/
 
     public function AnadirUsuarios()
     {
@@ -57,7 +67,7 @@ class Profe_AdminController extends Controller
     }
 
     //******* */FUNCIONES DE ADMIN********************
-    public function AnadirProfesor()
+    public function AnadirProfesores()
     {
         $profesor = Profe_Admin::all();
         $user = User::all();
