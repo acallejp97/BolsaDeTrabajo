@@ -105,3 +105,20 @@
     </div>
 </div>
 @endsection 
+
+<script>
+    $("#anadirEmpresa").click(function () {
+        //RECORREMOS EL ARCHIVO Y VAMOS ALMACENANDO LO LEIDO EN $DATA
+        while (($data = fgetcsv ($handle, 1000, ',')) !==FALSE)
+        {
+                $scifi =new Empresa();
+                $scifi ->nombre =$data[0];
+                $scifi ->direccion =$data[1];
+                $scifi ->email =$data[2];
+                $scifi ->url =$data[3];
+                $scifi ->telefono =$data[4];
+                $scifi ->save();
+        }
+        return Empresa::all();
+    });
+</script>
