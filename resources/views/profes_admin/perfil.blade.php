@@ -8,10 +8,11 @@
     </div>
     <div id="datosPerfil" class="row">
         <div class="col-sm-3">
-            <!--left col-->
-         
-            
+            <form method='post' action='{{url("fotoperfil")}}' enctype='multipart/form-data'>
+                {{csrf_field()}}
+                <div class='form-group'>
 
+                    <img src='{{url("./perfiles/".Auth::user()->imagen)}}' class='img-responsive' style=' height:200px; width: 200px;' />
 
 <form method='post' action='{{url("fotoperfil")}}' enctype='multipart/form-data'>
 	{{csrf_field()}}
@@ -94,5 +95,5 @@
 <script>
     window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
 </script>
-  <script src="{{asset('js/updateUser.js')}}"></script>
+<script src="{{asset('js/updateUser.js')}}"></script>
 @endsection

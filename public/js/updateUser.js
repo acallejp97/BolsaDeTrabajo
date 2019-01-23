@@ -27,3 +27,22 @@ $("#updateUser").click(function() {
         }
     });
 });
+
+$("#deleteUser").click(function() {
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizarUsuario",
+        type: "POST",
+        data: {},
+        success: function() {
+            alert("Usuario Eliminado Correctamente");
+            location.reload();
+        },
+        error: function() {
+            alert("No se ha podido eliminar el usuario...");
+        }
+    });
+});

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AlumnoOferta extends Migration
 {
@@ -15,16 +15,15 @@ class AlumnoOferta extends Migration
     {
         Schema::dropIfExists('alumno_oferta');
         Schema::create('alumno_oferta', function (Blueprint $table) {
-            $table->increments('id',5);
+            $table->increments('id', 5);
             $table->unsignedInteger('id_alumno');
             $table->unsignedInteger('id_oferta');
-            
-            $table->foreign('id_alumno')->references('id')->on('alumnos');
-            $table->foreign('id_oferta')->references('id')->on('ofertas');
+
+            $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
+            $table->foreign('id_oferta')->references('id')->on('ofertas')->onDelete('cascade');
             $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.

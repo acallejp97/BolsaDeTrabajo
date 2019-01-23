@@ -1,16 +1,15 @@
 <?php
 namespace App\Http\Controllers;
-use App\Model\Alumno;
+
 use App\Model\Correo;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
-use App\Model\Oferta;
 use App\Model\Profe_Admin;
-use App\Model\Alumno_Grado;
-use App\Model\Alumno_Oferta;
 use App\User;
 use Auth;
+use Illuminate\Http\Request;
+
 class Profe_AdminController extends Controller
 {
     public function __construct()
@@ -44,7 +43,7 @@ class Profe_AdminController extends Controller
     {
         return view("profes_admin/anadirusuarios");
     }
-    
+
     public function Cursos()
     {
         $departamentos = Departamento::all();
@@ -55,10 +54,10 @@ class Profe_AdminController extends Controller
         }
         return view("profes_admin/cursos")->with('grados_depar', $grados_depar);
     }
-   
+
     /*--------------------------------------------MOSTRAR TODOS LOS USUARIOS------------------------------------------------------
     ----------------------------------------------------------------------------------------------------------------------------*/
-    
+
     public function Usuarios()
     {
        switch(Auth::user()->rango){
@@ -93,7 +92,7 @@ return view("profes_admin/usuarios")->with('$alumno', $alumno);
         }
         return view("profes_admin/anadirprofesores")->with('profesores', $profesores);
     }
-    
+
     public function Buzon()
     {
         $correos = Correo::all();
@@ -105,16 +104,47 @@ return view("profes_admin/usuarios")->with('$alumno', $alumno);
         return view("profes_admin/buzon")->with('user_correos', $user_correos);
     }
 
-    public function insertDepartament(Request $request)
+    public function insertDepartamento(Request $request)
     {
-        
-        if(!$request->ajax())return redirect('/');
-        $insertarDepartemento = new Departamento();
-        $insertarDepartemento->nombre = $request->nombre;
-        
 
-        $task->save();
-        //Esta función guardará las tareas que enviaremos mediante vuejs
-    
+        $enviado = json_decode($_REQUEST['nuevoDepartamento']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $nombre = $enviado->nombre;
+
+        $insertarDepartamento = new Departamento;
+        if ($nombre != "") {
+            $insertarDepartamento->insert(['nombre' => $nombre]);
+        }
     }
+
+    public function insertGrado(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['nuevoGrado']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $nombre = $enviado->nombre;
+
+        $insertarGrado = new Grado;
+        if ($nombre != "") {
+            $insertarGrado->insert(['nombre' => $nombre]);
+        }
+    }
+
+    public function store(Request $request)
+    {
+        $correo = Correo::all;
+        $correo->$nombre = $request->input('nombre');
+        $correo->$email = $request->input('email');
+        $correo->$mensaje = $request->input('mensaje');
+        $correo->save();
+        Notification::success('El correo ha sido enviado exitosamente');
+        return redirect('alumno/contacto', "AlumnoController@Contacto");
+    }
+
 }
