@@ -27,17 +27,17 @@
   <div class="card text-center">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="home">Ofertas</a>
+        <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('home') }}">Ofertas</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link " href="actualizarCV">Actualizar CV</a>
+        <li class="nav-item {{ request()->is('actualizarCV') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('actualizarCV') }}">Actualizar CV</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="perfil">Ver Perfil</a>
+        <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('perfil') }}">Ver Perfil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contacto">Contacto</a>
+        <li class="nav-item {{ request()->is('contacto') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="logout">Cerrar Sesion</a>
@@ -45,7 +45,7 @@
       </ul>
     </div>
     @yield('content')
-    <script src="{{asset('js/user-function/app.js')}}"></script>
+  <script src="{{ asset('js/app.js') }}" defer></script>
   </div>
 </body>
 

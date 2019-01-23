@@ -29,7 +29,7 @@
           <div class="form-group">
               <label class="col-md-3 control-label" for="message">Tu mensaje</label>
               <div class="col-md-9">
-                <textarea class="form-control" id="mensaje" name="mensaje" placeholder="Introduce tu mensaje aqui, por favor..." rows="5"></textarea>
+                <textarea id="mensaje" name="mensaje" placeholder="Introduce tu mensaje aqui, por favor..." class="form-control" rows="5"></textarea>
               </div>
             </div>
     
