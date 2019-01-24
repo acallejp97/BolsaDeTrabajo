@@ -65,7 +65,9 @@
 
       <div class="form-group">
         @foreach ($result['profesor'] as $profesor)
-        <input type="text" id="id_profesor" value="{{$profesor['id']}}">
+      	@if($profe=true)
+        <input type="hidden" id="id_profesor" value="{{$profe}}">
+        @endif
          @endforeach
       </div>
 

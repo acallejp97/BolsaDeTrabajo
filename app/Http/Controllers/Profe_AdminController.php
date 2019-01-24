@@ -29,11 +29,11 @@ class Profe_AdminController extends Controller
 -------------------------------------------------AÑADIR UNA NUEVA EMPRESA----------------------------------------------------------------------*/
     public function AnadirEmpresas()
     {
-        $empresa = Empresa::all();
+        $empresas = Empresa::all();
         if (!$empresa) {
-            return view("profes_admin/anadirEmpresas");
+            return view("profes_admin/anadirempresas");
         }
-        return view("profes_admin/anadirEmpresas")->with('empresas', $empresa);
+        return view("profes_admin/anadirempresas")->with('empresas', $empresas);
     }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -165,4 +165,25 @@ class Profe_AdminController extends Controller
         $oferta->insert(['titulo' => $titulo, 'descripcion' => $descripcion, 'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos-vacantes' => $puestos]);
 
     }
+
+    public function insertarEmpresa(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        $enviado = json_decode($_REQUEST['nuevaEmpresa']);
+
+        $nombre = $enviado->nombre;
+        $direccion = $enviado->direccion;
+        $email = $enviado->email;
+        $url = $enviado->url;
+        $telefono = $enviado->telefono;
+        $puestos = $enviado->puestos;
+        $empresa = new Empresa;
+        $empresa->insert(['nombre' => $nombre, 'direccion' => $direccion, 'email' => $email, 'url' => $url, 'telefono' => $telefono]);
+
+    }
 }
+
+

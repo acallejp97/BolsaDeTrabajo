@@ -67,7 +67,7 @@
       Subir un archivo
       </h3>
     </div>
-<form action='{{url("csv")}}' method='post' enctype="multipart/form-data">
+<form action='{{action("Controller@csv")}}' method='post' enctype="multipart/form-data">
    Importar Archivo : <input type='file' name='sel_file' size='20'>
    <input type='submit' name='submit' value='submit'>
   </form>
