@@ -24,6 +24,8 @@
     <link rel="shortcut icon" href="{{ asset('logo.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
+    
 </head>
 
 <body class="fondo">
