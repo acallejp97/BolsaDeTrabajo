@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Correo;
+use App\Model\Oferta;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -24,7 +25,6 @@ class Profe_AdminController extends Controller
         return view("profes_admin/empresas")->with('empresas', $empresas);
     }
 
-
 /*-----------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------AÑADIR UNA NUEVA EMPRESA----------------------------------------------------------------------*/
     public function AnadirEmpresas()
@@ -33,7 +33,7 @@ class Profe_AdminController extends Controller
         if (!$empresa) {
             return view("profes_admin/anadirEmpresas");
         }
-            return view("profes_admin/anadirEmpresas")->with('empresas', $empresa);
+        return view("profes_admin/anadirEmpresas")->with('empresas', $empresa);
     }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,26 +60,26 @@ class Profe_AdminController extends Controller
 
     public function Usuarios()
     {
-       switch(Auth::user()->rango){
-
-           case 0:
-           break;
-           case 1:
-           $profe = Profe_Admin::where('id_user',Auth::user()->id)->first();
-           $grados= Grado::where('id_depar', $profe->id_depar);//Mas de un nombre | Pasar
-           foreach ($grados as $grado){
-               $alumnos_grado=Alumno_Grado::where('id_grado', $grado->id);
-               foreach ($alumnos_grado as $alumno_grado) {
-                   $alumno=Alumno::where('id', $alumno_grado->id_alumno)->first(); //Pasar
-                   $usuario=User::where('id',$alumno->id_user);//Pasar
+        switch (Auth::user()->rango) {
+            
+            case 0:
+            $alumno = User::all();
+                break;
+            case 1:
+                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+                $grados = Grado::where('id_depar', $profe->id_depar); //Mas de un nombre | Pasar
+                foreach ($grados as $grado) {
+                    $alumnos_grado = Alumno_Grado::where('id_grado', $grado->id);
+                    foreach ($alumnos_grado as $alumno_grado) {
+                        $alumno = Alumno::where('id', $alumno_grado->id_alumno)->first(); //Pasar
+                        $usuario = User::where('id', $alumno->id_user); //Pasar
+                    }
                 }
-            }
-            break;
-}
-return view("profes_admin/usuarios")->with('$alumno', $alumno);
-}
-    
-    
+                break;
+        }
+        return view("profes_admin/usuarios")->with('alumno', $alumno);
+    }
+
     //******* */FUNCIONES DE ADMIN********************
     public function AnadirProfesores()
     {
@@ -147,4 +147,22 @@ return view("profes_admin/usuarios")->with('$alumno', $alumno);
         return redirect('alumno/contacto', "AlumnoController@Contacto");
     }
 
+    public function insertarOferta(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        $enviado = json_decode($_REQUEST['nuevaOferta']);
+
+        $titulo = $enviado->titulo;
+        $descripcion = $enviado->descripcion;
+        $id_empresa = $enviado->id_empresa;
+        $id_grado = $enviado->id_grado;
+        $id_profesor = $enviado->id_profesor;
+        $puestos = $enviado->puestos;
+        $oferta = new Oferta;
+        $oferta->insert(['titulo' => $titulo, 'descripcion' => $descripcion, 'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos-vacantes' => $puestos]);
+
+    }
 }

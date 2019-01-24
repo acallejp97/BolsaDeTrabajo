@@ -9,7 +9,9 @@ require("./bootstrap");
 
 window.Vue = require("vue");
 
+import VueMaterial from 'vue-material'
 import VeeValidate from "vee-validate";
+Vue.use(VueMaterial);
 Vue.use(VeeValidate);
 
 /**
@@ -21,20 +23,14 @@ Vue.use(VeeValidate);
 Vue.component("passwords", require("./components/passwords.vue"));
 
 new Vue({
+    el: '#app',
     data: {
-        password: $("#password1").val(),
-        reenteredPassword: $("#password2").val()
-    },
-    computed: {
-        matchPassword: function() {
-            return this.password === this.reenteredPassword;
-        }
-    },
-    validator: {
-        validates: {
-            match: function(v, result) {
-                return result;
-            }
-        }
+        credentials: {
+          email: '',
+        repemail: '',
+        password: '',
+        confirmPassword: '',
+        normalInput: 'this input is not using vue-material'
+      }
     }
-}).$mount("#passwords");
+  });
