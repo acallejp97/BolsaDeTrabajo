@@ -3895,20 +3895,11 @@ input[type="submit"].btn-block {
     background-color: transparent;
     border-color: transparent;
 }
-<<<<<<< HEAD
-
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
-  color: #495057;
-  background-color: #f8fafc;
-  border-color: #dee2e6 #dee2e6 #f8fafc;
-=======
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
     color: #495057;
     background-color: #f8fafc;
     border-color: #dee2e6 #dee2e6 #f8fafc;
->>>>>>> 3fa2a9a81ba093f3c756ad79c2c6b6b45ebefef3
 }
 .nav-tabs .dropdown-menu {
     margin-top: -1px;
@@ -3937,10 +3928,6 @@ input[type="submit"].btn-block {
     flex-grow: 1;
     text-align: center;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 3fa2a9a81ba093f3c756ad79c2c6b6b45ebefef3
 .tab-content > .tab-pane {
     display: none;
 }

@@ -13,8 +13,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', "Controller@Ofertas")->name('home');
     Route::get('/contacto', "Controller@Contacto")->name('contacto');
     Route::get('/perfil', "Controller@Perfil")->name('perfil');
-    Route::put('/actualizarUsuario', 'Controller@updateUser')->name('actualizarUsuario');
+    Route::post('/actualizarUsuario', 'Controller@updateUser')->name('actualizarUsuario');
     Route::post('/fotoperfil', 'Controller@updateProfile')->name('fotoPerfil');
+    Route::post('/insertar', 'Controller@insertar')->name('insertar');
 
     //Admin
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');

@@ -46,7 +46,7 @@
 	
         <div class="form-group">
           <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary">Añadir</button>
+          <button type="submit" style="background: #b50045; color:white"class="btn btn-primary">Añadir</button>
         </div>
 
       </form>

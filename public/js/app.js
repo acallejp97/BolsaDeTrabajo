@@ -56711,37 +56711,7 @@ var render = function() {
           }
         })
       ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.validation.reenteredPassword.dirty,
-            expression: "validation.reenteredPassword.dirty"
-          }
-        ]
-      },
-      [
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.validation.reenteredPassword.match,
-                expression: "validation.reenteredPassword.match"
-              }
-            ]
-          },
-          [_vm._v("doesn't match password")]
-        )
-      ]
-    )
+    ])
   ])
 }
 var staticRenderFns = [
