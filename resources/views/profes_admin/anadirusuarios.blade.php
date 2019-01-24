@@ -70,8 +70,8 @@
             <form method="post" action="#" id="#">
 
                 <div class="form-group files">
-                    <label>Upload Your File </label>
-                    <input type="file" class="form-control" multiple="">
+                    <label >Upload Your File </label>
+                    <input style=color:transparent; type="file" class="form-control" multiple="">
                 </div>
             </form>
         </div>
@@ -106,9 +106,12 @@
                                     <input type="text" name="aniofin" class="form-control" placeholder="Año Finalizacion" title="Introduce el año de finalizacion del alumno.">
                                 </div>
 
-                                <div class="form-group col-md-12">
-                                    <center><button id="subir" type="submit" class="btn btn-primary">Submit</button></center>
-                                </div>
+                                    <div class="col-xs-12">
+                                <br>
+                               
+                              	<button class="btn btn-lg btn-success" style="background: #b50045; float:right;color:white;"type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Subir</button>
+                                 
+                            </div>
 
                             </div>
                         </div>

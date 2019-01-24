@@ -23,9 +23,9 @@ class Ofertas extends Migration
             $table->unsignedInteger('id_profesor');
             $table->unsignedInteger('puestos-vacantes');
            
-            $table->foreign('id_empresa')->references('id')->on('empresas');
-            $table->foreign('id_grado')->references('id')->on('grados');
-            $table->foreign('id_profesor')->references('id')->on('profe-admin');
+            $table->foreign('id_empresa')->references('id')->on('empresas')->onDelete('cascade');
+            $table->foreign('id_grado')->references('id')->on('grados')->onDelete('cascade');
+            $table->foreign('id_profesor')->references('id')->on('profe-admin')->onDelete('cascade');
             $table->timestamps();
             
         });
