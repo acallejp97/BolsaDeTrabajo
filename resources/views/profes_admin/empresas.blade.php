@@ -11,42 +11,7 @@
 						Lista de Empresas
 					</h1>
 				</div>
-				<div class="row">
-					<div class="span3 side-by-side clearfix offset4">
 				
-		<div id="app" v-cloak>
-			<input v-model="term" type="search">
-			<button @click="search">Search</button>
-			<p/>
-
-			<div v-for="result in results" class="result">
-				<img :src="result.artworkUrl100">
-				@foreach ($empresas as $empresa)
-					
-								{{$empresa['nombre']}}
-								
-
-								
-							@endforeach
-			
-				<br clear="left">
-			</div>
-
-			<div v-if="noexmpresas">
-				Sorry, but no exmpresas were found. I blame Apple.
-			</div>
-
-			<div v-if="searching">
-				<i>Searching...</i>
-			</div>
-
-		</div>
-
-		<script src="https://unpkg.com/vue"></script>
-		<script src="app.js"></script>
-					</div>
-				
-				</div><br><br>
 				<div class="widget-content">
 					<table class="table table-striped table-bordered">
 						<thead>
@@ -99,30 +64,5 @@
 	</div>
 </div>
 <script>
-Vue.filter('formatDate', function(d) {
-	if(!window.Intl) return d;
-	return new Intl.DateTimeFormat('en-US').format(new Date(d));
-}); 
-
-const app = new Vue({
-	el:'#app',
-	data:{
-		term:'',
-		results:[],
-		noResults:false,
-		searching:false
-	},
-	methods:{
-		search:function() {
-			this.searching = true;
-			fetch(`http://localhost/phpmyadmin/sql.php?server=1&db=TxJobs&table=empresas&pos=0`)
-			.then(res => res.json())
-			.then(res => {
-				this.searching = false;
-				this.results = res.results;
-				this.noResults = this.results.length === 0;
-			});
-		}
-	}
-});</script>
+</script>
 @endsection

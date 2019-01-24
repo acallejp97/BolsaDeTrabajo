@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
     Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
     Route::post('/aniadirGrado', 'Profe_AdminController@insertGrado')->name('anadirGrado');
-    Route::post('/csv', 'Controller@csv')->name('csv');
+    Route::get('/anadirusuarios', 'Controller@csv')->name('anadirUsuarios');
     Route::post('/anadirOferta', 'Profe_AdminController@insertarOferta')->name('insertarOferta');
 
     //Alumno

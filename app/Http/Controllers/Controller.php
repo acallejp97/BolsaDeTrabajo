@@ -136,7 +136,7 @@ class Controller extends BaseController
         return view("profes_admin/pruebavue");
 
     }
-    public function csv(){
+    public function csv(Request $request){
      //conexiones, conexiones everywhere
 
     if(isset($_POST['submit']))
@@ -145,7 +145,7 @@ class Controller extends BaseController
          $fname = $_FILES['sel_file']['name'];
          echo 'Cargando nombre del archivo: '.$fname.' <br>';
          $chk_ext = explode(".",$fname);
- 
+         
          if(strtolower(end($chk_ext)) == "csv")
          {
              //si es correcto, entonces damos permisos de lectura para subir
@@ -161,21 +161,20 @@ class Controller extends BaseController
                 '$data[2]'
                 '$data[3]')";
                 mysql_query($sql) or die('Error: '.mysql_error());
-             }
-             //cerramos la lectura del archivo "abrir archivo" con un "cerrar archivo"
-             fclose($handle);
-             echo "Importación exitosa!";
-             return view("profes_admin/anadirusuarios")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
-         }
-         else
-         {
+            }
+            //cerramos la lectura del archivo "abrir archivo" con un "cerrar archivo"
+            fclose($handle);
+            echo "Importación exitosa!";
+            return view("profes_admin/anadirusuarios");
+        }
+        else
+        {
             //si aparece esto es posible que el archivo no tenga el formato adecuado, inclusive cuando es cvs, revisarlo para             
-//ver si esta separado por " , "
-             echo "Archivo invalido!";
-         }
-    }
-        
-}
+            //ver si esta separado por " , "
+            echo "Archivo invalido!";
+        }
+    
+    }}
     public function mostrarUsuario(Request $request)
     {
         $task = array([

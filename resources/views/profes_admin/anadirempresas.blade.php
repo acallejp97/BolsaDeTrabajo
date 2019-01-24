@@ -1,124 +1,105 @@
-@extends('layouts.profe_admin')
+@extends('layouts.profe_admin') 
 @section('content')
-<style>
-    .files input {
-        outline: 2px dashed #92b0b3;
-        outline-offset: -10px;
-        -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-        transition: outline-offset .15s ease-in-out, background-color .15s linear;
-        padding: 120px 0px 85px 35%;
-        text-align: center !important;
-        margin: 0;
-        width: 100% !important;
-    }
-    .files input:focus {
-        outline: 2px dashed #92b0b3;
-        outline-offset: -10px;
-        -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-        transition: outline-offset .15s ease-in-out, background-color .15s linear;
-        border: 1px solid #92b0b3;
-    }
-    .files {
-        position: relative
-    }
-    .files:after {
-        pointer-events: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 50px;
-        right: 0;
-        height: 56px;
-        content: "";
-        background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
-        display: block;
-        margin: 0 auto;
-        background-size: 100%;
-        background-repeat: no-repeat;
-    }
-    .color input {
-        background-color: #f1f1f1;
-    }
-    .files:before {
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        pointer-events: none;
-        width: 100%;
-        right: 0;
-        height: 57px;
-        content: " or drag it here. ";
-        display: block;
-        margin: 0 auto;
-        color: #2ea591;
-    }
-</style>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <form action="Usuarios" method="Post">
-                <div class="container-fluid">
-                    <section class="container">
-                        <div class="container-page">
-                            <div class="col-md-11">
-                                <h3>
-                                    <font size="10%">Añadir Manualmente</font>
-                                </h3>
-                                <div class="form-group col-lg-12">
-                                    <label>Nombre de la empresa:</label>
-                                    <input type="text" name="nombre" class="form-control" placeholder="Nombre" title="Introduce el nombre de la empresa.">
-                                </div>
+  <div class="row">
+    <h6>Bienvenid@ {{Auth::user()->nombre}}</h6>
+    <div class="col-md-3">
+      <div class="page-header">
+        <h3>
+          Añadir empresas
+        </h3>
+      </div>
 
-                                <div class="form-group col-lg-12">
-                                    <label>Dirección de la empresa:</label>
-                                    <input type="text" name="direccion" class="form-control" placeholder="Dirección" title="Introduce la dirección de la empresa.">
-                                </div>
+      <div class="form-group">
+        <!-- Full Name -->
+        <label for="nombre" class="control-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="John Deer">
+      </div>
 
-                                <div class="form-group col-lg-12">
-                                    <label>E-mail de la empresa:</label>
-                                    <input type="text" name="email" class="form-control" placeholder="Email" title="Introduce el email de la empresa.">
-                                </div>
+      <div class="form-group">
+        <!-- Street 1 -->
+        <label for="direccion" class="control-label">Direccion</label>
+        <textarea type="text" name="direccion" class="form-control" rows="4" , cols="164" id="direccion" style="resize:none,"
+          placeholder="Street address, P.O. box, company name, c/o"></textarea>
 
-                                <div class="form-group col-lg-12">
-                                    <label>URL de la empresa:</label>
-                                    <input type="text" name="url" class="form-control" placeholder="URL" title="Introduce la página web de la empresa.">
-                                </div>
+      </div>
 
-                                <div class="form-group col-lg-12">
-                                    <label>Teléfono de la empresa:</label>
-                                    <input type="text" name="telefono" class="form-control" placeholder="Teléfono" title="Introduce el teléfono de la empresa.">
-                                </div>
+          <div class="form-group">
+        <!-- Street 1 -->
+        <label for="email" class="control-label">Email</label>
+        <textarea type="text" name="email" class="form-control" rows="4" , cols="164" id="email" style="resize:none,"
+          placeholder="Street address, P.O. box, company name, c/o"></textarea>
 
-                                <div class="form-group col-md-12">
-                                    <center><button id="anadirEmpresa" type="submit" class="btn btn-primary">Añadir</button></center>
-                                </div>
+      </div>
 
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </form>
+    
+      <div class="form-group">
+        <!-- Zip Code-->
+        <label for="url" class="control-label">Url</label>
+        <input type="text" class="form-control" id="url" name="url" placeholder="">
+      </div>
 
+        <div class="form-group">
+        <!-- Zip Code-->
+        <label for="telefono" class="control-label">Telefono</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="">
+      </div>
+
+     
+
+      <div class="form-group">
+        <!-- Submit Button -->
+        <button type="submit" style="background: #b50045; color:white;" id="insertEmpresa" class="btn btn-primary">Publicar</button>
+      </div>
+    </div>
+
+    <div class="row col-md-9">
+      <div class="page-header">
+        <h3>
+          Lista de Empresas
+        </h3>
+      </div>
+      <div class="row">
+        <div class="span3 side-by-side clearfix offset4">
+          <form action="#" method="get">
+            <div class="input-group col-md-3 " style="float:right">
+              <input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
+              <span class="input-group-btn">
+              <button type="submit" class="btn btn-default" style="background: #b50045; color:white;"data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
+            </span>
+
+            </div>
+          </form>
         </div>
 
-    </div>
-</div>
-@endsection 
+      </div><br> @foreach ($empresa['empresa'] as $empre)
 
+      <div class="col-md-12">
+        <h3 class="center">{{$empresa['nombre']}}</h3>
+        <p>{{$empre['direccion']}}</p>
+        <p> <strong> {{$empresa['email']}}</strong></p>
+        <p>{{$empre['url']}}</p>
+        <p>{{$empre['telefono']}}</p>
+        <td class="td-actions">
+          <a class="btn btn-default btn-xs" style="float:right;" href="javascript:;">
+										<span class="glyphicon glyphicon-pencil"></span> Modificar
+									</a>
+          <a class="btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
+										<span class="glyphicon glyphicon-remove" ></span> Borrar
+									</a>
+
+        </td>
+      </div>
+
+      @endforeach
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
 <script>
-    $("#anadirEmpresa").click(function () {
-        //RECORREMOS EL ARCHIVO Y VAMOS ALMACENANDO LO LEIDO EN $DATA
-        while (($data = fgetcsv ($handle, 1000, ',')) !==FALSE)
-        {
-                $scifi =new Empresa();
-                $scifi ->nombre =$data[0];
-                $scifi ->direccion =$data[1];
-                $scifi ->email =$data[2];
-                $scifi ->url =$data[3];
-                $scifi ->telefono =$data[4];
-                $scifi ->save();
-        }
-        return Empresa::all();
-    });
+  window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
+
 </script>
+<script src="{{asset('js/insertOferta.js')}}"></script>
+@endsection
