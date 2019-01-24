@@ -29,10 +29,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
     Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
     Route::post('/aniadirGrado', 'Profe_AdminController@insertGrado')->name('anadirGrado');
+    Route::post('/csv', 'Controller@csv')->name('csv');
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/fotocv', 'AlumnoController@updatecv')->name('fotocv');
+
+
+    Route::get('/pruebavue', 'Controller@prueba')->name('pruebavue');
 /*
     Route::post('alumnos/contacto', "AlumnoController@Contacto");
                 Route::post('profes_admin/contacto', "ProfeController@Contacto");*/
