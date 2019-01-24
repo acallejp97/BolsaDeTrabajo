@@ -11,14 +11,14 @@
     <br> <br> @foreach ($grados_depar['departamentos'] as $departamento)
     <br>
     <br>
-    <div class="container demo m-top bg-info">
-        <div class="text-left m-4 row">
-            <p class="h3 text-uppercase d-inline col-md-9">
+    <div class="container demo m-top">
+        <div class="text-left m-4 row" style="background: #b50045;">
+            <p class="h3 text-uppercase d-inline col-md-9" style="color: white" >
                 <strong>
                     {{$departamento['nombre']}}
                     </strong>
             </p>
-            <button id="aniadirGrado" class="btn icon-btn btn-primary d-inline col-md-2">
+            <button id="aniadirGrado" class="btn icon-btn btn-light d-inline col-md-2">
                 <span class="glyphicon glyphicon-plus"></span>
                 Añadir Grado
             </button>
@@ -30,7 +30,7 @@
                 </li>
             </ul>
 
-            <button id="borrarGrado" class="btn icon-btn btn-danger col-md-2">
+            <button id="borrarGrado" class="btn icon-btn col-md-2" style="background-color: ##ff1a66;">
                     <span class="glyphicon glyphicon-minus">
                     </span>Eliminar Grado</button>
             <br>
