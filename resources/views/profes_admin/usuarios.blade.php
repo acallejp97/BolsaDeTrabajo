@@ -44,13 +44,13 @@
 						</thead>
 						<tbody>
 						
-				
+				@foreach($alumno as $alum)
 							
 							<tr>
 							
-								<td>{{$alumno['nombre']}}</td>
+								<td>{{$alum['nombre']}}</td>
 								
-								 <td>{{$alumno['id']}}</td> -->
+								 <td>{{$alum['id']}}</td> -->
 							
 								
 								<td class="td-actions">
@@ -64,7 +64,7 @@
 								</td>
 								
                             </tr>
-							
+							@endforeach
 						</tbody>
 					</table>
 				</div>

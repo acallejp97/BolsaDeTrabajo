@@ -15,12 +15,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/perfil', "Controller@Perfil")->name('perfil');
     Route::post('/actualizarUsuario', 'Controller@updateUser')->name('actualizarUsuario');
     Route::post('/fotoperfil', 'Controller@updateProfile')->name('fotoPerfil');
-    Route::post('/insertar', 'Controller@insertar')->name('insertar');
-
+    
     //Admin
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
     Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesores")->name('anadirProfesores');
-
+    
     //Profe y admin
     Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
     Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas")->name('anadirEmpresas');
@@ -30,14 +29,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
     Route::post('/aniadirGrado', 'Profe_AdminController@insertGrado')->name('anadirGrado');
     Route::post('/csv', 'Controller@csv')->name('csv');
+    Route::post('/anadirOferta', 'Profe_AdminController@insertarOferta')->name('insertarOferta');
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/fotocv', 'AlumnoController@updatecv')->name('fotocv');
-
-
     Route::get('/pruebavue', 'Controller@prueba')->name('pruebavue');
-/*
-    Route::post('alumnos/contacto', "AlumnoController@Contacto");
-                Route::post('profes_admin/contacto', "ProfeController@Contacto");*/
+
 });
+

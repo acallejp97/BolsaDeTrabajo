@@ -26,24 +26,25 @@ class Controller extends BaseController
         $ofertas = Oferta::all();
         switch (Auth::user()->rango) {
             case 0:
+                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
                 $user = User::all();
                 $empresas = Empresa::all();
                 $ofertas = Oferta::all();
                 $grados = Grado::all();
-                $empresa_oferta = array('empresas' => $empresas, 'user' => $user, 'ofertas' => $ofertas, 'grados' => $grados);
-                $result = array_unique($empresa_oferta);
-                if (!$result) {
+                $empresa_oferta = array('empresas' => $empresas, 'user' => $user, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                if (!$empresa_oferta) {
                     return view("profes_admin/anadirofertas");
                 }
-                return view("profes_admin/anadirofertas")->with('result', $result);
+                return view("profes_admin/anadirofertas")->with('result', $empresa_oferta);
 
                 break;
 
             case 1:
+                $id_profe = Profe_Admin::select('id')->where('id_user', Auth::user()->id)->first();
                 $empresas = Empresa::all();
                 $ofertas = Oferta::all();
                 $grados = Grado::all();
-                $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados);
+                $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'id_profesor' => $id_profe);
                 $result = array_unique($empresa_oferta);
                 if (!$result) {
                     return view("profes_admin/anadirofertas");
@@ -53,7 +54,6 @@ class Controller extends BaseController
                 break;
 
             case 2:
-                $user = User::all();
                 $ofertas = Oferta::all();
 
                 if (!$ofertas) {
@@ -229,27 +229,12 @@ class Controller extends BaseController
             }
 
         } else {
-           
+
             // $insertaroferta = Oferta::findOrFail(Auth::user()->id)->delete();
         }
 
     }
-    // public function insertar(Request $request)
-    // {
-        
-    //         $titulo =  $request->string('titulo');
-    //         $descripcion =  $request->string('descripcion');
-    //         $id_empresa =  $request->string('id_empresa');
-    //         $id_grado =  $request->string('id_grado');
-    //         $id_profesor =  $request->string('id_profesor');
-    //         $puestos =  $request->string('puestos');
-    //         $oferta = new Oferta;
-    //         $oferta->update(['titulo' => $titulo, 'descripcion' => $descripcion,'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos' => $puestos ]);
-        
 
-    //         return view("profes_admin/insertaroferta")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
-    //     }
-    
     public function updateUser(Request $request)
     {
         if (!$request->ajax()) {
