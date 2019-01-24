@@ -20,16 +20,16 @@
       <div class="form-group">
         <!-- Street 1 -->
         <label for="direccion" class="control-label">Direccion</label>
-        <textarea type="text" name="direccion" class="form-control" rows="4" , cols="164" id="direccion" style="resize:none,"
-          placeholder="Street address, P.O. box, company name, c/o"></textarea>
+        <input type="text" name="direccion" class="form-control" rows="4" , cols="164" id="direccion" style="resize:none,"
+          placeholder=""></textarea>
 
       </div>
 
           <div class="form-group">
         <!-- Street 1 -->
         <label for="email" class="control-label">Email</label>
-        <textarea type="text" name="email" class="form-control" rows="4" , cols="164" id="email" style="resize:none,"
-          placeholder="Street address, P.O. box, company name, c/o"></textarea>
+        <input type="email" name="email" class="form-control" rows="4" , cols="164" id="email" style="resize:none,"
+          placeholder=""></textarea>
 
       </div>
 
@@ -50,7 +50,7 @@
 
       <div class="form-group">
         <!-- Submit Button -->
-        <button type="submit" style="background: #b50045; color:white;" id="insertEmpresa" class="btn btn-primary">Publicar</button>
+        <button type="submit" style="background: #b50045; color:white;"  id="insertEmpresa" class="btn btn-primary">Publicar</button>
       </div>
     </div>
 
@@ -73,13 +73,13 @@
           </form>
         </div>
 
-      </div><br> @foreach ($empresa['empresa'] as $empre)
+      </div><br> @foreach ($empresas as $empre)
 
       <div class="col-md-12">
-        <h3 class="center">{{$empresa['nombre']}}</h3>
+        <h3 class="center">{{$empre['nombre']}}</h3>
         <p>{{$empre['direccion']}}</p>
-        <p> <strong> {{$empresa['email']}}</strong></p>
-        <p>{{$empre['url']}}</p>
+        <p> <strong> {{$empre['email']}}</strong></p>
+        <p>{{$empre['URL']}}</p>
         <p>{{$empre['telefono']}}</p>
         <td class="td-actions">
           <a class="btn btn-default btn-xs" style="float:right;" href="javascript:;">
@@ -101,5 +101,5 @@
   window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
 
 </script>
-<script src="{{asset('js/insertOferta.js')}}"></script>
+<script src="{{asset('js/insertEmpresa.js')}}"></script>
 @endsection

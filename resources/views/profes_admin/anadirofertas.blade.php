@@ -60,7 +60,7 @@
       <div class="form-group">
         <!-- Zip Code-->
         <label for="puestos" class="control-label">Puestos Vacantes</label>
-        <input type="text" class="form-control" id="puestos" name="puestos" placeholder="#####">
+        <input type="text" class="form-control" id="puestos" name="puestos" placeholder="">
       </div>
 
       <div class="form-group">

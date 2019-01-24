@@ -30,7 +30,7 @@ class Profe_AdminController extends Controller
     public function AnadirEmpresas()
     {
         $empresas = Empresa::all();
-        if (!$empresa) {
+        if (!$empresas) {
             return view("profes_admin/anadirempresas");
         }
         return view("profes_admin/anadirempresas")->with('empresas', $empresas);
@@ -179,7 +179,7 @@ class Profe_AdminController extends Controller
         $email = $enviado->email;
         $url = $enviado->url;
         $telefono = $enviado->telefono;
-        $puestos = $enviado->puestos;
+       
         $empresa = new Empresa;
         $empresa->insert(['nombre' => $nombre, 'direccion' => $direccion, 'email' => $email, 'url' => $url, 'telefono' => $telefono]);
 
