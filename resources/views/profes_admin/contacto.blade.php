@@ -38,6 +38,5 @@
             </div>
           </fieldset>
         </div>
-        <script src="{{asset('js/contacto.js')}}"></script>
       </div>
 @endsection
