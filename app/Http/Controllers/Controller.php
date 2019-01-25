@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Model\Correo;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -146,6 +147,28 @@ class Controller extends BaseController
         //Esta función devolverá los datos de una tarea que hayamos seleccionado para cargar el formulario con sus datos
     }
 
+    public function enviar(Request $request)
+    {
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        if (isset($_REQUEST['nuevoContacto'])) {
+            $enviado = json_decode($_REQUEST['nuevoContacto']);
+            $asunto = $enviado->email;
+            $descripcion = $enviado->mensaje;
+
+            $insertarDepartamento = new Correo;
+            $insertarDepartamento->insert(['asunto' => $asunto,
+                'id_remit' => Auth::user()->id,
+                'descripcion' => $descripcion]);
+
+        } else {
+            $insertarDepartamento->delete();
+
+        }
+    }
+
     public function insertOferta(Request $request)
     {
         if (!$request->ajax()) {
@@ -184,14 +207,14 @@ class Controller extends BaseController
             }
 
         } else {
-           
+
             // $insertaroferta = Oferta::findOrFail(Auth::user()->id)->delete();
         }
 
     }
     // public function insertar(Request $request)
     // {
-        
+
     //         $titulo =  $request->string('titulo');
     //         $descripcion =  $request->string('descripcion');
     //         $id_empresa =  $request->string('id_empresa');
@@ -200,11 +223,10 @@ class Controller extends BaseController
     //         $puestos =  $request->string('puestos');
     //         $oferta = new Oferta;
     //         $oferta->update(['titulo' => $titulo, 'descripcion' => $descripcion,'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos' => $puestos ]);
-        
 
     //         return view("profes_admin/insertaroferta")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
     //     }
-    
+
     public function updateUser(Request $request)
     {
         if (!$request->ajax()) {

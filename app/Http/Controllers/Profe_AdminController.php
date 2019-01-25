@@ -24,7 +24,6 @@ class Profe_AdminController extends Controller
         return view("profes_admin/empresas")->with('empresas', $empresas);
     }
 
-
 /*-----------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------AÑADIR UNA NUEVA EMPRESA----------------------------------------------------------------------*/
     public function AnadirEmpresas()
@@ -33,7 +32,7 @@ class Profe_AdminController extends Controller
         if (!$empresa) {
             return view("profes_admin/anadirEmpresas");
         }
-            return view("profes_admin/anadirEmpresas")->with('empresas', $empresa);
+        return view("profes_admin/anadirEmpresas")->with('empresas', $empresa);
     }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,26 +59,25 @@ class Profe_AdminController extends Controller
 
     public function Usuarios()
     {
-       switch(Auth::user()->rango){
+        switch (Auth::user()->rango) {
 
-           case 0:
-           break;
-           case 1:
-           $profe = Profe_Admin::where('id_user',Auth::user()->id)->first();
-           $grados= Grado::where('id_depar', $profe->id_depar);//Mas de un nombre | Pasar
-           foreach ($grados as $grado){
-               $alumnos_grado=Alumno_Grado::where('id_grado', $grado->id);
-               foreach ($alumnos_grado as $alumno_grado) {
-                   $alumno=Alumno::where('id', $alumno_grado->id_alumno)->first(); //Pasar
-                   $usuario=User::where('id',$alumno->id_user);//Pasar
+            case 0:
+                break;
+            case 1:
+                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+                $grados = Grado::where('id_depar', $profe->id_depar); //Mas de un nombre | Pasar
+                foreach ($grados as $grado) {
+                    $alumnos_grado = Alumno_Grado::where('id_grado', $grado->id);
+                    foreach ($alumnos_grado as $alumno_grado) {
+                        $alumno = Alumno::where('id', $alumno_grado->id_alumno)->first(); //Pasar
+                        $usuario = User::where('id', $alumno->id_user); //Pasar
+                    }
                 }
-            }
-            break;
-}
-return view("profes_admin/usuarios")->with('$alumno', $alumno);
-}
-    
-    
+                break;
+        }
+        return view("profes_admin/usuarios")->with('$alumno', $alumno);
+    }
+
     //******* */FUNCIONES DE ADMIN********************
     public function AnadirProfesores()
     {
@@ -107,18 +105,21 @@ return view("profes_admin/usuarios")->with('$alumno', $alumno);
     public function insertDepartamento(Request $request)
     {
 
-        $enviado = json_decode($_REQUEST['nuevoDepartamento']);
-
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $nombre = $enviado->nombre;
+        if (isset($_REQUEST['nuevoDepartamento'])) {
+            $enviado = json_decode($_REQUEST['nuevoDepartamento']);
+            $nombre = $enviado->nombre;
 
-        $insertarDepartamento = new Departamento;
-        if ($nombre != "") {
+            $insertarDepartamento = new Departamento;
             $insertarDepartamento->insert(['nombre' => $nombre]);
+        } else {
+            $insertarDepartamento->delete();
+
         }
     }
+
 
     public function insertGrado(Request $request)
     {
@@ -129,11 +130,29 @@ return view("profes_admin/usuarios")->with('$alumno', $alumno);
             return redirect('/');
         }
         $nombre = $enviado->nombre;
+        $idDepar = $enviado->idDepar;
+        $abreviacion = $enviado->abreviacion;
 
         $insertarGrado = new Grado;
         if ($nombre != "") {
-            $insertarGrado->insert(['nombre' => $nombre]);
+            $insertarGrado->insert(['nombre' => $nombre, 'id_depar' => $idDepar, 'abreviacion' => $abreviacion]);
         }
+    }
+
+    public function deleteGrado(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarGrado']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $nombre = $enviado->nombre;
+
+        if ($nombre != "") {
+            Grado::where('id', $nombre)->delete();
+        }
+
     }
 
     public function store(Request $request)
