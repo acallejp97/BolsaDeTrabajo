@@ -26,12 +26,16 @@ class Controller extends BaseController
         $ofertas = Oferta::all();
         switch (Auth::user()->rango) {
             case 0:
-                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
-                $user = User::all();
+            $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+            $profe_admin= Profe_Admin::all();
+            
+          
+            $ofertas = Oferta::all();
+            $user = User::all();
                 $empresas = Empresa::all();
-                $ofertas = Oferta::all();
                 $grados = Grado::all();
-                $empresa_oferta = array('empresas' => $empresas, 'user' => $user, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+               
+                $empresa_oferta = array('profe_admin' => $profe_admin,'user' => $user, 'empresas' => $empresas,  'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
                 if (!$empresa_oferta) {
                     return view("profes_admin/anadirofertas");
                 }
@@ -40,27 +44,40 @@ class Controller extends BaseController
                 break;
 
             case 1:
-                $id_profe = Profe_Admin::select('id')->where('id_user', Auth::user()->id)->first();
+            $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+            $profe_admin= Profe_Admin::all();
+            
+          
+            $ofertas = Oferta::all();
+            $user = User::all();
                 $empresas = Empresa::all();
-                $ofertas = Oferta::all();
                 $grados = Grado::all();
-                $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'id_profesor' => $id_profe);
-                $result = array_unique($empresa_oferta);
-                if (!$result) {
+               
+                $empresa_oferta = array('profe_admin' => $profe_admin,'user' => $user, 'empresas' => $empresas,  'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                if (!$empresa_oferta) {
                     return view("profes_admin/anadirofertas");
                 }
-                return view("profes_admin/anadirofertas")->with('result', $result);
+                return view("profes_admin/anadirofertas")->with('result', $empresa_oferta);
 
                 break;
 
             case 2:
-                $ofertas = Oferta::all();
-
-                if (!$ofertas) {
+            $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+            $profe_admin= Profe_Admin::all();
+            
+          
+            $ofertas = Oferta::all();
+            $user = User::all();
+                $empresas = Empresa::all();
+                $grados = Grado::all();
+               
+                $empresa_oferta = array('profe_admin' => $profe_admin,'user' => $user, 'empresas' => $empresas,  'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                if (!$empresa_oferta) {
                     return view("alumnos/ofertas");
                 }
-                return view("alumnos/ofertas")->with('ofertas', $ofertas);
+                return view("alumnos/ofertas")->with('result', $empresa_oferta);
 
+                break;
         }
 
     }

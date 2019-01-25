@@ -64,7 +64,7 @@
       </div>
 
       <div class="form-group">
-        @foreach ($result['profesor'] as $profesor)
+        @foreach ($result['profesor'] as $profe)
       	@if($profe=true)
         <input type="hidden" id="id_profesor" value="{{$profe}}">
         @endif
@@ -97,22 +97,34 @@
         </div>
 
       </div><br> @foreach ($result['ofertas'] as $oferta)
-
       <div class="col-md-12">
         <h3 class="center">{{$oferta['titulo']}}</h3>
         <p>{{$oferta['descripcion']}}</p>
-        <p> <strong>Puestos vacantes: {{$oferta['puestos-vacantes']}}</strong></p>
+        <p> <strong style="color: #b50045;">Puestos vacantes: </strong>{{$oferta['puestos-vacantes']}}</p>
+        
+        @foreach ($result['profe_admin'] as $profe_admin)
+        @foreach ($result['user'] as $user)
+        @if($oferta['id_profesor']==$profe_admin['id'])
+        @if($user['id']==$profe_admin['id_user'])
+        <h6><strong> Profesor que la ha publicado: </strong>{{$user['nombre']}}</h6>
+        @endif
+        @endif
+
+        @endforeach
+        @endforeach
+         
+        
         <td class="td-actions">
           <a class="btn btn-default btn-xs" style="float:right;" href="javascript:;">
-										<span class="glyphicon glyphicon-pencil"></span> Modificar
-									</a>
-          <a class="btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
-										<span class="glyphicon glyphicon-remove" ></span> Borrar
-									</a>
-
-        </td>
-      </div>
-
+              <span class="glyphicon glyphicon-pencil"></span> Modificar
+            </a>
+            <a class="btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
+                <span class="glyphicon glyphicon-remove" ></span> Borrar
+              </a>
+              
+            </td>
+          </div>
+          
       @endforeach
     </div>
   </div>

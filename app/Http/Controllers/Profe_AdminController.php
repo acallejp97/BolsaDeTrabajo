@@ -165,6 +165,23 @@ class Profe_AdminController extends Controller
         $oferta->insert(['titulo' => $titulo, 'descripcion' => $descripcion, 'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos-vacantes' => $puestos]);
 
     }
+    public function insertarProfe(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        $enviado = json_decode($_REQUEST['nuevaProfe']);
+
+        $nombre = $enviado->nombre;
+        $apellido = $enviado->apellido;
+        $email = $enviado->email;
+        $password1 = $enviado->password1;
+        $rango= $enviado->rango;
+        $user = new User;
+        $user->insert(['nombre' => $nombre, 'apellido' => $apellido, 'email' => $email, 'password1' => $password1, 'rango' => $rango]);
+
+    }
 
     public function insertarEmpresa(Request $request)
     {
