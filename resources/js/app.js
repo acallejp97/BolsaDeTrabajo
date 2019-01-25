@@ -11,6 +11,7 @@ require("./insertDepartamento");
 require("./insertEmpresa");
 require("./insertGrado");
 require("./insertOferta");
+require("./insertUsers");
 require("./insertProfe");
 require("./updateUser");
 

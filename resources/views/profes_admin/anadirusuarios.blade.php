@@ -7,13 +7,48 @@
             <div class="page-header">
                 <h3>Subir un archivo</h3>
             </div>
-            <form action="./subiendoCSV" method="post" enctype="multipart/form-data">
-                Importar Archivo :
-                <input type="file" name="sel_file" size="20" />
-                <br/>
-                <button class="btn btn-lg btn-success" id="uploadUser" style="background: #b50045; color:white;" type="submit">
-                 <i class="glyphicon glyphicon-upload"></i> Subir</button>
-            </form>
+            <div class="container">
+                <h2 class="text-center">
+                    Laravel Excel/CSV Import
+                </h2>
+         
+                @if ( Session::has('success') )
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <strong>{{ Session::get('success') }}</strong>
+            </div>
+            @endif
+         
+            @if ( Session::has('error') )
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <strong>{{ Session::get('error') }}</strong>
+            </div>
+            @endif
+         
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+              <div>
+                @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        </div>
+        @endif
+         
+        <form action="{{ route('subiendoCSV') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            Choose your xls/csv File : <input type="file" name="file" class="form-control">
+         
+            <input type="submit" class="btn btn-primary btn-lg" style="margin-top: 3%">
+        </form> 
         </div>
         <div class="col-md-6">
             <form action="Usuarios" method="Post">

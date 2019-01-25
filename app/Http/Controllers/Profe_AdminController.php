@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Model\Correo;
 use App\Model\Departamento;
 use App\Model\Empresa;
@@ -9,7 +10,10 @@ use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
 use Auth;
-use Illuminate\Http\Request;
+use Hash;
+use Session;
+use Excel;
+use File;
 
 class Profe_AdminController extends Controller
 {
@@ -32,36 +36,42 @@ class Profe_AdminController extends Controller
 
     public function csv(Request $request)
     {
-        if (isset($_POST['submit'])) {
-            //Aquí es donde seleccionamos nuestro csv
-            $fname = $_FILES['sel_file']['name'];
-            echo 'Cargando nombre del archivo: ' . $fname . ' <br>';
-            $chk_ext = explode(".", $fname);
+        //validate the xls file
+        $this->validate($request, array(
+            'file' => 'required',
+        ));
 
-            if (strtolower(end($chk_ext)) == "csv") {
-                //si es correcto, entonces damos permisos de lectura para subir
-                $filename = $_FILES['sel_file']['tmp_name'];
-                $handle = fopen($filename, "r");
-
-                while (($data = fgetcsv($handle, 1000, ",")) !== false) {
-                    //Insertamos los datos con los valores...
-                    $q = "INSERT INTO importacion (email, nombre, apellidos, password ) VALUES (
-                   '$data[0]',
-                   '$data[1]',
-                   '$data[2]'
-                   '$data[3]')";
-                    mysql_query($sql) or die('Error: ' . mysql_error());
+        if ($request->hasFile('file')) {
+            $extension = File::extension($request->file->getClientOriginalName());
+            if ($extension == "xlsx" || $extension == "xls" || $extension == "csv") {
+                $path = $request->file->getRealPath();
+                $data = Excel::load($path, function ($reader) {
+                })->get();
+                if (!empty($data) && $data->count()) {
+                    foreach ($data as $key => $value) {
+                        $insert[] = [
+                            'email' => $value->email,
+                            'nombre' => $value->nombre,
+                            'rango' => 2,
+                            'apellidos' => $value->apellidos,
+                            'password' => Hash::make('prueba'),
+                        ];
+                    }
+                    if (!empty($insert)) {
+                        $insertData = User::insert($insert);
+                        if ($insertData) {
+                            Session::flash('success', 'Your Data has successfully imported');
+                        } else {
+                            Session::flash('error', 'Error inserting the data..');
+                            return back();
+                        }
+                    }
                 }
-                //cerramos la lectura del archivo "abrir archivo" con un "cerrar archivo"
-                fclose($handle);
-                echo "Importación exitosa!";
-                return view("profes_admin/anadirUsuarios");
+                return back();
             } else {
-                //si aparece esto es posible que el archivo no tenga el formato adecuado, inclusive cuando es cvs, revisarlo para
-                //ver si esta separado por " , "
-                echo "Archivo invalido!";
+                Session::flash('error', 'File is a ' . $extension . ' file.!! Please upload a valid xls/csv file..!!');
+                return back();
             }
-
         }
     }
 
