@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="shortcut icon" href="{{ asset('logo.png') }}">
   <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
-  <link rel="stylesheet" type="text/css" href="css/menu.css">
+  {{-- <link rel="stylesheet" type="text/css" href="css/menu.css"> --}}
 </head>
 
 
@@ -32,9 +32,6 @@
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
           <a style="color:#b50045;"class="nav-link" href="{{ route('perfil') }}">Ver Perfil</a>
-        </li>
-        <li class="nav-item {{ request()->is('anadirEmpresas') ? 'active' : '' }} " >
-          <a style="color:#b50045;"class="nav-link" href="{{ route('anadirEmpresas') }}">Alta Empresas</a>
         </li>
         <li class="nav-item {{ request()->is('anadirUsuarios') ? 'active' : '' }}">
           <a style="color:#b50045;"class="nav-link" href="{{ route('anadirUsuarios') }}">Alta Usuarios</a>

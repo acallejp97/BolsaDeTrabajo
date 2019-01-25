@@ -6,6 +6,13 @@
  */
 
 require("./bootstrap");
+require("./deleteGrado");
+require("./insertDepartamento");
+require("./insertEmpresa");
+require("./insertGrado");
+require("./insertOferta");
+require("./insertProfe");
+require("./updateUser");
 
 window.Vue = require("vue");
 

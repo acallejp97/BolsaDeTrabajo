@@ -22,13 +22,12 @@ Route::group(['middleware' => 'auth'], function () {
     
     //Profe y admin
     Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
-    Route::get('/anadirEmpresas', "Profe_AdminController@AnadirEmpresas")->name('anadirEmpresas');
     Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios")->name('anadirUsuarios');
     Route::get('/usuarios', "Profe_AdminController@Usuarios")->name('usuarios');
     Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
     Route::get('/aniadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
     Route::post('/aniadirGrado', 'Profe_AdminController@insertGrado')->name('anadirGrado');
-    Route::get('/anadirusuarios', 'Controller@csv')->name('anadirUsuarios');
+    Route::get('/subiendoCSV', 'Controller@csv')->name('subiendoCSV');
     Route::post('/anadirOferta', 'Profe_AdminController@insertarOferta')->name('insertarOferta');
     Route::post('/anadirEmpresas', 'Profe_AdminController@insertarEmpresa')->name('insertEmpresa');
 

@@ -4800,6 +4800,7 @@ input[type="button"].btn-block {
           flex-grow: 1;
   text-align: center;
 }
+
 .tab-content > .tab-pane {
   display: none;
 }
@@ -11442,5 +11443,18 @@ a.text-dark:focus {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  background-color: #e8d5e9 !important;
+}
+
+.fondo {
+  background: url(/images/fondo.png?ba8061b401d3614629846e7ea3da921f);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 625px;
 }
 

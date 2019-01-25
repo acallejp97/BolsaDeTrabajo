@@ -35,24 +35,30 @@
 								</th>
 								<th id="">Email
 								</th>
-								<th id="">Anio Fin
+								<th id="">Año Fin
 								</th>
-								</th><th id="">Registrado
-                                
-                                    </th><th class="td-actions" id="table_action">Accion</th>
+								</th>
+								<th id="">Registrado
+
+								</th>
+								<th class="td-actions" id="table_action">Accion</th>
 							</tr>
 						</thead>
 						<tbody>
-						
-				@foreach($alumno as $alum)
-							
+
+							@foreach($alumno as $alum)
+
 							<tr>
-							
+
+								<td>{{$alum['id']}}</td>
 								<td>{{$alum['nombre']}}</td>
-								
-								 <td>{{$alum['id']}}</td> -->
-							
-								
+								<td>{{$alum['apellidos']}}</td>
+								<td>{{$alum['email']}}</td>
+								{{--
+								<td>{{$alum['anio_fin']}}</td> --}}
+								<td>{{$alum['created_at']}}</td>
+
+
 								<td class="td-actions">
 									<a class="btn btn-default btn-xs" href="javascript:;">
 										<span class="glyphicon glyphicon-pencil"></span> Modificar
@@ -60,16 +66,14 @@
 									<a class="btn btn-default btn-xs" href="javascript:;">
 										<span class="glyphicon glyphicon-remove"></span> Borrar
 									</a>
-									
+
 								</td>
-								
-                            </tr>
+
+							</tr>
 							@endforeach
 						</tbody>
 					</table>
 				</div>
-				<!-- /widget-content -->
-
 			</div>
 		</div>
 	</div>

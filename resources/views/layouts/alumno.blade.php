@@ -22,7 +22,7 @@
   <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/menu.css">
+  {{-- <link rel="stylesheet" type="text/css" href="css/menu.css"> --}}
 </head>
 
 <body>

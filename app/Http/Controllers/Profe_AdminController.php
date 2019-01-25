@@ -2,10 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\Model\Correo;
-use App\Model\Oferta;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
+use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
 use Auth;
@@ -25,23 +25,44 @@ class Profe_AdminController extends Controller
         return view("profes_admin/empresas")->with('empresas', $empresas);
     }
 
-/*-----------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------AÑADIR UNA NUEVA EMPRESA----------------------------------------------------------------------*/
-    public function AnadirEmpresas()
-    {
-        $empresas = Empresa::all();
-        if (!$empresas) {
-            return view("profes_admin/anadirempresas");
-        }
-        return view("profes_admin/anadirempresas")->with('empresas', $empresas);
-    }
-
-/*-----------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------AÑADIR UN NUEVO USUARIO----------------------------------------------------------------------*/
-
     public function AnadirUsuarios()
     {
         return view("profes_admin/anadirusuarios");
+    }
+
+    public function csv(Request $request)
+    {
+        if (isset($_POST['submit'])) {
+            //Aquí es donde seleccionamos nuestro csv
+            $fname = $_FILES['sel_file']['name'];
+            echo 'Cargando nombre del archivo: ' . $fname . ' <br>';
+            $chk_ext = explode(".", $fname);
+
+            if (strtolower(end($chk_ext)) == "csv") {
+                //si es correcto, entonces damos permisos de lectura para subir
+                $filename = $_FILES['sel_file']['tmp_name'];
+                $handle = fopen($filename, "r");
+
+                while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+                    //Insertamos los datos con los valores...
+                    $q = "INSERT INTO importacion (email, nombre, apellidos, password ) VALUES (
+                   '$data[0]',
+                   '$data[1]',
+                   '$data[2]'
+                   '$data[3]')";
+                    mysql_query($sql) or die('Error: ' . mysql_error());
+                }
+                //cerramos la lectura del archivo "abrir archivo" con un "cerrar archivo"
+                fclose($handle);
+                echo "Importación exitosa!";
+                return view("profes_admin/anadirUsuarios");
+            } else {
+                //si aparece esto es posible que el archivo no tenga el formato adecuado, inclusive cuando es cvs, revisarlo para
+                //ver si esta separado por " , "
+                echo "Archivo invalido!";
+            }
+
+        }
     }
 
     public function Cursos()
@@ -61,9 +82,9 @@ class Profe_AdminController extends Controller
     public function Usuarios()
     {
         switch (Auth::user()->rango) {
-            
+
             case 0:
-            $alumno = User::all();
+                $alumno = User::all();
                 break;
             case 1:
                 $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
@@ -179,11 +200,9 @@ class Profe_AdminController extends Controller
         $email = $enviado->email;
         $url = $enviado->url;
         $telefono = $enviado->telefono;
-       
+
         $empresa = new Empresa;
         $empresa->insert(['nombre' => $nombre, 'direccion' => $direccion, 'email' => $email, 'url' => $url, 'telefono' => $telefono]);
 
     }
 }
-
-
