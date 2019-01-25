@@ -17,7 +17,10 @@
         "laraveles/spanish": "^1.1",
         "maatwebsite/excel": "^3.0.1",
         "maatwebsite/laravel-excel-light": "dev-master",
-        "twbs/bootstrap": "^4.2"
+        "twbs/bootstrap": "^4.2",
+       
+            "laravelcollective/html": "~5.0"
+        
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

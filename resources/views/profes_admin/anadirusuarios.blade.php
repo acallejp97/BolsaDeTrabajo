@@ -67,13 +67,11 @@
       Subir un archivo
       </h3>
     </div>
-            <form method="post" action="#" id="#">
-
-                <div class="form-group files">
-                    <label >Upload Your File </label>
-                    <input style=color:transparent; type="file" class="form-control" multiple="">
-                </div>
-            </form>
+<form action='{{action("Controller@csv")}}' method='post' enctype="multipart/form-data">
+   Importar Archivo : <input type='file' name='sel_file' size='20'>
+   <input type='submit' name='submit' value='submit'>
+  </form>
+</form>
         </div>
         <div class="col-md-6">
             <form action="Usuarios" method="Post">

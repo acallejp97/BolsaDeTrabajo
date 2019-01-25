@@ -35,13 +35,15 @@ use App\Http\Controllers\Controller;
 
 class ImportController extends Controller 
 {
-    public function export() 
-    {
-        return Excel::download(new UsersExport, 'users.xlsx');
-    }
+//     public function export() 
+//     {
+//         return Excel::download(new UsersExport, 'users.xlsx');
+//     }
     
-    public function import() 
-    {
-        return Excel::import(new UsersImport, 'users.xlsx');
-    }
-}
+//     public function import() 
+//     {
+//         return Excel::import(new UsersImport, 'users.xlsx');
+//     }
+// }
+
+

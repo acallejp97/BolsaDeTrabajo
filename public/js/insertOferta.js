@@ -14,13 +14,13 @@ $("#insertOferta").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./añadiroferta",
+        url: "./anadirOferta",
         type: "POST",
         data: {
-            insertaroferta: valParam
+            nuevaOferta: valParam
         },
         success: function() {
-            alert("Datos modificados correctamente");
+            alert("Oferta añadida correctamente");
             location.reload();
         },
         error: function() {

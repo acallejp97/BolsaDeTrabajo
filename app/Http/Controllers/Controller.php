@@ -27,24 +27,25 @@ class Controller extends BaseController
         $ofertas = Oferta::all();
         switch (Auth::user()->rango) {
             case 0:
+                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
                 $user = User::all();
                 $empresas = Empresa::all();
                 $ofertas = Oferta::all();
                 $grados = Grado::all();
-                $empresa_oferta = array('empresas' => $empresas, 'user' => $user, 'ofertas' => $ofertas, 'grados' => $grados);
-                $result = array_unique($empresa_oferta);
-                if (!$result) {
+                $empresa_oferta = array('empresas' => $empresas, 'user' => $user, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                if (!$empresa_oferta) {
                     return view("profes_admin/anadirofertas");
                 }
-                return view("profes_admin/anadirofertas")->with('result', $result);
+                return view("profes_admin/anadirofertas")->with('result', $empresa_oferta);
 
                 break;
 
             case 1:
+                $id_profe = Profe_Admin::select('id')->where('id_user', Auth::user()->id)->first();
                 $empresas = Empresa::all();
                 $ofertas = Oferta::all();
                 $grados = Grado::all();
-                $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados);
+                $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'id_profesor' => $id_profe);
                 $result = array_unique($empresa_oferta);
                 if (!$result) {
                     return view("profes_admin/anadirofertas");
@@ -54,7 +55,6 @@ class Controller extends BaseController
                 break;
 
             case 2:
-                $user = User::all();
                 $ofertas = Oferta::all();
 
                 if (!$ofertas) {
@@ -132,6 +132,50 @@ class Controller extends BaseController
             return view("profes_admin/perfil")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
         }
     }
+
+    public function prueba(){
+        return view("profes_admin/pruebavue");
+
+    }
+    public function csv(Request $request){
+     //conexiones, conexiones everywhere
+
+    if(isset($_POST['submit']))
+    {
+        //Aquí es donde seleccionamos nuestro csv
+         $fname = $_FILES['sel_file']['name'];
+         echo 'Cargando nombre del archivo: '.$fname.' <br>';
+         $chk_ext = explode(".",$fname);
+         
+         if(strtolower(end($chk_ext)) == "csv")
+         {
+             //si es correcto, entonces damos permisos de lectura para subir
+             $filename = $_FILES['sel_file']['tmp_name'];
+             $handle = fopen($filename, "r");
+ 
+             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE)
+             {
+               //Insertamos los datos con los valores...
+               $q = "INSERT INTO importacion (email, nombre, apellidos, password ) VALUES (
+                '$data[0]', 
+                '$data[1]',
+                '$data[2]'
+                '$data[3]')";
+                mysql_query($sql) or die('Error: '.mysql_error());
+            }
+            //cerramos la lectura del archivo "abrir archivo" con un "cerrar archivo"
+            fclose($handle);
+            echo "Importación exitosa!";
+            return view("profes_admin/anadirusuarios");
+        }
+        else
+        {
+            //si aparece esto es posible que el archivo no tenga el formato adecuado, inclusive cuando es cvs, revisarlo para             
+            //ver si esta separado por " , "
+            echo "Archivo invalido!";
+        }
+    
+    }}
     public function mostrarUsuario(Request $request)
     {
         $task = array([
@@ -212,20 +256,6 @@ class Controller extends BaseController
         }
 
     }
-    // public function insertar(Request $request)
-    // {
-
-    //         $titulo =  $request->string('titulo');
-    //         $descripcion =  $request->string('descripcion');
-    //         $id_empresa =  $request->string('id_empresa');
-    //         $id_grado =  $request->string('id_grado');
-    //         $id_profesor =  $request->string('id_profesor');
-    //         $puestos =  $request->string('puestos');
-    //         $oferta = new Oferta;
-    //         $oferta->update(['titulo' => $titulo, 'descripcion' => $descripcion,'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos' => $puestos ]);
-
-    //         return view("profes_admin/insertaroferta")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
-    //     }
 
     public function updateUser(Request $request)
     {

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Correo;
+use App\Model\Oferta;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -28,11 +29,11 @@ class Profe_AdminController extends Controller
 -------------------------------------------------AÑADIR UNA NUEVA EMPRESA----------------------------------------------------------------------*/
     public function AnadirEmpresas()
     {
-        $empresa = Empresa::all();
-        if (!$empresa) {
-            return view("profes_admin/anadirEmpresas");
+        $empresas = Empresa::all();
+        if (!$empresas) {
+            return view("profes_admin/anadirempresas");
         }
-        return view("profes_admin/anadirEmpresas")->with('empresas', $empresa);
+        return view("profes_admin/anadirempresas")->with('empresas', $empresas);
     }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,8 +61,9 @@ class Profe_AdminController extends Controller
     public function Usuarios()
     {
         switch (Auth::user()->rango) {
-
+            
             case 0:
+            $alumno = User::all();
                 break;
             case 1:
                 $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
@@ -75,7 +77,7 @@ class Profe_AdminController extends Controller
                 }
                 break;
         }
-        return view("profes_admin/usuarios")->with('$alumno', $alumno);
+        return view("profes_admin/usuarios")->with('alumno', $alumno);
     }
 
     //******* */FUNCIONES DE ADMIN********************
@@ -166,4 +168,43 @@ class Profe_AdminController extends Controller
         return redirect('alumno/contacto', "AlumnoController@Contacto");
     }
 
+    public function insertarOferta(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        $enviado = json_decode($_REQUEST['nuevaOferta']);
+
+        $titulo = $enviado->titulo;
+        $descripcion = $enviado->descripcion;
+        $id_empresa = $enviado->id_empresa;
+        $id_grado = $enviado->id_grado;
+        $id_profesor = $enviado->id_profesor;
+        $puestos = $enviado->puestos;
+        $oferta = new Oferta;
+        $oferta->insert(['titulo' => $titulo, 'descripcion' => $descripcion, 'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos-vacantes' => $puestos]);
+
+    }
+
+    public function insertarEmpresa(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        $enviado = json_decode($_REQUEST['nuevaEmpresa']);
+
+        $nombre = $enviado->nombre;
+        $direccion = $enviado->direccion;
+        $email = $enviado->email;
+        $url = $enviado->url;
+        $telefono = $enviado->telefono;
+       
+        $empresa = new Empresa;
+        $empresa->insert(['nombre' => $nombre, 'direccion' => $direccion, 'email' => $email, 'url' => $url, 'telefono' => $telefono]);
+
+    }
 }
+
+

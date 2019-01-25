@@ -27,12 +27,30 @@
 
 <div class="row col-md-10">
        
-        <div class="col-md-10">
+        <div class="col-md-10" id="example-1">
           <h3>{{$oferta['titulo']}}</h3>
           <p>{{$oferta['descripcion']}}</p>
           <p>{{$oferta['puestos-vacantes']}}</p>
-          <a class="btn btn-primary"style="background: #b50045; color:white;" href="#">Inscribirse</a>
+          <a class="btn btn-primary" v-on:click=""style="background: #b50045; color:white;" href="#">Inscribirse</a>
+         
         </div>
       </div>
+
+      <script>
+    
+      var example1 = new Vue({
+          el: '#example-1',
+          data: {
+            counter: 0
+          },
+          methods:{
+            guardarC():{
+
+            }
+          }
+})
+
+
+</script>
       @endforeach
 @endsection
