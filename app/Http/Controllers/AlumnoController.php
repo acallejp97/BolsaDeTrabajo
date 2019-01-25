@@ -26,11 +26,6 @@ class AlumnoController extends Controller
 
     public function ActualizarCV()
     {
-
-
-      
-    
-        
         $user = User::all();
         $curriculums = Curriculum::all();
  $id_alumno = Alumno::select('id')->where('id_user', Auth::user()->id)->first();

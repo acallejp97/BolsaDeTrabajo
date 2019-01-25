@@ -1,4 +1,4 @@
-$("#aniadirDepartamento").click(function() {
+$("#anadirDepartamento").click(function() {
     var nombreDepar = prompt("Introduce nombre del departamento a añadir");
     var array = {
         nombre: nombreDepar
@@ -10,7 +10,7 @@ $("#aniadirDepartamento").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./aniadirDepartamento",
+        url: "./anadirDepartamento",
         type: "POST",
         data: {
             nuevoDepartamento: valParam

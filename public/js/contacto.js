@@ -1,7 +1,8 @@
-$("#aniadirGrado").click(function() {
-    var nombreGrado = prompt("Introduce nombre del grado a añadir");
+$("#enviarContacto").click(function() {
     var array = {
-        nombre: nombreGrado
+        nombre: $("#nombre").val(),
+        email: $("#email").val(),
+        mensaje: $("#mensaje").val()
     };
 
     var valParam = JSON.stringify(array);
@@ -10,13 +11,13 @@ $("#aniadirGrado").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./aniadirGrado",
+        url: "./enviarCorreo",
         type: "POST",
         data: {
-            nuevoGrado: valParam
+            nuevoContacto: valParam
         },
         success: function() {
-            alert("Grado añadido correctamente");
+            alert("Datos modificados correctamente");
             location.reload();
         },
         error: function() {

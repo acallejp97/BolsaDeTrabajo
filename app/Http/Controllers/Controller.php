@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Model\Correo;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -207,7 +208,71 @@ class Controller extends BaseController
         //Esta función devolverá los datos de una tarea que hayamos seleccionado para cargar el formulario con sus datos
     }
 
-    
+    public function enviar(Request $request)
+    {
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        if (isset($_REQUEST['nuevoContacto'])) {
+            $enviado = json_decode($_REQUEST['nuevoContacto']);
+            $asunto = $enviado->email;
+            $descripcion = $enviado->mensaje;
+
+            $insertarDepartamento = new Correo;
+            $insertarDepartamento->insert(['asunto' => $asunto,
+                'id_remit' => Auth::user()->id,
+                'descripcion' => $descripcion]);
+
+        } else {
+            $insertarDepartamento->delete();
+
+        }
+    }
+
+    public function insertOferta(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['`insertaroferta`'])) {
+
+            $enviado = json_decode($_REQUEST['insertaroferta']);
+
+            $titulo = $enviado->titulo;
+            $descripcion = $enviado->descripcion;
+            $id_empresa = $enviado->id_empresa;
+            $id_grado = $enviado->id_grado;
+            $id_profesor = $enviado->id_profesor;
+            $puestos = $enviado->puestos;
+
+            $insertaroferta = new Oferta;
+            if ($titulo != "") {
+                $insertaroferta->update(['titulo' => $titulo]);
+            }
+
+            if ($descripcion != "") {
+                $insertaroferta->update(['descripcion' => $descripcion]);
+            }
+
+            if ($id_empresa != "") {
+                $insertaroferta->update(['id_empresa' => $id_empresa]);
+            }
+
+            if ($id_grado != "") {
+                $insertaroferta->update(['id_grado' => $id_grado]);
+            }
+            if ($id_profesor != "") {
+                $insertaroferta->update(['id_profesor' => $id_profesor]);
+            }
+
+        } else {
+
+            // $insertaroferta = Oferta::findOrFail(Auth::user()->id)->delete();
+        }
+
+    }
 
     public function updateUser(Request $request)
     {

@@ -4,7 +4,6 @@
 	<div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="well well-sm">
-          <form class="form-horizontal" action="{{URL::to('/')}}/contacto" method="get">
           <fieldset>
             <legend class="text-center">Contactar</legend>
     
@@ -34,11 +33,11 @@
             <!-- Form actions -->
             <div class="form-group">
               <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                <button id="enviarContacto" type="submit" class="btn btn-primary btn-lg">Enviar</button>
               </div>
             </div>
           </fieldset>
-          </form>
         </div>
+        <script src="{{asset('js/contacto.js')}}"></script>
       </div>
 @endsection

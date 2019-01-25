@@ -107,18 +107,21 @@ class Profe_AdminController extends Controller
     public function insertDepartamento(Request $request)
     {
 
-        $enviado = json_decode($_REQUEST['nuevoDepartamento']);
-
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $nombre = $enviado->nombre;
+        if (isset($_REQUEST['nuevoDepartamento'])) {
+            $enviado = json_decode($_REQUEST['nuevoDepartamento']);
+            $nombre = $enviado->nombre;
 
-        $insertarDepartamento = new Departamento;
-        if ($nombre != "") {
+            $insertarDepartamento = new Departamento;
             $insertarDepartamento->insert(['nombre' => $nombre]);
+        } else {
+            $insertarDepartamento->delete();
+
         }
     }
+
 
     public function insertGrado(Request $request)
     {
@@ -129,11 +132,29 @@ class Profe_AdminController extends Controller
             return redirect('/');
         }
         $nombre = $enviado->nombre;
+        $idDepar = $enviado->idDepar;
+        $abreviacion = $enviado->abreviacion;
 
         $insertarGrado = new Grado;
         if ($nombre != "") {
-            $insertarGrado->insert(['nombre' => $nombre]);
+            $insertarGrado->insert(['nombre' => $nombre, 'id_depar' => $idDepar, 'abreviacion' => $abreviacion]);
         }
+    }
+
+    public function deleteGrado(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarGrado']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $nombre = $enviado->nombre;
+
+        if ($nombre != "") {
+            Grado::where('id', $nombre)->delete();
+        }
+
     }
 
     public function store(Request $request)

@@ -15,7 +15,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/perfil', "Controller@Perfil")->name('perfil');
     Route::post('/actualizarUsuario', 'Controller@updateUser')->name('actualizarUsuario');
     Route::post('/fotoperfil', 'Controller@updateProfile')->name('fotoPerfil');
-    
+    Route::post('/insertar', 'Controller@insertar')->name('insertar');
+    Route::post('/enviarCorreo', 'Controller@enviar')->name('enviarCorreo');
+
     //Admin
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
     Route::get('/anadirProfesores', "Profe_AdminController@AnadirProfesores")->name('anadirProfesores');
@@ -32,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/anadirusuarios', 'Controller@csv')->name('anadirUsuarios');
     Route::post('/anadirOferta', 'Profe_AdminController@insertarOferta')->name('insertarOferta');
     Route::post('/anadirEmpresas', 'Profe_AdminController@insertarEmpresa')->name('insertEmpresa');
+    Route::post('/contacto', 'Profe_AdminController@contacto')->name('contacto');
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
