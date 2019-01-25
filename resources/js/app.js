@@ -6,13 +6,15 @@
  */
 
 require("./bootstrap");
+require("./contacto");
 require("./deleteGrado");
+require("./grado");
 require("./insertDepartamento");
 require("./insertEmpresa");
 require("./insertGrado");
 require("./insertOferta");
-require("./insertUsers");
 require("./insertProfe");
+require("./insertUsers");
 require("./updateUser");
 
 window.Vue = require("vue");

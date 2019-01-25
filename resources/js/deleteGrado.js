@@ -7,7 +7,7 @@ $("#deleteGrado").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./aniadirDepartamento",
+        url: "./anadirDepartamento",
         type: "POST",
         data: {
             nuevoDepartamento: valParam

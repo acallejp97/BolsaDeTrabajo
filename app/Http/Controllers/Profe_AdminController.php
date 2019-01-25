@@ -138,18 +138,21 @@ class Profe_AdminController extends Controller
     public function insertDepartamento(Request $request)
     {
 
-        $enviado = json_decode($_REQUEST['nuevoDepartamento']);
-
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $nombre = $enviado->nombre;
+        if (isset($_REQUEST['nuevoDepartamento'])) {
+            $enviado = json_decode($_REQUEST['nuevoDepartamento']);
+            $nombre = $enviado->nombre;
 
-        $insertarDepartamento = new Departamento;
-        if ($nombre != "") {
+            $insertarDepartamento = new Departamento;
             $insertarDepartamento->insert(['nombre' => $nombre]);
+        } else {
+            $insertarDepartamento->delete();
+
         }
     }
+
 
     public function insertGrado(Request $request)
     {
@@ -160,11 +163,29 @@ class Profe_AdminController extends Controller
             return redirect('/');
         }
         $nombre = $enviado->nombre;
+        $idDepar = $enviado->idDepar;
+        $abreviacion = $enviado->abreviacion;
 
         $insertarGrado = new Grado;
         if ($nombre != "") {
-            $insertarGrado->insert(['nombre' => $nombre]);
+            $insertarGrado->insert(['nombre' => $nombre, 'id_depar' => $idDepar, 'abreviacion' => $abreviacion]);
         }
+    }
+
+    public function deleteGrado(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarGrado']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $nombre = $enviado->nombre;
+
+        if ($nombre != "") {
+            Grado::where('id', $nombre)->delete();
+        }
+
     }
 
     public function store(Request $request)
@@ -194,6 +215,23 @@ class Profe_AdminController extends Controller
         $puestos = $enviado->puestos;
         $oferta = new Oferta;
         $oferta->insert(['titulo' => $titulo, 'descripcion' => $descripcion, 'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos-vacantes' => $puestos]);
+
+    }
+    public function insertarProfe(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        $enviado = json_decode($_REQUEST['nuevaProfe']);
+
+        $nombre = $enviado->nombre;
+        $apellido = $enviado->apellido;
+        $email = $enviado->email;
+        $password1 = $enviado->password1;
+        $rango= $enviado->rango;
+        $user = new User;
+        $user->insert(['nombre' => $nombre, 'apellido' => $apellido, 'email' => $email, 'password1' => $password1, 'rango' => $rango]);
 
     }
 

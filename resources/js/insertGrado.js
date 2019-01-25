@@ -1,4 +1,4 @@
-$("#aniadirGrado").click(function() {
+$("#anadirGrado").click(function() {
     var nombreGrado = prompt("Introduce nombre del grado a añadir");
     var array = {
         nombre: nombreGrado
@@ -10,7 +10,7 @@ $("#aniadirGrado").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./aniadirGrado",
+        url: "./anadirGrado",
         type: "POST",
         data: {
             nuevoGrado: valParam

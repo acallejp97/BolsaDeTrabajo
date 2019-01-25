@@ -25002,14 +25002,14 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(44).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(47).setImmediate))
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(51);
+module.exports = __webpack_require__(54);
 
 
 /***/ }),
@@ -25018,9 +25018,9 @@ module.exports = __webpack_require__(51);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_material__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(50);
 /*
  *
  * First we will load all of this project's JavaScript dependencies which
@@ -25036,6 +25036,9 @@ __webpack_require__(40);
 __webpack_require__(41);
 __webpack_require__(42);
 __webpack_require__(43);
+__webpack_require__(44);
+__webpack_require__(45);
+__webpack_require__(46);
 
 window.Vue = __webpack_require__(11);
 
@@ -25050,7 +25053,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component("passwords", __webpack_require__(48));
+Vue.component("passwords", __webpack_require__(51));
 
 new Vue({
   el: '#app',
@@ -47416,7 +47419,12 @@ module.exports = function spread(callback) {
 /* 37 */
 /***/ (function(module, exports) {
 
-$("#deleteGrado").click(function () {
+$("#enviarContacto").click(function () {
+    var array = {
+        nombre: $("#nombre").val(),
+        email: $("#email").val(),
+        mensaje: $("#mensaje").val()
+    };
 
     var valParam = JSON.stringify(array);
 
@@ -47424,13 +47432,13 @@ $("#deleteGrado").click(function () {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./aniadirDepartamento",
+        url: "./enviarCorreo",
         type: "POST",
         data: {
-            nuevoDepartamento: valParam
+            nuevoContacto: valParam
         },
         success: function success() {
-            alert("Departamento añadido correctamente");
+            alert("Datos modificados correctamente");
             location.reload();
         },
         error: function error() {
@@ -47443,11 +47451,7 @@ $("#deleteGrado").click(function () {
 /* 38 */
 /***/ (function(module, exports) {
 
-$("#aniadirDepartamento").click(function () {
-    var nombreDepar = prompt("Introduce nombre del departamento a añadir");
-    var array = {
-        nombre: nombreDepar
-    };
+$("#deleteGrado").click(function () {
 
     var valParam = JSON.stringify(array);
 
@@ -47455,7 +47459,7 @@ $("#aniadirDepartamento").click(function () {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./aniadirDepartamento",
+        url: "./anadirDepartamento",
         type: "POST",
         data: {
             nuevoDepartamento: valParam
@@ -47472,6 +47476,98 @@ $("#aniadirDepartamento").click(function () {
 
 /***/ }),
 /* 39 */
+/***/ (function(module, exports) {
+
+$("#anadirGrado").click(function () {
+    var nombreGrado = prompt("Introduce nombre del grado a añadir");
+    var abreviacion = prompt("Introduce la abreviacion del grado");
+    var idDepar = $("#elDepartamento").val();
+    var array = {
+        nombre: nombreGrado,
+        idDepar: idDepar,
+        abreviacion: abreviacion
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./anadirGrado",
+        type: "POST",
+        data: {
+            nuevoGrado: valParam
+        },
+        success: function success() {
+            alert("Grado añadido correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$("#borrarGrado").click(function () {
+    var array = {
+        nombre: $("#grado").val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./borrarGrado",
+        type: "POST",
+        data: {
+            borrarGrado: valParam
+        },
+        success: function success() {
+            alert("Departamento añadido correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports) {
+
+$("#anadirDepartamento").click(function () {
+    var nombreDepar = prompt("Introduce nombre del departamento a añadir");
+    var array = {
+        nombre: nombreDepar
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./anadirDepartamento",
+        type: "POST",
+        data: {
+            nuevoDepartamento: valParam
+        },
+        success: function success() {
+            alert("Departamento añadido correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports) {
 
 $("#insertEmpresa").click(function () {
@@ -47506,10 +47602,10 @@ $("#insertEmpresa").click(function () {
 });
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports) {
 
-$("#aniadirGrado").click(function () {
+$("#anadirGrado").click(function () {
     var nombreGrado = prompt("Introduce nombre del grado a añadir");
     var array = {
         nombre: nombreGrado
@@ -47521,7 +47617,7 @@ $("#aniadirGrado").click(function () {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./aniadirGrado",
+        url: "./anadirGrado",
         type: "POST",
         data: {
             nuevoGrado: valParam
@@ -47537,7 +47633,7 @@ $("#aniadirGrado").click(function () {
 });
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports) {
 
 $("#insertOferta").click(function () {
@@ -47572,13 +47668,72 @@ $("#insertOferta").click(function () {
 });
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports) {
 
-$("#insertProfe").click(function () {});
+$("#insertProfe").click(function () {
+    var array = {
+        nombre: $("#nombre").val(),
+        email: $("#email").val(),
+        apellidos: $("#apellidos").val(),
+        password1: $("#password1").val(),
+        rango: $("#rango").val()
+
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./anadirProfesores",
+        type: "POST",
+        data: {
+            nuevaProfe: valParam
+        },
+        success: function success() {
+            alert("Oferta añadida correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
 
 /***/ }),
-/* 43 */
+/* 45 */
+/***/ (function(module, exports) {
+
+$("#insertUsers").click(function () {
+    var array = {
+        file: $("#puestos").val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./subiendoCSV",
+        type: "POST",
+        data: {
+            nuevaOferta: valParam
+        },
+        success: function success() {
+            alert("Oferta añadida correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+/***/ }),
+/* 46 */
 /***/ (function(module, exports) {
 
 $("#updateUser").click(function () {
@@ -47631,7 +47786,7 @@ $("#deleteUser").click(function () {
 });
 
 /***/ }),
-/* 44 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -47687,7 +47842,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(45);
+__webpack_require__(48);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -47701,7 +47856,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -47894,7 +48049,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -78204,7 +78359,7 @@ if (false) {
 });
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87002,15 +87157,15 @@ var install = VeeValidate$1.install;
 
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(49)
+var normalizeComponent = __webpack_require__(52)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(50)
+var __vue_template__ = __webpack_require__(53)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -87049,7 +87204,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -87158,7 +87313,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -87178,7 +87333,7 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

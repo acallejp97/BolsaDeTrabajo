@@ -1,7 +1,8 @@
-$("#anadirDepartamento").click(function() {
-    var nombreDepar = prompt("Introduce nombre del departamento a añadir");
+$("#enviarContacto").click(function() {
     var array = {
-        nombre: nombreDepar
+        nombre: $("#nombre").val(),
+        email: $("#email").val(),
+        mensaje: $("#mensaje").val()
     };
 
     var valParam = JSON.stringify(array);
@@ -10,13 +11,13 @@ $("#anadirDepartamento").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./anadirDepartamento",
+        url: "./enviarCorreo",
         type: "POST",
         data: {
-            nuevoDepartamento: valParam
+            nuevoContacto: valParam
         },
         success: function() {
-            alert("Departamento añadido correctamente");
+            alert("Datos modificados correctamente");
             location.reload();
         },
         error: function() {

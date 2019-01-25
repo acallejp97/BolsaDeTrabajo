@@ -23,15 +23,25 @@
          </div>
        </form>
      </div>
-@foreach($ofertas as $oferta)
+     @foreach ($result['ofertas'] as $oferta)
 
-<div class="row col-md-10">
+<div class="row col-md-10 justify ">
        
-        <div class="col-md-10" id="example-1">
+        <div class="col-md-10" >
           <h3>{{$oferta['titulo']}}</h3>
           <p>{{$oferta['descripcion']}}</p>
           <p>{{$oferta['puestos-vacantes']}}</p>
-          <a class="btn btn-primary" v-on:click=""style="background: #b50045; color:white;" href="#">Inscribirse</a>
+          @foreach ($result['profe_admin'] as $profe_admin)
+        @foreach ($result['user'] as $user)
+        @if($oferta['id_profesor']==$profe_admin['id'])
+        @if($user['id']==$profe_admin['id_user'])
+        <h6><strong> Profesor que la ha publicado: </strong>{{$user['nombre']}}</h6>
+        @endif
+        @endif
+
+        @endforeach
+        @endforeach
+          <a class="btn btn-primary " v-on:click=""style="background: #b50045; color:white;" href="#">Inscribirse</a>
          
         </div>
       </div>

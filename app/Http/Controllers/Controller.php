@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Model\Correo;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -26,12 +27,16 @@ class Controller extends BaseController
         $ofertas = Oferta::all();
         switch (Auth::user()->rango) {
             case 0:
-                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
-                $user = User::all();
+            $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+            $profe_admin= Profe_Admin::all();
+            
+          
+            $ofertas = Oferta::all();
+            $user = User::all();
                 $empresas = Empresa::all();
-                $ofertas = Oferta::all();
                 $grados = Grado::all();
-                $empresa_oferta = array('empresas' => $empresas, 'user' => $user, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+               
+                $empresa_oferta = array('profe_admin' => $profe_admin,'user' => $user, 'empresas' => $empresas,  'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
                 if (!$empresa_oferta) {
                     return view("profes_admin/anadirofertas");
                 }
@@ -40,27 +45,40 @@ class Controller extends BaseController
                 break;
 
             case 1:
-                $id_profe = Profe_Admin::select('id')->where('id_user', Auth::user()->id)->first();
+            $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+            $profe_admin= Profe_Admin::all();
+            
+          
+            $ofertas = Oferta::all();
+            $user = User::all();
                 $empresas = Empresa::all();
-                $ofertas = Oferta::all();
                 $grados = Grado::all();
-                $empresa_oferta = array('empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'id_profesor' => $id_profe);
-                $result = array_unique($empresa_oferta);
-                if (!$result) {
+               
+                $empresa_oferta = array('profe_admin' => $profe_admin,'user' => $user, 'empresas' => $empresas,  'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                if (!$empresa_oferta) {
                     return view("profes_admin/anadirofertas");
                 }
-                return view("profes_admin/anadirofertas")->with('result', $result);
+                return view("profes_admin/anadirofertas")->with('result', $empresa_oferta);
 
                 break;
 
             case 2:
-                $ofertas = Oferta::all();
-
-                if (!$ofertas) {
+            $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+            $profe_admin= Profe_Admin::all();
+            
+          
+            $ofertas = Oferta::all();
+            $user = User::all();
+                $empresas = Empresa::all();
+                $grados = Grado::all();
+               
+                $empresa_oferta = array('profe_admin' => $profe_admin,'user' => $user, 'empresas' => $empresas,  'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                if (!$empresa_oferta) {
                     return view("alumnos/ofertas");
                 }
-                return view("alumnos/ofertas")->with('ofertas', $ofertas);
+                return view("alumnos/ofertas")->with('result', $empresa_oferta);
 
+                break;
         }
 
     }
@@ -152,7 +170,71 @@ class Controller extends BaseController
         //Esta función devolverá los datos de una tarea que hayamos seleccionado para cargar el formulario con sus datos
     }
 
-    
+    public function enviar(Request $request)
+    {
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        if (isset($_REQUEST['nuevoContacto'])) {
+            $enviado = json_decode($_REQUEST['nuevoContacto']);
+            $asunto = $enviado->email;
+            $descripcion = $enviado->mensaje;
+
+            $insertarDepartamento = new Correo;
+            $insertarDepartamento->insert(['asunto' => $asunto,
+                'id_remit' => Auth::user()->id,
+                'descripcion' => $descripcion]);
+
+        } else {
+            $insertarDepartamento->delete();
+
+        }
+    }
+
+    public function insertOferta(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['`insertaroferta`'])) {
+
+            $enviado = json_decode($_REQUEST['insertaroferta']);
+
+            $titulo = $enviado->titulo;
+            $descripcion = $enviado->descripcion;
+            $id_empresa = $enviado->id_empresa;
+            $id_grado = $enviado->id_grado;
+            $id_profesor = $enviado->id_profesor;
+            $puestos = $enviado->puestos;
+
+            $insertaroferta = new Oferta;
+            if ($titulo != "") {
+                $insertaroferta->update(['titulo' => $titulo]);
+            }
+
+            if ($descripcion != "") {
+                $insertaroferta->update(['descripcion' => $descripcion]);
+            }
+
+            if ($id_empresa != "") {
+                $insertaroferta->update(['id_empresa' => $id_empresa]);
+            }
+
+            if ($id_grado != "") {
+                $insertaroferta->update(['id_grado' => $id_grado]);
+            }
+            if ($id_profesor != "") {
+                $insertaroferta->update(['id_profesor' => $id_profesor]);
+            }
+
+        } else {
+
+            // $insertaroferta = Oferta::findOrFail(Auth::user()->id)->delete();
+        }
+
+    }
 
     public function updateUser(Request $request)
     {
