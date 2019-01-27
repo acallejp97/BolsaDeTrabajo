@@ -13,36 +13,46 @@
 
         <div class="form-group">
           <!-- Full Name -->
-          <label for="full_name_id" class="control-label">Nombre</label>
-          <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer">
+          <label for="nombre" class="control-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="">
         </div>
 
         <div class="form-group">
           <!-- Street 1 -->
-          <label for="street1_id" class="control-label">Apellidos</label>
-		  <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer">
+          <label for="apellidos" class="control-label">Apellidos</label>
+		  <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="">
 		</div>
 		<div class="form-group">
           <!-- Street 1 -->
-          <label for="street1_id" class="control-label">Email</label>
-		  <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer">
+          <label for="email" class="control-label">Email</label>
+		  <input type="text" class="form-control" id="email" name="email" placeholder="">
         </div>
 
         <div class="form-group">
           <!-- State Button -->
-          <label for="state_id" class="control-label">Grado</label>
-          <select class="form-control" id="state_id">
+          <label for="id_depar" class="control-label">Departamento</label>
+          <select class="form-control" id="id_depar" name="id_depar">
             @foreach ($profesores['departamento'] as $departamento) 
             @foreach ($profesores['profe_admin'] as $profe) 
             @if($departamento['id']==$profe['id_depar'])
             
-            <option value="AL">{{$departamento['nombre']}}</option>
+            <option name="id_depar"value="{{($departamento)['id']}}">{{$departamento['nombre']}}</option>
             @break
             @endif
               @endforeach
               @endforeach
             </select>
         </div>
+        <div class="form-group">
+      
+        <input type="hidden" id="rango" value="{{1}}">
+       
+      </div>
+      <div class="form-group">
+      
+      <input type="hidden" id="password" value="{{'prueba'}}>
+     
+    </div>
 	
         <div class="form-group">
           <!-- Submit Button -->
@@ -134,4 +144,8 @@
 
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+<script>
+  window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
+</script>
 @endsection

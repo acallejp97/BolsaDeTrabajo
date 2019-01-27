@@ -12,7 +12,7 @@ class ProfeAdminSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('es_ES');
 
         DB::table('profe-admin')->delete();
         DB::table('profe-admin')->insert(array(

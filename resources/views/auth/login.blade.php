@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @section('content')
 
-<div class="container">
+<div class="container" id="cajalogin">
     <div class="float-xl-right ">
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

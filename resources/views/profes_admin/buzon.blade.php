@@ -43,12 +43,18 @@
 						</thead>
 						<tbody>
 
-
+			 
+			<!--recorre mediante los foreach las tablas y saca lo que se le dice abajo-->
 							@foreach ($user_correos['correos'] as $correo) 
 							@foreach ($user_correos['user'] as $usuarios) 
 							@if($correo['id_remit']==$usuarios['id'])
-							<tr>
-
+							@if($usuarios->rango==1)
+							<!--si es profesor que el correo salga de otro color resaltandolo-->
+							<tr id="colorfila" style="background:#DC6E97;">
+							@else 
+							<tr id="colorfila" >
+@endif
+					
 								<div class="media-heading">
 
 									<td><a href="#" class="pull-left"> </a>
@@ -65,7 +71,7 @@
 
 						   <td class="td-actions">
 									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-pencil"></span> Modificar
+										<span class="glyphicon glyphicon-pencil"></span> Abrir
 									</a>
 									<a class="btn btn-default btn-xs" style="background: #b50045; color:white;"href="javascript:;">
 										<span class="glyphicon glyphicon-remove" ></span> Borrar

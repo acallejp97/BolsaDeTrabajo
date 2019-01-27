@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('user')->delete();
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('es_ES');
 
         DB::table('user')->insert(array(
             'email' => 'admin@fptxurdinaga.com',

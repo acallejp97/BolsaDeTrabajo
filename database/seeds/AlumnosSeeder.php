@@ -12,7 +12,7 @@ class AlumnosSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('es_ES');
 
         DB::table('alumnos')->delete();
         for ($numeroAlumnos = 4; $numeroAlumnos != 30; $numeroAlumnos++) {

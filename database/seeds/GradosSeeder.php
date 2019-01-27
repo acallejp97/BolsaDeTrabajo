@@ -11,16 +11,16 @@ class GradosSeeder extends Seeder
      * @return void
      */
     private $grados = array(
-        'Tecnico en Actividades Comerciales',
-        'Tecnico en Instalaciones de Telecomunicaciones',
-        'Tecnico en Sistemas Microinformaticos y Redes',
-        'Tecnico Superior En Integracion Social',
-        'Tecnico Superior en Desarrollo de Aplicaciones Multiplataforma',
-        'Tecnico Superior en Administracion y Finanzas',
-        'Tecnico Superior en Gestion de Ventas y Espacios Comerciales',
-        'Tecnico Superior en Laboratorio de Analisis y de Control de Calidad',
-        'Tecnico Superior en Desarrollo de Aplicaciones Web',
-        'Tecnico Superior en Administracion de Sistemas Informaticos en Red');
+        'Técnico en Actividades Comerciales',
+        'Técnico en Instalaciones de Telecomunicaciones',
+        'Técnico en Sistemas Microinformáticos y Redes',
+        'Técnico Superior En Integración Social',
+        'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma',
+        'Técnico Superior en Administración y Finanzas',
+        'Técnico Superior en Gestión de Ventas y Espacios Comerciales',
+        'Técnico Superior en Laboratorio de Analisis y de Control de Calidad',
+        'Técnico Superior en Desarrollo de Aplicaciones Web',
+        'Técnico Superior en Administración de Sistemas Informáticos en Red');
 
     private $abreviacion = array('AC2', 'IT2', 'SM2', 'IS3', 'DM3', 'AF3', 'GV3', 'LA3', 'DW3', 'AS3');
 

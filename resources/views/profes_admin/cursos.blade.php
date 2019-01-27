@@ -3,8 +3,8 @@
 <br>
 <div class=row>
     <div class="text-right">
-        <button id="anadirDepartamento" class="btn icon-btn d-inline" style="background-color: #ff1a66; width: 14%; text-align: center;">
-            <span class="glyphicon glyphicon-plus"></span>
+        <button id="anadirDepartamento" class="btn icon-btn d-inline" style="background-color: #DC6E97; margin-right:15em; width: 15em; text-align: center;">
+            <span  class="glyphicon glyphicon-plus"></span>
             Añadir Departamento
         </button>
     </div>

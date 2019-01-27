@@ -112,16 +112,16 @@ class Profe_AdminController extends Controller
     }
 
     //******* */FUNCIONES DE ADMIN********************
-    public function AnadirProfesores()
+    public function Profesores()
     {
         $profesor = Profe_Admin::all();
         $user = User::all();
         $departamento = Departamento::all();
         $profesores = array('profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
         if (!$profesor) {
-            return view("profes_admin/anadirprofesores");
+            return view("profes_admin/profesores");
         }
-        return view("profes_admin/anadirprofesores")->with('profesores', $profesores);
+        return view("profes_admin/profesores")->with('profesores', $profesores);
     }
 
     public function Buzon()
@@ -223,16 +223,19 @@ class Profe_AdminController extends Controller
             return redirect('/');
         }
 
-        $enviado = json_decode($_REQUEST['nuevaProfe']);
+        $enviado = json_decode($_REQUEST['nuevoProfe']);
 
         $nombre = $enviado->nombre;
         $apellido = $enviado->apellido;
         $email = $enviado->email;
-        $password1 = $enviado->password1;
+        $password = $enviado->password;
+        $id_depar = $enviado->id_depar;
         $rango= $enviado->rango;
         $user = new User;
-        $user->insert(['nombre' => $nombre, 'apellido' => $apellido, 'email' => $email, 'password1' => $password1, 'rango' => $rango]);
-
+        $profe = new Profe_Admin;
+        $user->insert(['nombre' => $nombre, 'apellido' => $apellido,'email' => $email, 'password' => $password,'rango' => $rango]);
+        $profe->insert(['id_depar' => $id_depar]);
+       
     }
 
     public function insertarEmpresa(Request $request)

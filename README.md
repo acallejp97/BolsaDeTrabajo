@@ -5,3 +5,7 @@
 2. Da permisos a toda la carpeta del proyecto con el (sudo chmod -R 777 ~/ruta_del_proyecto)
 3. En el archivo .env que os bajeis ( estaba omitido a subir en el git, ya se ha arreglado) está todo de la configuracion 
 **NO TOCAR** 
+
+
+Para rellenar la base de datos automaticamente
+php artisan migrate:refresh --seed

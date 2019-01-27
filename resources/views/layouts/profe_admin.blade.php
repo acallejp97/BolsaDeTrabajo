@@ -53,8 +53,8 @@
           <a style="color:#b50045;"class="nav-link" href="{{ route('contacto') }}">Contacto</a>
         </li>
         @endif @if ((Auth::user()->rango)==0)
-        <li class="nav-item {{ request()->is('anadirProfesores') ? 'active' : '' }}">
-          <a style="color:#b50045;"class="nav-link" href="{{ route('anadirProfesores') }}">Alta Profesores</a>
+        <li class="nav-item {{ request()->is('profesores') ? 'active' : '' }}">
+          <a style="color:#b50045;"class="nav-link" href="{{ route('profesores') }}">Profesores</a>
         </li>
         <li class="nav-item {{ request()->is('buzon') ? 'active' : '' }}">
           <a style="color:#b50045;"class="nav-link" href="{{ route('buzon') }}">Buzon</a>

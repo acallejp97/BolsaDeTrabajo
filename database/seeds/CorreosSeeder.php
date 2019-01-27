@@ -12,7 +12,7 @@ class CorreosSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('es_ES');
         DB::table('correos')->delete();
 
         for ($cantidadCorreos = 0; $cantidadCorreos != 9; $cantidadCorreos++) {
