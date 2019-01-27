@@ -1,43 +1,79 @@
-# Update packages and Upgrade system
-yum update -y && yum upgrade -y
+yum clean all
 
-## Install AMP
-yum install apache2 -y
-service apache2 restart
+yum -y update
 
-yum update -y && yum upgrade -y
+yum -y install httpd
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=443/tc
+firewall-cmd --reload
 
-yum install php7.2 -y
-yum install php7.2-x    cli -y 
-yum install php7.2-common -y
-yum install php7.2-mbstring -y
-yum install php7.2-intl -y 
-yum install php7.2-xml -y 
-yum install php7.2-mysql -y 
-yum install php7.2-mcrypt -y
-yum install mysql-server -y
-yum install mysql-client-y
-yum install libapache2-mod-php7.2 -y
-yum install phpmyadmin -y
-yum install php-mbstring -y
-yum install php-gettext -y
+systemctl start httpd
+systemctl enable httpd
+systemctl status httpd
 
-echo "#Habilitar phpmyadmin" >> /etc/apache2/apache2.conf
-echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf
+#Quitar pagina de inicio
+rm /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.save.conf
 
-# Reiniciar Apache
-service apache2 restart
-service mysql restart
+#Instalacion MariaDB
+touch /etc/yum.repos.d/MariaDB.repo
+echo "# MariaDB 10.3 CentOS repository list - created 2018-05-25 19:02 UTC
+# http://downloads.mariadb.org/mariadb/repositories/
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.3/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1" >> /etc/yum.repos.d/MariaDB.repo
 
-yum install git
+yum -y install MariaDB-server MariaDB-client
+
+systemctl enable mariadb
+systemctl start mariadb
+
+systemctl status mariadb
+
+#!/bin/bash
+mysql -e "UPDATE mysql.user SET Password = PASSWORD('') WHERE User = 'root'"
+mysql -e "DROP USER ''@'localhost'"
+mysql -e "DROP USER ''@'$(hostname)'"
+mysql -e "DROP DATABASE test"
+mysql -e "FLUSH PRIVILEGES"
+
+#Instalacion PHP
+yum -y install rpm
+yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum -y install epel-release yum-utils
+yum-config-manager --disable remi-php54
+yum-config-manager --enable remi-php73
+yum -y install php php-cli php-fpm php-mysqlnd php-zip php-devel php-gd php-mcrypt php-mbstring php-curl php-xml php-pear php-bcmath php-json
+yum  -y install php-mysql
+yum -y install php-mysqlnd
+rpm -qi php-mysqlnd
+
+systemctl restart httpd.service
+php -v
+
+#Instalacion composer
+yum -y install php-cli php-zip wget unzip
+yum -y install curl
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+HASH="$(wget -q -O - https://composer.github.io/installer.sig)"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+composer
+
+#Instalar npm
+curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+yum -y install nodejs
+npm --version
+
+#Descargar proyecto
+yum -y install git
 cd /var/www/html
-
 git clone https://github.com/acallejp97/BolsadeTrabajo.git
-cd BolsadeTrabajo
-
-yum install composer
-yum install npm
+cd BolsadeTrabajo/
+chmod -R 775 /var/www/html/BolsadeTrabajo
+chown -R apache.apache /var/www/html
+chmod -R 777 /var/www/html/BolsadeTrabajo/storage/
 composer install
-npm install --no-optional
-php artisan migrate --seed
+npm install
 npm run dev
