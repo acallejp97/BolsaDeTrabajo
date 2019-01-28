@@ -71,12 +71,13 @@ yum -y install git
 cd /var/www/html
 git clone https://github.com/acallejp97/BolsadeTrabajo.git
 cd BolsadeTrabajo/
-chmod -R 775 /var/www/html/BolsadeTrabajo
-chown -R apache.apache /var/www/html
-chmod -R 777 /var/www/html/BolsadeTrabajo/storage/
 composer install
 npm install
 npm run dev
+chmod -R 775 /var/www/html/BolsadeTrabajo
+chown -R apache.apache /var/www/html
+chmod -R 777 /var/www/html/BolsadeTrabajo/storage/
+
 
 mysql -e "DROP DATABASE TxJobs"
 mysql -e "CREATE DATABASE TxJobs"
@@ -93,3 +94,10 @@ echo "DocumentRoot \"/var/www/html/BolsadeTrabajo/public\"
 </Directory>" >> /etc/httpd/conf/httpd.conf
 
 systemctl restart httpd
+chmod -R 777 /var/www/html/BolsadeTrabajo
+
+setenforce 0
+setenforce 1
+chcon -R -t httpd_sys_rw_content_t storage
+setsebool -P httpd_can_network_connect_db=1
+
