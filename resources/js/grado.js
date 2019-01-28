@@ -1,7 +1,7 @@
-$("#anadirGrado").click(function() {
+$(".anadirGrado").click(function() {
     var nombreGrado = prompt("Introduce nombre del grado a añadir");
     var abreviacion = prompt("Introduce la abreviacion del grado");
-    var idDepar = $("#elDepartamento").val();
+    var idDepar = $(this).val();
     var array = {
         nombre: nombreGrado,
         idDepar: idDepar,
@@ -29,9 +29,9 @@ $("#anadirGrado").click(function() {
     });
 });
 
-$("#borrarGrado").click(function() {
+$(".borrarGrado").click(function() {
     var array = {
-        nombre: $("#grado").val()
+        nombre: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -46,7 +46,7 @@ $("#borrarGrado").click(function() {
             borrarGrado: valParam
         },
         success: function() {
-            alert("Departamento añadido correctamente");
+            alert("Grado eliminado correctamente");
             location.reload();
         },
         error: function() {
