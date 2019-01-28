@@ -77,3 +77,19 @@ chmod -R 777 /var/www/html/BolsadeTrabajo/storage/
 composer install
 npm install
 npm run dev
+
+mysql -e "DROP DATABASE TxJobs"
+mysql -e "CREATE DATABASE TxJobs"
+cd /var/www/html/BolsadeTrabajo
+php artisan migrate --seed
+
+
+#Preparacion proyecto
+echo "DocumentRoot \"/var/www/html/BolsadeTrabajo/public\"
+<Directory \"/var/www/html/BolsadeTrabajo\">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>" >> /etc/httpd/conf/httpd.conf
+
+systemctl restart httpd

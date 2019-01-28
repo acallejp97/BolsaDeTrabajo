@@ -13,7 +13,7 @@
     <br>
     <div class="container demo m-top">
         <div class="text-left m-4 row" style="background: #b50045;">
-            <li id="elDepartamento" value="{{$departamento['id']}}" class="h3 text-uppercase d-inline col-md-9" style="color: white" ><strong>{{$departamento['nombre']}}
+            <li id="elDepartamento" value="{{$departamento['id']}}" class="h3 text-uppercase d-inline col-md-9" style="color: white"><strong>{{$departamento['nombre']}}
                 </strong>
             </li>
             <button id="anadirGrado" class="btn icon-btn btn-light d-inline col-md-2" style="background-color: white; color:black; margin-top: 1em;">
