@@ -47619,7 +47619,8 @@ $("#insertProfe").click(function () {
         apellidos: $("#apellidos").val(),
         password: $("#password").val(),
         id_depar: $("#id_depar").val(),
-        rango: $("#rango").val()
+        rango: $("#rango").val(),
+        id_user: $("#id_user").val()
 
     };
 
