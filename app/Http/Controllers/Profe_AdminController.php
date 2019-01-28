@@ -15,6 +15,12 @@ use Session;
 use Excel;
 use File;
 
+use App\Http\Requests;
+use App\Blog;
+use Validator;
+use Response;
+use Illuminate\Support\Facades\Input;
+
 class Profe_AdminController extends Controller
 {
     public function __construct()
@@ -190,6 +196,24 @@ class Profe_AdminController extends Controller
         
 
     }
+    public function deleteEmpresa(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarEmpresa']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $nombre = $enviado->nombre;
+        $direccion = $enviado->direccion;
+        $email = $enviado->email;
+        $url = $enviado->url;
+        $telefono = $enviado->telefono;
+        
+            Empresa::where('id', $nombre)->delete();
+        
+
+    }
 
     public function store(Request $request)
     {
@@ -260,4 +284,54 @@ class Profe_AdminController extends Controller
         $empresa->insert(['nombre' => $nombre, 'direccion' => $direccion, 'email' => $email, 'url' => $url, 'telefono' => $telefono]);
 
     }
-}
+
+
+
+      public function updateEmpresa(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['actualizacionEmpresa'])) {
+
+            $enviado = json_decode($_REQUEST['actualizacionEmpresa']);
+
+            $nombre = $enviado->nombre;
+            $direccion = $enviado->direccion;
+            $email = $enviado->email;
+            $url = $enviado->url;
+            $telefono = $enviado->telefono;
+
+            $actualizarEmpresa = Empresa::findOrFail($Empresa->id);
+            if ($nombre != "") {
+                $actualizarUsuario->update(['nombre' => $nombre]);
+            }
+
+            if ($direccion != "") {
+                $actualizarUsuario->update(['direccion' => $direccion]);
+            }
+
+            if ($email != "") {
+                $actualizarUsuario->update(['email' => $email]);
+            }
+
+            if ($url != "") {
+                $actualizarUsuario->update(['url' => $url]);
+            }
+            if ($telefono != "") {
+                $actualizarUsuario->update(['telefono' => $telefono]);
+            }
+
+        } else {
+            $actualizarEmpresa = Empresa::findOrFail($Empresa->id)->delete();
+        }
+
+    }
+
+    public function editEmpresa($id){
+        $empre= Empresa::where('id', $id)->first();
+        return view ('empresas.form_edit', ['empresa'=>$empre]);
+    }
+  }
+

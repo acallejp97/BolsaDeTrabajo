@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
     Route::get('/profesores', "Profe_AdminController@Profesores")->name('profesores');
     Route::get('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
+    Route::get('/responder', "Profe_AdminController@respondercorreo")->name('responder');
     
     //Profe y admin
     Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
@@ -35,11 +36,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/anadirEmpresas', 'Profe_AdminController@insertarEmpresa')->name('insertEmpresa');
     Route::post('/borrarGrado', 'Profe_AdminController@deleteGrado')->name('borrarGrado');
     Route::post('/contacto', 'Profe_AdminController@contacto')->name('contacto');
+    Route::post('/borrarEmpresa', 'Profe_AdminController@deleteEmpresa')->name('borrarEmpresa');
     
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/fotocv', 'AlumnoController@updatecv')->name('fotocv');
 
+
+//prueba para modificar
+    // Route::get ( 'empresas/{{$empre->id}}', 'Profe_AdminController@editEmpresa' );
+  
 });
 

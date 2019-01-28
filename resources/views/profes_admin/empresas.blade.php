@@ -77,10 +77,10 @@
         <p>{{$empre['URL']}}</p>
         <p>{{$empre['telefono']}}</p>
         <td class="td-actions">
-          <a class="btn btn-default btn-xs" style="float:right;" href="javascript:;">
+          <a value="{{$empre['id']}}" class="btn btn-default btn-xs" id="updateEmpresa" style="float:right;" href="javascript:;">
               <span class="glyphicon glyphicon-pencil"></span> Modificar
             </a>
-          <a class="btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
+          <a  value="{{$empre['id']}}"class="borrarEmpresa btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
                 <span class="glyphicon glyphicon-remove" ></span> Borrar
               </a>
         </td>
@@ -89,9 +89,5 @@
     </div>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
-<script>
-  window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
 
-</script>
 @endsection
