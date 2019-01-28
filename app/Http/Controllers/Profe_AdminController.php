@@ -117,9 +117,9 @@ class Profe_AdminController extends Controller
        
         $profesor = Profe_Admin::all();
         $user = User::all();
-        $profeid= Profe_Admin::where('id_user', $user->id);
+   
         $departamento = Departamento::all();
-        $profesores = array('profeid'=>$profeid,'profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
+        $profesores = array('profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
         if (!$profesor) {
             return view("profes_admin/profesores");
         }
@@ -157,7 +157,6 @@ class Profe_AdminController extends Controller
         }
     }
 
-
     public function insertGrado(Request $request)
     {
 
@@ -186,9 +185,9 @@ class Profe_AdminController extends Controller
         }
         $nombre = $enviado->nombre;
 
-        if ($nombre != "") {
+        
             Grado::where('id', $nombre)->delete();
-        }
+        
 
     }
 
@@ -235,10 +234,10 @@ class Profe_AdminController extends Controller
         $password = $enviado->password;
         $id_depar = $enviado->id_depar;
         $rango= $enviado->rango;
-        $id_user=$enviado->id_user;
         $user = new User;
         $profe = new Profe_Admin;
         $user->insert(['nombre' => $nombre, 'apellido' => $apellido,'email' => $email, 'password' => $password,'rango' => $rango]);
+        $id_user=$enviado->id_user::select('id')->last();
         $profe->insert(['id_depar' => $id_depar, 'id_user' => $id_user]);
        
     }

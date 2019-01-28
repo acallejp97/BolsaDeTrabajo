@@ -45,24 +45,17 @@
         </div>
         <div class="form-group">
       
-        <input type="hidden" id="rango" value="{{1}}">
+        <input type="hidden" id="rango" value="1">
        
       </div>
       <div class="form-group">
       
-      <input type="hidden" id="password" value="{{'prueba'}}">
+      <input type="hidden" id="password" value="prueba">
      
     </div>
     @foreach ($profesores['user'] as $user)
     @foreach ($profesores['profe_admin'] as $profe)
-    @if($profeid =true)
-    <div class="form-group">
-      
-      <input type="hidden" id="id_user" value="{{($profeid]}}">
-     
-
-    </div>
-    @endif
+  
     @endforeach
     @endforeach
         <div class="form-group">

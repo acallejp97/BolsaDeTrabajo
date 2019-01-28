@@ -22,7 +22,9 @@
                 Añadir Grado
             </button>
         </div>
-        <hr> <br> @foreach ($grados_depar['grados'] as $grado) @if($departamento['id']==$grado['id_depar'])
+        <hr> <br> @foreach ($grados_depar['grados'] as $grado) 
+          @if($departamento['id']==$grado['id_depar'])
+          
         <div class="text-left m-4 row">
             <ul class="list-unstyled col-md-9">
                 <li id="grado" value="{{$grado['id']}}"> {{$grado['nombre']}}
@@ -37,7 +39,9 @@
            
         </div>
         @endif @endforeach
+        
     </div>
     @endforeach
 </div>
+
 @endsection
