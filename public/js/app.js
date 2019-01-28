@@ -47676,8 +47676,10 @@ $("#insertProfe").click(function () {
         nombre: $("#nombre").val(),
         email: $("#email").val(),
         apellidos: $("#apellidos").val(),
-        password1: $("#password1").val(),
-        rango: $("#rango").val()
+        password: $("#password").val(),
+        id_depar: $("#id_depar").val(),
+        rango: $("#rango").val(),
+        id_user: $("#id_user").val()
 
     };
 
@@ -47687,13 +47689,13 @@ $("#insertProfe").click(function () {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./anadirProfesores",
+        url: "./insertarProfesores",
         type: "POST",
         data: {
             nuevaProfe: valParam
         },
         success: function success() {
-            alert("Oferta añadida correctamente");
+            alert("Profesor añadido correctamente");
             location.reload();
         },
         error: function error() {

@@ -50,10 +50,21 @@
       </div>
       <div class="form-group">
       
-      <input type="hidden" id="password" value="{{'prueba'}}>
+      <input type="hidden" id="password" value="{{'prueba'}}">
      
     </div>
-	
+    @foreach ($profesores['user'] as $user)
+    @foreach ($profesores['profe_admin'] as $profe)
+    @if($profeid =true)
+    <div class="form-group">
+      
+      <input type="hidden" id="id_user" value="{{($profeid]}}">
+     
+
+    </div>
+    @endif
+    @endforeach
+    @endforeach
         <div class="form-group">
           <!-- Submit Button -->
           <button type="submit" id="insertProfe"style="background: #b50045; color:white"class="btn btn-primary">Añadir</button>
@@ -112,7 +123,7 @@
                         @if($profesor['id_depar']==$departamento['id'])
 							<tr>
 							
-								<td>{{$usuario['nombre']}}</td>
+								                <td>{{$usuario['nombre']}}</td>
                                 <td>{{$usuario['apellidos']}}</td>
                                 <td>{{$departamento['nombre']}}</td>
                                 <td>{{$usuario['email']}}</td>

@@ -43,10 +43,12 @@
 						</thead>
 						<tbody>
 
-			 
+			
 			<!--recorre mediante los foreach las tablas y saca lo que se le dice abajo-->
 							@foreach ($user_correos['correos'] as $correo) 
 							@foreach ($user_correos['user'] as $usuarios) 
+							
+							@if($usuarios->rango==1 or $usuarios->rango==2)
 							@if($correo['id_remit']==$usuarios['id'])
 							@if($usuarios->rango==1)
 							<!--si es profesor que el correo salga de otro color resaltandolo-->
@@ -55,7 +57,7 @@
 							<tr id="colorfila" >
 @endif
 					
-								<div class="media-heading">
+					<div class="media-heading">
 
 									<td><a href="#" class="pull-left"> </a>
 									<img src='{{url("./perfiles/".$usuarios["imagen"])}}' class="media-object" style="float:left; height: 50px; width:50px">
@@ -80,10 +82,11 @@
 					</td>
 			</div>
 			</div>
+			@endif
 			@endif @endforeach
 			</tr>
 			@endforeach
-
+			
 			</table>
 
 		</div>
