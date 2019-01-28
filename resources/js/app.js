@@ -7,11 +7,9 @@
 
 require("./bootstrap");
 require("./contacto");
-require("./deleteGrado");
 require("./grado");
 require("./insertDepartamento");
 require("./insertEmpresa");
-require("./insertGrado");
 require("./insertOferta");
 require("./insertProfe");
 require("./insertUsers");
@@ -32,15 +30,15 @@ Vue.use(VeeValidate);
 
 Vue.component("passwords", require("./components/passwords.vue"));
 
-new Vue({
-    el: '#app',
-    data: {
-        credentials: {
-          email: '',
-        repemail: '',
-        password: '',
-        confirmPassword: '',
-        normalInput: 'this input is not using vue-material'
-      }
-    }
-  });
+// new Vue({
+//     el: '#app',
+//     data: {
+//         credentials: {
+//           email: '',
+//         repemail: '',
+//         password: '',
+//         confirmPassword: '',
+//         normalInput: 'this input is not using vue-material'
+//       }
+//     }
+//   });
