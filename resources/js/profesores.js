@@ -15,7 +15,7 @@ $(".borrarProfesor").click(function() {
             borrarProfesor: valParam
         },
         success: function() {
-            alert("Empresa eliminada correctamente");
+            alert("Profesor eliminado correctamente");
             location.reload();
         },
         error: function() {

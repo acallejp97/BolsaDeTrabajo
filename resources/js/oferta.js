@@ -15,7 +15,7 @@ $(".borrarOferta").click(function() {
             borrarOferta: valParam
         },
         success: function() {
-            alert("Empresa eliminada correctamente");
+            alert("Oferta eliminada correctamente");
             location.reload();
         },
         error: function() {

@@ -7,7 +7,6 @@ use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
-use App\Model\Profesor;
 use App\Model\Profe_Admin;
 use App\User;
 use Auth;
@@ -208,9 +207,9 @@ public function deleteOferta(Request $request)
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $nombre = $enviado->nombre;
+        $id = $enviado->id;
         
-            Oferta::where('id', $nombre)->delete();
+            Oferta::where('id', $id)->delete();
         
 
     }
@@ -233,16 +232,14 @@ public function deleteOferta(Request $request)
     public function deleteProfesor(Request $request)
     {
 
-        $enviado = json_decode($_REQUEST['borrarEmpresa']);
+        $enviado = json_decode($_REQUEST['borrarProfesor']);
 
         if (!$request->ajax()) {
             return redirect('/');
         }
         $id = $enviado->id;
         
-            Profesor::where('id', $id)->delete();
-        
-
+        Profe_Admin::where('id', $id)->delete();
     }
 
     public function store(Request $request)
