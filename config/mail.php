@@ -16,7 +16,22 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    // solo en el caso de servidores con doble autentificación
+'driver' => env('MAIL_DRIVER', 'smtp'),
+'host' => 'smtp.mailtrap.io',
+'port' => 2525,
+'from' => [
+    'address' => 'from@example.com',
+    'name' => 'Example',
+],
+'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+'username' => '111e442414b3a6',
+'password' => '3f03298a465774',
+'sendmail' => '/usr/sbin/sendmail -bs',
+'pretend' => false,
+
+
+
 
     /*
     |--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
-$(".borrarEmpresa").click(function() {
+$(".deleteMensaje").click(function() {
     var array = {
-        id: $(this).val()
+        nombre: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -9,13 +9,13 @@ $(".borrarEmpresa").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./borrarEmpresa",
+        url: "./deleteMensaje",
         type: "POST",
         data: {
-            borrarEmpresa: valParam
+            borrarGrado: valParam
         },
         success: function() {
-            alert("Empresa eliminada correctamente");
+            alert("Correo eliminado correctamente");
             location.reload();
         },
         error: function() {

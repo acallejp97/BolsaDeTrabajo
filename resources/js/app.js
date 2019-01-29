@@ -5,16 +5,21 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require("./abrirMensaje");
 require("./bootstrap");
 require("./contacto");
-require("./grado");
+require("./deleteMensaje");
 require("./empresa");
+require("./grado");
 require("./insertEmpresa");
 require("./insertOferta");
 require("./insertProfe");
 require("./insertUsers");
-require("./updateUser");
+require("./oferta");
+require("./profesores");
 require("./updateCV");
+require("./updateEmpresa");
+require("./updateUser");
 
 window.Vue = require("vue");
 

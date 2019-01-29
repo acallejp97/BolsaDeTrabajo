@@ -124,12 +124,12 @@
 								
 								
 								<td class="td-actions">
-									<a style="background: #b50045; color:white;"class="btn btn-default btn-xs" href="javascript:;">
+									<button style="background: #b50045; color:white;"class="btn btn-default btn-xs" href="javascript:;">
 										<span class="glyphicon glyphicon-pencil"></span> Modificar
-									</a>
-									<a class="btn btn-default btn-xs" href="javascript:;">
+									</button>
+									<button value="{{$profesor['id']}}" class="borrarProfesor btn btn-default btn-xs" href="javascript:;">
 										<span class="glyphicon glyphicon-remove"></span> Borrar
-									</a>
+									</button>
 									
 								</td>
                             </tr>

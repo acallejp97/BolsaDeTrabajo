@@ -114,12 +114,12 @@
          
         
         <td class="td-actions">
-          <a class="btn btn-default btn-xs" style="float:right;" href="javascript:;">
+          <button class="btn btn-default btn-xs" style="float:right;">
               <span class="glyphicon glyphicon-pencil"></span> Modificar
-            </a>
-            <a class="btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
+            </button>
+            <button value="{{$oferta['id']}}" class="borrarOferta btn btn-default btn-xs"  style="background: #b50045; float:right; color:white;">
                 <span class="glyphicon glyphicon-remove" ></span> Borrar
-              </a>
+              </button>
               
             </td>
           </div>
