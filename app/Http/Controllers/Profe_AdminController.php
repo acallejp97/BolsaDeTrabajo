@@ -184,10 +184,10 @@ class Profe_AdminController extends Controller
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $nombre = $enviado->nombre;
+        $id = $enviado->id;
 
         if ($nombre != "") {
-            Grado::where('id', $nombre)->delete();
+            Grado::where('id', $id)->delete();
         }
 
     }
