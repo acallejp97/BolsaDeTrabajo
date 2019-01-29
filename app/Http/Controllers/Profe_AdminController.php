@@ -189,13 +189,31 @@ class Profe_AdminController extends Controller
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $nombre = $enviado->nombre;
+        $id = $enviado->id;
 
+        if ($nombre != "") {
+            Grado::where('id', $id)->delete();
         
             Grado::where('id', $nombre)->delete();
         
 
     }
+}
+public function deleteOferta(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarOferta']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $id = $enviado->id;
+        
+            Oferta::where('id', $id)->delete();
+        
+
+    }
+
     public function deleteEmpresa(Request $request)
     {
 
@@ -204,15 +222,24 @@ class Profe_AdminController extends Controller
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $nombre = $enviado->nombre;
-        $direccion = $enviado->direccion;
-        $email = $enviado->email;
-        $url = $enviado->url;
-        $telefono = $enviado->telefono;
+        $id = $enviado->id;
         
-            Empresa::where('id', $nombre)->delete();
+            Empresa::where('id', $id)->delete();
         
 
+    }
+
+    public function deleteProfesor(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarProfesor']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $id = $enviado->id;
+        
+        Profe_Admin::where('id', $id)->delete();
     }
 
     public function store(Request $request)

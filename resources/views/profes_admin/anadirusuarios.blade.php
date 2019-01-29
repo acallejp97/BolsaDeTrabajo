@@ -34,9 +34,10 @@
             @endif
 
             <form action="{{ route('subiendoCSV') }}" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }} Choose your xls/csv File : <input type="file" name="file" class="form-control">
+                {{ csrf_field() }} Choose your xls/csv File : <input type="file" name="file" class="form-control" style="padding-bottom: 2.8em;">
+                <br>
 
-                <input type="submit" class="btn btn-primary btn-lg" style="margin-top: 3%">
+                <input type="submit" class="btn  btn-lg" style="background: #b50045; float:right; color: white;">
             </form>
         </div>
         <div class="col-md-6">
