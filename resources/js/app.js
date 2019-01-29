@@ -7,8 +7,10 @@
 
 require("./bootstrap");
 require("./contacto");
+require("./oferta");
 require("./grado");
 require("./empresa");
+require("./profesores");
 require("./insertDepartamento");
 require("./insertEmpresa");
 require("./insertOferta");

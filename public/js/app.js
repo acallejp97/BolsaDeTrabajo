@@ -47452,6 +47452,36 @@ $("#enviarContacto").click(function () {
 /* 38 */
 /***/ (function(module, exports) {
 
+$(".borrarOferta").click(function () {
+    var array = {
+        id: $(this).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./borrarOferta",
+        type: "POST",
+        data: {
+            borrarOferta: valParam
+        },
+        success: function success() {
+            alert("Empresa eliminada correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
 $(".anadirGrado").click(function () {
     var nombreGrado = prompt("Introduce nombre del grado a añadir");
     var abreviacion = prompt("Introduce la abreviacion del grado");
@@ -47510,12 +47540,12 @@ $(".borrarGrado").click(function () {
 });
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports) {
 
 $(".borrarEmpresa").click(function () {
     var array = {
-        nombre: $(this).val()
+        id: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -47530,7 +47560,7 @@ $(".borrarEmpresa").click(function () {
             borrarEmpresa: valParam
         },
         success: function success() {
-            alert("Empresa eliminado correctamente");
+            alert("Empresa eliminada correctamente");
             location.reload();
         },
         error: function error() {
@@ -47540,7 +47570,37 @@ $(".borrarEmpresa").click(function () {
 });
 
 /***/ }),
-/* 40 */
+/* 41 */
+/***/ (function(module, exports) {
+
+$(".borrarProfesor").click(function () {
+    var array = {
+        id: $(this).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./borrarProfesor",
+        type: "POST",
+        data: {
+            borrarProfesor: valParam
+        },
+        success: function success() {
+            alert("Empresa eliminada correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+/***/ }),
+/* 42 */
 /***/ (function(module, exports) {
 
 $("#anadirDepartamento").click(function () {
@@ -47571,7 +47631,7 @@ $("#anadirDepartamento").click(function () {
 });
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports) {
 
 $("#insertEmpresa").click(function () {
@@ -47606,7 +47666,7 @@ $("#insertEmpresa").click(function () {
 });
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports) {
 
 $("#insertOferta").click(function () {
@@ -47641,7 +47701,7 @@ $("#insertOferta").click(function () {
 });
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports) {
 
 $("#insertProfe").click(function () {
@@ -47678,7 +47738,7 @@ $("#insertProfe").click(function () {
 });
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports) {
 
 $("#insertUsers").click(function () {
@@ -47708,7 +47768,7 @@ $("#insertUsers").click(function () {
 });
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports) {
 
 $("#updateUser").click(function () {
@@ -47761,6 +47821,7 @@ $("#deleteUser").click(function () {
 });
 
 /***/ }),
+<<<<<<< HEAD
 /* 46 */
 /***/ (function(module, exports) {
 
@@ -47819,6 +47880,8 @@ $(".abrirMensaje").click(function () {
 });
 
 /***/ }),
+=======
+>>>>>>> a35545a4afe0267d2048336c54901075ea95cbbd
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 

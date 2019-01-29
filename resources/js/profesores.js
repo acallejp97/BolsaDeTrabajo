@@ -1,4 +1,4 @@
-$(".borrarEmpresa").click(function() {
+$(".borrarProfesor").click(function() {
     var array = {
         id: $(this).val()
     };
@@ -9,13 +9,13 @@ $(".borrarEmpresa").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./borrarEmpresa",
+        url: "./borrarProfesor",
         type: "POST",
         data: {
-            borrarEmpresa: valParam
+            borrarProfesor: valParam
         },
         success: function() {
-            alert("Empresa eliminada correctamente");
+            alert("Profesor eliminado correctamente");
             location.reload();
         },
         error: function() {
