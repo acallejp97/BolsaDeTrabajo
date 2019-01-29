@@ -9,12 +9,12 @@ require("./bootstrap");
 require("./contacto");
 require("./grado");
 require("./empresa");
-require("./insertDepartamento");
 require("./insertEmpresa");
 require("./insertOferta");
 require("./insertProfe");
 require("./insertUsers");
 require("./updateUser");
+require("./updateCV");
 
 window.Vue = require("vue");
 

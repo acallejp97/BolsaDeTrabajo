@@ -1,7 +1,7 @@
 $("#enviarContacto").click(function() {
     var array = {
         nombre: $("#nombre").val(),
-        email: $("#email").val(),
+        asunto: $("#asunto").val(),
         mensaje: $("#mensaje").val()
     };
 

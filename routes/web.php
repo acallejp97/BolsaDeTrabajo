@@ -41,7 +41,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
-    Route::post('/fotocv', 'AlumnoController@updatecv')->name('fotocv');
+    Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
+
+    Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
 
 
 //prueba para modificar
