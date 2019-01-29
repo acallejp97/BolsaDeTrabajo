@@ -150,10 +150,7 @@ class Controller extends BaseController
         }
     }
 
-    public function prueba(){
-        return view("profes_admin/pruebavue");
-
-    }
+ 
     
     public function mostrarUsuario(Request $request)
     {
@@ -289,4 +286,5 @@ class Controller extends BaseController
 
     }
 
+    
 }

@@ -15,6 +15,12 @@ use Session;
 use Excel;
 use File;
 
+use App\Http\Requests;
+use App\Blog;
+use Validator;
+use Response;
+use Illuminate\Support\Facades\Input;
+
 class Profe_AdminController extends Controller
 {
     public function __construct()
@@ -117,9 +123,9 @@ class Profe_AdminController extends Controller
        
         $profesor = Profe_Admin::all();
         $user = User::all();
-        $profeid= Profe_Admin::where('id_user', $user->id);
+   
         $departamento = Departamento::all();
-        $profesores = array('profeid'=>$profeid,'profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
+        $profesores = array('profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
         if (!$profesor) {
             return view("profes_admin/profesores");
         }
@@ -157,7 +163,6 @@ class Profe_AdminController extends Controller
         }
     }
 
-
     public function insertGrado(Request $request)
     {
 
@@ -188,7 +193,28 @@ class Profe_AdminController extends Controller
 
         if ($nombre != "") {
             Grado::where('id', $id)->delete();
+        
+            Grado::where('id', $nombre)->delete();
+        
+
+    }
+}
+    public function deleteEmpresa(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarEmpresa']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
         }
+        $nombre = $enviado->nombre;
+        $direccion = $enviado->direccion;
+        $email = $enviado->email;
+        $url = $enviado->url;
+        $telefono = $enviado->telefono;
+        
+            Empresa::where('id', $nombre)->delete();
+        
 
     }
 
@@ -235,10 +261,10 @@ class Profe_AdminController extends Controller
         $password = $enviado->password;
         $id_depar = $enviado->id_depar;
         $rango= $enviado->rango;
-        $id_user=$enviado->id_user;
         $user = new User;
         $profe = new Profe_Admin;
         $user->insert(['nombre' => $nombre, 'apellido' => $apellido,'email' => $email, 'password' => $password,'rango' => $rango]);
+        $id_user=$enviado->id_user::select('id')->last();
         $profe->insert(['id_depar' => $id_depar, 'id_user' => $id_user]);
        
     }
@@ -261,4 +287,54 @@ class Profe_AdminController extends Controller
         $empresa->insert(['nombre' => $nombre, 'direccion' => $direccion, 'email' => $email, 'url' => $url, 'telefono' => $telefono]);
 
     }
-}
+
+
+
+      public function updateEmpresa(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['actualizacionEmpresa'])) {
+
+            $enviado = json_decode($_REQUEST['actualizacionEmpresa']);
+
+            $nombre = $enviado->nombre;
+            $direccion = $enviado->direccion;
+            $email = $enviado->email;
+            $url = $enviado->url;
+            $telefono = $enviado->telefono;
+
+            $actualizarEmpresa = Empresa::findOrFail($Empresa->id);
+            if ($nombre != "") {
+                $actualizarUsuario->update(['nombre' => $nombre]);
+            }
+
+            if ($direccion != "") {
+                $actualizarUsuario->update(['direccion' => $direccion]);
+            }
+
+            if ($email != "") {
+                $actualizarUsuario->update(['email' => $email]);
+            }
+
+            if ($url != "") {
+                $actualizarUsuario->update(['url' => $url]);
+            }
+            if ($telefono != "") {
+                $actualizarUsuario->update(['telefono' => $telefono]);
+            }
+
+        } else {
+            $actualizarEmpresa = Empresa::findOrFail($Empresa->id)->delete();
+        }
+
+    }
+
+    public function editEmpresa($id){
+        $empre= Empresa::where('id', $id)->first();
+        return view ('empresas.form_edit', ['empresa'=>$empre]);
+    }
+  }
+

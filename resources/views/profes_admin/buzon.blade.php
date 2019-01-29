@@ -72,7 +72,7 @@
 								</td>
 
 						   <td class="td-actions">
-									<a class="btn btn-default btn-xs" href="javascript:;">
+									<a class="btn btn-default btn-xs"  href="javascript:;">
 										<span class="glyphicon glyphicon-pencil"></span> Abrir
 									</a>
 									<a class="btn btn-default btn-xs" style="background: #b50045; color:white;"href="javascript:;">

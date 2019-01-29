@@ -13,10 +13,10 @@ class CurriculumsSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('es_ES');
-        $nombre=explode(' ',trim($faker->name));
-
+        
         DB::table('curriculums')->delete();
         for ($cantidadCurriculum = 1; $cantidadCurriculum !=25; $cantidadCurriculum++) {
+            $nombre=explode(' ',trim($faker->name));
             DB::table('curriculums')->insert(array(
                 'id_alumno'=> ($cantidadCurriculum),
                 'nombre' => $nombre[0],
