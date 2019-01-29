@@ -1,4 +1,4 @@
-$(".borrarEmpresa").click(function() {
+$(".borrarOferta").click(function() {
     var array = {
         id: $(this).val()
     };
@@ -9,10 +9,10 @@ $(".borrarEmpresa").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./borrarEmpresa",
+        url: "./borrarOferta",
         type: "POST",
         data: {
-            borrarEmpresa: valParam
+            borrarOferta: valParam
         },
         success: function() {
             alert("Empresa eliminada correctamente");

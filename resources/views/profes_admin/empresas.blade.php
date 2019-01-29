@@ -77,12 +77,12 @@
         <p>{{$empre['URL']}}</p>
         <p>{{$empre['telefono']}}</p>
         <td class="td-actions">
-          <a value="{{$empre['id']}}" class="btn btn-default btn-xs" id="updateEmpresa" style="float:right;" href="javascript:;">
+          <button value="{{$empre['id']}}" class="btn btn-default btn-xs" id="updateEmpresa" style="float:right;" href="javascript:;">
               <span class="glyphicon glyphicon-pencil"></span> Modificar
-            </a>
-          <a  value="{{$empre['id']}}"class="borrarEmpresa btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
+            </button>
+          <button  value="{{$empre['id']}}"class="borrarEmpresa btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
                 <span class="glyphicon glyphicon-remove" ></span> Borrar
-              </a>
+              </button>
         </td>
       </div>
       @endforeach

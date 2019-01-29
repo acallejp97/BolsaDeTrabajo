@@ -7,6 +7,7 @@ use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
 use App\Model\Oferta;
+use App\Model\Profesor;
 use App\Model\Profe_Admin;
 use App\User;
 use Auth;
@@ -199,6 +200,21 @@ class Profe_AdminController extends Controller
 
     }
 }
+public function deleteOferta(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarOferta']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $nombre = $enviado->nombre;
+        
+            Oferta::where('id', $nombre)->delete();
+        
+
+    }
+
     public function deleteEmpresa(Request $request)
     {
 
@@ -207,13 +223,24 @@ class Profe_AdminController extends Controller
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $nombre = $enviado->nombre;
-        $direccion = $enviado->direccion;
-        $email = $enviado->email;
-        $url = $enviado->url;
-        $telefono = $enviado->telefono;
+        $id = $enviado->id;
         
-            Empresa::where('id', $nombre)->delete();
+            Empresa::where('id', $id)->delete();
+        
+
+    }
+
+    public function deleteProfesor(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarEmpresa']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $id = $enviado->id;
+        
+            Profesor::where('id', $id)->delete();
         
 
     }
