@@ -33,7 +33,7 @@
 								</th>
 								<th id="">Nombre
 								</th>
-								<th id="">Email
+								<th id="">Fecha
 								</th>
 								<th class="text-center" id="">Descripción
 								</th>
@@ -51,7 +51,7 @@
 							@if($usuarios->rango==1 or $usuarios->rango==2)
 							@if($correo['id_remit']==$usuarios['id'])
 							@if($usuarios->rango==1)
-							<!--si es profesor que el correo salga de otro color resaltandolo-->
+							<!--si es profesor que el correo salga de otro colokmmmr resaltandolo-->
 							<tr id="colorfila" style="background:#DC6E97;">
 							@else 
 							<tr id="colorfila" >
@@ -72,15 +72,16 @@
 								</td>
 
 						   <td class="td-actions">
-									<a class="btn btn-default btn-xs"  href="javascript:;">
+									<button class="btn btn-default btn-xs abrirMensaje"  href="javascript:;">
 										<span class="glyphicon glyphicon-pencil"></span> Abrir
-									</a>
-									<a class="btn btn-default btn-xs" style="background: #b50045; color:white;"href="javascript:;">
+									</button>
+									<button class="btn btn-default btn-xs deleteMensaje" style="background: #b50045; color:white;"href="javascript:;" id="deleteMensaje">
 										<span class="glyphicon glyphicon-remove" ></span> Borrar
-									</a>
+									</button>
 									
 					</td>
 			</div>
+			
 			</div>
 			@endif
 			@endif @endforeach

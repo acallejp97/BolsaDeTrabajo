@@ -15,6 +15,8 @@ require("./insertOferta");
 require("./insertProfe");
 require("./insertUsers");
 require("./updateUser");
+require("./deleteMensaje");
+require("./abrirMensaje");
 
 window.Vue = require("vue");
 

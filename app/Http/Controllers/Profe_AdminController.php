@@ -145,7 +145,54 @@ class Profe_AdminController extends Controller
     
     }
 
-    public function insertDepartamento(Request $request)
+
+/*---------------------------------------------------------BORRAR MENSAJE BUZÓN------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+public function deleteMensaje(Request $request)
+    {
+        
+        $enviado = json_decode($_REQUEST['deleteMensaje']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $usuario = $enviado->usuario;
+        $asunto = $enviado->asunto;
+        $nombre = $enviado->nombre;
+        $fecha = $enviado->fecha;
+        $descripcion = $enviado->descripcion;
+
+        $correo = Correo::where('created_at', $fecha)->first();
+        
+        Correo::where('created_at', $fecha)->delete();
+
+    }
+
+
+/*---------------------------------------------------------ABRIR MENSAJE BUZÓN------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+public function abrirMensaje(Request $request)
+{
+    
+    $enviado = json_decode($_REQUEST['abrirMensaje']);
+
+    if (!$request->ajax()) {
+        return redirect('/');
+    }
+    $usuario = $enviado->usuario;
+    $asunto = $enviado->asunto;
+    $nombre = $enviado->nombre;
+    $fecha = $enviado->fecha;
+    $descripcion = $enviado->descripcion;
+
+}
+    
+
+/*-----------------------------------------------------------INSERTAR DEPARTAMENTO---------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------*/
+    public function insertDepartamento(Request $request, $id)
     {
 
         if (!$request->ajax()) {
