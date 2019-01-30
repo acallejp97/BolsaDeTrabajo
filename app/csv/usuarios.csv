@@ -1,3 +1,3 @@
-email,nombre,apellidos,password
-alumno1@fptxurdinaga.com,alumno1,alumno1Apellido,''
-alumno2@fptxurdinaga.com,alumno2,alumno2Apellido,''
+email,nombre,apellidos,anio_fin,password
+alumno1@fptxurdinaga.com,alumno1,alumno1Apellido,2019,''
+alumno2@fptxurdinaga.com,alumno2,alumno2Apellido,2019,''

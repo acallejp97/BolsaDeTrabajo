@@ -51,7 +51,11 @@ class Profe_AdminController extends Controller
                 $path = $request->file->getRealPath();
                 $data = Excel::load($path, function ($reader) {
                 })->get();
+
                 if (!empty($data) && $data->count()) {
+                    $ultimaIdUser = User::max('id');
+                    $ultimaIdAlumno = Alumno::max('id');
+                    
                     foreach ($data as $key => $value) {
                         $siguienteId = 1;
                         $insertUser[] = [
@@ -61,17 +65,17 @@ class Profe_AdminController extends Controller
                             'apellidos' => $value->apellidos,
                             'password' => Hash::make('prueba'),
                         ];
-                        $ultimaIdUser = User::max('id');
-                        $ultimaIdAlumno = Alumno::max('id');
                         $insertAlumno[] = [
                             'id_user' => $ultimaIdUser + $siguienteId,
+                            'anio_fin'=>$value->anio_fin,
                         ];
                         $insertCurriculum[] = [
                             'id_alumno' => $ultimaIdUser + $siguienteId,
                         ];
                         $siguienteId++;
                     }
-                    if (!empty($insert)) {
+                    
+                    if (!empty($insertUser)) {
                         $insertData = User::insert($insertUser);
                         $insertAlumnos = Alumno::insert($insertAlumno);
                         $insertCurriculum = Curriculum::insert($insertCurriculum);

@@ -28,7 +28,7 @@
 
             <ul class="list-group">
                 <li class="list-group-item text-muted">Año finalizado <i class="fa fa-dashboard fa-1x"></i></li>
-                <li class="list-group-item text-center"><span class="pull-center"><strong>{{$anio_fin}}</strong><br/></span> </li>
+                <li class="list-group-item text-center"><span class="pull-center"><strong>{{$anio_fin->anio_fin}}</strong><br/></span> </li>
             </ul>
         </div>
         <div class="col-sm-9">
