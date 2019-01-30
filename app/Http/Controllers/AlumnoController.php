@@ -23,9 +23,10 @@ class AlumnoController extends Controller
 
         foreach ($id_alumno as $id) {
 
-            $curriculum = Curriculum::where('id_alumno', $id->id)->get();
+            $curriculums = Curriculum::where('id_alumno', $id->id)->get();
+
         }
-        return view("alumnos/curriculum")->with('curriculums', $curriculum);
+        return view("alumnos/curriculum")->with('curriculums', $curriculums);
     }
 
     public function fotocv(Request $request)

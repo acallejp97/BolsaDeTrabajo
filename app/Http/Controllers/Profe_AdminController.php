@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Model\Alumno;
 use App\Model\Correo;
+use App\Model\Curriculum;
 use App\Model\Departamento;
 use App\Model\Empresa;
 use App\Model\Grado;
@@ -10,16 +11,12 @@ use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
 use Auth;
-use Hash;
-use Session;
 use Excel;
 use File;
-
-use App\Http\Requests;
-use App\Blog;
-use Validator;
-use Response;
+use Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Session;
 
 class Profe_AdminController extends Controller
 {
@@ -55,16 +52,28 @@ class Profe_AdminController extends Controller
                 })->get();
                 if (!empty($data) && $data->count()) {
                     foreach ($data as $key => $value) {
-                        $insert[] = [
+                        $siguienteId = 1;
+                        $insertUser[] = [
                             'email' => $value->email,
                             'nombre' => $value->nombre,
                             'rango' => 2,
                             'apellidos' => $value->apellidos,
                             'password' => Hash::make('prueba'),
                         ];
+                        $ultimaIdUser = User::max('id');
+                        $ultimaIdAlumno = Alumno::max('id');
+                        $insertAlumno[] = [
+                            'id_user' => $ultimaIdUser + $siguienteId,
+                        ];
+                        $insertCurriculum[] = [
+                            'id_alumno' => $ultimaIdUser + $siguienteId,
+                        ];
+                        $siguienteId++;
                     }
                     if (!empty($insert)) {
-                        $insertData = User::insert($insert);
+                        $insertData = User::insert($insertUser);
+                        $insertAlumnos = Alumno::insert($insertAlumno);
+                        $insertCurriculum = Curriculum::insert($insertCurriculum);
                         if ($insertData) {
                             Session::flash('success', 'Your Data has successfully imported');
                         } else {
@@ -120,10 +129,10 @@ class Profe_AdminController extends Controller
     //******* */FUNCIONES DE ADMIN********************
     public function Profesores()
     {
-       
+
         $profesor = Profe_Admin::all();
         $user = User::all();
-   
+
         $departamento = Departamento::all();
         $profesores = array('profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
         if (!$profesor) {
@@ -134,7 +143,7 @@ class Profe_AdminController extends Controller
 
     public function Buzon()
     {
-       
+
         $correos = Correo::all();
         $user = User::all();
         $user_correos = array('correos' => $correos, 'user' => $user);
@@ -142,16 +151,15 @@ class Profe_AdminController extends Controller
             return view("profes_admin/buzon");
         }
         return view("profes_admin/buzon")->with('user_correos', $user_correos);
-    
-    }
 
+    }
 
 /*---------------------------------------------------------BORRAR MENSAJE BUZÓN------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------*/
 
-public function deleteMensaje(Request $request)
+    public function deleteMensaje(Request $request)
     {
-        
+
         $enviado = json_decode($_REQUEST['deleteMensaje']);
 
         if (!$request->ajax()) {
@@ -164,35 +172,33 @@ public function deleteMensaje(Request $request)
         $descripcion = $enviado->descripcion;
 
         $correo = Correo::where('created_at', $fecha)->first();
-        
+
         Correo::where('created_at', $fecha)->delete();
 
     }
 
-
 /*---------------------------------------------------------ABRIR MENSAJE BUZÓN------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------*/
 
-public function abrirMensaje(Request $request)
-{
-    
-    $enviado = json_decode($_REQUEST['abrirMensaje']);
+    public function abrirMensaje(Request $request)
+    {
 
-    if (!$request->ajax()) {
-        return redirect('/');
+        $enviado = json_decode($_REQUEST['abrirMensaje']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $usuario = $enviado->usuario;
+        $asunto = $enviado->asunto;
+        $nombre = $enviado->nombre;
+        $fecha = $enviado->fecha;
+        $descripcion = $enviado->descripcion;
+
     }
-    $usuario = $enviado->usuario;
-    $asunto = $enviado->asunto;
-    $nombre = $enviado->nombre;
-    $fecha = $enviado->fecha;
-    $descripcion = $enviado->descripcion;
-
-}
-    
 
 /*-----------------------------------------------------------INSERTAR DEPARTAMENTO---------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------*/
-    public function insertDepartamento(Request $request, $id)
+    public function insertDepartamento(Request $request)
     {
 
         if (!$request->ajax()) {
@@ -240,13 +246,12 @@ public function abrirMensaje(Request $request)
 
         if ($nombre != "") {
             Grado::where('id', $id)->delete();
-        
-            Grado::where('id', $nombre)->delete();
-        
 
+            Grado::where('id', $nombre)->delete();
+
+        }
     }
-}
-public function deleteOferta(Request $request)
+    public function deleteOferta(Request $request)
     {
 
         $enviado = json_decode($_REQUEST['borrarOferta']);
@@ -255,9 +260,8 @@ public function deleteOferta(Request $request)
             return redirect('/');
         }
         $id = $enviado->id;
-        
-            Oferta::where('id', $id)->delete();
-        
+
+        Oferta::where('id', $id)->delete();
 
     }
 
@@ -270,9 +274,8 @@ public function deleteOferta(Request $request)
             return redirect('/');
         }
         $id = $enviado->id;
-        
-            Empresa::where('id', $id)->delete();
-        
+
+        Empresa::where('id', $id)->delete();
 
     }
 
@@ -285,7 +288,7 @@ public function deleteOferta(Request $request)
             return redirect('/');
         }
         $id = $enviado->id;
-        
+
         Profe_Admin::where('id', $id)->delete();
     }
 
@@ -331,13 +334,13 @@ public function deleteOferta(Request $request)
         $email = $enviado->email;
         $password = $enviado->password;
         $id_depar = $enviado->id_depar;
-        $rango= $enviado->rango;
+        $rango = $enviado->rango;
         $user = new User;
         $profe = new Profe_Admin;
-        $user->insert(['nombre' => $nombre, 'apellido' => $apellido,'email' => $email, 'password' => $password,'rango' => $rango]);
-        $id_user=$enviado->id_user::select('id')->last();
+        $user->insert(['nombre' => $nombre, 'apellido' => $apellido, 'email' => $email, 'password' => $password, 'rango' => $rango]);
+        $id_user = $enviado->id_user::select('id')->last();
         $profe->insert(['id_depar' => $id_depar, 'id_user' => $id_user]);
-       
+
     }
 
     public function insertarEmpresa(Request $request)
@@ -359,9 +362,7 @@ public function deleteOferta(Request $request)
 
     }
 
-
-
-      public function updateEmpresa(Request $request)
+    public function updateEmpresa(Request $request)
     {
         if (!$request->ajax()) {
             return redirect('/');
@@ -403,9 +404,9 @@ public function deleteOferta(Request $request)
 
     }
 
-    public function editEmpresa($id){
-        $empre= Empresa::where('id', $id)->first();
-        return view ('empresas.form_edit', ['empresa'=>$empre]);
+    public function editEmpresa($id)
+    {
+        $empre = Empresa::where('id', $id)->first();
+        return view('empresas.form_edit', ['empresa' => $empre]);
     }
-  }
-
+}
