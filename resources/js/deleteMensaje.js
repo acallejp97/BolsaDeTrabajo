@@ -1,8 +1,6 @@
-$("#enviarContacto").click(function() {
+$(".deleteMensaje").click(function() {
     var array = {
-        nombre: $("#nombre").val(),
-        asunto: $("#asunto").val(),
-        mensaje: $("#mensaje").val()
+        nombre: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -11,13 +9,13 @@ $("#enviarContacto").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./enviarCorreo",
+        url: "./deleteMensaje",
         type: "POST",
         data: {
-            nuevoContacto: valParam
+            borrarGrado: valParam
         },
         success: function() {
-            alert("Datos modificados correctamente");
+            alert("Correo eliminado correctamente");
             location.reload();
         },
         error: function() {

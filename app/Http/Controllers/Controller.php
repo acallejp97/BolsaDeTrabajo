@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Model\Alumno;
 use App\Model\Correo;
 use App\Model\Departamento;
 use App\Model\Empresa;
@@ -27,16 +28,15 @@ class Controller extends BaseController
         $ofertas = Oferta::all();
         switch (Auth::user()->rango) {
             case 0:
-            $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
-            $profe_admin= Profe_Admin::all();
-            
-          
-            $ofertas = Oferta::all();
-            $user = User::all();
+                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+                $profe_admin = Profe_Admin::all();
+
+                $ofertas = Oferta::all();
+                $user = User::all();
                 $empresas = Empresa::all();
                 $grados = Grado::all();
-               
-                $empresa_oferta = array('profe_admin' => $profe_admin,'user' => $user, 'empresas' => $empresas,  'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+
+                $empresa_oferta = array('profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
                 if (!$empresa_oferta) {
                     return view("profes_admin/anadirofertas");
                 }
@@ -45,16 +45,15 @@ class Controller extends BaseController
                 break;
 
             case 1:
-            $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
-            $profe_admin= Profe_Admin::all();
-            
-          
-            $ofertas = Oferta::all();
-            $user = User::all();
+                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+                $profe_admin = Profe_Admin::all();
+
+                $ofertas = Oferta::all();
+                $user = User::all();
                 $empresas = Empresa::all();
                 $grados = Grado::all();
-               
-                $empresa_oferta = array('profe_admin' => $profe_admin,'user' => $user, 'empresas' => $empresas,  'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+
+                $empresa_oferta = array('profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
                 if (!$empresa_oferta) {
                     return view("profes_admin/anadirofertas");
                 }
@@ -63,16 +62,15 @@ class Controller extends BaseController
                 break;
 
             case 2:
-            $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
-            $profe_admin= Profe_Admin::all();
-            
-          
-            $ofertas = Oferta::all();
-            $user = User::all();
+                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+                $profe_admin = Profe_Admin::all();
+
+                $ofertas = Oferta::all();
+                $user = User::all();
                 $empresas = Empresa::all();
                 $grados = Grado::all();
-               
-                $empresa_oferta = array('profe_admin' => $profe_admin,'user' => $user, 'empresas' => $empresas,  'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+
+                $empresa_oferta = array('profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
                 if (!$empresa_oferta) {
                     return view("alumnos/ofertas");
                 }
@@ -106,7 +104,6 @@ class Controller extends BaseController
     public function Perfil()
     {
 
-        $user = User::all();
         switch (Auth::user()->rango) {
             case 0:case 1:
                 if (Auth::user()->rango == 1) {
@@ -116,11 +113,12 @@ class Controller extends BaseController
                     }
                     return view("profes_admin/perfil")->with('nombreDepar', $nombreDepar);
                 } else {
-                    return view("profes_admin/perfil")->with('user', $user);
+                    return view("profes_admin/perfil");
                 }
                 break;
             case 2:
-                return view("alumnos/perfil");
+                $anio = Alumno::select('anio_fin')->where('id_user', Auth::user()->id)->first();
+                return view("alumnos/perfil")->with('anio_fin', $anio);
                 break;
 
         }
@@ -150,8 +148,6 @@ class Controller extends BaseController
         }
     }
 
- 
-    
     public function mostrarUsuario(Request $request)
     {
         $task = array([
@@ -175,7 +171,7 @@ class Controller extends BaseController
         }
         if (isset($_REQUEST['nuevoContacto'])) {
             $enviado = json_decode($_REQUEST['nuevoContacto']);
-            $asunto = $enviado->email;
+            $asunto = $enviado->asunto;
             $descripcion = $enviado->mensaje;
 
             $insertarDepartamento = new Correo;
@@ -286,5 +282,4 @@ class Controller extends BaseController
 
     }
 
-    
 }

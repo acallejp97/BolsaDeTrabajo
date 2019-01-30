@@ -1,7 +1,6 @@
-$("#anadirDepartamento").click(function() {
-    var nombreDepar = prompt("Introduce nombre del departamento a añadir");
+$(".abrirMensaje").click(function() {
     var array = {
-        nombre: nombreDepar
+        nombre: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -10,13 +9,11 @@ $("#anadirDepartamento").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./anadirDepartamento",
+        url: "./abrirMensaje",
         type: "POST",
-        data: {
-            nuevoDepartamento: valParam
-        },
+        data: {},
         success: function() {
-            alert("Departamento añadido correctamente");
+            alert("el mensaje ha sido abierto");
             location.reload();
         },
         error: function() {

@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/anadirOferta', 'Profe_AdminController@insertarOferta')->name('insertarOferta');
     Route::post('/anadirEmpresas', 'Profe_AdminController@insertarEmpresa')->name('insertEmpresa');
     Route::post('/borrarGrado', 'Profe_AdminController@deleteGrado')->name('borrarGrado');
+    Route::post('/deleteMensaje', 'Profe_AdminController@deleteMensaje')->name('deleteMensaje');
+    Route::post('/abrirMensaje', 'Profe_AdminController@abrirMensaje')->name('abrirMensaje');
     Route::post('/contacto', 'Profe_AdminController@contacto')->name('contacto');
     Route::post('/borrarEmpresa', 'Profe_AdminController@deleteEmpresa')->name('borrarEmpresa');
     Route::post('/borrarOferta', 'Profe_AdminController@deleteOferta')->name('borrarOferta');
@@ -43,7 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
-    Route::post('/fotocv', 'AlumnoController@updatecv')->name('fotocv');
+    Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
+
+    Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
 
 
 //prueba para modificar

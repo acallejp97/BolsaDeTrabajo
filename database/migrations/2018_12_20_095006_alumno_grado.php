@@ -19,8 +19,8 @@ class AlumnoGrado extends Migration
             $table->unsignedInteger('id_alumno');
             $table->unsignedInteger('id_grado');
             
-            $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
-            $table->foreign('id_grado')->references('id')->on('grados')->onDelete('cascade');
+            $table->foreign('id_alumno')->references('id')->on('alumnos');
+            $table->foreign('id_grado')->references('id')->on('grados');
             $table->timestamps();
         });
     }
