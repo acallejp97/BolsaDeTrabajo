@@ -148,20 +148,7 @@ class Controller extends BaseController
         }
     }
 
-    public function mostrarUsuario(Request $request)
-    {
-        $task = array([
-            'nombre' => Auth::user()->nombre,
-            'apellidos' => Auth::user()->nombre,
-            'email' => Auth::user()->nombre,
-            'rango' => Auth::user()->nombre,
-            'password' => Auth::user()->nombre,
-            'imagen' => Auth::user()->nom0bre,
-
-        ]);
-        return $task;
-        //Esta función devolverá los datos de una tarea que hayamos seleccionado para cargar el formulario con sus datos
-    }
+ 
 
     public function enviar(Request $request)
     {
