@@ -1,4 +1,4 @@
-$(".borrarCorreo").click(function() {
+$(".borrarUsuario").click(function() {
     var array = {
         id: $(this).val()
     };
@@ -9,13 +9,13 @@ $(".borrarCorreo").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./borrarCorreo",
+        url: "./borrarUsuario",
         type: "POST",
         data: {
-            borrarCorreo: valParam
+            borrarUsuario: valParam
         },
         success: function() {
-            alert("Correo eliminado correctamente");
+            alert("Usuario eliminado correctamente");
             location.reload();
         },
         error: function() {
@@ -23,5 +23,3 @@ $(".borrarCorreo").click(function() {
         }
     });
 });
-
-

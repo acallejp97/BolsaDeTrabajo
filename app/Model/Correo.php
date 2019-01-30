@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Correo extends Model
 {
     protected $table = "correos";
-    protected $fillable = ['asunto', 'descripcion'];
+    protected $fillable = ['id','id_remit','asunto', 'descripcion','created_at','updated_at'];
 
 
     //AQUI SOLO SI HAY RELACIONES

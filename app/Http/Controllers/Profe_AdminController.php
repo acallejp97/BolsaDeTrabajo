@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Alumno;
+use App\Model\Alumno_Grado;
 use App\Model\Correo;
 use App\Model\Curriculum;
 use App\Model\Departamento;
@@ -109,22 +110,33 @@ class Profe_AdminController extends Controller
         switch (Auth::user()->rango) {
 
             case 0:
-                $alumno = User::all();
+
+                $user = User::where('rango', 2)->get();
+                $alumno = Alumno::all();
+                $alumnosuser = array('user' => $user, 'alumno' => $alumno);
+                if (!$alumnosuser) {
+                    return view("profes_admin/usuarios");
+                }
+                return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
                 break;
+
             case 1:
+
                 $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
-                $grados = Grado::where('id_depar', $profe->id_depar); //Mas de un nombre | Pasar
+                $grados = Grado::where('id_depar', $profe->id_depar)->get(); //Mas de un nombre | Pasar
                 foreach ($grados as $grado) {
-                    $alumnos_grado = Alumno_Grado::where('id_grado', $grado->id);
+                    $alumnos_grado = Alumno_Grado::where('id_grado', $grado->id)->get();
                     foreach ($alumnos_grado as $alumno_grado) {
-                        $alumno = Alumno::where('id', $alumno_grado->id_alumno)->first(); //Pasar
-                        $usuario = User::where('id', $alumno->id_user); //Pasar
+                        $alumnos = Alumno::where('id', $alumno_grado->id_alumno)->get(); //Pasar
+                        foreach ($alumnos as $alumno) {
+                            $usuario = User::where('id', $alumno->id_user)->get(); //Pasar
+                        }
                     }
                 }
-                break;
-        }
-        return view("profes_admin/usuarios")->with('alumno', $alumno);
-    }
+                $alumnosuser = array('user' => $usuario, 'alumno' => $alumnos);
+
+                return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
+        }}
 
     //******* */FUNCIONES DE ADMIN********************
     public function Profesores()
@@ -135,7 +147,7 @@ class Profe_AdminController extends Controller
 
         $departamento = Departamento::all();
         $profesores = array('profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
-        if (!$profesor) {
+        if (!$profesores) {
             return view("profes_admin/profesores");
         }
         return view("profes_admin/profesores")->with('profesores', $profesores);
@@ -160,20 +172,17 @@ class Profe_AdminController extends Controller
     public function deleteMensaje(Request $request)
     {
 
-        $enviado = json_decode($_REQUEST['deleteMensaje']);
+        $correo = Correo::where('created_at', $fecha)->first();
+
+        Correo::where('created_at', $fecha)->delete();
+        $enviado = json_decode($_REQUEST['borrarCorreo']);
 
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $usuario = $enviado->usuario;
-        $asunto = $enviado->asunto;
-        $nombre = $enviado->nombre;
-        $fecha = $enviado->fecha;
-        $descripcion = $enviado->descripcion;
+        $id = $enviado->id;
 
-        $correo = Correo::where('created_at', $fecha)->first();
-
-        Correo::where('created_at', $fecha)->delete();
+        Correo::where('id', $id)->delete();
 
     }
 
@@ -233,6 +242,26 @@ class Profe_AdminController extends Controller
             $insertarGrado->insert(['nombre' => $nombre, 'id_depar' => $idDepar, 'abreviacion' => $abreviacion]);
         }
     }
+
+/*----------------------------------------------------------BORRAR USUARIO--------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+    public function deleteUsuario(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarUsuario']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $id = $enviado->id;
+
+        user::where('id', $id)->delete();
+
+    }
+
+/*-------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------*/
 
     public function deleteGrado(Request $request)
     {

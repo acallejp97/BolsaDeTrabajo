@@ -29,31 +29,34 @@
 						</thead>
 						<tbody>
 
-							@foreach($alumno as $alum)
-
+							@foreach($alumnosuser['alumno'] as $alumno)
+							@foreach($alumnosuser['user'] as $user)
+							@if($alumno['id_user']==$user['id'])
 							<tr>
 
-								<td>{{$alum['id']}}</td>
-								<td>{{$alum['nombre']}}</td>
-								<td>{{$alum['apellidos']}}</td>
-								<td>{{$alum['email']}}</td>
-								{{--
-								<td>{{$alum['anio_fin']}}</td> --}}
-								<td>{{$alum['created_at']}}</td>
+								<td>{{$user['id']}}</td>
+								<td>{{$user['nombre']}}</td>
+								<td>{{$user['apellidos']}}</td>
+								<td>{{$user['email']}}</td>
+								<td>{{$alumno['anio_fin']}}</td> 
+								<td>{{$user['created_at']}}</td>
 
 
 								<td class="td-actions">
-									<a class="btn btn-default btn-xs" href="javascript:;">
-										<span class="glyphicon glyphicon-pencil"></span> Modificar
-									</a>
-									<a class="btn btn-default btn-xs" href="javascript:;">
+									<button class="btn btn-default btn-xs" style="background: #b50045; color:white;"href="javascript:;">
+										<span class="glyphicon glyphicon-pencil" ></span> Modificar
+									</button>
+									<button class="btn btn-default btn-xs borrarUsuario" href="javascript:;" value="{{$user['id']}}">
 										<span class="glyphicon glyphicon-remove"></span> Borrar
-									</a>
+									</button>
 
 								</td>
 
 							</tr>
+							@endif
 							@endforeach
+							@endforeach
+							
 						</tbody>
 					</table>
 				</div>
