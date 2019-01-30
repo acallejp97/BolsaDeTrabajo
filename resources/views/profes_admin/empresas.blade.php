@@ -19,14 +19,14 @@
       <div class="form-group">
         <!-- Street 1 -->
         <label for="direccion" class="control-label">Direccion</label>
-        <textarea type="text" name="direccion" class="form-control" rows="4" , cols="164" id="direccion" style="resize:none," placeholder=""></textarea>
+        <input type="text" name="direccion" class="form-control" rows="4" , cols="164" id="direccion" style="resize:none," placeholder="">
 
       </div>
 
       <div class="form-group">
         <!-- Street 1 -->
         <label for="email" class="control-label">Email</label>
-        <textarea type="email" name="email" class="form-control" rows="4" , cols="164" id="email" style="resize:none," placeholder=""></textarea>
+        <input type="email" name="email" class="form-control" id="email"  placeholder="">
 
       </div>
 
@@ -77,14 +77,51 @@
         <p>{{$empre['URL']}}</p>
         <p>{{$empre['telefono']}}</p>
         <td class="td-actions">
-          <button value="{{$empre['id']}}" class="btn btn-default btn-xs" id="updateEmpresa" style="float:right;" href="javascript:;">
+          <button  class="btn btn-default btn-xs" id="updateEmpresa" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $empre->id;?>" id="<?php echo $empre->id;?>">
               <span class="glyphicon glyphicon-pencil"></span> Modificar
             </button>
+            
           <button  value="{{$empre['id']}}"class="borrarEmpresa btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
                 <span class="glyphicon glyphicon-remove" ></span> Borrar
               </button>
         </td>
       </div>
+
+
+<!-- The Modal -->
+<div id="edit-modal-cust-<?php echo $empre->id;?>" class="modal"  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div  class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h5><b>Nombre:</b> <input    value="{{$empre['nombre']}}"  class="form-control"> <h5>
+  
+        </div>
+        <div  class="modal-header">
+        <h5><b> Dirección:</b><input id="direccion" value="{{$empre['direccion']}}"for="direccion" class="form-control"><h5>
+        </div>
+        <!-- Modal body -->
+        <div  class="modal-header">
+        <h5><b> Email:</b><input id="email" value="{{$empre['email']}}" for="email" for="descripcion" class="form-control"><h5>
+         
+    
+  </div>
+  <div  class="modal-header">
+    <h5><b> URL:</b><input value="{{$empre['url']}}" id="url" for="url" for="descripcion" class="form-control"><h5>
+         
+        </div>
+          <div  class="modal-header">
+          <h5><b> Teléfono:</b><input id="telefono" value="{{$empre['telefono']}}" for="telefono" for="descripcion" class="form-control"><h5> </input>
+      </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
       @endforeach
     </div>
   </div>

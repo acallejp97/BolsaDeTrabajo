@@ -96,6 +96,7 @@
         </div>
 
       </div><br> @foreach ($result['ofertas'] as $oferta)
+      
       <div class="col-md-12">
         <h3 class="center">{{$oferta['titulo']}}</h3>
         <p>{{$oferta['descripcion']}}</p>
@@ -114,7 +115,7 @@
          
         
         <td class="td-actions">
-          <button class="btn btn-default btn-xs" style="float:right;">
+          <button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $oferta->id;?>" id="<?php echo $oferta->id;?>">
               <span class="glyphicon glyphicon-pencil"></span> Modificar
             </button>
             <button value="{{$oferta['id']}}" class="borrarOferta btn btn-default btn-xs"  style="background: #b50045; float:right; color:white;">
@@ -122,14 +123,47 @@
               </button>
               
             </td>
-          </div>
-          
-      @endforeach
     </div>
-  </div>
-</div>
+          
+  
 <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
 <script>
   window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
 </script>
+
+
+
+<!-- The Modal -->
+<div id="edit-modal-cust-<?php echo $oferta->id;?>" class="modal"  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div  class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h5><b>Título:</b> <input    value="{{$oferta['titulo']}}"  class="form-control"> <h5>
+  
+        </div>
+        <div  class="modal-header">
+        <h5><b> Descripción:</b><textarea id="direccion" for="direccion" class="form-control">{{$oferta['descripcion']}}</textarea><h5>
+        </div>
+        <!-- Modal body -->
+        <div  class="modal-header">
+        <h5><b> Puestos Vacantes:</b><input id="email" value="{{$oferta['puestos-vacantes']}}" for="email" for="descripcion" class="form-control"><h5>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Guardar</button>
+          </div>
+        </div>
+</div>
+</div>
+
+
+  @endforeach
+</div>
+</div>
+</div>
+
+
+
 @endsection
