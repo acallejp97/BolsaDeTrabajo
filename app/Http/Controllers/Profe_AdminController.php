@@ -161,27 +161,8 @@ class Profe_AdminController extends Controller
 
 /*---------------------------------------------------------BORRAR MENSAJE BUZÓN------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------*/
-/*
-public function deleteMensaje(Request $request)
-    {
-        
-        $enviado = json_decode($_REQUEST['deleteMensaje']);
 
-        if (!$request->ajax()) {
-            return redirect('/');
-        }
-        $usuario = $enviado->usuario;
-        $asunto = $enviado->asunto;
-        $nombre = $enviado->nombre;
-        $fecha = $enviado->fecha;
-        $descripcion = $enviado->descripcion;
 
-        $correo = Correo::where('created_at', $fecha)->first();
-        
-        Correo::where('created_at', $fecha)->delete();
-
-    }
-*/
     public function deleteMensaje(Request $request)
         {
 
@@ -254,6 +235,30 @@ public function abrirMensaje(Request $request)
             $insertarGrado->insert(['nombre' => $nombre, 'id_depar' => $idDepar, 'abreviacion' => $abreviacion]);
         }
     }
+
+
+/*----------------------------------------------------------BORRAR USUARIO--------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+public function deleteUsuario(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarUsuario']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $id = $enviado->id;
+        
+            user::where('id', $id)->delete();
+        
+
+    }
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------*/
 
     public function deleteGrado(Request $request)
     {

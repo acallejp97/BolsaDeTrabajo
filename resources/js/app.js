@@ -10,6 +10,7 @@ require("./bootstrap");
 require("./contacto");
 require("./empresa");
 require("./grado");
+require("./usuario");
 require("./insertEmpresa");
 require("./insertOferta");
 require("./insertProfe");

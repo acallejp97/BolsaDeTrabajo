@@ -43,12 +43,12 @@
 
 
 								<td class="td-actions">
-									<a class="btn btn-default btn-xs" style="background: #b50045; color:white;"href="javascript:;">
+									<button class="btn btn-default btn-xs" style="background: #b50045; color:white;"href="javascript:;">
 										<span class="glyphicon glyphicon-pencil" ></span> Modificar
-									</a>
-									<a class="btn btn-default btn-xs" href="javascript:;">
+									</button>
+									<button class="btn btn-default btn-xs borrarUsuario" href="javascript:;" value="{{$user['id']}}">
 										<span class="glyphicon glyphicon-remove"></span> Borrar
-									</a>
+									</button>
 
 								</td>
 
