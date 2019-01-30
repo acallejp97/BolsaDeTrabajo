@@ -1,6 +1,6 @@
-$(".deleteMensaje").click(function() {
+$(".borrarCorreo").click(function() {
     var array = {
-        nombre: $(this).val()
+        id: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -9,10 +9,10 @@ $(".deleteMensaje").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./deleteMensaje",
+        url: "./borrarCorreo",
         type: "POST",
         data: {
-            borrarGrado: valParam
+            borrarCorreo: valParam
         },
         success: function() {
             alert("Correo eliminado correctamente");
@@ -23,3 +23,5 @@ $(".deleteMensaje").click(function() {
         }
     });
 });
+
+

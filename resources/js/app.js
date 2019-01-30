@@ -8,7 +8,6 @@
 require("./abrirMensaje");
 require("./bootstrap");
 require("./contacto");
-require("./deleteMensaje");
 require("./empresa");
 require("./grado");
 require("./insertEmpresa");
@@ -20,6 +19,7 @@ require("./profesores");
 require("./updateCV");
 require("./updateEmpresa");
 require("./updateUser");
+require("./deleteMensaje");
 
 window.Vue = require("vue");
 

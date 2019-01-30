@@ -148,7 +148,7 @@ class Profe_AdminController extends Controller
 
 /*---------------------------------------------------------BORRAR MENSAJE BUZÓN------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------*/
-
+/*
 public function deleteMensaje(Request $request)
     {
         
@@ -168,7 +168,21 @@ public function deleteMensaje(Request $request)
         Correo::where('created_at', $fecha)->delete();
 
     }
+*/
+    public function deleteMensaje(Request $request)
+        {
 
+            $enviado = json_decode($_REQUEST['borrarCorreo']);
+
+            if (!$request->ajax()) {
+                return redirect('/');
+            }
+            $id = $enviado->id;
+            
+                Correo::where('id', $id)->delete();
+            
+
+        }
 
 /*---------------------------------------------------------ABRIR MENSAJE BUZÓN------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------*/

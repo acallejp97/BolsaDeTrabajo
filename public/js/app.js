@@ -47483,36 +47483,6 @@ $("#enviarContacto").click(function () {
 /* 39 */
 /***/ (function(module, exports) {
 
-$(".deleteMensaje").click(function () {
-    var array = {
-        nombre: $(this).val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./deleteMensaje",
-        type: "POST",
-        data: {
-            borrarGrado: valParam
-        },
-        success: function success() {
-            alert("Correo eliminado correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports) {
-
 $(".borrarEmpresa").click(function () {
     var array = {
         id: $(this).val()
@@ -47540,7 +47510,7 @@ $(".borrarEmpresa").click(function () {
 });
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports) {
 
 $("#anadirDepartamento").click(function () {
@@ -47628,7 +47598,7 @@ $(".borrarGrado").click(function () {
 });
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports) {
 
 $("#insertEmpresa").click(function () {
@@ -47663,7 +47633,7 @@ $("#insertEmpresa").click(function () {
 });
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports) {
 
 $("#insertOferta").click(function () {
@@ -47698,7 +47668,7 @@ $("#insertOferta").click(function () {
 });
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports) {
 
 $("#insertProfe").click(function () {
@@ -47735,7 +47705,7 @@ $("#insertProfe").click(function () {
 });
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports) {
 
 $("#insertUsers").click(function () {
@@ -47765,7 +47735,7 @@ $("#insertUsers").click(function () {
 });
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports) {
 
 $(".borrarOferta").click(function () {
@@ -47795,7 +47765,7 @@ $(".borrarOferta").click(function () {
 });
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports) {
 
 $(".borrarProfesor").click(function () {
@@ -47825,7 +47795,7 @@ $(".borrarProfesor").click(function () {
 });
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports) {
 
 $("#updateCV").click(function () {
@@ -47863,7 +47833,7 @@ $("#updateCV").click(function () {
 });
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports) {
 
 $("#updateEmpresa").click(function () {
@@ -47916,7 +47886,7 @@ $("#deleteEmpresa").click(function () {
 });
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports) {
 
 $("#updateUser").click(function () {
@@ -47964,6 +47934,36 @@ $("#deleteUser").click(function () {
         },
         error: function error() {
             alert("No se ha podido eliminar el usuario...");
+        }
+    });
+});
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports) {
+
+$(".borrarCorreo").click(function () {
+    var array = {
+        id: $(this).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./borrarCorreo",
+        type: "POST",
+        data: {
+            borrarCorreo: valParam
+        },
+        success: function success() {
+            alert("Correo eliminado correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
         }
     });
 });
