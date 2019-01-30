@@ -124,7 +124,7 @@
 								
 								
 								<td class="td-actions">
-									<button style="background: #b50045; color:white;"class="btn btn-default btn-xs" href="javascript:;">
+									<button style="background: #b50045; color:white;"class="btn btn-default btn-xs" href="javascript:;"data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $usuario->id;?>" id="<?php echo $usuario->id;?>">
 										<span class="glyphicon glyphicon-pencil"></span> Modificar
 									</button>
 									<button value="{{$profesor['id']}}" class="borrarProfesor btn btn-default btn-xs" href="javascript:;">
@@ -133,6 +133,37 @@
 									
 								</td>
                             </tr>
+
+
+
+
+<!-- The Modal -->
+<div id="edit-modal-cust-<?php echo $usuario->id;?>" class="modal"  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div  class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h5><b>Nombre:</b> <input    value="{{$usuario['nombre']}}"  class="form-control"> <h5>
+  
+        </div>
+        <div  class="modal-header">
+        <h5><b> Apellidos:</b><textarea id="direccion" for="direccion" class="form-control">{{$usuario['apellidos']}}</textarea><h5>
+        </div>
+        <!-- Modal body -->
+        <div  class="modal-header">
+        <h5><b> Email:</b><input id="email" value="{{$usuario['email']}}" for="email" for="descripcion" class="form-control"><h5>
+         </div>
+         <div  class="modal-header">
+            <h5><b> Departamento:</b><textarea id="direccion" for="direccion" class="form-control">{{$departamento['nombre']}}</textarea><h5>
+            </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Guardar</button>
+          </div>
+        </div>
+</div>
+</div>
                             @endif
                             @endif
                             </tbody>

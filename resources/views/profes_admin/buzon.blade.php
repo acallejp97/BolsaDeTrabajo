@@ -68,7 +68,7 @@
 							</td>
 
 							<td class="td-actions">
-								<button onclick="abrir()" class="btn btn-default btn-xs" type="button" data-toggle="modal" data-target="#myModal">
+								<button  class="btn btn-default btn-xs" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $correo->id;?>" id="<?php echo $correo->id;?>">
 										<span class="glyphicon glyphicon-pencil"></span> Abrir
 								</button>
 								<a class="btn btn-default btn-xs" style="background: #b50045; color:white;">
@@ -79,7 +79,7 @@
 							<!------------------------------------------------------------------------------------>
 
 							<!-- The Modal -->
-							<div for="modal" hidden id="myModal">
+							<div id="edit-modal-cust-<?php echo $correo->id;?>" class="modal"  >
 								<div class="modal-dialog">
 									<div class="modal-content">
 
@@ -122,10 +122,6 @@
 	</div>
 </div>
 <script>
-function abrir(){
-	$("#myModal").css({
-        "visibility": "visible"
-})
-}
+
 </script>
 @endsection
