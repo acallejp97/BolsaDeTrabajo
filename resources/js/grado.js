@@ -81,3 +81,31 @@ $(".borrarGrado").click(function() {
         }
     });
 });
+
+
+$(".borrarDepartamento").click(function() {
+    var array = {
+        id: $(this).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./borrarDepartamento",
+        type: "POST",
+        data: {
+            borrarDepartamento: valParam
+        },
+        success: function() {
+            alert("Departamento eliminado correctamente");
+            location.reload();
+        },
+        error: function() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+

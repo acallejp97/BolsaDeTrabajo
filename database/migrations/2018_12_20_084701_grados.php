@@ -20,7 +20,7 @@ class Grados extends Migration
             $table->string('nombre',300);
             $table->string('abreviacion',30);
            
-            $table->foreign('id_depar')->references('id')->on('departamentos');
+            $table->foreign('id_depar')->references('id')->on('departamentos')->onDelete('cascade');
             $table->timestamps();
         });
     }

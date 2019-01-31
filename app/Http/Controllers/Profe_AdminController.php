@@ -284,6 +284,25 @@ class Profe_AdminController extends Controller
 
         }
     }
+
+    public function deleteDepartamento(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarDepartamento']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $id = $enviado->id;
+
+        if ($id != "") {
+            
+
+            Departamento::where('id', $id)->delete();
+            
+
+        }
+    }
     public function deleteOferta(Request $request)
     {
 
