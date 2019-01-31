@@ -148,8 +148,6 @@ class Controller extends BaseController
         }
     }
 
- 
-
     public function enviar(Request $request)
     {
 
@@ -164,7 +162,8 @@ class Controller extends BaseController
             $insertarDepartamento = new Correo;
             $insertarDepartamento->insert(['asunto' => $asunto,
                 'id_remit' => Auth::user()->id,
-                'descripcion' => $descripcion]);
+                'descripcion' => $descripcion, 'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')]);
 
         } else {
             $insertarDepartamento->delete();
