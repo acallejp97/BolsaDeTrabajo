@@ -56,8 +56,8 @@ class Profe_AdminController extends Controller
                     $ultimaIdUser = User::max('id');
                     $ultimaIdAlumno = Alumno::max('id');
                     
+                    $siguienteId = 1;
                     foreach ($data as $key => $value) {
-                        $siguienteId = 1;
                         $insertUser[] = [
                             'email' => $value->email,
                             'nombre' => $value->nombre,
@@ -265,6 +265,25 @@ class Profe_AdminController extends Controller
             Grado::where('id', $id)->delete();
 
             Grado::where('id', $nombre)->delete();
+
+        }
+    }
+
+    public function deleteDepartamento(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarDepartamento']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $id = $enviado->id;
+
+        if ($id != "") {
+            
+
+            Departamento::where('id', $id)->delete();
+            
 
         }
     }

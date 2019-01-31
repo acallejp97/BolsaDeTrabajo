@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/borrarOferta', 'Profe_AdminController@deleteOferta')->name('borrarOferta');
     Route::post('/borrarProfesor', 'Profe_AdminController@deleteProfesor')->name('borrarProfesor ');
     Route::post('/borrarUsuario', 'Profe_AdminController@deleteUsuario')->name('borrarUsuario');
+    Route::post('/borrarDepartamento', 'Profe_AdminController@deleteDepartamento')->name('borrarDepartamento');
     
 
     //Alumno
