@@ -1,6 +1,6 @@
-$(".abrirMensaje").click(function() {
+$(".borrarUsuario").click(function() {
     var array = {
-        nombre: $(this).val()
+        id: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -9,11 +9,13 @@ $(".abrirMensaje").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./abrirMensaje",
+        url: "./borrarUsuario",
         type: "POST",
-        data: {},
+        data: {
+            borrarUsuario: valParam
+        },
         success: function() {
-            alert("el mensaje ha sido abierto");
+            alert("Usuario eliminado correctamente");
             location.reload();
         },
         error: function() {

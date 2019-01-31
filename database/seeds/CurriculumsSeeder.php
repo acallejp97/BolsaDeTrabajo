@@ -2,6 +2,7 @@
 require_once 'vendor/fzaninotto/faker/src/autoload.php';
 
 use Illuminate\Database\Seeder;
+use App\Model\Alumno;
 
 class CurriculumsSeeder extends Seeder
 {
@@ -13,12 +14,14 @@ class CurriculumsSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('es_ES');
+                $alumnos=Alumno::all();
 
         DB::table('curriculums')->delete();
-        for ($cantidadCurriculum = 1; $cantidadCurriculum != 25; $cantidadCurriculum++) {
+        foreach ($alumnos as $alumno) {
             $nombre = explode(' ', trim($faker->name));
+
             DB::table('curriculums')->insert(array(
-                'id_alumno' => ($cantidadCurriculum),
+                'id_alumno' => $alumno->id,
                 'nombre' => $nombre[0],
                 'apellidos' => $faker->name,
                 'email' => $faker->email,
