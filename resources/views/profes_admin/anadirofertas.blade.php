@@ -118,19 +118,19 @@
             <div class="modal-header">
               <h5><b>Título:</b>
               </h5>
-              <input value="{{$oferta['titulo']}}" class="titulo form-control">
+              <input value="{{$oferta['titulo']}}" id="titulo<?php echo $oferta->id;?>" class="form-control">
             </div>
 
             <div class="modal-header">
               <h5><b> Descripción:</b>
               </h5>
-              <textarea for="direccion" class=" descripcion form-control">{{$oferta['descripcion']}}</textarea>
+              <textarea id="descripcion<?php echo $oferta->id;?>" class="form-control">{{$oferta['descripcion']}}</textarea>
             </div>
             
             <div class="modal-header">
               <h5><b> Puestos Vacantes:</b>
               </h5>
-              <input value="{{$oferta['puestos-vacantes']}}" for="email" class=" puestos form-control">
+              <input value="{{$oferta['puestos-vacantes']}}" id="puestos<?php echo $oferta->id;?>" class="form-control">
             </div>
 
             <div class="modal-footer">
