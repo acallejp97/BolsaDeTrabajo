@@ -9,7 +9,7 @@
           Publicar una oferta
         </h3>
       </div>
-
+      <example-component></example-component><!--Añadimos nuestro componente vuejs-->
       <div class="form-group">
         <!-- Full Name -->
         <label for="titulo" class="control-label">Titulo</label>
@@ -141,18 +141,18 @@
         <!-- Modal Header -->
         <div  class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h5><b>Título:</b> <input    value="{{$oferta['titulo']}}"  class="form-control"> <h5>
+            <h5><b>Título:</b> <input   value="{{$oferta['titulo']}}"  class="titulo form-control"> <h5>
   
         </div>
         <div  class="modal-header">
-        <h5><b> Descripción:</b><textarea id="direccion" for="direccion" class="form-control">{{$oferta['descripcion']}}</textarea><h5>
+        <h5><b> Descripción:</b><textarea  for="direccion" class=" descripcion form-control">{{$oferta['descripcion']}}</textarea><h5>
         </div>
         <!-- Modal body -->
         <div  class="modal-header">
-        <h5><b> Puestos Vacantes:</b><input id="email" value="{{$oferta['puestos-vacantes']}}" for="email" for="descripcion" class="form-control"><h5>
+        <h5><b> Puestos Vacantes:</b><input  value="{{$oferta['puestos-vacantes']}}" for="email"  class=" puestos form-control"><h5>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Guardar</button>
+            <button type="button" value="{{$oferta->id}}" class="updateOferta btn btn-danger" data-dismiss="modal">Guardar</button>
           </div>
         </div>
 </div>

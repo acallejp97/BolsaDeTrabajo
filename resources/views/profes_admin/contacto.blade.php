@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-3">
-      <div class="well well-sm  form-horizontal">
+      <div style="margin-top:6em;" class="well well-sm  form-horizontal">
         <fieldset>
           <legend class="text-center">Contactar</legend>
 

@@ -99,9 +99,9 @@ class Profe_AdminController extends Controller
 
     public function Usuarios()
     {
-        switch (Auth::user()->rango) {
+        
 
-            case 0:
+         
 
                 $user = User::where('rango',2)->get();
                 $alumno = Alumno::all();
@@ -110,25 +110,9 @@ class Profe_AdminController extends Controller
                     return view("profes_admin/usuarios");
                 }
                 return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
-                break;
+               
 
-            case 1:
-
-                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
-                $grados = Grado::where('id_depar', $profe->id_depar)->get(); //Mas de un nombre | Pasar
-                foreach ($grados as $grado) {
-                    $alumnos_grado = Alumno_Grado::where('id_grado', $grado->id)->get();
-                    foreach ($alumnos_grado as $alumno_grado) {
-                        $alumnos = Alumno::where('id', $alumno_grado->id_alumno)->get(); //Pasar
-                        foreach ($alumnos as $alumno) {
-                        $usuario = User::where('id', $alumno->id_user)->get(); //Pasar
-                    }
-                }
-        }
-        $alumnosuser = array('user' => $usuario, 'alumno' => $alumnos);
-
-        return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
-    }}
+            }
 
     //******* */FUNCIONES DE ADMIN********************
     public function Profesores()
@@ -386,7 +370,43 @@ public function deleteOferta(Request $request)
 
     }
 
+    public function updateOferta(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        
 
+        if (isset($_REQUEST['actualizacionOferta'])) {
+
+            $enviado = json_decode($_REQUEST['actualizacionOferta']);
+
+            $idoferta = $enviado->idoferta;
+            $titulo = $enviado->titulo;
+            $descripcion = $enviado->descripcion;
+            $puestos = $enviado->puestos;
+            
+
+            $actualizarOferta = Oferta::findOrFail($idoferta);
+            if ($titulo != "") {
+                $actualizarOferta->update(['titulo' => $titulo]);
+            }
+
+            if ($descripcion != "") {
+                $actualizarOferta->update(['descripcion' => $descripcion]);
+            }
+
+            if ($puestos != "") {
+                $actualizarOferta->update(['puestos-vacantes' => $puestos]);
+            }
+
+           
+
+        } else {
+            $actualizarOferta = User::findOrFail($idoferta);
+        }
+
+    }
 
       public function updateEmpresa(Request $request)
     {

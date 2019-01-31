@@ -71,15 +71,9 @@
 								<button  class="btn btn-default btn-xs" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $correo->id;?>" id="<?php echo $correo->id;?>">
 										<span class="glyphicon glyphicon-pencil"></span> Abrir
 								</button>
-<<<<<<< HEAD
 								<button class="btn btn-default btn-xs borrarCorreo" style="background: #b50045; color:white;" value="{{$correo['id']}}">
 										<span class="glyphicon glyphicon-remove" ></span> Borrar
 								</button>
-=======
-								<a class="btn btn-default btn-xs" style="background: #b50045; color:white;">
-										<span class="glyphicon glyphicon-remove" ></span> Borrar
-									</a>
->>>>>>> dde3f479ba2b5aee0fb73b41a836c638860bc8e6
 
 							</td>
 							<!------------------------------------------------------------------------------------>
@@ -128,9 +122,5 @@
 	</div>
 </div>
 <script>
-<<<<<<< HEAD
-=======
-
->>>>>>> dde3f479ba2b5aee0fb73b41a836c638860bc8e6
 </script>
 @endsection
