@@ -18,6 +18,7 @@ require("./insertUsers");
 require("./oferta");
 require("./profesores");
 require("./updateCV");
+require("./updateOferta");
 require("./updateEmpresa");
 require("./updateUser");
 require("./deleteMensaje");

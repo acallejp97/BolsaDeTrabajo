@@ -111,9 +111,9 @@ class Profe_AdminController extends Controller
 
     public function Usuarios()
     {
-        switch (Auth::user()->rango) {
+        
 
-            case 0:
+         
 
                 $user = User::where('rango', 2)->get();
                 $alumno = Alumno::all();
@@ -122,6 +122,11 @@ class Profe_AdminController extends Controller
                     return view("profes_admin/usuarios");
                 }
                 return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
+<<<<<<< HEAD
+               
+
+            }
+=======
                 break;
 
             case 1:
@@ -141,6 +146,7 @@ class Profe_AdminController extends Controller
 
                 return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
         }}
+>>>>>>> aad06e37dbbcb7978a49e700a75324047cda0c81
 
     //******* */FUNCIONES DE ADMIN********************
     public function Profesores()
@@ -414,7 +420,49 @@ class Profe_AdminController extends Controller
 
     }
 
+<<<<<<< HEAD
+    public function updateOferta(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        
+
+        if (isset($_REQUEST['actualizacionOferta'])) {
+
+            $enviado = json_decode($_REQUEST['actualizacionOferta']);
+
+            $idoferta = $enviado->idoferta;
+            $titulo = $enviado->titulo;
+            $descripcion = $enviado->descripcion;
+            $puestos = $enviado->puestos;
+            
+
+            $actualizarOferta = Oferta::findOrFail($idoferta);
+            if ($titulo != "") {
+                $actualizarOferta->update(['titulo' => $titulo]);
+            }
+
+            if ($descripcion != "") {
+                $actualizarOferta->update(['descripcion' => $descripcion]);
+            }
+
+            if ($puestos != "") {
+                $actualizarOferta->update(['puestos-vacantes' => $puestos]);
+            }
+
+           
+
+        } else {
+            $actualizarOferta = User::findOrFail($idoferta);
+        }
+
+    }
+
+      public function updateEmpresa(Request $request)
+=======
     public function updateEmpresa(Request $request)
+>>>>>>> aad06e37dbbcb7978a49e700a75324047cda0c81
     {
         if (!$request->ajax()) {
             return redirect('/');
