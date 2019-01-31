@@ -36,7 +36,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/anadirOferta', 'Profe_AdminController@insertarOferta')->name('insertarOferta');
     Route::post('/anadirEmpresas', 'Profe_AdminController@insertarEmpresa')->name('insertEmpresa');
     Route::post('/borrarGrado', 'Profe_AdminController@deleteGrado')->name('borrarGrado');
-    Route::post('/borrarCorreo', 'Profe_AdminController@deleteMensaje')->name('borrarCorreo');
     Route::post('/abrirMensaje', 'Profe_AdminController@abrirMensaje')->name('abrirMensaje');
     Route::post('/contacto', 'Profe_AdminController@contacto')->name('contacto');
     Route::post('/borrarEmpresa', 'Profe_AdminController@deleteEmpresa')->name('borrarEmpresa');
@@ -44,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/borrarProfesor', 'Profe_AdminController@deleteProfesor')->name('borrarProfesor ');
     Route::post('/borrarUsuario', 'Profe_AdminController@deleteUsuario')->name('borrarUsuario');
     Route::post('/borrarDepartamento', 'Profe_AdminController@deleteDepartamento')->name('borrarDepartamento');
+    Route::post('/borrarCorreo', 'Profe_AdminController@deleteMensaje')->name('borrarCorreo');
     
 
     //Alumno

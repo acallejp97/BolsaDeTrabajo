@@ -71,12 +71,12 @@
 								<button  class="btn btn-default btn-xs" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $correo->id;?>" id="<?php echo $correo->id;?>">
 										<span class="glyphicon glyphicon-pencil"></span> Abrir
 								</button>
-								<button class="btn btn-default btn-xs borrarCorreo" style="background: #b50045; color:white;" value="{{$correo['id']}}">
+								<button class=" borrarCorreo btn btn-default btn-xs " style="background: #b50045; color:white;" value="{{$correo['id']}}">
 										<span class="glyphicon glyphicon-remove" ></span> Borrar
 								</button>
 
 							</td>
-							<!------------------------------------------------------------------------------------>
+							<!---------------------------------------------------------------------borrarCorreo--------------->
 
 							<!-- The Modal -->
 							<div id="edit-modal-cust-<?php echo $correo->id;?>" class="modal"  >

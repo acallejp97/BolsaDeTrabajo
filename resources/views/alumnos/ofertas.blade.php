@@ -18,16 +18,7 @@
     @endif @endif @endforeach @endforeach
 
   </div>
-  <div>
-    <td class="td-actions">
-      <a class="btn btn-default btn-xs" style="float:right;" href="javascript:;">
-                <span class="glyphicon glyphicon-pencil"></span> Modificar
-              </a>
-      <a class="btn btn-default btn-xs" style="background: #b50045; float:right; color:white;" href="javascript:;">
-                  <span class="glyphicon glyphicon-remove" ></span> Borrar
-                </a>
-    </td>
-  </div>
+
   @endforeach
 </div>
 @endsection
