@@ -114,38 +114,35 @@
         <div class="modal-dialog">
           <div class="modal-content">
 
-            <button class="close" data-dismiss="modal">&times;</button>
             <div class="modal-header">
-              <h5><b>Título:</b>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h5><b>Título:</b> <input value="{{$oferta['titulo']}}" class="titulo form-control">
               </h5>
-              <input value="{{$oferta['titulo']}}" class="titulo form-control">
-            </div>
 
-            <div class="modal-header">
-              <h5><b> Descripción:</b>
-              </h5>
-              <textarea for="direccion" class=" descripcion form-control">{{$oferta['descripcion']}}</textarea>
             </div>
-            
             <div class="modal-header">
-              <h5><b> Puestos Vacantes:</b>
+              <h5><b> Descripción:</b><textarea for="direccion" class=" descripcion form-control">{{$oferta['descripcion']}}</textarea>
               </h5>
-              <input value="{{$oferta['puestos-vacantes']}}" for="email" class=" puestos form-control">
             </div>
-
+            <!-- Modal body -->
+            <div class="modal-header">
+              <h5><b> Puestos Vacantes:</b><input value="{{$oferta['puestos-vacantes']}}" for="email" class=" puestos form-control">
+              </h5>
+            </div>
             <div class="modal-footer">
               <button type="button" value="{{$oferta->id}}" class="updateOferta btn btn-danger" data-dismiss="modal">Guardar</button>
             </div>
           </div>
         </div>
       </div>
+
+
       @endforeach
     </div>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
 <script>
-  window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
 
 </script>
 @endsection

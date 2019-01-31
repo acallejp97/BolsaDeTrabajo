@@ -56,8 +56,8 @@ class Profe_AdminController extends Controller
                     $ultimaIdUser = User::max('id');
                     $ultimaIdAlumno = Alumno::max('id');
                     
+                    $siguienteId = 1;
                     foreach ($data as $key => $value) {
-                        $siguienteId = 1;
                         $insertUser[] = [
                             'email' => $value->email,
                             'nombre' => $value->nombre,
