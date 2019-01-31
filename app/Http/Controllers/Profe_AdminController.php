@@ -122,31 +122,9 @@ class Profe_AdminController extends Controller
                     return view("profes_admin/usuarios");
                 }
                 return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
-<<<<<<< HEAD
                
 
             }
-=======
-                break;
-
-            case 1:
-
-                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
-                $grados = Grado::where('id_depar', $profe->id_depar)->get(); //Mas de un nombre | Pasar
-                foreach ($grados as $grado) {
-                    $alumnos_grado = Alumno_Grado::where('id_grado', $grado->id)->get();
-                    foreach ($alumnos_grado as $alumno_grado) {
-                        $alumnos = Alumno::where('id', $alumno_grado->id_alumno)->get(); //Pasar
-                        foreach ($alumnos as $alumno) {
-                            $usuario = User::where('id', $alumno->id_user)->get(); //Pasar
-                        }
-                    }
-                }
-                $alumnosuser = array('user' => $usuario, 'alumno' => $alumnos);
-
-                return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
-        }}
->>>>>>> aad06e37dbbcb7978a49e700a75324047cda0c81
 
     //******* */FUNCIONES DE ADMIN********************
     public function Profesores()
@@ -401,9 +379,7 @@ class Profe_AdminController extends Controller
 
     }
 
-<<<<<<< HEAD
-    public function updateOferta(Request $request)
-    {
+    public function updateOferta(Request $request){
         if (!$request->ajax()) {
             return redirect('/');
         }
@@ -441,13 +417,7 @@ class Profe_AdminController extends Controller
     }
 
       public function updateEmpresa(Request $request)
-=======
-    public function updateEmpresa(Request $request)
->>>>>>> aad06e37dbbcb7978a49e700a75324047cda0c81
     {
-        if (!$request->ajax()) {
-            return redirect('/');
-        }
 
         if (isset($_REQUEST['actualizacionEmpresa'])) {
 
