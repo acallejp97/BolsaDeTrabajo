@@ -47897,13 +47897,13 @@ $("#updateCV").click(function () {
 $(".updateOferta").click(function () {
     var array = {
         idoferta: $(this).val(),
-        titulo: $(".titulo").val(),
-        descripcion: $(".descripcion").val(),
-        puestos: $(".puestos").val()
-
+        titulo: $("#titulo" + $(this).val()).val(),
+        descripcion: $("#descripcion" + $(this).val()).val(),
+        puestos: $("#puestos" + $(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);
+    alert(array["titulo"]);
 
     $.ajax({
         headers: {
@@ -47916,7 +47916,6 @@ $(".updateOferta").click(function () {
         },
         success: function success() {
             alert("Datos modificados correctamente");
-
             location.reload();
         },
         error: function error() {
