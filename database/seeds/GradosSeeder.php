@@ -2,7 +2,7 @@
 require_once 'vendor/fzaninotto/faker/src/autoload.php';
 
 use Illuminate\Database\Seeder;
-
+use App\Model\Departamento;
 class GradosSeeder extends Seeder
 {
     /**
@@ -49,25 +49,26 @@ class GradosSeeder extends Seeder
             case 'DM3';
             case 'DW3';
             case 'AS3':
-                $id_depart = 1;
+                $nombreDepart = 'Informatica y Comunicaciones';
                 break;
             case 'LA3':
-                $id_depart = 2;
+                $nombreDepart = 'Quimica';
                 break;
             case 'AC2';
             case 'GV3':
-                $id_depart = 3;
+                $nombreDepart = 'Comercio y Marketing';
                 break;
             case 'IT2':
-                $id_depart = 4;
+                $nombreDepart = 'Electricidad y Electronica';
                 break;
             case 'IS3':
-                $id_depart = 5;
+                $nombreDepart = 'Servicios Socioculturales y a la Comunidad';
                 break;
             case 'AF3':
-                $id_depart = 6;
+                $nombreDepart = 'Administracion y Gestion';
                 break;
         }
-        return $id_depart;
+        $departamento=Departamento::where('nombre',$nombreDepart)->first();
+        return $departamento->id;
     }
 }

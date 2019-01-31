@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
         ));
 
         //Cantidad de user a crear
-        for ($numerouser = 0; $numerouser != 90; $numerouser++) {
+        for ($numerouser = 0; $numerouser != 15; $numerouser++) {
             if ($numerouser <= 5) {
                 $rango = 1;
             } else {

@@ -11,16 +11,16 @@ class DepartamentosSeeder extends Seeder
      *
      * @return void
      */
-    private $arrayDepartamentos = array('Informatica y Comunicaciones', 'Quimica', 'Comercio y Marketing', 'Electricidad y Electronica', 'Servicios Socioculturales y a la Comunidad', 'Administracion y Gestion');
-
+    
     public function run()
     {
+        $departamentos = array('Informatica y Comunicaciones', 'Quimica', 'Comercio y Marketing', 'Electricidad y Electronica', 'Servicios Socioculturales y a la Comunidad', 'Administracion y Gestion');
 
         DB::table('departamentos')->delete();
 
-        for ($numeroDepartamento = 0; $numeroDepartamento < count($this->arrayDepartamentos); $numeroDepartamento++) {
+        foreach ($departamentos as $departamento) {
             DB::table('departamentos')->insert(array(
-                'nombre' => $this->arrayDepartamentos[$numeroDepartamento],
+                'nombre' => $departamento,
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
             ));
