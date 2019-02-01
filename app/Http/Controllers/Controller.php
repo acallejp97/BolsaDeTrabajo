@@ -142,7 +142,7 @@ class Controller extends BaseController
             $request->file('image')->move('perfiles', $name);
             $user = new User;
             $user->where('email', '=', Auth::user()->email)
-                ->update(['imagen' => $name]);
+                ->update(['imagen' => $name, 'updated_at' => date('Y-m-d H:m:s')]);
 
             return view("profes_admin/perfil")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
         }
