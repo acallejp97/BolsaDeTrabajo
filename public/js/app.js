@@ -48057,8 +48057,8 @@ $(".updateUsuarios").click(function () {
         iduser: $(this).val(),
         nombre: $("#nombre" + $(this).val()).val(),
         apellidos: $("#apellidos" + $(this).val()).val(),
-        email: $("#email" + $(this).val()).val()
-
+        email: $("#email" + $(this).val()).val(),
+        anio: $("#anio" + $(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);
