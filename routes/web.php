@@ -38,8 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('descargarPlantilla');
 
     Route::post('/abrirMensaje', 'Profe_AdminController@abrirMensaje')->name('abrirMensaje');
-    Route::post('/contacto', 'Profe_AdminController@contacto')->name('contacto');
-    Route::post('/subiendoCSV', 'Profe_AdminController@csv')->name('subiendoCSV');
     Route::post('/actualizarOferta', 'Profe_AdminController@updateOferta')->name('actualizarOferta');
     Route::post('/actualizarEmpresa', 'Profe_AdminController@updateEmpresa')->name('actualizarEmpresa');
     Route::post('/anadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
@@ -48,15 +46,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/anadirOferta', 'Profe_AdminController@insertarOferta')->name('insertarOferta');
     Route::post('/anadirEmpresas', 'Profe_AdminController@insertarEmpresa')->name('insertEmpresa');
     Route::post('/borrarGrado', 'Profe_AdminController@deleteGrado')->name('borrarGrado');
-    Route::post('/borrarCorreo', 'Profe_AdminController@deleteMensaje')->name('borrarCorreo');
-    Route::post('/abrirMensaje', 'Profe_AdminController@abrirMensaje')->name('abrirMensaje');
-    Route::post('/contacto', 'Profe_AdminController@contacto')->name('contacto');
     Route::post('/borrarEmpresa', 'Profe_AdminController@deleteEmpresa')->name('borrarEmpresa');
     Route::post('/borrarOferta', 'Profe_AdminController@deleteOferta')->name('borrarOferta');
     Route::post('/borrarProfesor', 'Profe_AdminController@deleteProfesor')->name('borrarProfesor ');
     Route::post('/borrarUsuario', 'Profe_AdminController@deleteUsuario')->name('borrarUsuario');
     Route::post('/borrarDepartamento', 'Profe_AdminController@deleteDepartamento')->name('borrarDepartamento');
     Route::post('/borrarCorreo', 'Profe_AdminController@deleteMensaje')->name('borrarCorreo');
+    Route::post('/subiendoCSV', 'Profe_AdminController@csv')->name('subiendoCSV');
     
 
     //Alumno
@@ -64,8 +60,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
 
     Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
-
-//prueba para modificar
-    // Route::get ( 'empresas/{{$empre->id}}', 'Profe_AdminController@editEmpresa' );
-
 });
