@@ -23,13 +23,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profesores', "Profe_AdminController@Profesores")->name('profesores');
     Route::get('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
     Route::get('/responder', "Profe_AdminController@respondercorreo")->name('responder');
+    Route::post('/actualizarProfe', 'Profe_AdminController@updateProfe')->name('actualizarProfe');
     
     //Profe y admin
     Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
     Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios")->name('anadirUsuarios');
     Route::get('/usuarios', "Profe_AdminController@Usuarios")->name('usuarios');
     Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
-    Route::post('/actualizarOferta', 'Profe_AdminController@updateOferta')->name('actualizarOferta');
+    Route::post('/actualizarEmpresa', 'Profe_AdminController@updateEmpresa')->name('actualizarEmpresa');
     Route::post('/anadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
     Route::post('/anadirGrado', 'Profe_AdminController@insertGrado')->name('anadirGrado');
     Route::post('/subiendoCSV', 'Profe_AdminController@csv')->name('subiendoCSV');
@@ -44,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/borrarUsuario', 'Profe_AdminController@deleteUsuario')->name('borrarUsuario');
     Route::post('/borrarDepartamento', 'Profe_AdminController@deleteDepartamento')->name('borrarDepartamento');
     Route::post('/borrarCorreo', 'Profe_AdminController@deleteMensaje')->name('borrarCorreo');
+    Route::post('/actualizarOferta', 'Profe_AdminController@updateOferta')->name('actualizarOferta');
     
 
     //Alumno

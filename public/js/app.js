@@ -47832,6 +47832,35 @@ $(".borrarOferta").click(function () {
     });
 });
 
+$(".updateOferta").click(function () {
+    var array = {
+        idoferta: $(this).val(),
+        titulo: $("#titulo" + $(this).val()).val(),
+        descripcion: $("#descripcion" + $(this).val()).val(),
+        puestos: $("#puestos" + $(this).val()).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizarOferta",
+        type: "POST",
+        data: {
+            actualizarOferta: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
 /***/ }),
 /* 47 */
 /***/ (function(module, exports) {
@@ -47904,47 +47933,15 @@ $("#updateCV").click(function () {
 /* 49 */
 /***/ (function(module, exports) {
 
-$(".updateOferta").click(function () {
+$(".updateEmpresa").click(function () {
     var array = {
-        idoferta: $(this).val(),
-        titulo: $("#titulo" + $(this).val()).val(),
-        descripcion: $("#descripcion" + $(this).val()).val(),
-        puestos: $("#puestos" + $(this).val()).val()
-    };
+        idempresa: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        direccion: $("#direccion" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val(),
+        url: $("#url" + $(this).val()).val(),
+        telefono: $("#telefono" + $(this).val()).val()
 
-    var valParam = JSON.stringify(array);
-    alert(array["titulo"]);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./actualizarOferta",
-        type: "POST",
-        data: {
-            actualizacionOferta: valParam
-        },
-        success: function success() {
-            alert("Datos modificados correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports) {
-
-$("#updateEmpresa").click(function () {
-    var array = {
-        nombre: $("#nombre").val(),
-        apellido: $("#direccion").val(),
-        email: $("#email").val(),
-        password1: $("#url").val(),
-        password2: $("#telefono").val()
     };
 
     var valParam = JSON.stringify(array);
@@ -47968,21 +47965,36 @@ $("#updateEmpresa").click(function () {
     });
 });
 
-$("#deleteEmpresa").click(function () {
+/***/ }),
+/* 50 */
+/***/ (function(module, exports) {
+
+$(".updateProfe").click(function () {
+    var array = {
+        idprofe: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        apellidos: $("#apellidos" + $(this).val()).val(),
+        departamentos: $("#departamentos" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val()
+    };
+
+    var valParam = JSON.stringify(array);
 
     $.ajax({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./actualizarEmpresa",
+        url: "./actualizarProfe",
         type: "POST",
-        data: {},
+        data: {
+            actualizacionProfe: valParam
+        },
         success: function success() {
-            alert("Usuario Eliminado Correctamente");
+            alert("Datos modificados correctamente");
             location.reload();
         },
         error: function error() {
-            alert("No se ha podido eliminar el usuario...");
+            alert("Por favor, revise los datos");
         }
     });
 });

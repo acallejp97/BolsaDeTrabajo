@@ -23,7 +23,10 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">Registrado desde <i class="fa fa-link fa-1x"></i></div>
-                <div class="panel-body">{{Auth::user()->created_at}}</div>
+
+                <?php $fecha = explode(' ', trim(Auth::user()->created_at));?>
+                <div class="panel-body">{{$fecha[0]}}</div>
+              
             </div>
 
             <ul class="list-group">

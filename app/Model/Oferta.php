@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Oferta extends Model
 {
     protected $table = "ofertas";
-    protected $fillable = ['titulo', 'descripcion','puestos_vacantes' ];
+    protected $fillable = ['titulo', 'descripcion','puestos-vacantes' ];
 
 
     //AQUI SOLO SI HAY RELACIONES

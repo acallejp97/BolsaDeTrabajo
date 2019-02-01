@@ -1,22 +1,23 @@
-$(".updateOferta").click(function() {
+$(".updateProfe").click(function() {
     var array = {
-        idoferta: $(this).val(),
-        titulo: $("#titulo"+$(this).val()).val(),
-        descripcion: $("#descripcion"+$(this).val()).val(),
-        puestos: $("#puestos"+$(this).val()).val()
+        idprofe: $(this).val(),
+        nombre: $("#nombre"+$(this).val()).val(),
+        apellidos: $("#apellidos"+$(this).val()).val(),
+        departamentos: $("#departamentos"+$(this).val()).val(),
+        email: $("#email"+$(this).val()).val()
     };
-
+   
     var valParam = JSON.stringify(array);
-    alert(array["titulo"]);
+   
 
     $.ajax({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./actualizarOferta",
+        url: "./actualizarProfe",
         type: "POST",
         data: {
-            actualizacionOferta: valParam
+            actualizacionProfe: valParam
         },
         success: function() {
             alert("Datos modificados correctamente");
