@@ -33,7 +33,7 @@
 						</th>
 						<th id="">Nombre
 						</th>
-						<th id="">Email
+						<th id="">Enviado
 						</th>
 						<th class="text-center" id="">Descripción
 						</th>
@@ -61,7 +61,7 @@
 								<td> <a class="m-r-10">{{$correo['asunto']}}</a> </td>
 
 								<td> <span class="badge bg-blue">{{$usuarios['nombre']}}</span></td>
-								<td> <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">12:35 AM</time><i class="zmdi zmdi-attachment-alt"></i> </small>									</td>
+								<td> <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">{{$correo['created_at']}}</time><i class="zmdi zmdi-attachment-alt"></i> </small>									</td>
 							</div>
 							<td>
 								<p class="msg">{{$correo['descripcion']}} </p>

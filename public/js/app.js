@@ -25011,14 +25011,22 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
+<<<<<<< HEAD
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(53).setImmediate))
+=======
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(55).setImmediate))
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
+<<<<<<< HEAD
 module.exports = __webpack_require__(60);
+=======
+module.exports = __webpack_require__(62);
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 
 
 /***/ }),
@@ -25027,9 +25035,15 @@ module.exports = __webpack_require__(60);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_material__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(56);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_material__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(58);
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 /*
  *
  * First we will load all of this project's JavaScript dependencies which
@@ -25054,6 +25068,11 @@ __webpack_require__(49);
 __webpack_require__(50);
 __webpack_require__(51);
 __webpack_require__(52);
+<<<<<<< HEAD
+=======
+__webpack_require__(53);
+__webpack_require__(54);
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 
 window.Vue = __webpack_require__(11);
 
@@ -25068,6 +25087,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+<<<<<<< HEAD
 Vue.component("passwords", __webpack_require__(57));
 window.onload = function () {
   new Vue({
@@ -25083,6 +25103,22 @@ window.onload = function () {
     }
   });
 };
+=======
+Vue.component("passwords", __webpack_require__(59));
+
+new Vue({
+  el: '#passwords',
+  data: {
+    credentials: {
+      email: '',
+      repemail: '',
+      password: '',
+      confirmPassword: '',
+      normalInput: 'this input is not using vue-material'
+    }
+  }
+});
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 
 /***/ }),
 /* 14 */
@@ -48056,6 +48092,40 @@ $("#deleteUser").click(function () {
 /* 52 */
 /***/ (function(module, exports) {
 
+$(".updateUsuarios").click(function () {
+    var array = {
+        iduser: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        apellidos: $("#apellidos" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val()
+
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizarUsuarios",
+        type: "POST",
+        data: {
+            actualizacionUsuarios: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports) {
+
 $(".borrarCorreo").click(function () {
     var array = {
         id: $(this).val()
@@ -48083,7 +48153,11 @@ $(".borrarCorreo").click(function () {
 });
 
 /***/ }),
+<<<<<<< HEAD
 /* 53 */
+=======
+/* 55 */
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -48139,7 +48213,11 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
+<<<<<<< HEAD
 __webpack_require__(54);
+=======
+__webpack_require__(56);
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -48153,7 +48231,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
+<<<<<<< HEAD
 /* 54 */
+=======
+/* 56 */
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -48346,7 +48428,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
+<<<<<<< HEAD
 /* 55 */
+=======
+/* 57 */
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -78656,7 +78742,11 @@ if (false) {
 });
 
 /***/ }),
+<<<<<<< HEAD
 /* 56 */
+=======
+/* 58 */
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87578,6 +87668,7 @@ var install = VeeValidate$1.install;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -87587,6 +87678,17 @@ var normalizeComponent = __webpack_require__(58)
 var __vue_script__ = null
 /* template */
 var __vue_template__ = __webpack_require__(59)
+=======
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(60)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(61)
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -87625,7 +87727,11 @@ module.exports = Component.exports
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 58 */
+=======
+/* 60 */
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -87734,7 +87840,11 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 59 */
+=======
+/* 61 */
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -87851,7 +87961,11 @@ if (false) {
 }
 
 /***/ }),
+<<<<<<< HEAD
 /* 60 */
+=======
+/* 62 */
+>>>>>>> c4fc9462219f248cacdc5f61c7610a7cf5ca53b7
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

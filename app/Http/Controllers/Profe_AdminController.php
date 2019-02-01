@@ -383,6 +383,44 @@ class Profe_AdminController extends Controller
             'updated_at' => date('Y-m-d H:m:s')]);
 
     }
+    public function updateUsuarios(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['actualizacionUsuarios'])) {
+
+            $enviado = json_decode($_REQUEST['actualizacionUsuarios']);
+            $iduser = $enviado->iduser;
+            $nombre = $enviado->nombre;
+            $apellidos = $enviado->apellidos;
+            $email = $enviado->email;
+            $anio = $enviado->anio;
+
+            $actualizarUsuarios = User::findOrFail($iduser);
+            $actualizarUsuarios = Alumno::findOrFail($iduser);
+            if ($nombre != "") {
+                $actualizarUsuarios->update(['nombre' => $nombre]);
+            }
+
+            if ($apellidos != "") {
+                $actualizarUsuarios->update(['apellido' => $apellidos]);
+            }
+
+            if ($email != "") {
+                $actualizarUsuarios->update(['email' => $email]);
+            }
+
+            if ($anio!= "") {
+                $actualizarUsuarios->update(['anio_fin' => $anio]);
+            }
+
+        } else {
+            $actualizarUsuarios = User::findOrFail(Auth::user()->id)->delete();
+        }
+
+    }
     public function updateProfe(Request $request){
         if (!$request->ajax()) {
             return redirect('/');

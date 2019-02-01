@@ -120,7 +120,8 @@
               <td>{{$usuario['apellidos']}}</td>
               <td>{{$departamento['nombre']}}</td>
               <td>{{$usuario['email']}}</td>
-              <td>{{$usuario['created_at']}}</td>
+              <td> <?php $fecha = explode(' ', trim(Auth::user()->created_at));?>
+                {{$fecha[0]}}</td>
 
 
               <td class="td-actions">
@@ -159,13 +160,10 @@
                     </h5>
                     <select class="form-control" id="id_depar" name="id_depar">
                         @foreach ($profesores['departamento'] as $departamento) 
-                        @foreach ($profesores['profe_admin'] as $profe) 
-                        @if($departamento['id']==$profe['id_depar'])
-                        
-                        <option id="departamentos<?php echo $departamento->id;?>" name="id_depar" value="{{$departamento['id']}}">{{$departamento['nombre']}}</option>
-                        @break
-                        @endif
-                          @endforeach
+                       
+                      
+                        <option selected="{{$departamento['id']}}" id="departamentos<?php echo $departamento->id;?>" name="id_depar" value="{{$departamento['id']}}">{{$departamento['nombre']}}</option>
+                       
                           @endforeach
                         </select>
                    

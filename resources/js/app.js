@@ -21,6 +21,7 @@ require("./updateCV");
 require("./updateEmpresa");
 require("./updateProfe");
 require("./updateUser");
+require("./updateUsuarios");
 require("./deleteMensaje");
 
 window.Vue = require("vue");
