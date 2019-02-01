@@ -25069,19 +25069,20 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
  */
 
 Vue.component("passwords", __webpack_require__(57));
-
-// new Vue({
-//     el: '#app',
-//     data: {
-//         credentials: {
-//           email: '',
-//         repemail: '',
-//         password: '',
-//         confirmPassword: '',
-//         normalInput: 'this input is not using vue-material'
-//       }
-//     }
-//   });
+window.onload = function () {
+  new Vue({
+    el: '#passwords',
+    data: {
+      credentials: {
+        email: '',
+        repemail: '',
+        password: '',
+        confirmPassword: '',
+        normalInput: 'this input is not using vue-material'
+      }
+    }
+  });
+};
 
 /***/ }),
 /* 14 */
@@ -87728,9 +87729,106 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { attrs: { id: "passwords" } }, [
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "col-xs-11" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.password1,
+              expression: "password1"
+            },
+            {
+              name: "validate",
+              rawName: "v-validate",
+              value: "required",
+              expression: "'required'"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "password",
+            name: "password1",
+            id: "password1",
+            placeholder: "Contraseña",
+            title: "Introduce la contraseña."
+          },
+          domProps: { value: _vm.password1 },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.password1 = $event.target.value
+            }
+          }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "col-xs-11" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.password2,
+              expression: "password2"
+            },
+            {
+              name: "validate",
+              rawName: "v-validate",
+              value: "required|confirmed:password",
+              expression: "'required|confirmed:password'"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "password",
+            name: "password2",
+            id: "password2",
+            placeholder: "Repite Contraseña",
+            title: "Confirma tu contraseña por favor."
+          },
+          domProps: { value: _vm.password2 },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.password2 = $event.target.value
+            }
+          }
+        })
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "password" } }, [
+      _c("h4", [_vm._v("Password")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "password2" } }, [
+      _c("h4", [_vm._v("Confirmar Contraseña")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

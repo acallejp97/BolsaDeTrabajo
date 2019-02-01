@@ -37,7 +37,7 @@ Vue.use(VeeValidate);
  */
 
 Vue.component("passwords", require("./components/passwords.vue"));
-
+window.onload = function () {
 new Vue({
     el: '#passwords',
     data: {
@@ -50,3 +50,4 @@ new Vue({
       }
     }
   });
+};

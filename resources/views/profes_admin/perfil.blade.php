@@ -64,14 +64,16 @@
                         </div>
                     </div>
 
-                    <passwords></passwords>
+                  <passwords>
+                      
+                  </passwords>
 
                     <div class="form-group col-xs-8">
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
                                 <button class="btn btn-lg btn-success" id="updateUser" style="background: #b50045; float:right;color:white;" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Guardar</button>@if(Auth::user()->rango!=0)
-                                <button type="submit" class="btn btn-lg btn-success" id="deleteteUser" style="background:#D8BFD8; float:right; color:black;">
+                                <button type="submit" class="btn btn-lg btn-success" id="deleteUser" style="background:#D8BFD8; float:right; color:black;">
 										<span class="glyphicon glyphicon-remove" ></span> Borrar Perfil
 									</button> @endif
                             </div>
