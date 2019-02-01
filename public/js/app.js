@@ -25002,14 +25002,14 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(54).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(55).setImmediate))
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(61);
+module.exports = __webpack_require__(62);
 
 
 /***/ }),
@@ -25018,9 +25018,9 @@ module.exports = __webpack_require__(61);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_material__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(58);
 /*
  *
  * First we will load all of this project's JavaScript dependencies which
@@ -25046,6 +25046,7 @@ __webpack_require__(50);
 __webpack_require__(51);
 __webpack_require__(52);
 __webpack_require__(53);
+__webpack_require__(54);
 
 window.Vue = __webpack_require__(11);
 
@@ -25060,20 +25061,20 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component("passwords", __webpack_require__(58));
+Vue.component("passwords", __webpack_require__(59));
 
-// new Vue({
-//     el: '#app',
-//     data: {
-//         credentials: {
-//           email: '',
-//         repemail: '',
-//         password: '',
-//         confirmPassword: '',
-//         normalInput: 'this input is not using vue-material'
-//       }
-//     }
-//   });
+new Vue({
+  el: '#passwords',
+  data: {
+    credentials: {
+      email: '',
+      repemail: '',
+      password: '',
+      confirmPassword: '',
+      normalInput: 'this input is not using vue-material'
+    }
+  }
+});
 
 /***/ }),
 /* 14 */
@@ -48051,6 +48052,40 @@ $("#deleteUser").click(function () {
 /* 53 */
 /***/ (function(module, exports) {
 
+$(".updateUsuarios").click(function () {
+    var array = {
+        iduser: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        apellidos: $("#apellidos" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val()
+
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizarUsuarios",
+        type: "POST",
+        data: {
+            actualizacionUsuarios: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports) {
+
 $(".borrarCorreo").click(function () {
     var array = {
         id: $(this).val()
@@ -48078,7 +48113,7 @@ $(".borrarCorreo").click(function () {
 });
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -48134,7 +48169,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(55);
+__webpack_require__(56);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -48148,7 +48183,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -48341,7 +48376,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -78651,7 +78686,7 @@ if (false) {
 });
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87449,15 +87484,15 @@ var install = VeeValidate$1.install;
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(59)
+var normalizeComponent = __webpack_require__(60)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(60)
+var __vue_template__ = __webpack_require__(61)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -87496,7 +87531,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -87605,16 +87640,113 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { attrs: { id: "passwords" } }, [
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "col-xs-11" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.password1,
+              expression: "password1"
+            },
+            {
+              name: "validate",
+              rawName: "v-validate",
+              value: "required",
+              expression: "'required'"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "password",
+            name: "password1",
+            id: "password1",
+            placeholder: "Contraseña",
+            title: "Introduce la contraseña."
+          },
+          domProps: { value: _vm.password1 },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.password1 = $event.target.value
+            }
+          }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "col-xs-11" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.password2,
+              expression: "password2"
+            },
+            {
+              name: "validate",
+              rawName: "v-validate",
+              value: "required|confirmed:password",
+              expression: "'required|confirmed:password'"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "password",
+            name: "password2",
+            id: "password2",
+            placeholder: "Repite Contraseña",
+            title: "Confirma tu contraseña por favor."
+          },
+          domProps: { value: _vm.password2 },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.password2 = $event.target.value
+            }
+          }
+        })
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "password" } }, [
+      _c("h4", [_vm._v("Password")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "password2" } }, [
+      _c("h4", [_vm._v("Confirmar Contraseña")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -87625,7 +87757,7 @@ if (false) {
 }
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

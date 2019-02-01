@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/actualizarProfe', 'Profe_AdminController@updateProfe')->name('actualizarProfe');
     
     //Profe y admin
+    Route::post('/actualizarUsuarios', 'Profe_AdminController@updateUsuarios')->name('actualizarUsuarios');
     Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
     Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios")->name('anadirUsuarios');
     Route::get('/usuarios', "Profe_AdminController@Usuarios")->name('usuarios');
