@@ -25052,19 +25052,20 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
  */
 
 Vue.component("passwords", __webpack_require__(49));
-
-new Vue({
-  el: '#passwords',
-  data: {
-    credentials: {
-      email: '',
-      repemail: '',
-      password: '',
-      confirmPassword: '',
-      normalInput: 'this input is not using vue-material'
+window.onload = function () {
+  new Vue({
+    el: '#passwords',
+    data: {
+      credentials: {
+        email: '',
+        repemail: '',
+        password: '',
+        confirmPassword: '',
+        normalInput: 'this input is not using vue-material'
+      }
     }
-  }
-});
+  });
+};
 
 /***/ }),
 /* 14 */
@@ -47638,7 +47639,7 @@ $(".anadirGrado").click(function () {
 
 $(".borrarGrado").click(function () {
     var array = {
-        nombre: $(this).val()
+        id: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -47812,7 +47813,6 @@ $(".updateOferta").click(function () {
     };
 
     var valParam = JSON.stringify(array);
-    alert(array["titulo"]);
 
     $.ajax({
         headers: {
@@ -47995,6 +47995,7 @@ $("#descargarPlantilla").click(function () {
         type: "GET",
         data: {},
         success: function success() {
+            alert("Por favor, revise los datos");
             location.reload();
         },
         error: function error() {
@@ -48047,6 +48048,35 @@ $("#insertUsers").click(function () {
         },
         success: function success() {
             alert("Usuarios correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+$(".updateUsuarios").click(function () {
+    var array = {
+        iduser: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        apellidos: $("#apellidos" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val(),
+        anio: $("#anio" + $(this).val()).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizarUsuarios",
+        type: "POST",
+        data: {
+            actualizacionUsuarios: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
             location.reload();
         },
         error: function error() {

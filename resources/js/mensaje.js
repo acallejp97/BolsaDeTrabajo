@@ -5,6 +5,7 @@ $(".borrarCorreo").click(function() {
 
     var valParam = JSON.stringify(array);
 
+
     $.ajax({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")

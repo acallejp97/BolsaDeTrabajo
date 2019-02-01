@@ -32,7 +32,6 @@
               @endforeach
           </select>
       </div>
-      @foreach ($profesores['user'] as $user) @foreach ($profesores['profe_admin'] as $profe) @endforeach @endforeach
       <div class="form-group">
         <button type="submit" id="insertProfe" style="background: #b50045; color:white" class="btn btn-primary">Añadir</button>
       </div>
@@ -72,45 +71,62 @@
               <td>{{$usuario['apellidos']}}</td>
               <td>{{$departamento['nombre']}}</td>
               <td>{{$usuario['email']}}</td>
-              <td>{{$usuario['created_at']}}</td>
+              <td> <?php $fecha = explode(' ', trim(Auth::user()->created_at));?>
+                {{$fecha[0]}}</td>
 
 
               <td class="td-actions">
-                <button style="background: #b50045; color:white;" class="btn btn-default btn-xs" href="javascript:;" data-toggle="modal"
-                  href="#myModal" data-target="#edit-modal-cust-<?php echo $usuario->id;?>" id="<?php echo $usuario->id;?>">
-										<span class="glyphicon glyphicon-pencil"></span> Modificar
+                <button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $profesor->id;?>" id="<?php echo $profesor->id;?>">
+									<span class="glyphicon glyphicon-pencil"></span> Modificar
 									</button>
-                <button value="{{$profesor['id']}}" class="borrarProfesor btn btn-default btn-xs" href="javascript:;">
+                <button style="background: #b50045; color:white;" value="{{$profesor['id']}}" class="borrarProfesor btn btn-default btn-xs"
+                  href="javascript:;">
 										<span class="glyphicon glyphicon-remove"></span> Borrar
 									</button>
 
               </td>
             </tr>
-            <div id="edit-modal-cust-<?php echo $usuario->id;?>" class="modal">
+
+            <!-- The Modal -->
+            <!--modal-->
+            <div id="edit-modal-cust-<?php echo $profesor->id;?>" class="modal">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h5><b>Nombre:</b> <input value="{{$usuario['nombre']}}" class="form-control">
-                    </h5>
 
-                  </div>
+                  <button class="close" data-dismiss="modal">&times;</button>
                   <div class="modal-header">
-                    <h5><b> Apellidos:</b><textarea id="direccion" for="direccion" class="form-control">{{$usuario['apellidos']}}</textarea>
+                    <h5><b>Nombre:</b>
                     </h5>
+                    <input value="{{$usuario['nombre']}}" id="nombre<?php echo $profesor->id;?>" class="form-control">
                   </div>
 
                   <div class="modal-header">
-                    <h5><b> Email:</b><input id="email" value="{{$usuario['email']}}" for="email" for="descripcion" class="form-control">
+                    <h5><b> Apellidos:</b>
                     </h5>
+                    <textarea id="apellidos<?php echo $profesor->id;?>" class="form-control">{{$usuario['apellidos']}}</textarea>
+                  </div>
+
+                  <div class="modal-header">
+                    <h5><b> Departamento:</b>
+                    </h5>
+                    <select class="form-control" id="id_depar" name="id_depar">
+                        @foreach ($profesores['departamento'] as $departamento) 
+                       
+                      
+                        <option selected="{{$departamento['id']}}" id="departamentos<?php echo $departamento->id;?>" name="id_depar" value="{{$departamento['id']}}">{{$departamento['nombre']}}</option>
+                       
+                          @endforeach
+                        </select>
+                   
                   </div>
                   <div class="modal-header">
-                    <h5><b> Departamento:</b><textarea id="direccion" for="direccion" class="form-control">{{$departamento['nombre']}}</textarea>
+                    <h5><b> Email:</b>
                     </h5>
+                    <input value="{{$usuario['email']}}" id="email<?php echo $profesor->id;?>" class="form-control">
                   </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Guardar</button>
+                    <button type="submit" value="{{$profesor->id}}" class="updateProfe btn btn-danger" data-dismiss="modal">Guardar</button>
                   </div>
                 </div>
               </div>

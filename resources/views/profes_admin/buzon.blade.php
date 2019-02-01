@@ -33,7 +33,7 @@
 						</th>
 						<th id="">Nombre
 						</th>
-						<th id="">Email
+						<th id="">Enviado
 						</th>
 						<th class="text-center" id="">Descripción
 						</th>
@@ -61,7 +61,7 @@
 								<td> <a class="m-r-10">{{$correo['asunto']}}</a> </td>
 
 								<td> <span class="badge bg-blue">{{$usuarios['nombre']}}</span></td>
-								<td> <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">12:35 AM</time><i class="zmdi zmdi-attachment-alt"></i> </small>									</td>
+								<td> <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">{{$correo['created_at']}}</time><i class="zmdi zmdi-attachment-alt"></i> </small>									</td>
 							</div>
 							<td>
 								<p class="msg">{{$correo['descripcion']}} </p>
@@ -71,12 +71,12 @@
 								<button  class="btn btn-default btn-xs" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $correo->id;?>" id="<?php echo $correo->id;?>">
 										<span class="glyphicon glyphicon-pencil"></span> Abrir
 								</button>
-								<button class="btn btn-default btn-xs borrarCorreo" style="background: #b50045; color:white;" value="{{$correo['id']}}">
+								<button class=" borrarCorreo btn btn-default btn-xs " style="background: #b50045; color:white;" value="{{$correo['id']}}">
 										<span class="glyphicon glyphicon-remove" ></span> Borrar
 								</button>
 
 							</td>
-							<!------------------------------------------------------------------------------------>
+							<!---------------------------------------------------------------------borrarCorreo--------------->
 
 							<!-- The Modal -->
 							<div id="edit-modal-cust-<?php echo $correo->id;?>" class="modal"  >
