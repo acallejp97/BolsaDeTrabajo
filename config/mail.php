@@ -17,18 +17,18 @@ return [
     */
 
     // solo en el caso de servidores con doble autentificación
-'driver' => env('MAIL_DRIVER', 'smtp'),
-'host' => 'smtp.mailtrap.io',
-'port' => 2525,
-'from' => [
-    'address' => 'from@example.com',
-    'name' => 'Example',
-],
-'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-'username' => '111e442414b3a6',
-'password' => '3f03298a465774',
-'sendmail' => '/usr/sbin/sendmail -bs',
-'pretend' => false,
+    'driver' => env('MAIL_DRIVER', 'smtp'),
+    /*'host' => 'smtp.mailtrap.io',
+    'port' => 2525,
+    'from' => [
+        'address' => 'from@example.com',
+        'name' => 'Example',
+    ],
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'username' => '111e442414b3a6',
+    'password' => '3f03298a465774',
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'pretend' => false,*/
 
 
 
@@ -44,7 +44,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,8 +71,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'g1bolsadetrabajo@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Administrador Bolsa de Trabajo'),
     ],
 
     /*
@@ -86,7 +86,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
     |--------------------------------------------------------------------------

@@ -82,7 +82,6 @@
 							<div id="edit-modal-cust-<?php echo $correo->id;?>" class="modal"  >
 								<div class="modal-dialog">
 									<div class="modal-content">
-
 										<!-- Modal Header -->
 										<div for="nombre" class="modal-header">
 											<h4 id="fid" class="modal-title">{{$usuarios['nombre']}}</h4>
@@ -95,32 +94,64 @@
 										<div id="descripcion" for="descripcion" for="descripcion" class="modal-body">
 											{{$correo['descripcion']}}
 										</div>
-
-
-
-
 										<div class="form-group">
 											<label for="comment">Responder:</label>
-											<textarea class="form-control" rows="5" id="comment"></textarea>
+											<textarea class="form-control" rows="5" id="comment" name="respuesta"></textarea>
 										</div>
 										<!-- Modal footer -->
 										<div class="modal-footer">
-											<button type="button" class="btn btn-danger" data-dismiss="modal">Enviar</button>
+											<button id="respuestaEmail" type="button" class="btn btn-danger responderCorreo" data-dismiss="modal" data-toggle="modal" data-target="#modalVacio">Enviar</button>
 										</div>
 									</div>
 								</div>
 							</div>
 							<!------------------------------------------------------------------------------------>
-
-
 						</tr>
 					</tr>
 					@endif @endif @endforeach @endforeach
+<!--------------------------------------------------MODAL SI EL CAMPO RESPUESTA ESTÁ RELLENADO-------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------->
+								<!-- The Modal -->
+								<div id="modalEnviado" class="modal"  >
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<!-- Modal Header -->
+										<div for="nombre" class="modal-header">
+											<h4 id="fid" class="modal-title">Admin.</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<!-- Modal body -->
+										<div class="form-group">
+											<h3><center>La respuesta ha sido enviada.</center></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+<!------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<!----------------------------------------------------MODAL SI EL CAMPO RESPUESTA ESTÁ VACÍO---------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------->
+								<!-- The Modal -->
+								<div id="modalVacio" class="modal"  >
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<!-- Modal Header -->
+										<div for="nombre" class="modal-header">
+											<h4 id="fid" class="modal-title">Admin.</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<!-- Modal body -->
+										<div class="form-group">
+											<h3><center>Por favor, rellene el campo respuesta.</center></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!------------------------------------------------------------------------------------>
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
-<script>
-</script>
 @endsection

@@ -22,7 +22,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
     Route::get('/profesores', "Profe_AdminController@Profesores")->name('profesores');
     Route::get('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
-    Route::get('/responder', "Profe_AdminController@respondercorreo")->name('responder');
+    //-------------------------------------RESPONDER EMAIL---------------------
+    Route::get('respuestaEmail', function () {
+        $data = array(
+            'name' => "Bolsa de Trabajo FP Txurdinaga",
+        );
+        Mail::send('profes_admin/respuestaMail', $data, function ($message) {
+            $message->from('g1bolsadetrabajo@gmail.com', 'Bolsa de Trabajo FP Txurdinaga');
+            $message->to('niniadefresa_94@hotmail.es')->subject('Respuesta sugerencia Bolsa de Trabajo ');
+        });
+        return redirect('/buzon');
+        });
+    });
     
     //Profe y admin
     Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
@@ -42,17 +53,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/borrarOferta', 'Profe_AdminController@deleteOferta')->name('borrarOferta');
     Route::post('/borrarProfesor', 'Profe_AdminController@deleteProfesor')->name('borrarProfesor ');
     Route::post('/borrarUsuario', 'Profe_AdminController@deleteUsuario')->name('borrarUsuario');
-    
+
+
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
-
     Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
 
 
-//prueba para modificar
-    // Route::get ( 'empresas/{{$empre->id}}', 'Profe_AdminController@editEmpresa' );
-  
-});
+
 
