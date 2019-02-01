@@ -38,15 +38,15 @@ Vue.use(VeeValidate);
 
 Vue.component("passwords", require("./components/passwords.vue"));
 
-// new Vue({
-//     el: '#app',
-//     data: {
-//         credentials: {
-//           email: '',
-//         repemail: '',
-//         password: '',
-//         confirmPassword: '',
-//         normalInput: 'this input is not using vue-material'
-//       }
-//     }
-//   });
+new Vue({
+    el: '#passwords',
+    data: {
+        credentials: {
+          email: '',
+        repemail: '',
+        password: '',
+        confirmPassword: '',
+        normalInput: 'this input is not using vue-material'
+      }
+    }
+  });
