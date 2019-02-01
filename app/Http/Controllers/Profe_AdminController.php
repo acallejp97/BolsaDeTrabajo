@@ -157,9 +157,7 @@ class Profe_AdminController extends Controller
     public function deleteMensaje(Request $request)
     {
 
-        $correo = Correo::where('created_at', $fecha)->first();
-
-        Correo::where('created_at', $fecha)->delete();
+      
         $enviado = json_decode($_REQUEST['borrarCorreo']);
 
         if (!$request->ajax()) {
@@ -249,10 +247,8 @@ class Profe_AdminController extends Controller
         }
         $id = $enviado->id;
 
-        if ($nombre != "") {
-            Grado::where('id', $id)->delete();
-
-            Grado::where('id', $nombre)->delete();
+        if ($id != "") {
+            Grado::where('id', $id)->delete();;
 
         }
     }
@@ -472,9 +468,9 @@ class Profe_AdminController extends Controller
             return redirect('/');
         }
 
-        if (isset($_REQUEST['actualizacionOferta'])) {
+        if (isset($_REQUEST['actualizarOferta'])) {
 
-            $enviado = json_decode($_REQUEST['actualizacionOferta']);
+            $enviado = json_decode($_REQUEST['actualizarOferta']);
 
             $idoferta = $enviado->idoferta;
             $titulo = $enviado->titulo;

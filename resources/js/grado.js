@@ -58,7 +58,7 @@ $(".anadirGrado").click(function() {
 
 $(".borrarGrado").click(function() {
     var array = {
-        nombre: $(this).val()
+        id: $(this).val()
     };
 
     var valParam = JSON.stringify(array);

@@ -18,7 +18,6 @@ require("./insertUsers");
 require("./oferta");
 require("./profesores");
 require("./updateCV");
-require("./updateOferta");
 require("./updateEmpresa");
 require("./updateProfe");
 require("./updateUser");
@@ -39,7 +38,7 @@ Vue.use(VeeValidate);
  */
 
 Vue.component("passwords", require("./components/passwords.vue"));
-
+window.onload = function () {
 new Vue({
     el: '#passwords',
     data: {
@@ -52,3 +51,4 @@ new Vue({
       }
     }
   });
+};
