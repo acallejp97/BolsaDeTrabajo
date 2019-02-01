@@ -25002,14 +25002,14 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(53).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(54).setImmediate))
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(60);
+module.exports = __webpack_require__(61);
 
 
 /***/ }),
@@ -25018,9 +25018,9 @@ module.exports = __webpack_require__(60);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_material__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(57);
 /*
  *
  * First we will load all of this project's JavaScript dependencies which
@@ -25045,6 +25045,7 @@ __webpack_require__(49);
 __webpack_require__(50);
 __webpack_require__(51);
 __webpack_require__(52);
+__webpack_require__(53);
 
 window.Vue = __webpack_require__(11);
 
@@ -25059,7 +25060,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component("passwords", __webpack_require__(57));
+Vue.component("passwords", __webpack_require__(58));
 
 // new Vue({
 //     el: '#app',
@@ -47903,7 +47904,6 @@ $(".updateOferta").click(function () {
     };
 
     var valParam = JSON.stringify(array);
-    alert(array["titulo"]);
 
     $.ajax({
         headers: {
@@ -47928,13 +47928,15 @@ $(".updateOferta").click(function () {
 /* 50 */
 /***/ (function(module, exports) {
 
-$("#updateEmpresa").click(function () {
+$(".updateEmpresa").click(function () {
     var array = {
-        nombre: $("#nombre").val(),
-        apellido: $("#direccion").val(),
-        email: $("#email").val(),
-        password1: $("#url").val(),
-        password2: $("#telefono").val()
+        idempresa: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        direccion: $("#direccion" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val(),
+        url: $("#url" + $(this).val()).val(),
+        telefono: $("#telefono" + $(this).val()).val()
+
     };
 
     var valParam = JSON.stringify(array);
@@ -47958,27 +47960,42 @@ $("#updateEmpresa").click(function () {
     });
 });
 
-$("#deleteEmpresa").click(function () {
+/***/ }),
+/* 51 */
+/***/ (function(module, exports) {
+
+$(".updateProfe").click(function () {
+    var array = {
+        idprofe: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        apellidos: $("#apellidos" + $(this).val()).val(),
+        departamentos: $("#departamentos" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val()
+    };
+
+    var valParam = JSON.stringify(array);
 
     $.ajax({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./actualizarEmpresa",
+        url: "./actualizarProfe",
         type: "POST",
-        data: {},
+        data: {
+            actualizacionProfe: valParam
+        },
         success: function success() {
-            alert("Usuario Eliminado Correctamente");
+            alert("Datos modificados correctamente");
             location.reload();
         },
         error: function error() {
-            alert("No se ha podido eliminar el usuario...");
+            alert("Por favor, revise los datos");
         }
     });
 });
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports) {
 
 $("#updateUser").click(function () {
@@ -48031,7 +48048,7 @@ $("#deleteUser").click(function () {
 });
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 $(".borrarCorreo").click(function () {
@@ -48061,7 +48078,7 @@ $(".borrarCorreo").click(function () {
 });
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -48117,7 +48134,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(54);
+__webpack_require__(55);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -48131,7 +48148,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -48324,7 +48341,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -78634,7 +78651,7 @@ if (false) {
 });
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87432,15 +87449,15 @@ var install = VeeValidate$1.install;
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(58)
+var normalizeComponent = __webpack_require__(59)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(59)
+var __vue_template__ = __webpack_require__(60)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -87479,7 +87496,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -87588,7 +87605,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -87608,7 +87625,7 @@ if (false) {
 }
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -22,8 +22,8 @@ class UsuariosSeeder extends Seeder
             'rango' => 0,
             'apellidos' => 'admininstrador',
             'passwd' => Hash::make('admin'),
-            'created_at' => date('Y-m-d H:m:s'),
-            'updated_at' => date('Y-m-d H:m:s'),
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d'),
         ));
 
         //Cantidad de user a crear

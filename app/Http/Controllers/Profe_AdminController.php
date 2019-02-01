@@ -397,7 +397,48 @@ class Profe_AdminController extends Controller
         $empresa->insert(['nombre' => $nombre, 'direccion' => $direccion, 'email' => $email, 'url' => $url, 'telefono' => $telefono]);
 
     }
+    public function updateProfe(Request $request){
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        
 
+        if (isset($_REQUEST['actualizacionProfe'])) {
+
+            $enviado = json_decode($_REQUEST['actualizacionProfe']);
+
+            $idprofe = $enviado->idprofe;
+            $nombre = $enviado->nombre;
+            $apellidos = $enviado->apellidos;
+            $departamentos = $enviado->departamentos;
+            $email = $enviado->email;
+            
+
+            $actualizarProfe = Profe_Admin::findOrFail($idprofe);
+            $actualizarProfe = Departamento::findOrFail($idprofe);
+            $actualizarProfe = User::findOrFail($idprofe);
+            if ($nombre != "") {
+                $actualizarProfe->update(['nombre' => $nombre]);
+            }
+
+            if ($apellidos != "") {
+                $actualizarProfe->update(['apellidos' => $apellidos]);
+            }
+
+            if ($departamentos != "") {
+                $actualizarProfe->update(['departamentos' => $departamentos]);
+            }
+            if ($email != "") {
+                $actualizarProfe->update(['email' => $email]);
+            }
+
+           
+
+        } else {
+            $actualizarProfe = Profe_Admin::findOrFail($idprofe);
+        }
+
+    }
     public function updateOferta(Request $request){
         if (!$request->ajax()) {
             return redirect('/');
@@ -443,33 +484,34 @@ class Profe_AdminController extends Controller
             $enviado = json_decode($_REQUEST['actualizacionEmpresa']);
 
             $nombre = $enviado->nombre;
+            $idempresa= $enviado->idempresa;
             $direccion = $enviado->direccion;
             $email = $enviado->email;
             $url = $enviado->url;
             $telefono = $enviado->telefono;
 
-            $actualizarEmpresa = Empresa::findOrFail($Empresa->id);
+            $actualizarEmpresa = Empresa::findOrFail($idempresa);
             if ($nombre != "") {
-                $actualizarUsuario->update(['nombre' => $nombre]);
+                $actualizarEmpresa->update(['nombre' => $nombre]);
             }
 
             if ($direccion != "") {
-                $actualizarUsuario->update(['direccion' => $direccion]);
+                $actualizarEmpresa->update(['direccion' => $direccion]);
             }
 
             if ($email != "") {
-                $actualizarUsuario->update(['email' => $email]);
+                $actualizarEmpresa->update(['email' => $email]);
             }
 
             if ($url != "") {
-                $actualizarUsuario->update(['url' => $url]);
+                $actualizarEmpresa->update(['url' => $url]);
             }
             if ($telefono != "") {
-                $actualizarUsuario->update(['telefono' => $telefono]);
+                $actualizarEmpresa->update(['telefono' => $telefono]);
             }
 
         } else {
-            $actualizarEmpresa = Empresa::findOrFail($Empresa->id)->delete();
+            $actualizarEmpresa = Empresa::findOrFail($idempresa)->delete();
         }
 
     }

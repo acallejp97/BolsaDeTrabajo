@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profesores', "Profe_AdminController@Profesores")->name('profesores');
     Route::get('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
     Route::get('/responder', "Profe_AdminController@respondercorreo")->name('responder');
+    Route::post('/actualizarProfe', 'Profe_AdminController@updateProfe')->name('actualizarProfe');
     
     //Profe y admin
     Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/usuarios', "Profe_AdminController@Usuarios")->name('usuarios');
     Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
     Route::post('/actualizarOferta', 'Profe_AdminController@updateOferta')->name('actualizarOferta');
+    Route::post('/actualizarEmpresa', 'Profe_AdminController@updateEmpresa')->name('actualizarEmpresa');
     Route::post('/anadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
     Route::post('/anadirGrado', 'Profe_AdminController@insertGrado')->name('anadirGrado');
     Route::post('/subiendoCSV', 'Profe_AdminController@csv')->name('subiendoCSV');

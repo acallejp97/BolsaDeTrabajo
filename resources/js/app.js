@@ -20,6 +20,7 @@ require("./profesores");
 require("./updateCV");
 require("./updateOferta");
 require("./updateEmpresa");
+require("./updateProfe");
 require("./updateUser");
 require("./deleteMensaje");
 

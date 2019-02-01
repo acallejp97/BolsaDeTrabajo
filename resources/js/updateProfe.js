@@ -1,25 +1,23 @@
-$(".updateEmpresa").click(function() {
+$(".updateProfe").click(function() {
     var array = {
-        idempresa: $(this).val(),
+        idprofe: $(this).val(),
         nombre: $("#nombre"+$(this).val()).val(),
-        direccion: $("#direccion"+$(this).val()).val(),
-        email: $("#email"+$(this).val()).val(),
-        url: $("#url"+$(this).val()).val(),
-        telefono: $("#telefono"+$(this).val()).val(),
-        
+        apellidos: $("#apellidos"+$(this).val()).val(),
+        departamentos: $("#departamentos"+$(this).val()).val(),
+        email: $("#email"+$(this).val()).val()
     };
-
+   
     var valParam = JSON.stringify(array);
-
+   
 
     $.ajax({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./actualizarEmpresa",
+        url: "./actualizarProfe",
         type: "POST",
         data: {
-            actualizacionEmpresa: valParam
+            actualizacionProfe: valParam
         },
         success: function() {
             alert("Datos modificados correctamente");
@@ -30,5 +28,3 @@ $(".updateEmpresa").click(function() {
         }
     });
 });
-
-

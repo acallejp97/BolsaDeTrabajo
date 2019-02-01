@@ -3,11 +3,11 @@ $(".updateOferta").click(function() {
         idoferta: $(this).val(),
         titulo: $("#titulo"+$(this).val()).val(),
         descripcion: $("#descripcion"+$(this).val()).val(),
-        puestos: $("#puestos"+$(this).val()).val()
+        puestos: $("#puestos"+$(this).val()).val(),
     };
 
     var valParam = JSON.stringify(array);
-    alert(array["titulo"]);
+
 
     $.ajax({
         headers: {
