@@ -399,7 +399,7 @@ class Profe_AdminController extends Controller
             $anio = $enviado->anio;
 
             $actualizarUsuarios = User::findOrFail($iduser);
-            $actualizarUsuarios = Alumno::findOrFail($iduser);
+            $actualizarAlumno = Alumno::where('id_user',$iduser)->first();
             if ($nombre != "") {
                 $actualizarUsuarios->update(['nombre' => $nombre]);
             }
@@ -413,7 +413,7 @@ class Profe_AdminController extends Controller
             }
 
             if ($anio!= "") {
-                $actualizarUsuarios->update(['anio_fin' => $anio]);
+                $actualizarAlumno->update(['anio_fin' => $anio]);
             }
 
         } else {
@@ -438,22 +438,22 @@ class Profe_AdminController extends Controller
             $email = $enviado->email;
             
 
-            $actualizarProfe = Profe_Admin::findOrFail($idprofe);
-            $actualizarProfe = Departamento::findOrFail($idprofe);
-            $actualizarProfe = User::findOrFail($idprofe);
+            
+            $actualizarUser = User::findOrFail($idprofe);
+            $actualizarProfe = Profe_Admin::where('id_user',$idprofe)->first();
             if ($nombre != "") {
-                $actualizarProfe->update(['nombre' => $nombre]);
+                $actualizarUser->update(['nombre' => $nombre]);
             }
 
             if ($apellidos != "") {
-                $actualizarProfe->update(['apellidos' => $apellidos]);
+                $actualizarUser->update(['apellidos' => $apellidos]);
             }
 
             if ($departamentos != "") {
-                $actualizarProfe->update(['departamentos' => $departamentos]);
+                $actualizarProfe->update(['id_depar' => $departamentos]);
             }
             if ($email != "") {
-                $actualizarProfe->update(['email' => $email]);
+                $actualizarUser->update(['email' => $email]);
             }
 
            

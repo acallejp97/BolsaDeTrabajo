@@ -57,7 +57,7 @@
       </div>
 
       <div class="form-group">
-        @foreach ($result['profesor'] as $profe) @if($profe=true)
+        @foreach ($result['profe_admin'] as $profe) @if($profe=true)
         <input type="hidden" id="id_profesor" value="{{$profe}}"> @endif @endforeach
       </div>
 
