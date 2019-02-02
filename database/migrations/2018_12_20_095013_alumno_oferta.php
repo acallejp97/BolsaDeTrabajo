@@ -19,8 +19,8 @@ class AlumnoOferta extends Migration
             $table->unsignedInteger('id_alumno');
             $table->unsignedInteger('id_oferta');
 
-            $table->foreign('id_alumno')->references('id')->on('alumnos');
-            $table->foreign('id_oferta')->references('id')->on('ofertas');
+            $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
+            $table->foreign('id_oferta')->references('id')->on('ofertas')->onDelete('cascade');
             $table->timestamps();
         });
     }

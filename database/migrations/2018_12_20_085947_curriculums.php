@@ -17,16 +17,16 @@ class Curriculums extends Migration
         Schema::create('curriculums', function (Blueprint $table) {
             $table->increments('id',5);
             $table->unsignedInteger('id_alumno')->unsigned()->unique('id_alumno', 'curriculum_id_alumno');
-            $table->foreign('id_alumno')->references('id')->on('alumnos');
-            $table->string('nombre',300);
-            $table->string('apellidos',300);
-            $table->string('email', 90);
-            $table->string('direccion',300);
-            $table->string('experiencia',300);
-            $table->string('competencias',300);
-            $table->string('idiomas',300);
-            $table->string('otros_datos',3000);
-            $table->unsignedInteger('telefono');
+            $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
+            $table->string('nombre',300)->nullable();
+            $table->string('apellidos',300)->nullable();
+            $table->string('email', 90)->nullable();
+            $table->string('direccion',300)->nullable();
+            $table->string('experiencia',300)->nullable();
+            $table->string('competencias',300)->nullable();
+            $table->string('idiomas',300)->nullable();
+            $table->string('otros_datos',3000)->nullable();
+            $table->unsignedInteger('telefono')->nullable();
            
            
             $table->timestamps();

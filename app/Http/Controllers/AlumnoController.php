@@ -46,7 +46,7 @@ class AlumnoController extends Controller
             $request->file('image')->move('perfiles', $name);
             $user = new User;
             $user->where('email', '=', Auth::user()->email)
-                ->update(['imagen' => $name]);
+                ->update(['imagen' => $name, 'updated_at' => date('Y-m-d')]);
 
             return view("alumnos/curriculum")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
         }
@@ -77,36 +77,36 @@ class AlumnoController extends Controller
 
                 $actualizarUsuario = Curriculum::where('id_alumno', $id_alumno)->first();
                 if ($nombre != "") {
-                    $actualizarUsuario->update(['nombre' => $nombre]);
+                    $actualizarUsuario->update(['nombre' => $nombre, 'updated_at' => date('Y-m-d H:m:s')]);
                 }
 
                 if ($apellido != "") {
-                    $actualizarUsuario->update(['apellidos' => $apellido]);
+                    $actualizarUsuario->update(['apellidos' => $apellido, 'updated_at' => date('Y-m-d H:m:s')]);
                 }
 
                 if ($email != "") {
-                    $actualizarUsuario->update(['email' => $email]);
+                    $actualizarUsuario->update(['email' => $email, 'updated_at' => date('Y-m-d H:m:s')]);
                 }
 
                 if ($direccion != "") {
-                    $actualizarUsuario->update(['direccion' => $direccion]);
+                    $actualizarUsuario->update(['direccion' => $direccion, 'updated_at' => date('Y-m-d H:m:s')]);
                 }
 
                 if ($formacion != "") {
-                    $actualizarUsuario->update(['competencias' => $formacion]);
+                    $actualizarUsuario->update(['competencias' => $formacion, 'updated_at' => date('Y-m-d H:m:s')]);
                 }
 
                 if ($idiomas != "") {
-                    $actualizarUsuario->update(['idiomas' => $idiomas]);
+                    $actualizarUsuario->update(['idiomas' => $idiomas, 'updated_at' => date('Y-m-d H:m:s')]);
                 }
                 if ($experiencia != "") {
-                    $actualizarUsuario->update(['experiencia' => $experiencia]);
+                    $actualizarUsuario->update(['experiencia' => $experiencia, 'updated_at' => date('Y-m-d H:m:s')]);
                 }
                 if ($otros != "") {
-                    $actualizarUsuario->update(['otros_datos' => $otros]);
+                    $actualizarUsuario->update(['otros_datos' => $otros, 'updated_at' => date('Y-m-d H:m:s')]);
                 }
                 if ($telefono != "") {
-                    $actualizarUsuario->update(['telefono' => $telefono]);
+                    $actualizarUsuario->update(['telefono' => $telefono, 'updated_at' => date('Y-m-d H:m:s')]);
                 }
                 break;
             }

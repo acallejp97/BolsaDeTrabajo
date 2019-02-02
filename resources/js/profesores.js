@@ -23,3 +23,67 @@ $(".borrarProfesor").click(function() {
         }
     });
 });
+
+$(".updateProfe").click(function() {
+    var array = {
+        idprofe: $(this).val(),
+        nombre: $("#nombre"+$(this).val()).val(),
+        apellidos: $("#apellidos"+$(this).val()).val(),
+        departamentos: $("#departamentos"+$(this).val()).val(),
+        email: $("#email"+$(this).val()).val()
+    };
+   
+    var valParam = JSON.stringify(array);
+   
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizarProfe",
+        type: "POST",
+        data: {
+            actualizacionProfe: valParam
+        },
+        success: function() {
+            alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$("#insertProfe").click(function() {
+    var array = {
+        nombre: $("#nombre").val(),
+        email: $("#email").val(),
+        apellidos: $("#apellidos").val(),
+        password: $("#password").val(),
+        id_depar: $("#id_depar").val(),
+        rango: $("#rango").val(),
+        id_user: $("#id_user").val(),
+        
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./insertarProfesores",
+        type: "POST",
+        data: {
+            nuevaProfe: valParam
+        },
+        success: function() {
+            alert("Profesor añadido correctamente");
+            location.reload();
+        },
+        error: function() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});

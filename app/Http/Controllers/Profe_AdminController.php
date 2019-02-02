@@ -11,12 +11,12 @@ use App\Model\Grado;
 use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
-use Auth;
 use Excel;
 use File;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 use Session;
 
 class Profe_AdminController extends Controller
@@ -24,6 +24,7 @@ class Profe_AdminController extends Controller
     public function __construct()
     {
     }
+
     public function Empresas()
     {
         $empresas = Empresa::all();
@@ -33,9 +34,49 @@ class Profe_AdminController extends Controller
         return view("profes_admin/empresas")->with('empresas', $empresas);
     }
 
-    public function AnadirUsuarios()
+    public function altaUsuarios()
     {
-        return view("profes_admin/anadirusuarios");
+        $grados = Grado::All();
+        return view("profes_admin/anadirusuarios")->with('grados', $grados);
+    }
+
+    public function insertUser(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        if (isset($_REQUEST['nuevoUsuario'])) {
+            $enviado = json_decode($_REQUEST['nuevoUsuario']);
+            $nombre = $enviado->nombre;
+            $apellidos = $enviado->apellidos;
+            $rango = 2;
+            $password = Hash::make('prueba');
+            $email = $enviado->email;
+            $aniofin = $enviado->anio_fin;
+            $id_grado = $enviado->id_grado;
+
+            $insertarUsuario = new User;
+            $insertarUsuario->insert(['nombre' => $nombre, 'apellidos' => $apellidos, 'rango' => $rango, 'email' => $email,
+                'password' => $password, 'created_at' => date('Y-m-d H:m:s'), 'updated_at' => date('Y-m-d H:m:s')]);
+
+            $id_user = User::max('id');
+            $insertarAlumno = new Alumno;
+            $insertarAlumno->insert(['anio_fin' => $aniofin, 'id_user' => $id_user, 'created_at' => date('Y-m-d H:m:s'), 'updated_at' => date('Y-m-d H:m:s')]);
+
+            $id_alumno = Alumno::max('id');
+            $insertarCV = new Curriculum;
+            $insertarCV->insert(['id_alumno' => $id_alumno,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s'),
+            ]);
+
+            $usuarioGrado = new Alumno_Grado;
+            $usuarioGrado->insert([
+                'id_grado' => $id_grado,
+                'id_alumno' => $id_alumno,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')]);
+        }
     }
 
     public function csv(Request $request)
@@ -55,30 +96,45 @@ class Profe_AdminController extends Controller
                 if (!empty($data) && $data->count()) {
                     $ultimaIdUser = User::max('id');
                     $ultimaIdAlumno = Alumno::max('id');
-                    
+
+                    $siguienteId = 1;
                     foreach ($data as $key => $value) {
-                        $siguienteId = 1;
+
+                        $id_grado = Grado::where('abreviacion', strtoupper($value->grado))->first();
                         $insertUser[] = [
                             'email' => $value->email,
                             'nombre' => $value->nombre,
                             'rango' => 2,
                             'apellidos' => $value->apellidos,
                             'password' => Hash::make('prueba'),
+                            'created_at' => date('Y-m-d H:m:s'),
+                            'updated_at' => date('Y-m-d H:m:s'),
                         ];
                         $insertAlumno[] = [
                             'id_user' => $ultimaIdUser + $siguienteId,
-                            'anio_fin'=>$value->anio_fin,
+                            'anio_fin' => $value->anio_fin,
+                            'created_at' => date('Y-m-d H:m:s'),
+                            'updated_at' => date('Y-m-d H:m:s'),
                         ];
                         $insertCurriculum[] = [
-                            'id_alumno' => $ultimaIdUser + $siguienteId,
+                            'id_alumno' => $ultimaIdAlumno + $siguienteId,
+                            'created_at' => date('Y-m-d H:m:s'),
+                            'updated_at' => date('Y-m-d H:m:s'),
+                        ];
+                        $insertGrado[] = [
+                            'id_grado' => $id_grado['id'],
+                            'id_alumno' => $ultimaIdAlumno + $siguienteId,
+                            'created_at' => date('Y-m-d H:m:s'),
+                            'updated_at' => date('Y-m-d H:m:s'),
                         ];
                         $siguienteId++;
                     }
-                    
+
                     if (!empty($insertUser)) {
                         $insertData = User::insert($insertUser);
                         $insertAlumnos = Alumno::insert($insertAlumno);
                         $insertCurriculum = Curriculum::insert($insertCurriculum);
+                        $insertGrado = Alumno_Grado::insert($insertGrado);
                         if ($insertData) {
                             Session::flash('success', 'Your Data has successfully imported');
                         } else {
@@ -111,36 +167,16 @@ class Profe_AdminController extends Controller
 
     public function Usuarios()
     {
-        switch (Auth::user()->rango) {
 
-            case 0:
+        $user = User::where('rango', 2)->get();
+        $alumno = Alumno::all();
+        $alumnosuser = array('user' => $user, 'alumno' => $alumno);
+        if (!$alumnosuser) {
+            return view("profes_admin/usuarios");
+        }
+        return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
 
-                $user = User::where('rango', 2)->get();
-                $alumno = Alumno::all();
-                $alumnosuser = array('user' => $user, 'alumno' => $alumno);
-                if (!$alumnosuser) {
-                    return view("profes_admin/usuarios");
-                }
-                return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
-                break;
-
-            case 1:
-
-                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
-                $grados = Grado::where('id_depar', $profe->id_depar)->get(); //Mas de un nombre | Pasar
-                foreach ($grados as $grado) {
-                    $alumnos_grado = Alumno_Grado::where('id_grado', $grado->id)->get();
-                    foreach ($alumnos_grado as $alumno_grado) {
-                        $alumnos = Alumno::where('id', $alumno_grado->id_alumno)->get(); //Pasar
-                        foreach ($alumnos as $alumno) {
-                            $usuario = User::where('id', $alumno->id_user)->get(); //Pasar
-                        }
-                    }
-                }
-                $alumnosuser = array('user' => $usuario, 'alumno' => $alumnos);
-
-                return view("profes_admin/usuarios")->with('alumnosuser', $alumnosuser);
-        }}
+    }
 
     //******* */FUNCIONES DE ADMIN********************
     public function Profesores()
@@ -148,7 +184,6 @@ class Profe_AdminController extends Controller
 
         $profesor = Profe_Admin::all();
         $user = User::all();
-
         $departamento = Departamento::all();
         $profesores = array('profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
         if (!$profesores) {
@@ -170,15 +205,10 @@ class Profe_AdminController extends Controller
 
     }
 
-/*---------------------------------------------------------BORRAR MENSAJE BUZÓN------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------*/
-
     public function deleteMensaje(Request $request)
     {
 
-        $correo = Correo::where('created_at', $fecha)->first();
-
-        Correo::where('created_at', $fecha)->delete();
+      
         $enviado = json_decode($_REQUEST['borrarCorreo']);
 
         if (!$request->ajax()) {
@@ -189,9 +219,6 @@ class Profe_AdminController extends Controller
         Correo::where('id', $id)->delete();
 
     }
-
-/*---------------------------------------------------------ABRIR MENSAJE BUZÓN------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------*/
 
     public function abrirMensaje(Request $request)
     {
@@ -209,8 +236,6 @@ class Profe_AdminController extends Controller
 
     }
 
-/*-----------------------------------------------------------INSERTAR DEPARTAMENTO---------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------*/
     public function insertDepartamento(Request $request)
     {
 
@@ -222,7 +247,8 @@ class Profe_AdminController extends Controller
             $nombre = $enviado->nombre;
 
             $insertarDepartamento = new Departamento;
-            $insertarDepartamento->insert(['nombre' => $nombre]);
+            $insertarDepartamento->insert(['nombre' => $nombre, 'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')]);
         } else {
             $insertarDepartamento->delete();
 
@@ -243,12 +269,10 @@ class Profe_AdminController extends Controller
 
         $insertarGrado = new Grado;
         if ($nombre != "") {
-            $insertarGrado->insert(['nombre' => $nombre, 'id_depar' => $idDepar, 'abreviacion' => $abreviacion]);
+            $insertarGrado->insert(['nombre' => $nombre, 'id_depar' => $idDepar, 'abreviacion' => $abreviacion, 'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')]);
         }
     }
-
-/*----------------------------------------------------------BORRAR USUARIO--------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------*/
 
     public function deleteUsuario(Request $request)
     {
@@ -264,9 +288,6 @@ class Profe_AdminController extends Controller
 
     }
 
-/*-------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------------*/
-
     public function deleteGrado(Request $request)
     {
 
@@ -277,10 +298,25 @@ class Profe_AdminController extends Controller
         }
         $id = $enviado->id;
 
-        if ($nombre != "") {
-            Grado::where('id', $id)->delete();
+        if ($id != "") {
+            Grado::where('id', $id)->delete();;
 
-            Grado::where('id', $nombre)->delete();
+        }
+    }
+
+    public function deleteDepartamento(Request $request)
+    {
+
+        $enviado = json_decode($_REQUEST['borrarDepartamento']);
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $id = $enviado->id;
+
+        if ($id != "") {
+
+            Departamento::where('id', $id)->delete();
 
         }
     }
@@ -351,29 +387,36 @@ class Profe_AdminController extends Controller
         $id_profesor = $enviado->id_profesor;
         $puestos = $enviado->puestos;
         $oferta = new Oferta;
-        $oferta->insert(['titulo' => $titulo, 'descripcion' => $descripcion, 'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos-vacantes' => $puestos]);
+        $oferta->insert(['titulo' => $titulo, 'descripcion' => $descripcion, 'id_empresa' => $id_empresa, 'id_grado' => $id_grado, 'id_profesor' => $id_profesor, 'puestos-vacantes' => $puestos, 'created_at' => date('Y-m-d H:m:s'),
+            'updated_at' => date('Y-m-d H:m:s')]);
 
     }
     public function insertarProfe(Request $request)
     {
-        if (!$request->ajax()) {
-            return redirect('/');
+        if (isset($_REQUEST['nuevoProfe'])) {
+
+            if (!$request->ajax()) {
+                return redirect('/');
+            }
+
+            $enviado = json_decode($_REQUEST['nuevoProfe']);
+
+            $nombre = $enviado->nombre;
+            $apellido = $enviado->apellidos;
+            $email = $enviado->email;
+            $password = Hash::make('prueba');
+            $id_depar = $enviado->id_depar;
+            $rango = 1;
+            $user = new User;
+            $profe = new Profe_Admin;
+            $user->insert(['nombre' => $nombre, 'apellidos' => $apellido, 'email' => $email, 'password' => $password, 'rango' => $rango, 'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')]);
+
+            $id_user = User::max('id');
+            $profe->insert(['id_depar' => $id_depar, 'id_user' => $id_user, 'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')]);
+
         }
-
-        $enviado = json_decode($_REQUEST['nuevoProfe']);
-
-        $nombre = $enviado->nombre;
-        $apellido = $enviado->apellido;
-        $email = $enviado->email;
-        $password = $enviado->password;
-        $id_depar = $enviado->id_depar;
-        $rango = $enviado->rango;
-        $user = new User;
-        $profe = new Profe_Admin;
-        $user->insert(['nombre' => $nombre, 'apellido' => $apellido, 'email' => $email, 'password' => $password, 'rango' => $rango]);
-        $id_user = $enviado->id_user::select('id')->last();
-        $profe->insert(['id_depar' => $id_depar, 'id_user' => $id_user]);
-
     }
 
     public function insertarEmpresa(Request $request)
@@ -391,48 +434,159 @@ class Profe_AdminController extends Controller
         $telefono = $enviado->telefono;
 
         $empresa = new Empresa;
-        $empresa->insert(['nombre' => $nombre, 'direccion' => $direccion, 'email' => $email, 'url' => $url, 'telefono' => $telefono]);
+        $empresa->insert(['nombre' => $nombre, 'direccion' => $direccion, 'email' => $email, 'url' => $url, 'telefono' => $telefono, 'created_at' => date('Y-m-d H:m:s'),
+            'updated_at' => date('Y-m-d H:m:s')]);
+
+    }
+    public function updateUsuarios(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['actualizacionUsuarios'])) {
+
+            $enviado = json_decode($_REQUEST['actualizacionUsuarios']);
+            $iduser = $enviado->iduser;
+            $nombre = $enviado->nombre;
+            $apellidos = $enviado->apellidos;
+            $email = $enviado->email;
+            $anio = $enviado->anio;
+
+            $actualizarUsuarios = User::findOrFail($iduser);
+            $actualizarAlumno = Alumno::where('id_user',$iduser)->first();
+            if ($nombre != "") {
+                $actualizarUsuarios->update(['nombre' => $nombre]);
+            }
+
+            if ($apellidos != "") {
+                $actualizarUsuarios->update(['apellido' => $apellidos]);
+            }
+
+            if ($email != "") {
+                $actualizarUsuarios->update(['email' => $email]);
+            }
+
+            if ($anio!= "") {
+                $actualizarAlumno->update(['anio_fin' => $anio]);
+            }
+
+        } else {
+            $actualizarUsuarios = User::findOrFail(Auth::user()->id)->delete();
+        }
+
+    }
+    public function updateProfe(Request $request){
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        
+
+        if (isset($_REQUEST['actualizacionProfe'])) {
+
+            $enviado = json_decode($_REQUEST['actualizacionProfe']);
+
+            $idprofe = $enviado->idprofe;
+            $nombre = $enviado->nombre;
+            $apellidos = $enviado->apellidos;
+            $departamentos = $enviado->departamentos;
+            $email = $enviado->email;
+            
+
+            
+            $actualizarUser = User::findOrFail($idprofe);
+            $actualizarProfe = Profe_Admin::where('id_user',$idprofe)->first();
+            if ($nombre != "") {
+                $actualizarUser->update(['nombre' => $nombre]);
+            }
+
+            if ($apellidos != "") {
+                $actualizarUser->update(['apellidos' => $apellidos]);
+            }
+
+            if ($departamentos != "") {
+                $actualizarProfe->update(['id_depar' => $departamentos]);
+            }
+            if ($email != "") {
+                $actualizarUser->update(['email' => $email]);
+            }
+
+           
+
+        } else {
+            $actualizarProfe = Profe_Admin::findOrFail($idprofe);
+        }
+
+    }
+    public function updateOferta(Request $request){
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['actualizarOferta'])) {
+
+            $enviado = json_decode($_REQUEST['actualizarOferta']);
+
+            $idoferta = $enviado->idoferta;
+            $titulo = $enviado->titulo;
+            $descripcion = $enviado->descripcion;
+            $puestos = $enviado->puestos;
+
+            $actualizarOferta = Oferta::findOrFail($idoferta);
+            if ($titulo != "") {
+                $actualizarOferta->update(['titulo' => $titulo, 'updated_at' => date('Y-m-d H:m:s')]);
+            }
+
+            if ($descripcion != "") {
+                $actualizarOferta->update(['descripcion' => $descripcion, 'updated_at' => date('Y-m-d H:m:s')]);
+            }
+
+            if ($puestos != "") {
+                $actualizarOferta->update(['puestos-vacantes' => $puestos, 'updated_at' => date('Y-m-d H:m:s')]);
+            }
+
+        } else {
+            $actualizarOferta = User::findOrFail($idoferta);
+        }
 
     }
 
     public function updateEmpresa(Request $request)
     {
-        if (!$request->ajax()) {
-            return redirect('/');
-        }
 
         if (isset($_REQUEST['actualizacionEmpresa'])) {
 
             $enviado = json_decode($_REQUEST['actualizacionEmpresa']);
 
             $nombre = $enviado->nombre;
+            $idempresa= $enviado->idempresa;
             $direccion = $enviado->direccion;
             $email = $enviado->email;
             $url = $enviado->url;
             $telefono = $enviado->telefono;
 
-            $actualizarEmpresa = Empresa::findOrFail($Empresa->id);
+            $actualizarEmpresa = Empresa::findOrFail($idempresa);
             if ($nombre != "") {
-                $actualizarUsuario->update(['nombre' => $nombre]);
+                $actualizarEmpresa->update(['nombre' => $nombre, 'updated_at' => date('Y-m-d H:m:s')]);
             }
 
             if ($direccion != "") {
-                $actualizarUsuario->update(['direccion' => $direccion]);
+                $actualizarEmpresa->update(['direccion' => $direccion, 'updated_at' => date('Y-m-d H:m:s')]);
             }
 
             if ($email != "") {
-                $actualizarUsuario->update(['email' => $email]);
+                $actualizarEmpresa->update(['email' => $email, 'updated_at' => date('Y-m-d H:m:s')]);
             }
 
             if ($url != "") {
-                $actualizarUsuario->update(['url' => $url]);
+                $actualizarEmpresa->update(['url' => $url, 'updated_at' => date('Y-m-d H:m:s')]);
             }
             if ($telefono != "") {
-                $actualizarUsuario->update(['telefono' => $telefono]);
+                $actualizarEmpresa->update(['telefono' => $telefono, 'updated_at' => date('Y-m-d H:m:s')]);
             }
 
         } else {
-            $actualizarEmpresa = Empresa::findOrFail($Empresa->id)->delete();
+            $actualizarEmpresa = Empresa::findOrFail($idempresa)->delete();
         }
 
     }
