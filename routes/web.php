@@ -32,7 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
             $message->to('niniadefresa_94@hotmail.es')->subject('Respuesta sugerencia Bolsa de Trabajo ');
         });
         return redirect('/buzon');
-        });
     });
     
     //Profe y admin
@@ -59,25 +58,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/borrarOferta', 'Profe_AdminController@deleteOferta')->name('borrarOferta');
     Route::post('/borrarProfesor', 'Profe_AdminController@deleteProfesor')->name('borrarProfesor ');
     Route::post('/borrarUsuario', 'Profe_AdminController@deleteUsuario')->name('borrarUsuario');
-<<<<<<< HEAD
-
-
-=======
     Route::post('/borrarDepartamento', 'Profe_AdminController@deleteDepartamento')->name('borrarDepartamento');
     Route::post('/borrarCorreo', 'Profe_AdminController@deleteMensaje')->name('borrarCorreo');
     Route::post('/subiendoCSV', 'Profe_AdminController@csv')->name('subiendoCSV');
     
->>>>>>> 2998629688c6db642046295f37dc1ff1bd62fa47
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
     Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
-<<<<<<< HEAD
-
-
-
-
-=======
 });
->>>>>>> 2998629688c6db642046295f37dc1ff1bd62fa47
