@@ -39,7 +39,6 @@ Route::group(['middleware' => 'auth'], function () {
             $message->to('niniadefresa_94@hotmail.es')->subject('Respuesta sugerencia Bolsa de Trabajo ');
         });
         return redirect('/buzon');
-        });
     });
     
     //Profe y admin
@@ -75,4 +74,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
     Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
-
+});
