@@ -1,20 +1,32 @@
 <?php
  
 return [
+  //MENU
   'perfil' => 'Ver Perfil',
-  'altaempresas' => 'Alta Empresas',
+  'actualizarcv' => 'Actualizar CV',
   'altausuarios' => 'Alta Usuarios',
   'usuarios' => 'Usuarios',
   'ofertas' => 'Ofertas',
   'empresas' => 'Empresas',
   'buzon' => 'Buzon',
   'cursos' => 'Cursos',
+  'cerrar' => 'Cerrar Sesión',
   'contacto' => 'Contacto',
   'profesores' => 'Alta Profesores',
+
+  //PERFIL
   'nombre' => 'Nombre',
   'apellidos' => 'Apellidos',
-  'descripcion' => 'Descripción',
   'email' => 'Email',
+  'guardar' => 'Guardar',
+  'actualizarimagen' => 'Actualizar Imagen',
+  'registradodesde' => 'Registrado desde',
+  'actividad' => 'Actividad',
+  'borrarperfil' => 'Borrar Perfil',
+
+  //alta usuarios
+
+  'descripcion' => 'Descripción',
   'telefono' => 'Telefono',
   'puestos' => 'Puestos Vacantes',
   'password' => 'Contraseña',
@@ -23,7 +35,6 @@ return [
   'emviar' => 'Enviar',
   'publicar' => 'Publicar',
   'borrarperfil' => 'Borrar Perfil',
-  'registradodesde' => 'Registrado desde',
   'registrado' => 'Registrado',
   'departamento' => 'Departamento',
   'Actividad' => 'Actividad',
@@ -38,7 +49,7 @@ return [
   'registrada' => 'Registrado',
   'modificado' => 'Modificado',
   'accion' => 'Acción',
-  'modificar' => 'MOdificar',
+  'modificar' => 'Modificar',
   'eliminar' => 'Eliminar',
   'grado' => 'Grado',
   'abrir' => 'Abrir',

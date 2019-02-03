@@ -9,7 +9,14 @@ Route::group(['middleware' => 'auth'], function () {
             return redirect('/login');
         }
     });
-    //Comunes
+   
+// IDIOMA CAMBIOS
+    Route::get('lang/{lang}', function($lang) {
+        \Session::put('lang', $lang);
+        return \Redirect::back();
+      })->middleware('web')->name('change_lang');
+    
+//Comunes
     Route::get('/home', "Controller@Ofertas")->name('home');
     Route::get('/contacto', "Controller@Contacto")->name('contacto');
     Route::get('/perfil', "Controller@Perfil")->name('perfil');
@@ -59,25 +66,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/borrarOferta', 'Profe_AdminController@deleteOferta')->name('borrarOferta');
     Route::post('/borrarProfesor', 'Profe_AdminController@deleteProfesor')->name('borrarProfesor ');
     Route::post('/borrarUsuario', 'Profe_AdminController@deleteUsuario')->name('borrarUsuario');
-<<<<<<< HEAD
-
-
-=======
     Route::post('/borrarDepartamento', 'Profe_AdminController@deleteDepartamento')->name('borrarDepartamento');
     Route::post('/borrarCorreo', 'Profe_AdminController@deleteMensaje')->name('borrarCorreo');
     Route::post('/subiendoCSV', 'Profe_AdminController@csv')->name('subiendoCSV');
     
->>>>>>> 2998629688c6db642046295f37dc1ff1bd62fa47
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
     Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
-<<<<<<< HEAD
 
-
-
-
-=======
-});
->>>>>>> 2998629688c6db642046295f37dc1ff1bd62fa47

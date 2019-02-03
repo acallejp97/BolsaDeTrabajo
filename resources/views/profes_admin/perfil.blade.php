@@ -17,18 +17,18 @@
                     <input style="color: transparent; margin-top: 3em;" type="file" name="image" />
                     <div class='text-danger'>{{$errors->first('image')}}</div>
                 </div>
-                <button type='submit' style="background: #b50045;" class='btn btn-primary'>Actualizar imagen de perfil</button>
+                <button type='submit' style="background: #b50045;" class='btn btn-primary'>@lang('header.actualizarimagen')</button>
             </form>
             <br>
 
             <div class="panel panel-default">
-                <div class="panel-heading">Registrado desde <i class="fa fa-link fa-1x"></i></div>
+                <div class="panel-heading">@lang('header.registradodesde') <i class="fa fa-link fa-1x"></i></div>
                 <?php $fecha = explode(' ', trim(Auth::user()->created_at));?>
                 <div class="panel-body">{{$fecha[0]}}</div>
             </div>
            
             <ul class="list-group">
-                <li class="list-group-item text-muted">Actividad <i class="fa fa-dashboard fa-1x"></i></li>
+                <li class="list-group-item text-muted">@lang('header.actividad') <i class="fa fa-dashboard fa-1x"></i></li>
                 @if(Auth::user()->rango==0)
                 <li class="list-group-item text-center"><span class="pull-center"><strong>Has gozao, eres admin</strong></span> </li>
                 @else @foreach ($nombreDepar as $nombre)
@@ -44,14 +44,14 @@
                     <hr>
                     <div class="form-group">
                         <div class="col-xs-11">
-                            <label for="nombre"><h4>Nombre</h4></label>
+                            <label for="nombre"><h4>@lang('header.nombre')</h4></label>
                             <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="{{Auth::user()->nombre}}" title="Introduce tu nombre.">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-11">
-                            <label for="apellido"><h4>Apellidos</h4></label>
+                            <label for="apellido"><h4>@lang('header.apellidos')</h4></label>
                             <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellidos" value="{{Auth::user()->apellidos}}"
                                 title="Introduce tus apellidos.">
                         </div>
@@ -59,7 +59,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-11">
-                            <label for="email"><h4>Email</h4></label>
+                            <label for="email"><h4>@lang('header.email')</h4></label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" value="{{Auth::user()->email}}"
                                 title="Introduce tu email.">
                         </div>
@@ -73,9 +73,9 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" id="updateUser" style="background: #b50045; float:right;color:white;" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Guardar</button>@if(Auth::user()->rango!=0)
+                                <button class="btn btn-lg btn-success" id="updateUser" style="background: #b50045; float:right;color:white;" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> @lang('header.guardar')</button>@if(Auth::user()->rango!=0)
                                 <button type="submit" class="btn btn-lg btn-success" id="deleteUser" style="background:#D8BFD8; float:right; color:black;">
-										<span class="glyphicon glyphicon-remove" ></span> Borrar Perfil
+										<span class="glyphicon glyphicon-remove" ></span> @lang('header.borrarperfil')
 									</button> @endif
                             </div>
                         </div>

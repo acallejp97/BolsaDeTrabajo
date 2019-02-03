@@ -2,7 +2,13 @@
 @section('content')
 
 <div class="container">
-	<div class="row">
+		<div class="row col-md-12">
+				<div class="page-header">
+					<h3>
+						Lista de Usuarios
+					</h3>
+				</div>
+	
 		<div class="span12">
 			<div class="widget stacked widget-table action-table">
 				<div class="widget-content">

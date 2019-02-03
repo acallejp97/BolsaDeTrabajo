@@ -66,20 +66,7 @@
           Lista de ofertas
         </h3>
       </div>
-      <div class="row">
-        <div class="span3 side-by-side clearfix offset4">
-          <form action="#" method="get">
-            <div class="input-group col-md-3 " style="float:right">
-              <input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
-              <span class="input-group-btn">
-              <button type="submit" class="btn btn-default" style="background: #b50045; color:white;"data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
-            </span>
-
-            </div>
-          </form>
-        </div>
-
-      </div><br> @foreach ($result['ofertas'] as $oferta)
+     @foreach ($result['ofertas'] as $oferta)
 
       <div class="col-md-12">
         <h3 class="center">{{$oferta['titulo']}}</h3>

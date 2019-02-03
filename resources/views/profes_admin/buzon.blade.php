@@ -9,20 +9,7 @@
 				Bandeja de entrada
 			</h3>
 		</div>
-		<div class="row">
-			<div class="span3 side-by-side clearfix offset4">
-				<form action="#" method="get">
-					<div class="input-group col-md-3 " style="float:right">
-						<input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-default" style="background: #b50045; color:white;" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
-						</span>
-
-					</div>
-				</form>
-			</div>
-
-		</div><br>
+	
 		<div class="widget-content">
 			<table class="table table-striped table-bordered">
 				<thead>
