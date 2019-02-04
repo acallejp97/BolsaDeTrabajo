@@ -60,80 +60,87 @@
               </th>
               <th class="td-actions" id="table_action">Accion</th>
             </tr>
-            @foreach ($profesores['profe_admin'] as $profesor) @foreach ($profesores['user'] as $usuario) @foreach ($profesores['departamento']
-            as $departamento)
           </thead>
           <tbody>
-            @if($profesor['id']==$usuario['id']) @if($profesor['id_depar']==$departamento['id'])
-            <tr>
+            @foreach ($profesores['profe_admin'] as $profesor) @foreach ($profesores['user'] as $usuario) @foreach ($profesores['departamento']
+            as $departamento) 
+            @if($profesor['id_user']==$usuario['id']) 
+            @if($profesor['id_depar']==$departamento['id'])
+            <div>
+              <tr>
 
-              <td>{{$usuario['nombre']}}</td>
-              <td>{{$usuario['apellidos']}}</td>
-              <td>{{$departamento['nombre']}}</td>
-              <td>{{$usuario['email']}}</td>
-              <td> <?php $fecha = explode(' ', trim(Auth::user()->created_at));?>
-                {{$fecha[0]}}</td>
+                <td>{{$usuario['nombre']}}</td>
+                <td>{{$usuario['apellidos']}}</td>
+                <td>{{$departamento['nombre']}}</td>
+                <td>{{$usuario['email']}}</td>
+                <td>
+                  <?php $fecha = explode(' ', trim(Auth::user()->created_at));?> {{$fecha[0]}}
+                </td>
 
 
-              <td class="td-actions">
-                <button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $profesor->id;?>" id="<?php echo $profesor->id;?>">
+                <td class="td-actions">
+                  <button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $usuario->id;?>"
+                    id="<?php echo $usuario->id;?>">
 									<span class="glyphicon glyphicon-pencil"></span> Modificar
 									</button>
-                <button style="background: #b50045; color:white;" value="{{$profesor['id']}}" class="borrarProfesor btn btn-default btn-xs"
-                  href="javascript:;">
+                  <button style="background: #b50045; color:white;" value="{{$profesor['id']}}" class="borrarProfesor btn btn-default btn-xs"
+                    href="javascript:;">
 										<span class="glyphicon glyphicon-remove"></span> Borrar
 									</button>
 
-              </td>
-            </tr>
+                </td>
+              </tr>
 
-            <!-- The Modal -->
-            <!--modal-->
-            <div id="edit-modal-cust-<?php echo $profesor->id;?>" class="modal">
-              <div class="modal-dialog">
-                <div class="modal-content">
+              <!-- The Modal -->
+              <!--modal-->
+              <div id="edit-modal-cust-<?php echo $usuario->id;?>" class="modal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
 
-                  <button class="close" data-dismiss="modal">&times;</button>
-                  <div class="modal-header">
-                    <h5><b>Nombre:</b>
-                    </h5>
-                    <input value="{{$usuario['nombre']}}" id="nombre<?php echo $profesor->id;?>" class="form-control">
-                  </div>
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-header">
+                      <h5><b>Nombre:</b>
+                      </h5>
+                      <input value="{{$usuario['nombre']}}" id="nombre<?php echo $usuario->id;?>" class="form-control">
+                    </div>
 
-                  <div class="modal-header">
-                    <h5><b> Apellidos:</b>
-                    </h5>
-                    <textarea id="apellidos<?php echo $profesor->id;?>" class="form-control">{{$usuario['apellidos']}}</textarea>
-                  </div>
+                    <div class="modal-header">
+                      <h5><b> Apellidos:</b>
+                      </h5>
+                      <textarea id="apellidos<?php echo $usuario->id;?>" class="form-control">{{$usuario['apellidos']}}</textarea>
+                    </div>
 
-                  <div class="modal-header">
-                    <h5><b> Departamento:</b>
-                    </h5>
-                    <select class="form-control" id="id_depar" name="id_depar">
-                        @foreach ($profesores['departamento'] as $departamento) 
-                       
-                      
-                        <option selected="{{$departamento['id']}}" id="departamentos<?php echo $departamento->id;?>" name="id_depar" value="{{$departamento['id']}}">{{$departamento['nombre']}}</option>
-                       
-                          @endforeach
-                        </select>
-                   
-                  </div>
-                  <div class="modal-header">
-                    <h5><b> Email:</b>
-                    </h5>
-                    <input value="{{$usuario['email']}}" id="email<?php echo $profesor->id;?>" class="form-control">
-                  </div>
+                    <div class="modal-header">
 
-                  <div class="modal-footer">
-                    <button type="submit" value="{{$profesor->id}}" class="updateProfe btn btn-danger" data-dismiss="modal">Guardar</button>
+                      <h5><b> Departamento:</b>
+                      </h5>
+                      <select class="form-control" id="departamento<?php echo $usuario->id;?>">
+                        @foreach ($profesores['departamento'] as $departamentos) 
+                        <option 
+                        @if($departamentos['id']==$profesor['id_depar'])
+                        selected
+                        @endif
+                        value="{{$departamentos['id']}}">{{$departamentos['nombre']}}</option>
+                        @endforeach
+                        
+                    </select>
+
+                    </div>
+                    <div class="modal-header">
+                      <h5><b> Email:</b>
+                      </h5>
+                      <input value="{{$usuario['email']}}" id="email<?php echo $usuario->id;?>" class="form-control">
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="submit" value="{{$usuario->id}}" class="updateProfe btn btn-danger" data-dismiss="modal">Guardar</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            @endif @endif
+            @endif @endif @endforeach @endforeach @endforeach
           </tbody>
-          @endforeach @endforeach @endforeach
         </table>
       </div>
     </div>
