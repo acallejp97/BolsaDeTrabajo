@@ -45,8 +45,11 @@
 
 
 					<!--recorre mediante los foreach las tablas y saca lo que se le dice abajo-->
-					@foreach ($user_correos['correos'] as $correo) @foreach ($user_correos['user'] as $usuarios) @if($usuarios->rango==1 or $usuarios->rango==2)
-					@if($correo['id_remit']==$usuarios['id']) @if($usuarios->rango==1)
+					@foreach ($user_correos['correos'] as $correo) 
+					@foreach ($user_correos['user'] as $usuarios) 
+					@if($usuarios->rango==1 or $usuarios->rango==2)
+					@if($correo['id_remit']==$usuarios['id']) 
+					@if($usuarios->rango==1)
 					<!--si es profesor que el correo salga de otro color resaltandolo-->
 					<tr id="colorfila" style="background:#DC6E97;">
 						@else
@@ -98,11 +101,11 @@
 											<label for="comment">Responder:</label>
 											<textarea type="text" name="respuesta" class="form-control" rows="4" , cols="164" id="respuesta" style="resize:none,"
           									placeholder="Ponga aquí su mensaje..."></textarea>
-						<!--					<textarea class="form-control" rows="5" id="comment" name="respuesta"></textarea>
+						<!--					<textarea class="form-control" rows="5" id="comment" name="respuesta"></textarea>-->
 										</div>
 										<!-- Modal footer -->
 										<div class="modal-footer">
-											<button id="respuestaEmail" type="button" class="btn btn-danger responderCorreo" data-dismiss="modal" data-toggle="modal" data-target="#modalVacio">Enviar</button>
+											<button id="respuestaEmail" type="button" class="btn btn-danger responderCorreo" data-dismiss="modal" data-toggle="modal" data-target="#modalEnviado">Enviar</button>
 										</div>
 									</div>
 								</div>
@@ -135,21 +138,19 @@
 <!----------------------------------------------------MODAL SI EL CAMPO RESPUESTA ESTÁ VACÍO---------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------->
 								<!-- The Modal -->
-								<div id="modalVacio" class="modal"  >
+<!----							<div id="modalVacio" class="modal"  >
 								<div class="modal-dialog">
 									<div class="modal-content">
-										<!-- Modal Header -->
 										<div for="nombre" class="modal-header">
 											<h4 id="fid" class="modal-title">Admin.</h4>
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
-										<!-- Modal body -->
 										<div class="form-group">
 											<h3><center>Por favor, rellene el campo respuesta.</center></h3>
 										</div>
 									</div>
 								</div>
-							</div>
+							</div>-------------------------------------------------------------------------------->
 							<!------------------------------------------------------------------------------------>
 				</tbody>
 			</table>
