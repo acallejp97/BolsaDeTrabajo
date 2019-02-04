@@ -15,6 +15,7 @@ require("./oferta");
 require("./profesores");
 require("./usuario");
 
+
 window.Vue = require("vue");
 
 import VueMaterial from 'vue-material'
