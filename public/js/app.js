@@ -25070,20 +25070,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
  */
 
 Vue.component("passwords", __webpack_require__(58));
-window.onload = function () {
-  new Vue({
-    el: '#passwords',
+new Vue({
+    el: "#passwords",
     data: {
-      credentials: {
-        email: '',
-        repemail: '',
-        password: '',
-        confirmPassword: '',
-        normalInput: 'this input is not using vue-material'
-      }
+        credentials: {
+            email: "",
+            repemail: "",
+            password: "",
+            confirmPassword: "",
+            normalInput: "this input is not using vue-material"
+        }
     }
-  });
-};
+});
 
 /***/ }),
 /* 14 */

@@ -26,7 +26,7 @@ require("./deleteMensaje");
 
 window.Vue = require("vue");
 
-import VueMaterial from 'vue-material'
+import VueMaterial from "vue-material";
 import VeeValidate from "vee-validate";
 Vue.use(VueMaterial);
 Vue.use(VeeValidate);
@@ -38,17 +38,15 @@ Vue.use(VeeValidate);
  */
 
 Vue.component("passwords", require("./components/passwords.vue"));
-window.onload = function () {
 new Vue({
-    el: '#passwords',
+    el: "#passwords",
     data: {
         credentials: {
-          email: '',
-        repemail: '',
-        password: '',
-        confirmPassword: '',
-        normalInput: 'this input is not using vue-material'
-      }
+            email: "",
+            repemail: "",
+            password: "",
+            confirmPassword: "",
+            normalInput: "this input is not using vue-material"
+        }
     }
-  });
-};
+});

@@ -66,7 +66,6 @@
                     </div>
 
                   <passwords>
-                      
                   </passwords>
 
                     <div class="form-group col-xs-8">
