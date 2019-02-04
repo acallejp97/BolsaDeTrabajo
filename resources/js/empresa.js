@@ -55,7 +55,7 @@ $("#insertEmpresa").click(function() {
     });
 });
 
-$("#updateEmpresa").click(function() {
+$(".updateEmpresa").click(function() {
     var array = {
         nombre: $("#nombre").val(),
         apellido: $("#direccion").val(),
