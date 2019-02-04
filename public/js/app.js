@@ -47920,13 +47920,14 @@ $(".borrarProfesor").click(function () {
 
 $(".updateProfe").click(function () {
     var array = {
-        idprofe: $(this).val(),
+        iduser: $(this).val(),
         nombre: $("#nombre" + $(this).val()).val(),
         apellidos: $("#apellidos" + $(this).val()).val(),
-        departamentos: $("#departamentos" + $(this).val()).val(),
+        departamento: $("#departamento" + $(this).val() + " option:selected").val(),
         email: $("#email" + $(this).val()).val()
     };
 
+    alert(array['departamento']);
     var valParam = JSON.stringify(array);
 
     $.ajax({
@@ -47957,7 +47958,6 @@ $("#insertProfe").click(function () {
         id_depar: $("#id_depar").val(),
         rango: $("#rango").val(),
         id_user: $("#id_user").val()
-
     };
 
     var valParam = JSON.stringify(array);
@@ -48050,7 +48050,6 @@ $("#descargarPlantilla").click(function () {
         type: "GET",
         data: {},
         success: function success(data) {
-
             alert("Descargando datos");
         },
         error: function error() {
@@ -48107,6 +48106,7 @@ $(".updateUsuarios").click(function () {
         },
         success: function success() {
             alert("Datos modificados correctamente");
+            location.reload();
         },
         error: function error() {
             alert("Por favor, revise los datos");

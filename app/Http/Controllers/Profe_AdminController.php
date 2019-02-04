@@ -483,14 +483,15 @@ class Profe_AdminController extends Controller
 
             $enviado = json_decode($_REQUEST['actualizacionProfe']);
 
-            $idprofe = $enviado->idprofe;
+            $iduser = $enviado->iduser;
             $nombre = $enviado->nombre;
             $apellidos = $enviado->apellidos;
-            $departamentos = $enviado->departamentos;
             $email = $enviado->email;
+            $departamento = $enviado->departamento;
 
-            $actualizarUser = User::findOrFail($idprofe);
-            $actualizarProfe = Profe_Admin::where('id_user', $idprofe)->first();
+            $actualizarUser = User::findOrFail($iduser);
+            $actualizarProfes = Profe_Admin::where('id_user', $iduser)->get();
+
             if ($nombre != "") {
                 $actualizarUser->update(['nombre' => $nombre]);
             }
@@ -498,16 +499,19 @@ class Profe_AdminController extends Controller
             if ($apellidos != "") {
                 $actualizarUser->update(['apellidos' => $apellidos]);
             }
+            foreach ($actualizarProfes as $actualizarProfe) {
 
-            if ($departamentos != "") {
-                $actualizarProfe->update(['id_depar' => $departamentos]);
+                if ($departamento != "") {
+                    $actualizarProfe->update(['id_depar' => $departamento]);
+                }
             }
+
             if ($email != "") {
                 $actualizarUser->update(['email' => $email]);
             }
 
         } else {
-            $actualizarProfe = Profe_Admin::findOrFail($idprofe);
+            $actualizarProfe = Profe_Admin::findOrFail($iduser);
         }
 
     }
@@ -516,26 +520,26 @@ class Profe_AdminController extends Controller
         if (!$request->ajax()) {
             return redirect('/');
         }
-        
+
         if (isset($_REQUEST['actualizarOferta'])) {
-            
+
             $enviado = json_decode($_REQUEST['actualizarOferta']);
-            
+
             $idoferta = $enviado->idoferta;
             $titulo = $enviado->titulo;
             $descripcion = $enviado->descripcion;
             $puestos = $enviado->puestos;
-            
+
             $actualizarOferta = Oferta::findOrFail($idoferta);
-            
+
             if ($titulo != "") {
                 $actualizarOferta->update(['titulo' => $titulo]);
             }
-            
+
             if ($descripcion != "") {
                 $actualizarOferta->update(['descripcion' => $descripcion]);
             }
-            
+
             if ($puestos != "") {
                 $actualizarOferta->update(['puestos-vacantes' => $puestos]);
             }
