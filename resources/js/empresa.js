@@ -30,8 +30,7 @@ $("#insertEmpresa").click(function() {
         direccion: $("#direccion").val(),
         email: $("#email").val(),
         url: $("#url").val(),
-        telefono: $("#telefono").val(),
-        
+        telefono: $("#telefono").val()
     };
 
     var valParam = JSON.stringify(array);
@@ -54,14 +53,14 @@ $("#insertEmpresa").click(function() {
         }
     });
 });
-
-$("#updateEmpresa").click(function() {
+$(".updateEmpresa").click(function() {
     var array = {
-        nombre: $("#nombre").val(),
-        apellido: $("#direccion").val(),
-        email: $("#email").val(),
-        password1: $("#url").val(),
-        password2: $("#telefono").val()
+        idempresa: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        direccion: $("#direccion" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val(),
+        url: $("#url" + $(this).val()).val(),
+        telefono: $("#telefono" + $(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);

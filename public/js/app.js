@@ -47521,7 +47521,6 @@ $("#insertEmpresa").click(function () {
         email: $("#email").val(),
         url: $("#url").val(),
         telefono: $("#telefono").val()
-
     };
 
     var valParam = JSON.stringify(array);
@@ -47544,14 +47543,14 @@ $("#insertEmpresa").click(function () {
         }
     });
 });
-
-$("#updateEmpresa").click(function () {
+$(".updateEmpresa").click(function () {
     var array = {
-        nombre: $("#nombre").val(),
-        apellido: $("#direccion").val(),
-        email: $("#email").val(),
-        password1: $("#url").val(),
-        password2: $("#telefono").val()
+        idempresa: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        direccion: $("#direccion" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val(),
+        url: $("#url" + $(this).val()).val(),
+        telefono: $("#telefono" + $(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -47852,7 +47851,7 @@ $(".updateOferta").click(function () {
         url: "./actualizarOferta",
         type: "POST",
         data: {
-            actualizacionOferta: valParam
+            actualizarOferta: valParam
         },
         success: function success() {
             alert("Datos modificados correctamente");
@@ -47896,13 +47895,14 @@ $(".borrarProfesor").click(function () {
 
 $(".updateProfe").click(function () {
     var array = {
-        idprofe: $(this).val(),
+        iduser: $(this).val(),
         nombre: $("#nombre" + $(this).val()).val(),
         apellidos: $("#apellidos" + $(this).val()).val(),
-        departamentos: $("#departamentos" + $(this).val()).val(),
+        departamento: $("#departamento" + $(this).val() + " option:selected").val(),
         email: $("#email" + $(this).val()).val()
     };
 
+    alert(array['departamento']);
     var valParam = JSON.stringify(array);
 
     $.ajax({
@@ -47933,7 +47933,6 @@ $("#insertProfe").click(function () {
         id_depar: $("#id_depar").val(),
         rango: $("#rango").val(),
         id_user: $("#id_user").val()
-
     };
 
     var valParam = JSON.stringify(array);
@@ -48025,9 +48024,8 @@ $("#descargarPlantilla").click(function () {
         url: "./descargarPlantilla",
         type: "GET",
         data: {},
-        success: function success() {
-            alert("Por favor, revise los datos");
-            location.reload();
+        success: function success(data) {
+            alert("Descargando datos");
         },
         error: function error() {
             alert("Por favor, revise los datos");
@@ -48061,31 +48059,6 @@ $("#insertUsers").click(function () {
     });
 });
 
-$("#insertUsers").click(function () {
-    var array = {
-        file: $("#puestos").val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./subiendoCSV",
-        type: "POST",
-        data: {
-            nuevaOferta: valParam
-        },
-        success: function success() {
-            alert("Usuarios correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
 $(".updateUsuarios").click(function () {
     var array = {
         iduser: $(this).val(),
@@ -87651,7 +87624,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "passwords" } }, [
+  return _c("div", [
     _c("div", { staticClass: "form-group" }, [
       _c("div", { staticClass: "col-xs-11" }, [
         _vm._m(0),
