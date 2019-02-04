@@ -25,13 +25,7 @@
         <label for="id_grado" class="control-label">Grado</label>
         <select class="form-control" id="id_grado">
             @foreach ($result['grados'] as $grado) 
-            @foreach ($result['ofertas'] as $oferta) 
-            @if($grado['id']==$oferta['id_grado'])
-            
-            <option name="id_grado"value="{{$grado['id']}}">{{$grado['nombre']}}</option>
-            @break
-            @endif
-              @endforeach
+            <option name="id_grado" value="{{$grado['id']}}">{{$grado['nombre']}}</option>
               @endforeach
             </select>
       </div>
@@ -57,7 +51,7 @@
       </div>
 
       <div class="form-group">
-        @foreach ($result['profesor'] as $profe) @if($profe=true)
+        @foreach ($result['profe_admin'] as $profe) @if($profe=true)
         <input type="hidden" id="id_profesor" value="{{$profe}}"> @endif @endforeach
       </div>
 
@@ -126,7 +120,7 @@
               </h5>
               <textarea id="descripcion<?php echo $oferta->id;?>" class="form-control">{{$oferta['descripcion']}}</textarea>
             </div>
-            
+
             <div class="modal-header">
               <h5><b> Puestos Vacantes:</b>
               </h5>

@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(5);
-var isBuffer = __webpack_require__(21);
+var isBuffer = __webpack_require__(20);
 
 /*global toString:true*/
 
@@ -408,7 +408,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(23);
+var normalizeHeaderName = __webpack_require__(22);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -13681,12 +13681,12 @@ process.umask = function() { return 0; };
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(24);
-var buildURL = __webpack_require__(26);
-var parseHeaders = __webpack_require__(27);
-var isURLSameOrigin = __webpack_require__(28);
+var settle = __webpack_require__(23);
+var buildURL = __webpack_require__(25);
+var parseHeaders = __webpack_require__(26);
+var isURLSameOrigin = __webpack_require__(27);
 var createError = __webpack_require__(8);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(29);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(28);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -13783,7 +13783,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(30);
+      var cookies = __webpack_require__(29);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -13867,7 +13867,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(25);
+var enhanceError = __webpack_require__(24);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -25011,14 +25011,14 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(54).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(45).setImmediate))
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(61);
+module.exports = __webpack_require__(52);
 
 
 /***/ }),
@@ -25027,9 +25027,9 @@ module.exports = __webpack_require__(61);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_material__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(48);
 /*
  *
  * First we will load all of this project's JavaScript dependencies which
@@ -25038,7 +25038,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 __webpack_require__(14);
-__webpack_require__(15);
+__webpack_require__(37);
 __webpack_require__(38);
 __webpack_require__(39);
 __webpack_require__(40);
@@ -25046,15 +25046,6 @@ __webpack_require__(41);
 __webpack_require__(42);
 __webpack_require__(43);
 __webpack_require__(44);
-__webpack_require__(45);
-__webpack_require__(46);
-__webpack_require__(47);
-__webpack_require__(48);
-__webpack_require__(49);
-__webpack_require__(50);
-__webpack_require__(51);
-__webpack_require__(52);
-__webpack_require__(53);
 
 window.Vue = __webpack_require__(11);
 
@@ -25069,54 +25060,28 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component("passwords", __webpack_require__(58));
-new Vue({
-    el: "#passwords",
+Vue.component("passwords", __webpack_require__(49));
+window.onload = function () {
+  new Vue({
+    el: '#passwords',
     data: {
-        credentials: {
-            email: "",
-            repemail: "",
-            password: "",
-            confirmPassword: "",
-            normalInput: "this input is not using vue-material"
-        }
+      credentials: {
+        email: '',
+        repemail: '',
+        password: '',
+        confirmPassword: '',
+        normalInput: 'this input is not using vue-material'
+      }
     }
-});
+  });
+};
 
 /***/ }),
 /* 14 */
-/***/ (function(module, exports) {
-
-$(".abrirMensaje").click(function () {
-    var array = {
-        nombre: $(this).val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./abrirMensaje",
-        type: "POST",
-        data: {},
-        success: function success() {
-            alert("el mensaje ha sido abierto");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(16);
+window._ = __webpack_require__(15);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -25128,7 +25093,7 @@ try {
   window.Popper = __webpack_require__(3).default;
   window.$ = window.jQuery = __webpack_require__(4);
 
-  __webpack_require__(18);
+  __webpack_require__(17);
 } catch (e) {}
 
 /**
@@ -25137,7 +25102,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(19);
+window.axios = __webpack_require__(18);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -25173,7 +25138,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42285,10 +42250,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)(module)))
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -42316,7 +42281,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -46571,13 +46536,13 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(20);
+module.exports = __webpack_require__(19);
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46585,7 +46550,7 @@ module.exports = __webpack_require__(20);
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(5);
-var Axios = __webpack_require__(22);
+var Axios = __webpack_require__(21);
 var defaults = __webpack_require__(2);
 
 /**
@@ -46620,14 +46585,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(10);
-axios.CancelToken = __webpack_require__(36);
+axios.CancelToken = __webpack_require__(35);
 axios.isCancel = __webpack_require__(9);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(37);
+axios.spread = __webpack_require__(36);
 
 module.exports = axios;
 
@@ -46636,7 +46601,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports) {
 
 /*!
@@ -46663,7 +46628,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46671,8 +46636,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(2);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(31);
-var dispatchRequest = __webpack_require__(32);
+var InterceptorManager = __webpack_require__(30);
+var dispatchRequest = __webpack_require__(31);
 
 /**
  * Create a new instance of Axios
@@ -46749,7 +46714,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46768,7 +46733,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46801,7 +46766,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46829,7 +46794,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46902,7 +46867,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46962,7 +46927,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47037,7 +47002,7 @@ module.exports = (
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47080,7 +47045,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47140,7 +47105,7 @@ module.exports = (
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47199,18 +47164,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(33);
+var transformData = __webpack_require__(32);
 var isCancel = __webpack_require__(9);
 var defaults = __webpack_require__(2);
-var isAbsoluteURL = __webpack_require__(34);
-var combineURLs = __webpack_require__(35);
+var isAbsoluteURL = __webpack_require__(33);
+var combineURLs = __webpack_require__(34);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -47292,7 +47257,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47319,7 +47284,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47340,7 +47305,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47361,7 +47326,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47425,7 +47390,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47459,7 +47424,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports) {
 
 $("#enviarContacto").click(function () {
@@ -47491,6 +47456,44 @@ $("#enviarContacto").click(function () {
 });
 
 /***/ }),
+/* 38 */
+/***/ (function(module, exports) {
+
+$("#updateCV").click(function () {
+    var array = {
+        nombre: $("#nombre").val(),
+        apellidos: $("#apellido").val(),
+        telefono: $("#telefono").val(),
+        direccion: $("#direccion").val(),
+        email: $("#email").val(),
+        formacion: $("#formacion").val(),
+        idiomas: $("#idiomas").val(),
+        experiencia: $("#experiencia").val(),
+        otros: $("#otros").val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizandoCV",
+        type: "POST",
+        data: {
+            updateCV: valParam
+        },
+        success: function success() {
+            alert("Curriculum actualizado correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+/***/ }),
 /* 39 */
 /***/ (function(module, exports) {
 
@@ -47512,6 +47515,67 @@ $(".borrarEmpresa").click(function () {
         },
         success: function success() {
             alert("Empresa eliminada correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$("#insertEmpresa").click(function () {
+    var array = {
+        nombre: $("#nombre").val(),
+        direccion: $("#direccion").val(),
+        email: $("#email").val(),
+        url: $("#url").val(),
+        telefono: $("#telefono").val()
+
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./anadirEmpresas",
+        type: "POST",
+        data: {
+            nuevaEmpresa: valParam
+        },
+        success: function success() {
+            alert("Empresa añadida correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$("#updateEmpresa").click(function () {
+    var array = {
+        nombre: $("#nombre").val(),
+        apellido: $("#direccion").val(),
+        email: $("#email").val(),
+        password1: $("#url").val(),
+        password2: $("#telefono").val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizarEmpresa",
+        type: "POST",
+        data: {
+            actualizacionEmpresa: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
             location.reload();
         },
         error: function error() {
@@ -47638,7 +47702,7 @@ $(".borrarDepartamento").click(function () {
 /* 41 */
 /***/ (function(module, exports) {
 
-$(".borrarUsuario").click(function () {
+$(".borrarCorreo").click(function () {
     var array = {
         id: $(this).val()
     };
@@ -47649,13 +47713,63 @@ $(".borrarUsuario").click(function () {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./borrarUsuario",
+        url: "./borrarCorreo",
         type: "POST",
         data: {
-            borrarUsuario: valParam
+            borrarCorreo: valParam
         },
         success: function success() {
-            alert("Usuario eliminado correctamente");
+            alert("Correo eliminado correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$(".abrirMensaje").click(function () {
+    var array = {
+        nombre: $(this).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./abrirMensaje",
+        type: "POST",
+        data: {},
+        success: function success() {
+            alert("el mensaje ha sido abierto");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$("#respuestaEmail").click(function () {
+    var array = {
+        respuesta: $("#respuesta").val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./responderCorreo",
+        type: "POST",
+        data: {
+            respuestaCorreo: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
             location.reload();
         },
         error: function error() {
@@ -47668,14 +47782,9 @@ $(".borrarUsuario").click(function () {
 /* 42 */
 /***/ (function(module, exports) {
 
-$("#insertEmpresa").click(function () {
+$(".borrarOferta").click(function () {
     var array = {
-        nombre: $("#nombre").val(),
-        direccion: $("#direccion").val(),
-        email: $("#email").val(),
-        url: $("#url").val(),
-        telefono: $("#telefono").val()
-
+        id: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -47684,13 +47793,13 @@ $("#insertEmpresa").click(function () {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./anadirEmpresas",
+        url: "./borrarOferta",
         type: "POST",
         data: {
-            nuevaEmpresa: valParam
+            borrarOferta: valParam
         },
         success: function success() {
-            alert("Empresa añadida correctamente");
+            alert("Oferta eliminada correctamente");
             location.reload();
         },
         error: function error() {
@@ -47698,10 +47807,6 @@ $("#insertEmpresa").click(function () {
         }
     });
 });
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports) {
 
 $("#insertOferta").click(function () {
     var array = {
@@ -47734,9 +47839,94 @@ $("#insertOferta").click(function () {
     });
 });
 
+$(".updateOferta").click(function () {
+    var array = {
+        idoferta: $(this).val(),
+        titulo: $("#titulo" + $(this).val()).val(),
+        descripcion: $("#descripcion" + $(this).val()).val(),
+        puestos: $("#puestos" + $(this).val()).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizarOferta",
+        type: "POST",
+        data: {
+            actualizacionOferta: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports) {
+
+$(".borrarProfesor").click(function () {
+    var array = {
+        id: $(this).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./borrarProfesor",
+        type: "POST",
+        data: {
+            borrarProfesor: valParam
+        },
+        success: function success() {
+            alert("Profesor eliminado correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$(".updateProfe").click(function () {
+    var array = {
+        idprofe: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        apellidos: $("#apellidos" + $(this).val()).val(),
+        departamentos: $("#departamentos" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./actualizarProfe",
+        type: "POST",
+        data: {
+            actualizacionProfe: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
 
 $("#insertProfe").click(function () {
     var array = {
@@ -47772,40 +47962,10 @@ $("#insertProfe").click(function () {
 });
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports) {
 
-$("#insertUsers").click(function () {
-    var array = {
-        file: $("#puestos").val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./subiendoCSV",
-        type: "POST",
-        data: {
-            nuevaOferta: valParam
-        },
-        success: function success() {
-            alert("Oferta añadida correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-$(".borrarOferta").click(function () {
+$(".borrarUsuario").click(function () {
     var array = {
         id: $(this).val()
     };
@@ -47816,13 +47976,13 @@ $(".borrarOferta").click(function () {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./borrarOferta",
+        url: "./borrarUsuario",
         type: "POST",
         data: {
-            borrarOferta: valParam
+            borrarUsuario: valParam
         },
         success: function success() {
-            alert("Oferta eliminada correctamente");
+            alert("Usuario eliminado correctamente");
             location.reload();
         },
         error: function error() {
@@ -47830,177 +47990,6 @@ $(".borrarOferta").click(function () {
         }
     });
 });
-
-$(".updateOferta").click(function () {
-    var array = {
-        idoferta: $(this).val(),
-        titulo: $("#titulo" + $(this).val()).val(),
-        descripcion: $("#descripcion" + $(this).val()).val(),
-        puestos: $("#puestos" + $(this).val()).val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./actualizarOferta",
-        type: "POST",
-        data: {
-            actualizarOferta: valParam
-        },
-        success: function success() {
-            alert("Datos modificados correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports) {
-
-$(".borrarProfesor").click(function () {
-    var array = {
-        id: $(this).val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./borrarProfesor",
-        type: "POST",
-        data: {
-            borrarProfesor: valParam
-        },
-        success: function success() {
-            alert("Profesor eliminado correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports) {
-
-$("#updateCV").click(function () {
-    var array = {
-        nombre: $("#nombre").val(),
-        apellidos: $("#apellido").val(),
-        telefono: $("#telefono").val(),
-        direccion: $("#direccion").val(),
-        email: $("#email").val(),
-        formacion: $("#formacion").val(),
-        idiomas: $("#idiomas").val(),
-        experiencia: $("#experiencia").val(),
-        otros: $("#otros").val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./actualizandoCV",
-        type: "POST",
-        data: {
-            updateCV: valParam
-        },
-        success: function success() {
-            alert("Curriculum actualizado correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports) {
-
-$(".updateEmpresa").click(function () {
-    var array = {
-        idempresa: $(this).val(),
-        nombre: $("#nombre" + $(this).val()).val(),
-        direccion: $("#direccion" + $(this).val()).val(),
-        email: $("#email" + $(this).val()).val(),
-        url: $("#url" + $(this).val()).val(),
-        telefono: $("#telefono" + $(this).val()).val()
-
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./actualizarEmpresa",
-        type: "POST",
-        data: {
-            actualizacionEmpresa: valParam
-        },
-        success: function success() {
-            alert("Datos modificados correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports) {
-
-$(".updateProfe").click(function () {
-    var array = {
-        idprofe: $(this).val(),
-        nombre: $("#nombre" + $(this).val()).val(),
-        apellidos: $("#apellidos" + $(this).val()).val(),
-        departamentos: $("#departamentos" + $(this).val()).val(),
-        email: $("#email" + $(this).val()).val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./actualizarProfe",
-        type: "POST",
-        data: {
-            actualizacionProfe: valParam
-        },
-        success: function success() {
-            alert("Datos modificados correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports) {
 
 $("#updateUser").click(function () {
     var array = {
@@ -48032,29 +48021,75 @@ $("#updateUser").click(function () {
     });
 });
 
-$("#deleteUser").click(function () {
+$("#descargarPlantilla").click(function () {
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./descargarPlantilla",
+        type: "GET",
+        data: {},
+        success: function success() {
+            alert("Por favor, revise los datos");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$("#insertUsers").click(function () {
+    var array = {
+        file: $("#puestos").val()
+    };
+
+    var valParam = JSON.stringify(array);
 
     $.ajax({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./actualizarUsuario",
+        url: "./subiendoCSV",
         type: "POST",
-        data: {},
+        data: {
+            nuevaOferta: valParam
+        },
         success: function success() {
-            alert("Usuario Eliminado Correctamente");
+            alert("Usuarios correctamente");
             location.reload();
         },
         error: function error() {
-            alert("No se ha podido eliminar el usuario...");
+            alert("Por favor, revise los datos");
         }
     });
 });
 
-/***/ }),
-/* 52 */
-/***/ (function(module, exports) {
+$("#insertUsers").click(function () {
+    var array = {
+        file: $("#puestos").val()
+    };
 
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./subiendoCSV",
+        type: "POST",
+        data: {
+            nuevaOferta: valParam
+        },
+        success: function success() {
+            alert("Usuarios correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
 $(".updateUsuarios").click(function () {
     var array = {
         iduser: $(this).val(),
@@ -48086,37 +48121,7 @@ $(".updateUsuarios").click(function () {
 });
 
 /***/ }),
-/* 53 */
-/***/ (function(module, exports) {
-
-$(".borrarCorreo").click(function () {
-    var array = {
-        id: $(this).val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./borrarCorreo",
-        type: "POST",
-        data: {
-            borrarCorreo: valParam
-        },
-        success: function success() {
-            alert("Correo eliminado correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 54 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -48172,7 +48177,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(55);
+__webpack_require__(46);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -48186,7 +48191,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 55 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -48379,7 +48384,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 56 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -78689,7 +78694,7 @@ if (false) {
 });
 
 /***/ }),
-/* 57 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87611,15 +87616,15 @@ var install = VeeValidate$1.install;
 
 
 /***/ }),
-/* 58 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(59)
+var normalizeComponent = __webpack_require__(50)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(60)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -87658,7 +87663,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 59 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -87767,7 +87772,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 60 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -87884,7 +87889,7 @@ if (false) {
 }
 
 /***/ }),
-/* 61 */
+/* 52 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

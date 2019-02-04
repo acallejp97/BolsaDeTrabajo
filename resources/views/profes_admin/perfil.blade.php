@@ -64,10 +64,10 @@
                                 title="Introduce tu email.">
                         </div>
                     </div>
-
+                    <div id="passwords">
                   <passwords>
                   </passwords>
-
+                    </div>
                     <div class="form-group col-xs-8">
                         <div class="form-group">
                             <div class="col-xs-12">

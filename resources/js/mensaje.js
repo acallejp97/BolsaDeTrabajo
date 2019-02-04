@@ -1,21 +1,22 @@
-$(".borrarEmpresa").click(function() {
+$(".borrarCorreo").click(function() {
     var array = {
         id: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
 
+
     $.ajax({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./borrarEmpresa",
+        url: "./borrarCorreo",
         type: "POST",
         data: {
-            borrarEmpresa: valParam
+            borrarCorreo: valParam
         },
         success: function() {
-            alert("Empresa eliminada correctamente");
+            alert("Correo eliminado correctamente");
             location.reload();
         },
         error: function() {
@@ -24,14 +25,9 @@ $(".borrarEmpresa").click(function() {
     });
 });
 
-$("#insertEmpresa").click(function() {
+$(".abrirMensaje").click(function() {
     var array = {
-        nombre: $("#nombre").val(),
-        direccion: $("#direccion").val(),
-        email: $("#email").val(),
-        url: $("#url").val(),
-        telefono: $("#telefono").val(),
-        
+        nombre: $(this).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -40,13 +36,11 @@ $("#insertEmpresa").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./anadirEmpresas",
+        url: "./abrirMensaje",
         type: "POST",
-        data: {
-            nuevaEmpresa: valParam
-        },
+        data: {},
         success: function() {
-            alert("Empresa añadida correctamente");
+            alert("el mensaje ha sido abierto");
             location.reload();
         },
         error: function() {
@@ -55,13 +49,9 @@ $("#insertEmpresa").click(function() {
     });
 });
 
-$("#updateEmpresa").click(function() {
+$("#respuestaEmail").click(function() {
     var array = {
-        nombre: $("#nombre").val(),
-        apellido: $("#direccion").val(),
-        email: $("#email").val(),
-        password1: $("#url").val(),
-        password2: $("#telefono").val()
+        respuesta: $("#respuesta").val()
     };
 
     var valParam = JSON.stringify(array);
@@ -70,10 +60,10 @@ $("#updateEmpresa").click(function() {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./actualizarEmpresa",
+        url: "./responderCorreo",
         type: "POST",
         data: {
-            actualizacionEmpresa: valParam
+            respuestaCorreo: valParam
         },
         success: function() {
             alert("Datos modificados correctamente");

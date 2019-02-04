@@ -52,7 +52,6 @@
 									</button>
 
 								</td>
-
 							</tr>
 							  <!--modal-->
       <div id="edit-modal-cust-<?php echo $user->id;?>" class="modal">

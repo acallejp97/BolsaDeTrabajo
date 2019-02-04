@@ -5,28 +5,20 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require("./abrirMensaje");
 require("./bootstrap");
 require("./contacto");
+require("./curriculum");
 require("./empresa");
 require("./grado");
-require("./usuario");
-require("./insertEmpresa");
-require("./insertOferta");
-require("./insertProfe");
-require("./insertUsers");
+require("./mensaje");
 require("./oferta");
 require("./profesores");
-require("./updateCV");
-require("./updateEmpresa");
-require("./updateProfe");
-require("./updateUser");
-require("./updateUsuarios");
-require("./deleteMensaje");
+require("./usuario");
+
 
 window.Vue = require("vue");
 
-import VueMaterial from "vue-material";
+import VueMaterial from 'vue-material'
 import VeeValidate from "vee-validate";
 Vue.use(VueMaterial);
 Vue.use(VeeValidate);
@@ -38,15 +30,17 @@ Vue.use(VeeValidate);
  */
 
 Vue.component("passwords", require("./components/passwords.vue"));
+window.onload = function () {
 new Vue({
-    el: "#passwords",
+    el: '#passwords',
     data: {
         credentials: {
-            email: "",
-            repemail: "",
-            password: "",
-            confirmPassword: "",
-            normalInput: "this input is not using vue-material"
-        }
+          email: '',
+        repemail: '',
+        password: '',
+        confirmPassword: '',
+        normalInput: 'this input is not using vue-material'
+      }
     }
-});
+  });
+};

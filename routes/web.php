@@ -22,42 +22,49 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
     Route::get('/profesores', "Profe_AdminController@Profesores")->name('profesores');
     Route::get('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
-    Route::get('/responder', "Profe_AdminController@respondercorreo")->name('responder');
-    Route::post('/actualizarProfe', 'Profe_AdminController@updateProfe')->name('actualizarProfe');
+    //-------------------------------------RESPONDER EMAIL---------------------
+    Route::get('respuestaEmail', function () {
+        $data = array(
+            'name' => "Bolsa de Trabajo FP Txurdinaga",
+        );
+        Mail::send('profes_admin/respuestaMail', $data, function ($message) {
+            $message->from('g1bolsadetrabajo@gmail.com', 'Bolsa de Trabajo FP Txurdinaga');
+            $message->to('niniadefresa_94@hotmail.es')->subject('Respuesta sugerencia Bolsa de Trabajo ');
+        });
+        return redirect('/buzon');
+    });
     
     //Profe y admin
     Route::post('/actualizarUsuarios', 'Profe_AdminController@updateUsuarios')->name('actualizarUsuarios');
     Route::get('/empresas', "Profe_AdminController@Empresas")->name('empresas');
-    Route::get('/anadirUsuarios', "Profe_AdminController@AnadirUsuarios")->name('anadirUsuarios');
+    Route::get('/altaUsuarios', "Profe_AdminController@altaUsuarios")->name('altaUsuarios');
     Route::get('/usuarios', "Profe_AdminController@Usuarios")->name('usuarios');
     Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
+    Route::get('/descargarPlantilla', function () {
+            $pathtoFile = public_path().'/download/template.csv';
+            return response()->download($pathtoFile);
+    })->name('descargarPlantilla');
+
+    Route::post('/abrirMensaje', 'Profe_AdminController@abrirMensaje')->name('abrirMensaje');
+    Route::post('/actualizarOferta', 'Profe_AdminController@updateOferta')->name('actualizarOferta');
     Route::post('/actualizarEmpresa', 'Profe_AdminController@updateEmpresa')->name('actualizarEmpresa');
     Route::post('/anadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
+    Route::post('/anadirUsuario', 'Profe_AdminController@insertUser')->name('anadirUsuario');
     Route::post('/anadirGrado', 'Profe_AdminController@insertGrado')->name('anadirGrado');
-    Route::post('/subiendoCSV', 'Profe_AdminController@csv')->name('subiendoCSV');
     Route::post('/anadirOferta', 'Profe_AdminController@insertarOferta')->name('insertarOferta');
     Route::post('/anadirEmpresas', 'Profe_AdminController@insertarEmpresa')->name('insertEmpresa');
     Route::post('/borrarGrado', 'Profe_AdminController@deleteGrado')->name('borrarGrado');
-    Route::post('/abrirMensaje', 'Profe_AdminController@abrirMensaje')->name('abrirMensaje');
-    Route::post('/contacto', 'Profe_AdminController@contacto')->name('contacto');
     Route::post('/borrarEmpresa', 'Profe_AdminController@deleteEmpresa')->name('borrarEmpresa');
     Route::post('/borrarOferta', 'Profe_AdminController@deleteOferta')->name('borrarOferta');
     Route::post('/borrarProfesor', 'Profe_AdminController@deleteProfesor')->name('borrarProfesor ');
     Route::post('/borrarUsuario', 'Profe_AdminController@deleteUsuario')->name('borrarUsuario');
     Route::post('/borrarDepartamento', 'Profe_AdminController@deleteDepartamento')->name('borrarDepartamento');
     Route::post('/borrarCorreo', 'Profe_AdminController@deleteMensaje')->name('borrarCorreo');
-    Route::post('/actualizarOferta', 'Profe_AdminController@updateOferta')->name('actualizarOferta');
+    Route::post('/subiendoCSV', 'Profe_AdminController@csv')->name('subiendoCSV');
     
 
     //Alumno
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
-
     Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
-
-
-//prueba para modificar
-    // Route::get ( 'empresas/{{$empre->id}}', 'Profe_AdminController@editEmpresa' );
-  
 });
-

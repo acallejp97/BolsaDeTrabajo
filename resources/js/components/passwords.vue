@@ -1,5 +1,5 @@
  <template>
-  <div id="passwords">
+  <div>
     <div class="form-group">
       <div class="col-xs-11">
         <label for="password">

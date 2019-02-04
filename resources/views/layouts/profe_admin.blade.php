@@ -9,7 +9,7 @@
   <meta name="csrf-token" content="{{csrf_token()}}">
 
   <!-- Titulo -->
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name') }}</title>
 
   <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -33,8 +33,8 @@
         <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
           <a style="color:#b50045;"class="nav-link" href="{{ route('perfil') }}">Ver Perfil</a>
         </li>
-        <li class="nav-item {{ request()->is('anadirUsuarios') ? 'active' : '' }}">
-          <a style="color:#b50045;"class="nav-link" href="{{ route('anadirUsuarios') }}">Alta Usuarios</a>
+        <li class="nav-item {{ request()->is('altaUsuarios') ? 'active' : '' }}">
+          <a style="color:#b50045;"class="nav-link" href="{{ route('altaUsuarios') }}">Alta Usuarios</a>
         </li>
         <li class="nav-item {{ request()->is('usuarios') ? 'active' : '' }}">
           <a style="color:#b50045;"class="nav-link" href="{{ route('usuarios') }}">Usuarios</a>
