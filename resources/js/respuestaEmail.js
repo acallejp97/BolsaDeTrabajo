@@ -1,25 +1,27 @@
 $("#respuestaEmail").click(function() {
-    var array = {
+    /*var array = {
+        usuario: ("#usuario").val(),
         respuesta: $("#respuesta").val()
-    };
+    };*/
 
-    var valParam = JSON.stringify(array);
+    var respuesta  = $("#respuesta").val();
+
+    var valParam = JSON.stringify(respuesta);
 
     $.ajax({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         },
-        url: "./responderCorreo",
+        url: "./respuestaEmail",
         type: "POST",
         data: {
-            respuestaCorreo: valParam
+            respuesta: valParam
         },
         success: function() {
-            alert("Datos modificados correctamente");
-            location.reload();
+            alert(respuesta);
         },
         error: function() {
-            alert("Por favor, revise los datos");
+            alert(respuesta);
         }
     });
 });
