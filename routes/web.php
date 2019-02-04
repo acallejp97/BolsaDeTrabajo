@@ -40,12 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/altaUsuarios', "Profe_AdminController@altaUsuarios")->name('altaUsuarios');
     Route::get('/usuarios', "Profe_AdminController@Usuarios")->name('usuarios');
     Route::get('/cursos', "Profe_AdminController@Cursos")->name('cursos');
-    Route::get('/descargarPlantilla', function () {
-            $pathtoFile = public_path().'/download/template.csv';
-            return response()->download($pathtoFile);
-    })->name('descargarPlantilla');
 
     Route::post('/abrirMensaje', 'Profe_AdminController@abrirMensaje')->name('abrirMensaje');
+    Route::post('/actualizarProfe', 'Profe_AdminController@updateProfe')->name('actualizarProfe');
     Route::post('/actualizarOferta', 'Profe_AdminController@updateOferta')->name('actualizarOferta');
     Route::post('/actualizarEmpresa', 'Profe_AdminController@updateEmpresa')->name('actualizarEmpresa');
     Route::post('/anadirDepartamento', 'Profe_AdminController@insertDepartamento')->name('anadirDepartamento');
