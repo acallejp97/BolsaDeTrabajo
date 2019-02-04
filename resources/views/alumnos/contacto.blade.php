@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-3">
-      <div class="well well-sm form-horizontal">
+      <div style="margin-top:6em;" class="well well-sm  form-horizontal">
         <fieldset>
           <legend class="text-center">Contactar</legend>
 
@@ -18,7 +18,7 @@
           <div class="form-group">
             <label class="col-md-3 control-label" for="asunto">Asunto</label>
             <div class="col-md-9">
-              <input id="asunto" name="asunti" type="text" placeholder="Asunto" class="form-control">
+              <input id="asunto" name="asunto" type="text" placeholder="Asunto" class="form-control">
             </div>
           </div>
 

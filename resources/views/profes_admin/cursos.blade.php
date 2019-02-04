@@ -12,9 +12,9 @@
     <br>
 
     <div class="container demo m-top">
-        <div id="lista" class="text-left m-4 row" style=" width:100%; background: #b50045;">
-            <ul class="list-unstyled col-md-9" style="display:inline;">
-            <li id="departamento"  class="h3 text-uppercase" ><strong>{{$departamento['nombre']}}
+        <div id="lista" class="text-left m-4 row" >
+            <ul style=" width:100%; background: #b50045;"class="list-unstyled col-md-9" style="display:inline;">
+            <li id="departamento"  class="h3 text-uppercase" style="color:white;"><strong>{{$departamento['nombre']}}
                 </strong>
             </li>
      

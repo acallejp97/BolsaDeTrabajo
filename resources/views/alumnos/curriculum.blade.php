@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-4">
-                            <label><h4>Apellido</h4></label>
+                            <label><h4>Apellidos</h4></label>
                             <input id="apellido" class="form-control" value="{{$curriculum['apellidos']}}" placeholder="Apellidos" title="Introduce tus apellidos.">
                         </div>
                     </div>

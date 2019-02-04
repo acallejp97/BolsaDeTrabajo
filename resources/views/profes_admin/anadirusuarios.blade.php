@@ -47,7 +47,7 @@
         <div class="col-md-6">
             <div class="container-fluid">
                 <div class="container-page">
-                    <div class="col-md-6">
+                    <div class="col-md-9">
                         <div class="page-header">
                             <h3>Añadir manualmente</h3>
                         </div>

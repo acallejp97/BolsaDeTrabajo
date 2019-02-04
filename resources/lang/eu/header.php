@@ -1,50 +1,106 @@
 <?php
  
+ ///////////////////////////////////////EUSKERA///////////////////////////////////////////////
 return [
+  //MENU
   'perfil' => 'Ver Perfil',
-  'altaempresas' => 'Alta Empresas',
+  'actualizarcv' => 'Actualizar CV',
   'altausuarios' => 'Alta Usuarios',
   'usuarios' => 'Usuarios',
   'ofertas' => 'Ofertas',
   'empresas' => 'Empresas',
   'buzon' => 'Buzon',
   'cursos' => 'Cursos',
+  'cerrar' => 'Cerrar Sesión',
   'contacto' => 'Contacto',
   'profesores' => 'Alta Profesores',
+
+  //PERFIL
   'nombre' => 'Nombre',
   'apellidos' => 'Apellidos',
-  'descripcion' => 'Descripción',
   'email' => 'Email',
-  'telefono' => 'Telefono',
-  'puestos' => 'Puestos Vacantes',
+  'guardar' => 'Guardar',
+  'actualizarimagen' => 'Actualizar Imagen',
+  'registradodesde' => 'Registrado desde',
+  'actividad' => 'Actividad',
+  'borrarperfil' => 'Borrar Perfil',
   'password' => 'Contraseña',
   'confirmar' => 'Confirmar contraseña',
+
+  //ALTA USUARIOS
+
+ 'subirarchivo' => 'Subir un archivo',
+ 'plantilla' => 'Descargar Plantilla',
+ 'subiralumnos' => 'Insertar Alumnos',
+ 'añadirmanual' => 'Añadir Manualmente',
+ 'nombrealu' => 'Nombre del alumno',
+ 'apellidoalu' => 'Apellido del alumno',
+ 'emailalu' => 'Email del alumno',
+ 'añofinalu' => 'Año de finalización',
+ 'grado' => 'Grado',
+ 'subir' => 'Subir',
+
+ //USUARIOS
+ 'registrado' => 'Registrado',
+ 'aniofin' => 'Año fin',
+ 'accion' => 'Acción',
+ 'modificar' => 'Modificar',
+ 'borrar' => 'Borrar',
+ 'apellidos' => 'Apellidos',
+ 'listausuarios' => 'Lista de Usuarios',
+
+ //EMPRESAS
+ 'añadirempresas' => 'Añadir Empresas',
+ 'publicar' => 'Publicar',
+ 'direccion' => 'Dirección',
+ 'url' => 'URL',
+ 'telefono' => 'Teléfono',
+ 'listaempresas' => 'Lista de Empresas',
+
+ //OFERTAS
+  'descripcion' => 'Descripción',
+  'empresa' => 'Empresa',
+  'puestos' => 'Puestos Vacantes',
+  'titulo' => 'Título',
+  'publicaroferta' => 'Publicar una Oferta',
+  'listaofertas' => 'Lista de Ofertas',
+  'profesorpublicado' => 'Profesor que la ha publicado',
+
+  //CONTACTO
+  'contactar' => 'Contactar',
+  'tumensaje' => 'Tu mensaje',
+  'introduzcamensaje' => 'Introduzca tu mensaje',
+
+  //ACTUALIZAR CV
+  'formacion' => 'Formación Académica',
+  'experiencia' => 'Experiencia',
+  'otrosdatos' => 'Otros datos',
+  'guardar' => 'Guardar',
+  'idiomas' => 'Idiomas',
+  'Curriculumde' => 'Curriculum de',
+
+  //CURSOS
+  'añadirdepartamento' => 'Añadir Departamento',
+  'añadirgrado' => 'Añadir Grado',
+  'borrargrado' => 'Borrar Grado',
+  'borrardepartamento' => 'Borrar Departamento',
+  
+  //PROFESORES
+  'añadirprofesor' => 'Añadir un Profesor',
   'guardar' => 'Guardar',
   'emviar' => 'Enviar',
   'publicar' => 'Publicar',
   'borrarperfil' => 'Borrar Perfil',
-  'registradodesde' => 'Registrado desde',
-  'registrado' => 'Registrado',
   'departamento' => 'Departamento',
-  'Actividad' => 'Actividad',
-  'añadirmanual' => 'Añadir Manualmente',
-  'nombrealu' => 'Nombre del alumno',
-  'apellidoalu' => 'Apellido del alumno',
-  'emailalu' => 'Email del alumno',
-  'añofinalu' => 'Apño de finalización',
-  'buscar' => 'Buscar',
-  'apellidoalu' => 'Apellido del alumno',
-  'aniofin' => 'Año fin',
-  'registrada' => 'Registrado',
-  'modificado' => 'Modificado',
-  'accion' => 'Acción',
-  'modificar' => 'MOdificar',
-  'eliminar' => 'Eliminar',
-  'grado' => 'Grado',
-  'abrir' => 'Abrir',
-  'borrar' => 'Borrar',
+  'añadir' => 'Añadir',
+
+  //BUZON
+  'bandeja' => 'Bandeja de Entrada',
+  'usuario' => 'Usuario',
   'asunto' => 'Asunto',
-  'Usuario' => 'Usuario',
+  'enviado' => 'Enviado',
+  'abrir' => 'Abrir',
+
 
 ];
 ?>

@@ -1,6 +1,7 @@
 $("#respuestaEmail").click(function() {
     var array = {
         respuesta: $("#respuesta").val()
+        
     };
 
     var valParam = JSON.stringify(array);
