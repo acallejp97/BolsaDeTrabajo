@@ -62,9 +62,9 @@ $("#descargarPlantilla").click(function() {
         url: "./descargarPlantilla",
         type: "GET",
         data: {},
-        success: function() {
-            alert("Por favor, revise los datos");
-            location.reload();
+        success: function(data) {
+
+            alert("Descargando datos");
         },
         error: function() {
             alert("Por favor, revise los datos");

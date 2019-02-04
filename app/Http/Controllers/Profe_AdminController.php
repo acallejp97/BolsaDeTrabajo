@@ -100,7 +100,7 @@ class Profe_AdminController extends Controller
                     $siguienteId = 1;
                     foreach ($data as $key => $value) {
 
-                        $id_grado = Grado::where('abreviacion', strtoupper($value->grado))->first();
+                        $id_grado = Grado::where('abreviacion', strtoupper($value->abreviacion_grado))->first();
                         $insertUser[] = [
                             'email' => $value->email,
                             'nombre' => $value->nombre,

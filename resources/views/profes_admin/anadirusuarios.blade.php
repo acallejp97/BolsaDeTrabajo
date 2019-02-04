@@ -39,10 +39,10 @@
                 
                 <input type="submit" class="btn  btn-lg" style="background: #b50045; float:right; color: white;">
             </form>
-            <button class="btn btn-lg btn-success" id="descargarPlantilla" style="background:#D8BFD8; float:right; color:black;" type="submit">
+            <a class="btn btn-lg btn-success" href="{{asset('download/template.csv')}}" download="template.csv" style="background:#D8BFD8; float:right; color:black;" type="submit">
                 <i class="glyphicon glyphicon-download"></i>
                 Descargar Plantilla
-            </button>
+            </a>
         </div>
         <div class="col-md-6">
             <div class="container-fluid">
