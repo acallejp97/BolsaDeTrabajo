@@ -47521,7 +47521,6 @@ $("#insertEmpresa").click(function () {
         email: $("#email").val(),
         url: $("#url").val(),
         telefono: $("#telefono").val()
-
     };
 
     var valParam = JSON.stringify(array);
@@ -47544,14 +47543,14 @@ $("#insertEmpresa").click(function () {
         }
     });
 });
-
-$("#updateEmpresa").click(function () {
+$(".updateEmpresa").click(function () {
     var array = {
-        nombre: $("#nombre").val(),
-        apellido: $("#direccion").val(),
-        email: $("#email").val(),
-        password1: $("#url").val(),
-        password2: $("#telefono").val()
+        idempresa: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        direccion: $("#direccion" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val(),
+        url: $("#url" + $(this).val()).val(),
+        telefono: $("#telefono" + $(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -47769,6 +47768,36 @@ $("#respuestaEmail").click(function () {
     });
 });
 
+/*-----------------------------------------------------RESPUESTA EMAIL---------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------*/
+$("#respuestaEmail").click(function () {
+    /*var array = {
+        usuario: ("#usuario").val(),
+        respuesta: $("#respuesta").val()
+    };*/
+
+    var respuesta = $("#respuesta").val();
+
+    var valParam = JSON.stringify(respuesta);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./respuestaEmail",
+        type: "POST",
+        data: {
+            respuesta: valParam
+        },
+        success: function success() {
+            alert(respuesta);
+        },
+        error: function error() {
+            alert(respuesta);
+        }
+    });
+});
+
 /***/ }),
 /* 42 */
 /***/ (function(module, exports) {
@@ -47847,7 +47876,7 @@ $(".updateOferta").click(function () {
         url: "./actualizarOferta",
         type: "POST",
         data: {
-            actualizacionOferta: valParam
+            actualizarOferta: valParam
         },
         success: function success() {
             alert("Datos modificados correctamente");
@@ -48020,7 +48049,8 @@ $("#descargarPlantilla").click(function () {
         url: "./descargarPlantilla",
         type: "GET",
         data: {},
-        success: function success() {
+        success: function success(data) {
+
             alert("Descargando datos");
         },
         error: function error() {
@@ -48055,31 +48085,6 @@ $("#insertUsers").click(function () {
     });
 });
 
-$("#insertUsers").click(function () {
-    var array = {
-        file: $("#puestos").val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./subiendoCSV",
-        type: "POST",
-        data: {
-            nuevaOferta: valParam
-        },
-        success: function success() {
-            alert("Usuarios correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
 $(".updateUsuarios").click(function () {
     var array = {
         iduser: $(this).val(),
@@ -48102,7 +48107,6 @@ $(".updateUsuarios").click(function () {
         },
         success: function success() {
             alert("Datos modificados correctamente");
-            location.reload();
         },
         error: function error() {
             alert("Por favor, revise los datos");

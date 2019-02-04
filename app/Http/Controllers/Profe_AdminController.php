@@ -16,7 +16,6 @@ use File;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Response;
 use Session;
 
 class Profe_AdminController extends Controller
@@ -183,7 +182,7 @@ class Profe_AdminController extends Controller
     {
 
         $profesor = Profe_Admin::all();
-        $user = User::all();
+        $user = User::where('rango', 1)->get();
         $departamento = Departamento::all();
         $profesores = array('profe_admin' => $profesor, 'user' => $user, 'departamento' => $departamento);
         if (!$profesores) {
@@ -208,7 +207,6 @@ class Profe_AdminController extends Controller
     public function deleteMensaje(Request $request)
     {
 
-      
         $enviado = json_decode($_REQUEST['borrarCorreo']);
 
         if (!$request->ajax()) {
@@ -299,7 +297,7 @@ class Profe_AdminController extends Controller
         $id = $enviado->id;
 
         if ($id != "") {
-            Grado::where('id', $id)->delete();;
+            Grado::where('id', $id)->delete();
 
         }
     }
@@ -454,7 +452,7 @@ class Profe_AdminController extends Controller
             $anio = $enviado->anio;
 
             $actualizarUsuarios = User::findOrFail($iduser);
-            $actualizarAlumno = Alumno::where('id_user',$iduser)->first();
+            $actualizarAlumno = Alumno::where('id_user', $iduser)->first();
             if ($nombre != "") {
                 $actualizarUsuarios->update(['nombre' => $nombre]);
             }
@@ -467,20 +465,19 @@ class Profe_AdminController extends Controller
                 $actualizarUsuarios->update(['email' => $email]);
             }
 
-            if ($anio!= "") {
+            if ($anio != "") {
                 $actualizarAlumno->update(['anio_fin' => $anio]);
             }
 
         } else {
-            $actualizarUsuarios = User::findOrFail(Auth::user()->id)->delete();
         }
 
     }
-    public function updateProfe(Request $request){
+    public function updateProfe(Request $request)
+    {
         if (!$request->ajax()) {
             return redirect('/');
         }
-        
 
         if (isset($_REQUEST['actualizacionProfe'])) {
 
@@ -491,11 +488,9 @@ class Profe_AdminController extends Controller
             $apellidos = $enviado->apellidos;
             $departamentos = $enviado->departamentos;
             $email = $enviado->email;
-            
 
-            
             $actualizarUser = User::findOrFail($idprofe);
-            $actualizarProfe = Profe_Admin::where('id_user',$idprofe)->first();
+            $actualizarProfe = Profe_Admin::where('id_user', $idprofe)->first();
             if ($nombre != "") {
                 $actualizarUser->update(['nombre' => $nombre]);
             }
@@ -511,44 +506,43 @@ class Profe_AdminController extends Controller
                 $actualizarUser->update(['email' => $email]);
             }
 
-           
-
         } else {
             $actualizarProfe = Profe_Admin::findOrFail($idprofe);
         }
 
     }
-    public function updateOferta(Request $request){
+    public function updateOferta(Request $request)
+    {
         if (!$request->ajax()) {
             return redirect('/');
         }
-
+        
         if (isset($_REQUEST['actualizarOferta'])) {
-
+            
             $enviado = json_decode($_REQUEST['actualizarOferta']);
-
+            
             $idoferta = $enviado->idoferta;
             $titulo = $enviado->titulo;
             $descripcion = $enviado->descripcion;
             $puestos = $enviado->puestos;
-
+            
             $actualizarOferta = Oferta::findOrFail($idoferta);
+            
             if ($titulo != "") {
-                $actualizarOferta->update(['titulo' => $titulo, 'updated_at' => date('Y-m-d H:m:s')]);
+                $actualizarOferta->update(['titulo' => $titulo]);
             }
-
+            
             if ($descripcion != "") {
-                $actualizarOferta->update(['descripcion' => $descripcion, 'updated_at' => date('Y-m-d H:m:s')]);
+                $actualizarOferta->update(['descripcion' => $descripcion]);
             }
-
+            
             if ($puestos != "") {
-                $actualizarOferta->update(['puestos-vacantes' => $puestos, 'updated_at' => date('Y-m-d H:m:s')]);
+                $actualizarOferta->update(['puestos-vacantes' => $puestos]);
             }
 
         } else {
             $actualizarOferta = User::findOrFail($idoferta);
         }
-
     }
 
     public function updateEmpresa(Request $request)
@@ -559,7 +553,7 @@ class Profe_AdminController extends Controller
             $enviado = json_decode($_REQUEST['actualizacionEmpresa']);
 
             $nombre = $enviado->nombre;
-            $idempresa= $enviado->idempresa;
+            $idempresa = $enviado->idempresa;
             $direccion = $enviado->direccion;
             $email = $enviado->email;
             $url = $enviado->url;
@@ -600,18 +594,18 @@ class Profe_AdminController extends Controller
 /*---------------------------------------------------------ENVIAR MENSAJE-----------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------*/
 
-public function respuestaEmail(Request $request)
-{
-    if (!$request->ajax()) {
-        return redirect('/buzon');
-    }
+    public function respuestaEmail(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/buzon');
+        }
 
-    if (isset($_REQUEST['respuestaCorreo'])) {
-        $enviado = json_decode($_REQUEST['respuestaCorreo']);
-        $email = $enviado->email;
-        $email->$respuesta = $request->input('respuesta');
-        echo $respuesta;
-    }
+        if (isset($_REQUEST['respuestaCorreo'])) {
+            $enviado = json_decode($_REQUEST['respuestaCorreo']);
+            $email = $enviado->email;
+            $email->$respuesta = $request->input('respuesta');
+            echo $respuesta;
+        }
 
-}
+    }
 }
