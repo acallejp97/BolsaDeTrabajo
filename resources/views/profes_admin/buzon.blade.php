@@ -83,7 +83,9 @@
 										</div>
 										<div class="form-group">
 											<label for="comment">Responder:</label>
-											<textarea class="form-control" rows="5" id="comment" name="respuesta"></textarea>
+											<textarea type="text" name="respuesta" class="form-control" rows="4" , cols="164" id="respuesta" style="resize:none,"
+          									placeholder="Ponga aquí su mensaje..."></textarea>
+						<!--					<textarea class="form-control" rows="5" id="comment" name="respuesta"></textarea>
 										</div>
 										<!-- Modal footer -->
 										<div class="modal-footer">
