@@ -13,8 +13,8 @@ require("./grado");
 require("./mensaje");
 require("./oferta");
 require("./profesores");
-require("./respuestaEmail");
 require("./usuario");
+
 
 window.Vue = require("vue");
 

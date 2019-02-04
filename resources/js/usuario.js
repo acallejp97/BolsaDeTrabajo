@@ -62,9 +62,8 @@ $("#descargarPlantilla").click(function() {
         url: "./descargarPlantilla",
         type: "GET",
         data: {},
-        success: function() {
-            alert("Por favor, revise los datos");
-            location.reload();
+        success: function(data) {
+            alert("Descargando datos");
         },
         error: function() {
             alert("Por favor, revise los datos");
@@ -98,38 +97,13 @@ $("#insertUsers").click(function() {
     });
 });
 
-$("#insertUsers").click(function() {
-    var array = {
-        file: $("#puestos").val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./subiendoCSV",
-        type: "POST",
-        data: {
-            nuevaOferta: valParam
-        },
-        success: function() {
-            alert("Usuarios correctamente");
-            location.reload();
-        },
-        error: function() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
 $(".updateUsuarios").click(function() {
     var array = {
         iduser: $(this).val(),
-        nombre: $("#nombre"+$(this).val()).val(),
-        apellidos: $("#apellidos"+$(this).val()).val(),
-        email: $("#email"+$(this).val()).val(),
-        anio: $("#anio"+$(this).val()).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        apellidos: $("#apellidos" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val(),
+        anio: $("#anio" + $(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);

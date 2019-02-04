@@ -73,7 +73,7 @@ $(".updateOferta").click(function() {
         url: "./actualizarOferta",
         type: "POST",
         data: {
-            actualizacionOferta: valParam
+            actualizarOferta: valParam
         },
         success: function() {
             alert("Datos modificados correctamente");

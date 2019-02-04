@@ -512,7 +512,7 @@ module.exports = defaults;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.14.6
+ * @version 1.14.7
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -1080,7 +1080,11 @@ function isFixed(element) {
   if (getStyleComputedProperty(element, 'position') === 'fixed') {
     return true;
   }
-  return isFixed(getParentNode(element));
+  var parentNode = getParentNode(element);
+  if (!parentNode) {
+    return false;
+  }
+  return isFixed(parentNode);
 }
 
 /**
@@ -1736,18 +1740,23 @@ function getRoundedOffsets(data, shouldRound) {
   var _data$offsets = data.offsets,
       popper = _data$offsets.popper,
       reference = _data$offsets.reference;
+  var round = Math.round,
+      floor = Math.floor;
 
-
-  var isVertical = ['left', 'right'].indexOf(data.placement) !== -1;
-  var isVariation = data.placement.indexOf('-') !== -1;
-  var sameWidthOddness = reference.width % 2 === popper.width % 2;
-  var bothOddWidth = reference.width % 2 === 1 && popper.width % 2 === 1;
   var noRound = function noRound(v) {
     return v;
   };
 
-  var horizontalToInteger = !shouldRound ? noRound : isVertical || isVariation || sameWidthOddness ? Math.round : Math.floor;
-  var verticalToInteger = !shouldRound ? noRound : Math.round;
+  var referenceWidth = round(reference.width);
+  var popperWidth = round(popper.width);
+
+  var isVertical = ['left', 'right'].indexOf(data.placement) !== -1;
+  var isVariation = data.placement.indexOf('-') !== -1;
+  var sameWidthParity = referenceWidth % 2 === popperWidth % 2;
+  var bothOddWidth = referenceWidth % 2 === 1 && popperWidth % 2 === 1;
+
+  var horizontalToInteger = !shouldRound ? noRound : isVertical || isVariation || sameWidthParity ? round : floor;
+  var verticalToInteger = !shouldRound ? noRound : round;
 
   return {
     left: horizontalToInteger(bothOddWidth && !isVariation && shouldRound ? popper.left - 1 : popper.left),
@@ -25002,14 +25011,14 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(46).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(45).setImmediate))
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(53);
+module.exports = __webpack_require__(52);
 
 
 /***/ }),
@@ -25018,9 +25027,9 @@ module.exports = __webpack_require__(53);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_material__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(48);
 /*
  *
  * First we will load all of this project's JavaScript dependencies which
@@ -25037,7 +25046,6 @@ __webpack_require__(41);
 __webpack_require__(42);
 __webpack_require__(43);
 __webpack_require__(44);
-__webpack_require__(45);
 
 window.Vue = __webpack_require__(11);
 
@@ -25052,7 +25060,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component("passwords", __webpack_require__(50));
+Vue.component("passwords", __webpack_require__(49));
 window.onload = function () {
   new Vue({
     el: '#passwords',
@@ -47522,7 +47530,6 @@ $("#insertEmpresa").click(function () {
         email: $("#email").val(),
         url: $("#url").val(),
         telefono: $("#telefono").val()
-
     };
 
     var valParam = JSON.stringify(array);
@@ -47545,14 +47552,14 @@ $("#insertEmpresa").click(function () {
         }
     });
 });
-
-$("#updateEmpresa").click(function () {
+$(".updateEmpresa").click(function () {
     var array = {
-        nombre: $("#nombre").val(),
-        apellido: $("#direccion").val(),
-        email: $("#email").val(),
-        password1: $("#url").val(),
-        password2: $("#telefono").val()
+        idempresa: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        direccion: $("#direccion" + $(this).val()).val(),
+        email: $("#email" + $(this).val()).val(),
+        url: $("#url" + $(this).val()).val(),
+        telefono: $("#telefono" + $(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -47744,6 +47751,62 @@ $(".abrirMensaje").click(function () {
     });
 });
 
+$("#respuestaEmail").click(function () {
+    var array = {
+        respuesta: $("#respuesta").val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./responderCorreo",
+        type: "POST",
+        data: {
+            respuestaCorreo: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+/*-----------------------------------------------------RESPUESTA EMAIL---------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------*/
+$("#respuestaEmail").click(function () {
+    /*var array = {
+        usuario: ("#usuario").val(),
+        respuesta: $("#respuesta").val()
+    };*/
+
+    var respuesta = $("#respuesta").val();
+
+    var valParam = JSON.stringify(respuesta);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./respuestaEmail",
+        type: "POST",
+        data: {
+            respuesta: valParam
+        },
+        success: function success() {
+            alert(respuesta);
+        },
+        error: function error() {
+            alert(respuesta);
+        }
+    });
+});
+
 /***/ }),
 /* 42 */
 /***/ (function(module, exports) {
@@ -47822,7 +47885,7 @@ $(".updateOferta").click(function () {
         url: "./actualizarOferta",
         type: "POST",
         data: {
-            actualizacionOferta: valParam
+            actualizarOferta: valParam
         },
         success: function success() {
             alert("Datos modificados correctamente");
@@ -47866,13 +47929,14 @@ $(".borrarProfesor").click(function () {
 
 $(".updateProfe").click(function () {
     var array = {
-        idprofe: $(this).val(),
+        iduser: $(this).val(),
         nombre: $("#nombre" + $(this).val()).val(),
         apellidos: $("#apellidos" + $(this).val()).val(),
-        departamentos: $("#departamentos" + $(this).val()).val(),
+        departamento: $("#departamento" + $(this).val() + " option:selected").val(),
         email: $("#email" + $(this).val()).val()
     };
 
+    alert(array['departamento']);
     var valParam = JSON.stringify(array);
 
     $.ajax({
@@ -47903,7 +47967,6 @@ $("#insertProfe").click(function () {
         id_depar: $("#id_depar").val(),
         rango: $("#rango").val(),
         id_user: $("#id_user").val()
-
     };
 
     var valParam = JSON.stringify(array);
@@ -47929,36 +47992,6 @@ $("#insertProfe").click(function () {
 
 /***/ }),
 /* 44 */
-/***/ (function(module, exports) {
-
-$("#respuestaEmail").click(function () {
-    var array = {
-        respuesta: $("#respuesta").val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./responderCorreo",
-        type: "POST",
-        data: {
-            respuestaCorreo: valParam
-        },
-        success: function success() {
-            alert("Datos modificados correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
-/***/ }),
-/* 45 */
 /***/ (function(module, exports) {
 
 $(".borrarUsuario").click(function () {
@@ -48025,9 +48058,8 @@ $("#descargarPlantilla").click(function () {
         url: "./descargarPlantilla",
         type: "GET",
         data: {},
-        success: function success() {
-            alert("Por favor, revise los datos");
-            location.reload();
+        success: function success(data) {
+            alert("Descargando datos");
         },
         error: function error() {
             alert("Por favor, revise los datos");
@@ -48061,31 +48093,6 @@ $("#insertUsers").click(function () {
     });
 });
 
-$("#insertUsers").click(function () {
-    var array = {
-        file: $("#puestos").val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./subiendoCSV",
-        type: "POST",
-        data: {
-            nuevaOferta: valParam
-        },
-        success: function success() {
-            alert("Usuarios correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
 $(".updateUsuarios").click(function () {
     var array = {
         iduser: $(this).val(),
@@ -48117,7 +48124,7 @@ $(".updateUsuarios").click(function () {
 });
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -48173,7 +48180,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(47);
+__webpack_require__(46);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -48187,7 +48194,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -48380,7 +48387,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -78690,7 +78697,7 @@ if (false) {
 });
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78706,7 +78713,7 @@ if (false) {
 /* unused harmony export ValidationObserver */
 /* unused harmony export withValidation */
 /**
-  * vee-validate v2.1.5
+  * vee-validate v2.1.7
   * (c) 2019 Abdelrahman Awad
   * @license MIT
   */
@@ -80081,6 +80088,7 @@ Resolver.generate = function generate (el, binding, vnode) {
     delay: Resolver.resolveDelay(el, vnode, options),
     rules: Resolver.resolveRules(el, binding, vnode),
     immediate: !!binding.modifiers.initial || !!binding.modifiers.immediate,
+    persist: !!binding.modifiers.persist,
     validity: options.validity,
     aria: options.aria,
     initialValue: Resolver.resolveInitialValue(vnode)
@@ -80116,7 +80124,7 @@ Resolver.resolveRules = function resolveRules (el, binding, vnode) {
 
   // If validity is disabled, ignore field rules.
   var normalized = normalizeRules(rules);
-  if (!pluginInstance.config.validity) {
+  if (!pluginInstance.config.useConstraintAttrs) {
     return normalized;
   }
 
@@ -80381,6 +80389,10 @@ RuleContainer.isImmediate = function isImmediate (name) {
   return !!(RULES[name] && RULES[name].options.immediate);
 };
 
+RuleContainer.isRequireRule = function isRequireRule (name) {
+  return !!(RULES[name] && RULES[name].options.computesRequired);
+};
+
 RuleContainer.isTargetRule = function isTargetRule (name) {
   return !!(RULES[name] && RULES[name].options.hasTarget);
 };
@@ -80441,6 +80453,7 @@ var addEventListener = function (el, eventName, cb) {
 var DEFAULT_OPTIONS = {
   targetOf: null,
   immediate: false,
+  persist: false,
   scope: null,
   listen: true,
   name: null,
@@ -80473,13 +80486,14 @@ var Field = function Field (options) {
   this.events = [];
   this.delay = 0;
   this.rules = {};
+  this.forceRequired = false;
   this._cacheId(options);
   this.classNames = assign({}, DEFAULT_OPTIONS.classNames);
   options = assign({}, DEFAULT_OPTIONS, options);
   this._delay = !isNullOrUndefined(options.delay) ? options.delay : 0; // cache initial delay
   this.validity = options.validity;
   this.aria = options.aria;
-  this.flags = createFlags();
+  this.flags = options.flags || createFlags();
   this.vm = options.vm;
   this.componentInstance = options.component;
   this.ctorConfig = this.componentInstance ? getPath('$options.$_veeValidate', this.componentInstance) : undefined;
@@ -80500,7 +80514,7 @@ prototypeAccessors$1.validator.get = function () {
 };
 
 prototypeAccessors$1.isRequired.get = function () {
-  return !!this.rules.required;
+  return !!this.rules.required || this.forceRequired;
 };
 
 prototypeAccessors$1.isDisabled.get = function () {
@@ -80623,6 +80637,7 @@ Field.prototype.isWaitingFor = function isWaitingFor (promise) {
 Field.prototype.update = function update (options) {
   this.targetOf = options.targetOf || null;
   this.immediate = options.immediate || this.immediate || false;
+  this.persist = options.persist || this.persist || false;
 
   // update errors scope if the field scope was changed.
   if (!isNullOrUndefined(options.scope) && options.scope !== this.scope && isCallable(this.validator.update)) {
@@ -81679,6 +81694,17 @@ Validator.localize = function localize (lang, dictionary) {
 Validator.prototype.attach = function attach (fieldOpts) {
     var this$1 = this;
 
+  // We search for a field with the same name & scope, having persist enabled
+  var oldFieldMatcher = { name: fieldOpts.name, scope: fieldOpts.scope, persist: true };
+  var oldField = fieldOpts.persist ? this.fields.find(oldFieldMatcher) : null;
+
+  if (oldField) {
+    // We keep the flags of the old field, then we remove its instance
+    fieldOpts.flags = oldField.flags;
+    oldField.destroy();
+    this.fields.remove(oldField);
+  }
+
   // fixes initial value detection with v-model and select elements.
   var value = fieldOpts.initialValue;
   var field = new Field(fieldOpts);
@@ -81718,9 +81744,12 @@ Validator.prototype.detach = function detach (name, scope, uid) {
   var field = isCallable(name.destroy) ? name : this._resolveField(name, scope, uid);
   if (!field) { return; }
 
-  field.destroy();
-  this.errors.remove(field.name, field.scope, field.vmId);
-  this.fields.remove(field);
+  // We destroy/remove the field & error instances if it's not a `persist` one
+  if (!field.persist) {
+    field.destroy();
+    this.errors.remove(field.name, field.scope, field.vmId);
+    this.fields.remove(field);
+  }
 };
 
 /**
@@ -81907,18 +81936,23 @@ Validator.prototype.verify = function verify (value, rules, options) {
   var field = {
     name: (options && options.name) || '{field}',
     rules: normalizeRules(rules),
-    bails: getPath('bails', options, true)
+    bails: getPath('bails', options, true),
+    forceRequired: false,
+    get isRequired () {
+      return !!this.rules.required || this.forceRequired;
+    }
   };
 
-  field.isRequired = field.rules.required;
   var targetRules = Object.keys(field.rules).filter(Validator.isTargetRule);
   if (targetRules.length && options && isObject(options.values)) {
-    // patch the field params with the targets' values.
-    targetRules.forEach(function (rule) {
+    field.dependencies = targetRules.map(function (rule) {
       var ref = field.rules[rule];
-        var first = ref[0];
-        var rest = ref.slice(1);
-      field.rules[rule] = [options.values[first] ].concat( rest);
+        var targetKey = ref[0];
+
+      return {
+        name: rule,
+        field: { value: options.values[targetKey] }
+      };
     });
   }
 
@@ -82099,6 +82133,7 @@ Validator.prototype._test = function _test (field, value, rule) {
 
       return {
         valid: allValid,
+        data: result.data,
         errors: allValid ? [] : [this$1._createFieldError(field, rule, data, targetName)]
       };
     });
@@ -82110,6 +82145,7 @@ Validator.prototype._test = function _test (field, value, rule) {
 
   return {
     valid: result.valid,
+    data: result.data,
     errors: result.valid ? [] : [this._createFieldError(field, rule, result.data, targetName)]
   };
 };
@@ -82266,6 +82302,21 @@ Validator.prototype._validate = function _validate (field, value, ref) {
     var this$1 = this;
     if ( ref === void 0 ) ref = {};
     var initial = ref.initial;
+
+  var requireRules = Object.keys(field.rules).filter(RuleContainer.isRequireRule);
+
+  field.forceRequired = false;
+  requireRules.forEach(function (rule) {
+    var ruleOptions = RuleContainer.getOptions(rule);
+    var result = this$1._test(field, value, { name: rule, params: field.rules[rule], options: ruleOptions });
+
+    if (isCallable(result.then)) { throw createError('Require rules cannot be async'); }
+    if (!isObject(result)) { throw createError('Require rules has to return an object (see docs)'); }
+
+    if (result.data.required === true) {
+      field.forceRequired = true;
+    }
+  });
 
   if (this._shouldSkip(field, value)) {
     return Promise.resolve({ valid: true, id: field.id, field: field.name, scope: field.scope, errors: [] });
@@ -82456,35 +82507,60 @@ function createValidationCtx (ctx) {
   };
 }
 
+/**
+ * Determines if a provider needs to run validation.
+ */
+function shouldValidate (ctx, model) {
+  // when an immediate/initial validation is needed and wasn't done before.
+  if (!ctx._ignoreImmediate && ctx.immediate) {
+    return true;
+  }
+
+  // when the value changes for whatever reason.
+  if (ctx.value !== model.value) {
+    return true;
+  }
+
+  // when it needs validation due to props/cross-fields changes.
+  if (ctx._needsValidation) {
+    return true;
+  }
+
+  // when the initial value is undefined and the field wasn't rendered yet.
+  if (!ctx.initialized && model.value === undefined) {
+    return true;
+  }
+
+  return false;
+}
+
 function onRenderUpdate (model) {
   var this$1 = this;
 
-  var validateNow = this.value !== model.value || this._needsValidation;
-  var shouldRevalidate = this.flags.validated;
   if (!this.initialized) {
     this.initialValue = model.value;
   }
 
-  if (!this.initialized && model.value === undefined) {
-    validateNow = true;
-  }
-
-  if (validateNow) {
-    var silentHandler = function (ref) {
-      var valid = ref.valid;
-
-      // initially assign the valid/invalid flags.
-      this$1.setFlags({
-        valid: valid,
-        invalid: !valid
-      });
-    };
-
-    this.value = model.value;
-    this.validateSilent().then(this.immediate || shouldRevalidate ? this.applyResult : silentHandler);
-  }
-
+  var validateNow = shouldValidate(this, model);
   this._needsValidation = false;
+  this.value = model.value;
+  this._ignoreImmediate = true;
+
+  if (!validateNow) {
+    return;
+  }
+
+  var silentHandler = function (ref) {
+    var valid = ref.valid;
+
+    // initially assign the valid/invalid flags.
+    this$1.setFlags({
+      valid: valid,
+      invalid: !valid
+    });
+  };
+
+  this.validateSilent().then(this.immediate || this.flags.validated ? this.applyResult : silentHandler);
 }
 
 // Creates the common handlers for a validatable context.
@@ -82503,11 +82579,11 @@ function createCommonHandlers (ctx) {
     function () {
       var pendingPromise = ctx.validate();
       // avoids race conditions between successive validations.
-      ctx._waiting = pendingPromise;
+      ctx._pendingValidation = pendingPromise;
       pendingPromise.then(function (result) {
-        if (pendingPromise === ctx._waiting) {
+        if (pendingPromise === ctx._pendingValidation) {
           ctx.applyResult(result);
-          ctx._waiting = null;
+          ctx._pendingValidation = null;
         }
       });
     },
@@ -82628,6 +82704,10 @@ var ValidationProvider = {
       type: Boolean,
       default: false
     },
+    persist: {
+      type: Boolean,
+      default: false
+    },
     bails: {
       type: Boolean,
       default: function () { return VeeValidate$1.config.fastExit; }
@@ -82651,6 +82731,7 @@ var ValidationProvider = {
     initialized: false,
     initialValue: undefined,
     flags: createFlags(),
+    forceRequired: false,
     id: null
   }); },
   methods: {
@@ -82663,13 +82744,12 @@ var ValidationProvider = {
     },
     syncValue: function syncValue (e) {
       var value = isEvent(e) ? e.target.value : e;
-
       this.value = value;
-      this.flags.changed = this.initialValue === value;
+      this.flags.changed = this.initialValue !== value;
     },
     reset: function reset () {
       this.messages = [];
-      this._waiting = null;
+      this._pendingValidation = null;
       this.initialValue = this.value;
       var flags = createFlags();
       this.setFlags(flags);
@@ -82745,6 +82825,7 @@ var ValidationProvider = {
         var watcherName = "$__" + depName;
         if (!isCallable(this$1[watcherName])) {
           this$1[watcherName] = providers[depName].$watch('value', function () {
+            this$1._needsValidation = true;
             this$1.validate();
           });
         }
@@ -82765,8 +82846,9 @@ var ValidationProvider = {
     },
     isRequired: function isRequired () {
       var rules = normalizeRules(this.rules);
+      var forceRequired = this.forceRequired;
 
-      return !!rules.required;
+      return !!rules.required || forceRequired;
     },
     classes: function classes () {
       var this$1 = this;
@@ -83132,6 +83214,7 @@ var defaultConfig = {
   fastExit: true,
   aria: true,
   validity: false,
+  useConstraintAttrs: true,
   i18n: null,
   i18nRootKey: 'validation'
 };
@@ -83279,7 +83362,7 @@ VeeValidate$1.prototype.resolveConfig = function resolveConfig (ctx) {
 Object.defineProperties( VeeValidate$1.prototype, prototypeAccessors$6 );
 Object.defineProperties( VeeValidate$1, staticAccessors$2 );
 
-VeeValidate$1.version = '2.1.5';
+VeeValidate$1.version = '2.1.7';
 VeeValidate$1.mixin = mixin;
 VeeValidate$1.directive = directive;
 VeeValidate$1.Validator = Validator;
@@ -83406,6 +83489,11 @@ var messages = {
   numeric: function (field) { return ("The " + field + " field may only contain numeric characters."); },
   regex: function (field) { return ("The " + field + " field format is invalid."); },
   required: function (field) { return ("The " + field + " field is required."); },
+  required_if: function (field, ref) {
+    var target = ref[0];
+
+    return ("The " + field + " field is required when the " + target + " field has this value.");
+},
   size: function (field, ref) {
     var size = ref[0];
 
@@ -86122,7 +86210,8 @@ var alpha = {
   sv: /^[A-ZÅÄÖ]*$/i,
   tr: /^[A-ZÇĞİıÖŞÜ]*$/i,
   uk: /^[А-ЩЬЮЯЄІЇҐ]*$/i,
-  ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]*$/
+  ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]*$/,
+  az: /^[A-ZÇƏĞİıÖŞÜ]*$/i
 };
 
 var alphaSpaces = {
@@ -86143,7 +86232,8 @@ var alphaSpaces = {
   sv: /^[A-ZÅÄÖ\s]*$/i,
   tr: /^[A-ZÇĞİıÖŞÜ\s]*$/i,
   uk: /^[А-ЩЬЮЯЄІЇҐ\s]*$/i,
-  ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ\s]*$/
+  ar: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ\s]*$/,
+  az: /^[A-ZÇƏĞİıÖŞÜ\s]*$/i
 };
 
 var alphanumeric = {
@@ -86164,7 +86254,8 @@ var alphanumeric = {
   sv: /^[0-9A-ZÅÄÖ]*$/i,
   tr: /^[0-9A-ZÇĞİıÖŞÜ]*$/i,
   uk: /^[0-9А-ЩЬЮЯЄІЇҐ]*$/i,
-  ar: /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]*$/
+  ar: /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]*$/,
+  az: /^[0-9A-ZÇƏĞİıÖŞÜ]*$/i
 };
 
 var alphaDash = {
@@ -86185,7 +86276,8 @@ var alphaDash = {
   sv: /^[0-9A-ZÅÄÖ_-]*$/i,
   tr: /^[0-9A-ZÇĞİıÖŞÜ_-]*$/i,
   uk: /^[0-9А-ЩЬЮЯЄІЇҐ_-]*$/i,
-  ar: /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ_-]*$/
+  ar: /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ_-]*$/,
+  az: /^[0-9A-ZÇƏĞİıÖŞÜ_-]*$/i
 };
 
 var validate = function (value, ref) {
@@ -87240,7 +87332,45 @@ var required = {
   validate: validate$u
 };
 
-var validate$v = function (files, ref) {
+var validate$v = function (value, ref) {
+  if ( ref === void 0 ) ref = [];
+  var otherFieldVal = ref[0];
+  var possibleVals = ref.slice(1);
+
+  var required = possibleVals.includes(String(otherFieldVal).trim());
+
+  if (!required) {
+    return {
+      valid: true,
+      data: {
+        required: required
+      }
+    };
+  }
+
+  var invalid = (isEmptyArray(value) || [false, null, undefined].includes(value));
+
+  invalid = invalid || !String(value).trim().length;
+
+  return {
+    valid: !invalid,
+    data: {
+      required: required
+    }
+  };
+};
+
+var options$5 = {
+  hasTarget: true,
+  computesRequired: true
+};
+
+var required_if = {
+  validate: validate$v,
+  options: options$5
+};
+
+var validate$w = function (files, ref) {
   var size = ref[0];
 
   if (isNaN(size)) {
@@ -87258,7 +87388,7 @@ var validate$v = function (files, ref) {
 };
 
 var size = {
-  validate: validate$v
+  validate: validate$w
 };
 
 var isURL_1 = createCommonjsModule(function (module, exports) {
@@ -87415,7 +87545,7 @@ module.exports = exports['default'];
 
 var isURL = unwrapExports(isURL_1);
 
-var validate$w = function (value, options) {
+var validate$x = function (value, options) {
   if ( options === void 0 ) options = {};
 
   if (isNullOrUndefined(value)) {
@@ -87430,7 +87560,7 @@ var validate$w = function (value, options) {
 };
 
 var url = {
-  validate: validate$w
+  validate: validate$x
 };
 
 /* eslint-disable camelcase */
@@ -87468,11 +87598,12 @@ var Rules = /*#__PURE__*/Object.freeze({
   numeric: numeric,
   regex: regex,
   required: required,
+  required_if: required_if,
   size: size,
   url: url
 });
 
-var version = '2.1.5';
+var version = '2.1.7';
 
 Object.keys(Rules).forEach(function (rule) {
   Validator.extend(rule, Rules[rule].validate, assign({}, Rules[rule].options, { paramNames: Rules[rule].paramNames }));
@@ -87488,15 +87619,15 @@ var install = VeeValidate$1.install;
 
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(51)
+var normalizeComponent = __webpack_require__(50)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(52)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -87535,7 +87666,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -87644,14 +87775,14 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "passwords" } }, [
+  return _c("div", [
     _c("div", { staticClass: "form-group" }, [
       _c("div", { staticClass: "col-xs-11" }, [
         _vm._m(0),
@@ -87761,7 +87892,7 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

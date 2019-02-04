@@ -26,15 +26,17 @@ $(".borrarProfesor").click(function() {
 
 $(".updateProfe").click(function() {
     var array = {
-        idprofe: $(this).val(),
-        nombre: $("#nombre"+$(this).val()).val(),
-        apellidos: $("#apellidos"+$(this).val()).val(),
-        departamentos: $("#departamentos"+$(this).val()).val(),
-        email: $("#email"+$(this).val()).val()
+        iduser: $(this).val(),
+        nombre: $("#nombre" + $(this).val()).val(),
+        apellidos: $("#apellidos" + $(this).val()).val(),
+        departamento: $(
+            "#departamento" + $(this).val() + " option:selected"
+        ).val(),
+        email: $("#email" + $(this).val()).val()
     };
-   
+
+    alert(array['departamento']);
     var valParam = JSON.stringify(array);
-   
 
     $.ajax({
         headers: {
@@ -63,8 +65,7 @@ $("#insertProfe").click(function() {
         password: $("#password").val(),
         id_depar: $("#id_depar").val(),
         rango: $("#rango").val(),
-        id_user: $("#id_user").val(),
-        
+        id_user: $("#id_user").val()
     };
 
     var valParam = JSON.stringify(array);
