@@ -12,6 +12,7 @@ require("./empresa");
 require("./grado");
 require("./mensaje");
 require("./oferta");
+require("./perfil");
 require("./profesores");
 require("./usuario");
 
