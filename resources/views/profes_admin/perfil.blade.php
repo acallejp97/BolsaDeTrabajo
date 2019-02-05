@@ -32,7 +32,7 @@
                 @if(Auth::user()->rango==0)
                 <li class="list-group-item text-center"><span class="pull-center"><strong>Has gozao, eres admin</strong></span> </li>
                 @else @foreach ($nombreDepar as $nombre)
-                <li class="list-group-item text-center"><span class="pull-center"><strong>Departamento</strong><br/>{{$nombre->nombre}}</span> </li>
+                <li class="list-group-item text-center"><span class="pull-center"><strong>@lang('header.departamento')</strong><br/>{{$nombre->nombre}}</span> </li>
                 @endforeach @endif
             </ul>
 

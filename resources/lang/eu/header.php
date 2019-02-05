@@ -3,121 +3,128 @@
  ///////////////////////////////////////EUSKERA///////////////////////////////////////////////
 return [
   //MENU
-  'perfil' => 'Ver Perfil',
-  'actualizarcv' => 'Actualizar CV',
-  'altausuarios' => 'Alta Usuarios',
-  'usuarios' => 'Usuarios',
-  'ofertas' => 'Ofertas',
-  'empresas' => 'Empresas',
-  'buzon' => 'Buzon',
-  'cursos' => 'Cursos',
-  'cerrar' => 'Cerrar Sesión',
-  'contacto' => 'Contacto',
-  'profesores' => 'Alta Profesores',
+  'perfil' => 'Perfila ikusi',
+  'actualizarcv' => ' Berriztu CV',
+  'altausuarios' => 'Erabiltzaileen alta',
+  'usuarios' => 'Erabiltzaileak',
+  'ofertas' => 'Eskaintzak',
+  'empresas' => 'Enpresak',
+  'buzon' => 'Ontzia',
+  'cursos' => 'Kurtsoak',
+  'cerrarsesion' => 'Saioa Itxi',
+  'contacto' => 'Kontaktuak',
+  'profesores' => 'Irakasleen Alta',
+
 
   //PERFIL
   'nombre' => 'Izena',
-  'apellidos' => 'Apellidos',
-  'email' => 'Email',
-  'guardar' => 'Guardar',
-  'actualizarimagen' => 'Actualizar Imagen',
-  'registradodesde' => 'Registrado desde',
-  'actividad' => 'Actividad',
-  'borrarperfil' => 'Borrar Perfil',
-  'password' => 'Contraseña',
-  'confirmar' => 'Confirmar contraseña',
+  'apellidos' => 'Abizenak',
+  'email' => 'Emaila',
+  'guardar' => 'Gorde',
+  'actualizarimagen' => 'Irudia Berriztu',
+  'registradodesde' => 'Erregistratua',
+  'actividad' => 'Ekintza',
+  'borrarperfil' => 'Perfila Ezabatu',
+  'password' => 'Pasahitza',
+  'confirmar' => 'Pasahitza Berretsi',
+
 
   //ALTA USUARIOS
 
- 'subirarchivo' => 'Subir un archivo',
- 'plantilla' => 'Descargar Plantilla',
- 'subiralumnos' => 'Insertar Alumnos',
- 'añadirmanual' => 'Añadir Manualmente',
- 'nombrealu' => 'Nombre del alumno',
- 'apellidoalu' => 'Apellido del alumno',
- 'emailalu' => 'Email del alumno',
- 'añofinalu' => 'Año de finalización',
- 'grado' => 'Grado',
- 'subir' => 'Subir',
- 'cerrar'=> 'Cerrar',
- 'elige' => 'Elige tu archivo xls/csv ',
+ 'subirarchivo' => 'Artxiboa Igo',
+ 'plantilla' => 'Txantilioia Deskargatu',
+ 'subiralumnos' => 'Ikaslea Gehitu',
+ 'añadirmanual' => 'Eskuz Gehitu',
+ 'nombrealu' => 'Ikaslearen Izena',
+ 'apellidoalu' => 'Ikaslearen Abizenak',
+ 'emailalu' => 'Ikaslearen Emaila',
+ 'añofinalu' => 'Amaiera urtea',
+ 'grado' => 'Gradua',
+ 'subir' => 'Igo',
+ 'cerrar'=> 'Itzi',
+ 'elige' => 'Aukeratu zure xls/csv archiboa',
 
  //USUARIOS
- 'registrado' => 'Registrado',
- 'aniofin' => 'Año fin',
- 'accion' => 'Acción',
- 'modificar' => 'Modificar',
- 'borrar' => 'Borrar',
- 'apellidos' => 'Apellidos',
- 'listausuarios' => 'Lista de Usuarios',
+ 'registrado' => 'Erregistratua',
+ 'aniofin' => 'Amaiera Urtea',
+ 'accion' => 'Ekintza',
+ 'modificar' => 'Aldatu',
+ 'borrar' => 'Ezabatu',
+ 'apellidos' => 'Abizenak',
+ 'listausuarios' => 'Erabiltzaile Zerrenda',
 
-  //CURRICULUM
-  'idiomas'=> 'Idiomas',
-  'formacion'=> 'Formación Académica',
-  'experiencia'=> 'Experciencia',
-  'curriculumde'=> 'Curriculum de',
-  'otrosdatos'=> 'Otros datos',
+
+    //ACTUALIZAR CV
+    'formacion' => 'Formakuntza Akademikoa',
+    'experiencia' => 'Esperientzia',
+    'otrosdatos' => 'Beste datu Batzuk',
+    'guardar' => 'Gorde',
+    'idiomas' => 'Hizkuntzak',
+    'Curriculumde' => '-(t)en kurrikuluma',
+  
  
 //login
-'contraseñaolvidada'=> 'Contraseña olvidada ',
+'contraseñaolvidada'=> 'Pasahitza ahaztuta',
 'iniciar'=> 'HASI',
 
  //EMPRESAS
- 'añadirempresas' => 'Añadir Empresas',
- 'publicar' => 'Publicar',
- 'direccion' => 'Dirección',
+ 'añadirempresas' => 'Enpresak Gehitu',
+ 'publicar' => 'Argitaratu',
+ 'direccion' => 'Helbidea',
  'url' => 'URL',
- 'telefono' => 'Teléfono',
- 'listaempresas' => 'Lista de Empresas',
+ 'telefono' => 'Telefonoa',
+ 'listaempresas' => 'Enpresen Zerrenda',
 
  //OFERTAS
-  'descripcion' => 'Descripción',
-  'empresa' => 'Empresa',
-  'puestos' => 'Puestos Vacantes',
-  'titulo' => 'Título',
+  'descripcion' => ' Azalpena',
+  'empresa' => 'Enpresa',
+  'puestos' => 'Postu hutsa',
+  'titulo' => 'Izenburua',
   'inscribirse' => 'Inscribirse',
-  'publicaroferta' => 'Publicar una Oferta',
-  'listaofertas' => 'Lista de Ofertas',
-  'profesorpublicado' => 'Profesor que la ha publicado',
+  'publicaroferta' => 'Eskaintza Argitaratu',
+  'listaofertas' => 'Eskaintza Zerrenda',
+  'profesorpublicado' => 'Argitaratu duen Irakaslea',
 
   //CONTACTO
-  'contactar' => 'Contactar',
-  'tumensaje' => 'Tu mensaje',
-  'introduzcamensaje' => 'Introduzca tu mensaje',
+  'contactar' => 'Kontaktatu',
+  'tumensaje' => 'Zure mezua',
+  'introduzcamensaje' => 'Zure mezua sartu',
 
-  //ACTUALIZAR CV
-  'formacion' => 'Formación Académica',
-  'experiencia' => 'Experiencia',
-  'otrosdatos' => 'Otros datos',
-  'guardar' => 'Guardar',
-  'idiomas' => 'Idiomas',
-  'Curriculumde' => 'Curriculum de',
 
 
   //CURSOS
-  'añadirdepartamento' => 'Añadir Departamento',
-  'añadirgrado' => 'Añadir Grado',
-  'borrargrado' => 'Borrar Grado',
-  'borrardepartamento' => 'Borrar Departamento',
-  
+  'añadirdepartamento' => 'Departamentua gehitu',
+  'añadirgrado' => 'Gradua Gehitu',
+  'borrargrado' => 'Gradua Ezabatu',
+  'borrardepartamento' => 'Departamentua Ezabatu',
+
   //PROFESORES
-  'añadirprofesor' => 'Añadir un Profesor',
-  'guardar' => 'Guardar',
-  'enviar' => 'Enviar',
-  'publicar' => 'Publicar',
-  'borrarperfil' => 'Borrar Perfil',
-  'departamento' => 'Departamento',
-  'añadir' => 'Añadir',
-  'profesorado' => 'Profesorado',
+  'añadirprofesor' => 'Irakasle bat gehitu',
+  'guardar' => 'Gorde',
+  'enviar' => 'Bidali',
+  'publicar' => 'Argitaratu',
+  'borrarperfil' => 'Perfila Ezabatu',
+  'departamento' => 'Departamentua',
+  'añadir' => 'Gehitu',
+  'profesorado' => 'Irakaslegoa',
 
   //BUZON
-  'bandeja' => 'Bandeja de Entrada',
-  'usuario' => 'Usuario',
-  'asunto' => 'Asunto',
-  'enviado' => 'Enviado',
-  'abrir' => 'Abrir',
-  'responder' => 'Responder',
+  'bandeja' => 'Sarrera Ontzia',
+  'usuario' => 'Erabiltzailea',
+  'asunto' => 'Gaia',
+  'enviado' => 'Bidalia',
+  'abrir' => 'Zabaldu',
+  'responder' => 'Erantzun',
 
 
+
+  
+  
+
+    
+    
+ 
+  
+   
 ];
 ?>

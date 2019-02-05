@@ -12,7 +12,7 @@ return [
   'cursos' => 'Courses',
   'contacto' => 'Contact',
   'profesores' => 'Register Teachers',
-  'cerrar' => 'Logout',
+  'cerrarsesion' => 'Logout',
 
 //PERFIL
 'nombre' => 'Name',

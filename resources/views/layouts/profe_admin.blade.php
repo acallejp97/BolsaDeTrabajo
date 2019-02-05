@@ -81,7 +81,7 @@
         </li>
         @endif
         <li class="nav-item">
-          <a style="color:#b50045;"class="nav-link" href="logout">@lang('header.cerrar')</a>
+          <a style="color:#b50045;"class="nav-link" href="logout">@lang('header.cerrarsesion')</a>
         </li>
        
       </ul>
