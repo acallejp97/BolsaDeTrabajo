@@ -21,7 +21,7 @@ class AlumnoController extends Controller
     public function __construct()
     {
     }
-
+   
     public function ActualizarCV()
     {
         $id_alumno = Alumno::select('id')->where('id_user', Auth::user()->id)->get();

@@ -612,10 +612,10 @@ class Profe_AdminController extends Controller
             $data = $enviado->respuesta;
 
             $mail=Correo::where('id',$idmail)->first();
-            $usuario=User::where('id',$mail['id_remit']);
+            $usuario=User::where('id',$mail['id_remit'])->first();
             
 
-            Mail::to('acallejp@gmail.com')
+            Mail::to($usuario['email'])
                 ->send(new respuestaMail($data));
         }
 

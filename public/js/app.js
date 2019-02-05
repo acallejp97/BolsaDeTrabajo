@@ -47745,13 +47745,34 @@ $(".abrirMensaje").click(function () {
     });
 });
 
+<<<<<<< HEAD
 $(".respuestaEmail").click(function () {
+=======
+<<<<<<< HEAD
+/*-----------------------------------------------------RESPUESTA EMAIL---------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------*/
+$(".respuestaEmail").click(function () {
+    /*var array = {
+        usuario: ("#usuario").val(),
+        respuesta: $("#respuesta").val()
+    };*/
+
+    var respuesta = $("#respuesta").val();
+
+    var valParam = JSON.stringify(respuesta);
+=======
+/*------------------------------------------------------------RESPONDER MENSAJE-----------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------*/
+
+$("#respuestaEmail").click(function () {
+>>>>>>> afd56a39aed770e24f503d0a091fd24465835fb9
     var array = {
         idMensaje: $(this).val(),
         respuesta: $('#respuesta' + $(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);
+>>>>>>> 1438e0b9a599a8d432326fd75679263a1634808a
 
     $.ajax({
         headers: {
@@ -47926,7 +47947,6 @@ $(".updateProfe").click(function () {
         email: $("#email" + $(this).val()).val()
     };
 
-    alert(array['departamento']);
     var valParam = JSON.stringify(array);
 
     $.ajax({

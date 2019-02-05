@@ -6,36 +6,23 @@
 
 		<div class="page-header">
 			<h3>
-				Bandeja de entrada
+				@lang('header.bandeja')
 			</h3>
 		</div>
-		<div class="row">
-			<div class="span3 side-by-side clearfix offset4">
-				<form action="#" method="get">
-					<div class="input-group col-md-3 " style="float:right">
-						<input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-default" style="background: #b50045; color:white;" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
-						</span>
-
-					</div>
-				</form>
-			</div>
-
-		</div><br>
+	
 		<div class="widget-content">
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered" style="overflow: scroll; max-width: 100%; display: block;">
 				<thead>
 					<tr style="background: #b50045; color:white;">
-						<th id="table_id">Usuario
+						<th id="table_id">@lang('header.usuario')
 						</th>
-						<th class="text-center" id="">Asunto
+						<th class="text-center" id="">@lang('header.asunto')
 						</th>
-						<th id="">Nombre
+						<th id="">@lang('header.nombre')
 						</th>
-						<th id="">Enviado
+						<th id="">@lang('header.enviado')
 						</th>
-						<th class="text-center" id="">Descripción
+						<th class="text-center" id="">@lang('header.descripcion')
 						</th>
 
 						<th class="td-actions" id="table_action"></th>
@@ -103,6 +90,7 @@
 										<button class="respuestaEmail" type="button" value="{{$correo['id']}}" class="btn btn-danger responderCorreo" data-dismiss="modal"
 										 data-toggle="modal" data-target="#modalEnviado">Enviar</button>
 									</div>
+								
 								</div>
 							</div>
 						</div>

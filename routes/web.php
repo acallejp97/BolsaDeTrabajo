@@ -9,7 +9,14 @@ Route::group(['middleware' => 'auth'], function () {
             return redirect('/login');
         }
     });
-    //Comunes
+   
+// IDIOMA CAMBIOS
+    Route::get('lang/{lang}', function($lang) {
+        \Session::put('lang', $lang);
+        return \Redirect::back();
+      })->middleware('web')->name('change_lang');
+    
+//Comunes
     Route::get('/home', "Controller@Ofertas")->name('home');
     Route::get('/contacto', "Controller@Contacto")->name('contacto');
     Route::get('/perfil', "Controller@Perfil")->name('perfil');
@@ -22,7 +29,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
     Route::get('/profesores', "Profe_AdminController@Profesores")->name('profesores');
     Route::get('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
-    //-------------------------------------RESPONDER EMAIL---------------------
     Route::post('/respuestaEmail', "Profe_AdminController@respuestaEmail")->name('respuestaEmail');
     
     //Profe y admin

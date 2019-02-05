@@ -5,27 +5,27 @@
     <div class="col-md-3">
       <div class="page-header">
         <h3>
-          Añadir un profesor
+          @lang('header.añadirprofesor')
         </h3>
       </div>
 
       <div class="form-group">
-        <label for="nombre" class="control-label">Nombre</label>
+        <label for="nombre" class="control-label">@lang('header.nombre')</label>
         <input type="text" class="form-control" id="nombre" placeholder="nombre">
       </div>
 
       <div class="form-group">
-        <label for="apellidos" class="control-label">Apellidos</label>
+        <label for="apellidos" class="control-label">@lang('header.apellidos')</label>
         <input type="text" class="form-control" id="apellidos" placeholder="apellidos">
       </div>
 
       <div class="form-group">
-        <label for="email" class="control-label">Email</label>
+        <label for="email" class="control-label">@lang('header.email')</label>
         <input type="text" class="form-control" id="email" placeholder="email">
       </div>
 
       <div class="form-group">
-        <label for="id_depar" class="control-label">Departamento</label>
+        <label for="id_depar" class="control-label">@lang('header.departamento')</label>
         <select class="form-control" id="id_depar">
             @foreach ($profesores['departamento'] as $departamento) 
             <option id="departamento" value="{{$departamento['id']}}">{{$departamento['nombre']}}</option>
@@ -33,32 +33,32 @@
           </select>
       </div>
       <div class="form-group">
-        <button type="submit" id="insertProfe" style="background: #b50045; color:white" class="btn btn-primary">Añadir</button>
+        <button type="submit" id="insertProfe" style="background: #b50045; color:white" class="btn btn-primary">@lang('header.añadir')</button>
       </div>
     </div>
 
     <div class="col-md-9">
       <div class="page-header">
         <h3>
-          Profesorado
+          @lang('header.profesorado')
         </h3>
       </div>
       <br>
       <div class="widget-content">
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered" style="overflow: scroll; max-width: 100%; display: block;">
           <thead>
             <tr style="background: #b50045; color:white;">
-              <th id="">Nombre
+              <th id="">@lang('header.nombre')
               </th>
-              <th id="">Apellidos
+              <th id="">@lang('header.apellidos')
               </th>
-              <th id="">Departamento
+              <th id="">@lang('header.departamento')
               </th>
-              <th id="">Email
+              <th id="">@lang('header.email')
               </th>
-              <th id="">Registrado
+              <th id="">@lang('header.registrado')
               </th>
-              <th class="td-actions" id="table_action">Accion</th>
+              <th class="td-actions" id="table_action">@lang('header.accion')</th>
             </tr>
           </thead>
           <tbody>
@@ -81,11 +81,11 @@
                 <td class="td-actions">
                   <button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $usuario->id;?>"
                     id="<?php echo $usuario->id;?>">
-									<span class="glyphicon glyphicon-pencil"></span> Modificar
+									<span class="glyphicon glyphicon-pencil"></span> @lang('header.modificar')
 									</button>
                   <button style="background: #b50045; color:white;" value="{{$profesor['id']}}" class="borrarProfesor btn btn-default btn-xs"
                     href="javascript:;">
-										<span class="glyphicon glyphicon-remove"></span> Borrar
+										<span class="glyphicon glyphicon-remove"></span> @lang('header.borrar')
 									</button>
 
                 </td>
@@ -99,20 +99,20 @@
 
                     <button class="close" data-dismiss="modal">&times;</button>
                     <div class="modal-header">
-                      <h5><b>Nombre:</b>
+                      <h5><b>@lang('header.nombre'):</b>
                       </h5>
                       <input value="{{$usuario['nombre']}}" id="nombre<?php echo $usuario->id;?>" class="form-control">
                     </div>
 
                     <div class="modal-header">
-                      <h5><b> Apellidos:</b>
+                      <h5><b> @lang('header.apellidos'):</b>
                       </h5>
                       <textarea id="apellidos<?php echo $usuario->id;?>" class="form-control">{{$usuario['apellidos']}}</textarea>
                     </div>
 
                     <div class="modal-header">
 
-                      <h5><b> Departamento:</b>
+                      <h5><b> @lang('header.departamento'):</b>
                       </h5>
                       <select class="form-control" id="departamento<?php echo $usuario->id;?>">
                         @foreach ($profesores['departamento'] as $departamentos) 
@@ -127,13 +127,13 @@
 
                     </div>
                     <div class="modal-header">
-                      <h5><b> Email:</b>
+                      <h5><b> @lang('header.email'):</b>
                       </h5>
                       <input value="{{$usuario['email']}}" id="email<?php echo $usuario->id;?>" class="form-control">
                     </div>
 
                     <div class="modal-footer">
-                      <button type="submit" value="{{$usuario->id}}" class="updateProfe btn btn-danger" data-dismiss="modal">Guardar</button>
+                      <button type="submit" value="{{$usuario->id}}" class="updateProfe btn btn-danger" data-dismiss="modal">@lang('header.guardar')</button>
                     </div>
                   </div>
                 </div>

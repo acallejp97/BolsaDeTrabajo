@@ -28,24 +28,34 @@
 <body>
   <div class="card text-center" >
     <div class="card-header" >
+        <div>
+            <li style="display:inline-flex; float:right; margin-right:2em;">
+          
+              <a href="{{ route('change_lang', ['lang' => 'es']) }}"> <img  src='republicana.png' class='img-responsive ' style='margin-right: 6px; margin-top:0.2em; height:29px; width: 30px;' /></a>
+              <a href="{{ route('change_lang', ['lang' => 'en']) }}"><img src='ingles.png' class='img-responsive' style=' margin-right: 6px; height:35px; width: 30px;' /></a>
+              <a href="{{ route('change_lang', ['lang' => 'eu']) }}"><img src='ikurrina.png' class='img-responsive' style=' margin-right: 6px; height:35px; width: 30px;' /></a>
+                      </li>
+          </div>
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
-          <a  style="color:#b50045;"class="nav-link" href="{{ route('perfil') }}">Ver Perfil</a>
+          <a  style="color:#b50045;"class="nav-link" href="{{ route('perfil') }}">@lang('header.perfil')</a>
         </li>
         <li  class="nav-item {{ request()->is('home') ? 'active' : '' }}" >
-          <a  style="color:#b50045;"class="nav-link" href="{{ route('home') }}">Ofertas</a>
+          <a  style="color:#b50045;"class="nav-link" href="{{ route('home') }}">@lang('header.ofertas')</a>
         </li>
         <li class="nav-item {{ request()->is('contacto') ? 'active' : '' }}">
-          <a  style="color:#b50045;"class="nav-link" href="{{ route('contacto') }}">Contacto</a>
+          <a  style="color:#b50045;"class="nav-link" href="{{ route('contacto') }}">@lang('header.contacto')</a>
         </li>
         <li class="nav-item {{ request()->is('actualizarCV') ? 'active' : '' }}">
-          <a  style="color:#b50045;"class="nav-link" href="{{ route('actualizarCV') }}">Actualizar CV</a>
+          <a  style="color:#b50045;"class="nav-link" href="{{ route('actualizarCV') }}">@lang('header.actualizarcv')</a>
         </li>
         <li class="nav-item">
-          <a style="color:#b50045;"class="nav-link" href="logout">Cerrar Sesion</a>
+          <a style="color:#b50045;"class="nav-link" href="logout">@lang('header.cerrar')</a>
         </li>
+    
       </ul>
     </div>
+  
     @yield('content')
   <script src="{{ asset('js/app.js') }}" defer></script>
   </div>
