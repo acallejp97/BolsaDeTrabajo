@@ -48009,36 +48009,6 @@ $(".borrarUsuario").click(function () {
     });
 });
 
-$("#updateUser").click(function () {
-    var array = {
-        nombre: $("#nombre").val(),
-        apellido: $("#apellido").val(),
-        email: $("#email").val(),
-        password1: $("#password1").val(),
-        password2: $("#password2").val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./actualizarUsuario",
-        type: "POST",
-        data: {
-            actualizacionUsuario: valParam
-        },
-        success: function success() {
-            alert("Datos modificados correctamente");
-            location.reload();
-        },
-        error: function error() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
 $("#descargarPlantilla").click(function () {
     $.ajax({
         headers: {
@@ -48101,6 +48071,36 @@ $(".updateUsuarios").click(function () {
         type: "POST",
         data: {
             actualizacionUsuarios: valParam
+        },
+        success: function success() {
+            alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$("#insertUser").click(function () {
+    var array = {
+        nombre: $("#nombre").val(),
+        apellidos: $("#apellidos").val(),
+        email: $("#email").val(),
+        anio: $("#anio_fin").val(),
+        idgrado: $("#id_grado").val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./anadirUsuario",
+        type: "POST",
+        data: {
+            nuevoUsuario: valParam
         },
         success: function success() {
             alert("Datos modificados correctamente");
@@ -87655,34 +87655,20 @@ var render = function() {
         _c("input", {
           directives: [
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.password1,
-              expression: "password1"
-            },
-            {
               name: "validate",
               rawName: "v-validate",
               value: "required",
               expression: "'required'"
             }
           ],
+          ref: "password",
           staticClass: "form-control",
+          class: { "is-danger": _vm.errors.has("password") },
           attrs: {
+            id: "password",
+            name: "password",
             type: "password",
-            name: "password1",
-            id: "password1",
-            placeholder: "Contraseña",
-            title: "Introduce la contraseña."
-          },
-          domProps: { value: _vm.password1 },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.password1 = $event.target.value
-            }
+            placeholder: "Password"
           }
         })
       ])
@@ -87695,12 +87681,6 @@ var render = function() {
         _c("input", {
           directives: [
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.password2,
-              expression: "password2"
-            },
-            {
               name: "validate",
               rawName: "v-validate",
               value: "required|confirmed:password",
@@ -87708,24 +87688,42 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
+          class: { "is-danger": _vm.errors.has("password_confirmation") },
           attrs: {
-            type: "password",
-            name: "password2",
+            name: "password_confirmation",
             id: "password2",
-            placeholder: "Repite Contraseña",
-            title: "Confirma tu contraseña por favor."
-          },
-          domProps: { value: _vm.password2 },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.password2 = $event.target.value
-            }
+            type: "password",
+            placeholder: "Password, Again",
+            "data-vv-as": "password"
           }
         })
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.errors.any(),
+              expression: "errors.any()"
+            }
+          ],
+          staticClass: "alert alert-danger"
+        },
+        [
+          _vm.errors.has("password")
+            ? _c("div", [_vm._v(_vm._s(_vm.errors.first("password")))])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.has("password_confirmation")
+            ? _c("div", [
+                _vm._v(_vm._s(_vm.errors.first("password_confirmation")))
+              ])
+            : _vm._e()
+        ]
+      )
     ])
   ])
 }

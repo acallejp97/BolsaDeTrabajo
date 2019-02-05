@@ -12,6 +12,7 @@ use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
 use Auth;
+use Hash;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -235,7 +236,8 @@ class Controller extends BaseController
             $nombre = $enviado->nombre;
             $apellido = $enviado->apellido;
             $email = $enviado->email;
-            $password1 = $enviado->password1;
+            $password = $enviado->password;
+            $password2 = $enviado->password2;
 
             $actualizarUsuario = User::findOrFail(Auth::user()->id);
             if ($nombre != "") {
@@ -250,8 +252,8 @@ class Controller extends BaseController
                 $actualizarUsuario->update(['email' => $email]);
             }
 
-            if ($password1 != "") {
-                $actualizarUsuario->update(['password1' => $password1]);
+            if ($password != "") {
+                $actualizarUsuario->update(['password' => Hash::make($password)]);
             }
 
         } else {
