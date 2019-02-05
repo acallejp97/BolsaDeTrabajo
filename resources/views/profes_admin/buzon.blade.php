@@ -6,7 +6,7 @@
 
 		<div class="page-header">
 			<h3>
-				Bandeja de entrada
+				@lang('header.bandeja')
 			</h3>
 		</div>
 	
@@ -14,15 +14,15 @@
 			<table class="table table-striped table-bordered" style="overflow: scroll; max-width: 100%; display: block;">
 				<thead>
 					<tr style="background: #b50045; color:white;">
-						<th id="table_id">Usuario
+						<th id="table_id">@lang('header.usuario')
 						</th>
-						<th class="text-center" id="">Asunto
+						<th class="text-center" id="">@lang('header.asunto')
 						</th>
-						<th id="">Nombre
+						<th id="">@lang('header.nombre')
 						</th>
-						<th id="">Enviado
+						<th id="">@lang('header.enviado')
 						</th>
-						<th class="text-center" id="">Descripción
+						<th class="text-center" id="">@lang('header.descripcion')
 						</th>
 
 						<th class="td-actions" id="table_action"></th>
@@ -53,15 +53,15 @@
 							<td>
 								<p class="msg">{{$correo['descripcion']}} </p>
 							</td>
-
+						
 							<td class="td-actions">
 								<button  class="btn btn-default btn-xs" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $correo->id;?>" id="<?php echo $correo->id;?>">
-										<span class="glyphicon glyphicon-pencil"></span> Abrir
+										<span class="glyphicon glyphicon-pencil"></span> @lang('header.abrir')
 								</button>
 								<button class=" borrarCorreo btn btn-default btn-xs " style="background: #b50045; color:white;" value="{{$correo['id']}}">
-										<span class="glyphicon glyphicon-remove" ></span> Borrar
+										<span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
 								</button>
-
+							
 							</td>
 							<!---------------------------------------------------------------------borrarCorreo--------------->
 
@@ -81,23 +81,33 @@
 										<div id="descripcion" for="descripcion" for="descripcion" class="modal-body">
 											{{$correo['descripcion']}}
 										</div>
+									
 										<div class="form-group">
-											<label for="comment">Responder:</label>
-											<textarea type="text" name="respuesta" class="form-control" rows="4" , cols="164" id="respuesta" style="resize:none,"
+												
+											<label for="comment">@lang('header.responder'):</label>
+											<textarea type="text" name="description" id="textarea" class="form-control" rows="4" , cols="164"  style="resize:none,"
           									placeholder="Ponga aquí su mensaje..."></textarea>
-						<!--					<textarea class="form-control" rows="5" id="comment" name="respuesta"></textarea>
-										</div>
+						
+									
+									
+								</div>
 										<!-- Modal footer -->
 										<div class="modal-footer">
-											<button id="respuestaEmail" type="button" class="btn btn-danger responderCorreo" data-dismiss="modal" data-toggle="modal" data-target="#modalVacio">Enviar</button>
+											<button class="respuestaEmail"  type="button" class="btn btn-danger responderCorreo" data-dismiss="modal" data-toggle="modal" data-target="#modalEnviado">@lang('header.enviar')</button>
 										</div>
 									</div>
+								
 								</div>
 							</div>
 							<!------------------------------------------------------------------------------------>
 						</tr>
 					</tr>
 					@endif @endif @endforeach @endforeach
+<?php
+
+
+					
+				?>
 <!--------------------------------------------------MODAL SI EL CAMPO RESPUESTA ESTÁ RELLENADO-------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------->
 								<!-- The Modal -->
@@ -143,4 +153,11 @@
 		</div>
 	</div>
 </div>
+
+<script>
+if(if (empty('respuesta<?php echo $correo->id;?>'))){
+	alert('hola');
+}
+
+</script>
 @endsection

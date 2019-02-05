@@ -600,16 +600,22 @@ class Profe_AdminController extends Controller
 
     public function respuestaEmail(Request $request)
     {
+      
         if (!$request->ajax()) {
             return redirect('/buzon');
         }
-
+        $actualizarEmpresa = Correo::findOrFail($idcorreo);
         if (isset($_REQUEST['respuestaCorreo'])) {
             $enviado = json_decode($_REQUEST['respuestaCorreo']);
             $email = $enviado->email;
-            $email->$respuesta = $request->input('respuesta');
-            echo $respuesta;
+            $respuesta->$enviando->respuesta;
+            if ($respuesta = "") {
+                alert('hola');
+            }
         }
 
     }
+
+
+    
 }

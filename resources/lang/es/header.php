@@ -39,6 +39,19 @@ return [
  'añofinalu' => 'Año de finalización',
  'grado' => 'Grado',
  'subir' => 'Subir',
+ 'cerrar'=> 'Cerrar',
+ 'elige' => 'Elige tu archivo xls/csv ',
+
+ //CURRICULUM
+ 'idiomas'=> 'Idiomas',
+ 'formacion'=> 'Formación Académica',
+ 'experiencia'=> 'Experciencia',
+ 'curriculumde'=> 'Curriculum de',
+ 'otrosdatos'=> 'Otros datos',
+
+ //login
+ 'contraseñaolvidada'=> 'Contraseña olvidada ',
+ 'iniciar'=> 'INICIAR',
 
  //USUARIOS
  'registrado' => 'Registrado',
@@ -62,6 +75,7 @@ return [
   'empresa' => 'Empresa',
   'puestos' => 'Puestos Vacantes',
   'titulo' => 'Título',
+  'inscribirse' => 'Inscribirse',
   'publicaroferta' => 'Publicar una Oferta',
   'listaofertas' => 'Lista de Ofertas',
   'profesorpublicado' => 'Profesor que la ha publicado',
@@ -89,11 +103,12 @@ return [
   //PROFESORES
   'añadirprofesor' => 'Añadir un Profesor',
   'guardar' => 'Guardar',
-  'emviar' => 'Enviar',
+  'enviar' => 'Enviar',
   'publicar' => 'Publicar',
   'borrarperfil' => 'Borrar Perfil',
   'departamento' => 'Departamento',
   'añadir' => 'Añadir',
+  'profesorado' => 'Profesorado',
 
   //BUZON
   'bandeja' => 'Bandeja de Entrada',
@@ -101,6 +116,7 @@ return [
   'asunto' => 'Asunto',
   'enviado' => 'Enviado',
   'abrir' => 'Abrir',
+  'responder' => 'Responder',
 
 
 

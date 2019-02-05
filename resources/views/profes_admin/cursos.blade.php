@@ -5,7 +5,7 @@
     <div class="text-right">
         <button id="anadirDepartamento" class="btn icon-btn d-inline" style="background-color: #DC6E97; float:left; margin-left:10em; width: 15em; text-align: center;">
             <span  class="glyphicon glyphicon-plus"></span>
-            Añadir Departamento
+            @lang('header.añadirdepartamento')
         </button>
     </div>
     <br> <br> @foreach ($grados_depar['departamentos'] as $departamento)
@@ -20,12 +20,12 @@
      
             <button value="{{$departamento['id']}}" class="borrarDepartamento text-center btn icon-btn col-md-2" style="background-color: white; color:black; margin: 1em;">
                 <span class="glyphicon glyphicon-minus"></span>
-                Borrar Departamento
+                @lang('header.borrardepartamento')
             </button>
 
             <button  value="{{$departamento['id']}}" class="anadirGrado text-center btn icon-btn btn-light col-md-2" style="background-color: white; color:black; margin: 1em; ">
                 <span class="glyphicon glyphicon-plus"></span>
-                Añadir Grado
+                @lang('header.añadirgrado')
             </button>
         </ul>
         </div>
@@ -39,7 +39,7 @@
 
             <button value="{{$grado['id']}}" class="borrarGrado btn icon-btn col-md-2 " style="background-color: darkgrey ; color:white;">
                     <span class="glyphicon glyphicon-minus">
-                    </span>Eliminar Grado
+                    </span>@lang('header.borrargrado')
             </button>
             <br>
             <br>

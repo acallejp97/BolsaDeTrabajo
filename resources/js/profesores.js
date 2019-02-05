@@ -35,7 +35,7 @@ $(".updateProfe").click(function() {
         email: $("#email" + $(this).val()).val()
     };
 
-    alert(array['departamento']);
+   
     var valParam = JSON.stringify(array);
 
     $.ajax({

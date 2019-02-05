@@ -6,7 +6,7 @@
     <body>
         <h2>Respuesta correo</h2>
         <div>
-            ¡Bienvenido al sitio Web!
+             hola
         </div>
     </body>
 </html>
