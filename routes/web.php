@@ -29,8 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
     Route::get('/profesores', "Profe_AdminController@Profesores")->name('profesores');
     Route::get('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
-    //-------------------------------------RESPONDER EMAIL---------------------
-   
+    Route::post('/respuestaEmail', "Profe_AdminController@respuestaEmail")->name('respuestaEmail');
     
     //Profe y admin
     Route::post('/actualizarUsuarios', 'Profe_AdminController@updateUsuarios')->name('actualizarUsuarios');
@@ -62,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
     Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
+    Route::post('/inscribirse', 'AlumnoController@inscribirse')->name('inscribirse');
 
-     	
-    Route::get('pdf', 'PdfController@pdf');
+
 });

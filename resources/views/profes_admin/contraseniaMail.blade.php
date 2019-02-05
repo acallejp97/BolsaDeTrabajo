@@ -4,9 +4,9 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <h2>Respuesta correo</h2>
+        <h2>Alta bolsa de empleo</h2>
         <div>
-            <p>{{$data}}</p>
+            <p>Su contraseña: {{$data}}</p>
         </div>
     </body>
 </html>

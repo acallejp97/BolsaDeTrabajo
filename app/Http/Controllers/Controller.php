@@ -12,12 +12,14 @@ use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
 use Auth;
+use Hash;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Validator;
+use App\Model\Alumno_Oferta;
 
 class Controller extends BaseController
 {
@@ -64,13 +66,19 @@ class Controller extends BaseController
             case 2:
                 $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
                 $profe_admin = Profe_Admin::all();
-
                 $ofertas = Oferta::all();
                 $user = User::all();
                 $empresas = Empresa::all();
                 $grados = Grado::all();
 
-                $empresa_oferta = array('profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                $empresa_oferta = array(
+                'profe_admin' => $profe_admin, 
+                'user' => $user,
+                'empresas' => $empresas,
+                'ofertas' => $ofertas, 
+                'grados' => $grados,
+                'profesor' => $profe);
+                
                 if (!$empresa_oferta) {
                     return view("alumnos/ofertas");
                 }
@@ -228,7 +236,8 @@ class Controller extends BaseController
             $nombre = $enviado->nombre;
             $apellido = $enviado->apellido;
             $email = $enviado->email;
-            $password1 = $enviado->password1;
+            $password = $enviado->password;
+            $password2 = $enviado->password2;
 
             $actualizarUsuario = User::findOrFail(Auth::user()->id);
             if ($nombre != "") {
@@ -243,8 +252,8 @@ class Controller extends BaseController
                 $actualizarUsuario->update(['email' => $email]);
             }
 
-            if ($password1 != "") {
-                $actualizarUsuario->update(['password1' => $password1]);
+            if ($password != "") {
+                $actualizarUsuario->update(['password' => Hash::make($password)]);
             }
 
         } else {

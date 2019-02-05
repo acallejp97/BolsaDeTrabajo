@@ -24,36 +24,6 @@ $(".borrarUsuario").click(function() {
     });
 });
 
-$("#updateUser").click(function() {
-    var array = {
-        nombre: $("#nombre").val(),
-        apellido: $("#apellido").val(),
-        email: $("#email").val(),
-        password1: $("#password1").val(),
-        password2: $("#password2").val()
-    };
-
-    var valParam = JSON.stringify(array);
-
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        },
-        url: "./actualizarUsuario",
-        type: "POST",
-        data: {
-            actualizacionUsuario: valParam
-        },
-        success: function() {
-            alert("Datos modificados correctamente");
-            location.reload();
-        },
-        error: function() {
-            alert("Por favor, revise los datos");
-        }
-    });
-});
-
 $("#descargarPlantilla").click(function() {
     $.ajax({
         headers: {
@@ -116,6 +86,36 @@ $(".updateUsuarios").click(function() {
         type: "POST",
         data: {
             actualizacionUsuarios: valParam
+        },
+        success: function() {
+            alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$("#insertUser").click(function() {
+    var array = {
+        nombre: $("#nombre").val(),
+        apellidos: $("#apellidos").val(),
+        email: $("#email").val(),
+        anio: $("#anio_fin").val(),
+        idgrado: $("#id_grado").val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./anadirUsuario",
+        type: "POST",
+        data: {
+            nuevoUsuario: valParam
         },
         success: function() {
             alert("Datos modificados correctamente");
