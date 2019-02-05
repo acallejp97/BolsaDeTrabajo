@@ -44,7 +44,7 @@
 
       <div class="form-group">
         <!-- Submit Button -->
-        <button type="submit" style="background: #b50045; color:white;" id="insertEmpresa" class="btn btn-primary">Publicar</button>
+        <button type="submit" style="background: #b50045; color:white;" id="insertEmpresa" class="btn btn-primary">@lang('header.publicar')</button>
       </div>
     </div>
 

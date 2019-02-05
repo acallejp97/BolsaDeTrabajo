@@ -55,10 +55,10 @@
 						<td class="td-actions">
 							<button class="btn btn-default btn-xs" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $correo->id;?>"
 							 id="<?php echo $correo->id;?>">
-										<span class="glyphicon glyphicon-pencil"></span> Abrir
+										<span class="glyphicon glyphicon-pencil"></span> @lang('header.abrir')
 								</button>
 							<button class=" borrarCorreo btn btn-default btn-xs " style="background: #b50045; color:white;" value="{{$correo['id']}}">
-										<span class="glyphicon glyphicon-remove" ></span> Borrar
+										<span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
 								</button>
 
 						</td>
@@ -81,7 +81,7 @@
 										{{$correo['descripcion']}}
 									</div>
 									<div class="form-group">
-										<label for="comment">Responder:</label>
+										<label for="comment">@lang('header.responder'):</label>
 										<textarea type="text" name="respuesta" class="form-control" rows="4" , cols="164" id="respuesta<?php echo $correo->id?>"
 										 style="resize:none," placeholder="Ponga aquí su mensaje..."></textarea>
 									</div>

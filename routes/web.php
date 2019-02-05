@@ -10,7 +10,7 @@ Route::group(['middleware' => 'auth'], function () {
         }
     });
    
-// IDIOMA CAMBIOS
+//IDIOMA CAMBIOS
     Route::get('lang/{lang}', function($lang) {
         \Session::put('lang', $lang);
         return \Redirect::back();

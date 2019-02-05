@@ -11,7 +11,7 @@ return [
   'empresas' => 'Empresas',
   'buzon' => 'Buzon',
   'cursos' => 'Cursos',
-  'cerrar' => 'Cerrar Sesión',
+  'cerrarsesion' => 'Cerrar Sesión',
   'contacto' => 'Contacto',
   'profesores' => 'Alta Profesores',
 
