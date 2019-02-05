@@ -18,6 +18,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Validator;
+use App\Model\Alumno_Oferta;
 
 class Controller extends BaseController
 {
@@ -64,13 +65,19 @@ class Controller extends BaseController
             case 2:
                 $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
                 $profe_admin = Profe_Admin::all();
-
                 $ofertas = Oferta::all();
                 $user = User::all();
                 $empresas = Empresa::all();
                 $grados = Grado::all();
 
-                $empresa_oferta = array('profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                $empresa_oferta = array(
+                'profe_admin' => $profe_admin, 
+                'user' => $user,
+                'empresas' => $empresas,
+                'ofertas' => $ofertas, 
+                'grados' => $grados,
+                'profesor' => $profe);
+                
                 if (!$empresa_oferta) {
                     return view("alumnos/ofertas");
                 }

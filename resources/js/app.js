@@ -18,7 +18,7 @@ require("./usuario");
 
 window.Vue = require("vue");
 
-import VueMaterial from 'vue-material'
+import VueMaterial from 'vue-material';
 import VeeValidate from "vee-validate";
 Vue.use(VueMaterial);
 Vue.use(VeeValidate);

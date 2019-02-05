@@ -6,7 +6,7 @@
     <body>
         <h2>Respuesta correo</h2>
         <div>
-            <p>HOLAAAAA</p>
+            <p>{{$data}}</p>
         </div>
     </body>
 </html>

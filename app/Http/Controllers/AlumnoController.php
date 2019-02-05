@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Model\Alumno;
+use App\Model\Alumno_Oferta;
 use App\Model\Curriculum;
+use App\Model\Empresa;
+use App\Model\Oferta;
 use App\User;
+use App\Mail\inscripcion;
 use Auth;
 use Illuminate\Http\Request;
+use Mail;
 use Validator;
 
 class AlumnoController extends Controller
@@ -115,4 +120,42 @@ class AlumnoController extends Controller
 
     }
 
+    public function inscribirse(Request $request)
+    {
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['inscripcion'])) {
+
+            $enviado = json_decode($_REQUEST['inscripcion']);
+
+            $id_oferta = $enviado->idoferta;
+            $id_usuario = Auth::user()->id;
+            $alumno = Alumno::where('id_user', $id_usuario)->first();
+            $oferta = Oferta::where('id', $id_oferta)->first();
+            $empresa = Empresa::where('id', $oferta['id_empresa'])->first();
+
+            $curriculum = Curriculum::where('id_alumno', $alumno['id'])->first();
+
+            $data = array(
+                'nombre' => $curriculum['nombre'],
+                'idiomas' => $curriculum['idiomas'],
+                'apellidos' => $curriculum['apellidos'],
+                'telefono' => $curriculum['telefono'],
+                'direccion' => $curriculum['direccion'],
+                'email' => $curriculum['email'],
+                'competencias' => $curriculum['competencias'],
+                'experiencia' => $curriculum['experiencia'],
+                'otros_datos' => $curriculum['otros_datos'],
+            );
+
+            Mail::to($empresa['email'])
+                ->send(new inscripcion($data));
+
+            $AlumnoOferta = new Alumno_Oferta;
+            $AlumnoOferta->insert(['id_alumno' => $alumno['id'], 'id_oferta' => $id_oferta]);
+        }
+    }
 }

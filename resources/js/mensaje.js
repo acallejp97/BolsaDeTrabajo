@@ -54,13 +54,10 @@ $(".abrirMensaje").click(function() {
 });
 
 
-
-/*------------------------------------------------------------RESPONDER MENSAJE-----------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------------*/
-
-$("#respuestaEmail").click(function() {
+$(".respuestaEmail").click(function() {
     var array = {
-        respuesta: $(this).val()
+        idMensaje: $(this).val(),
+        respuesta:$('#respuesta'+$(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -75,7 +72,7 @@ $("#respuestaEmail").click(function() {
             respuestaMail: valParam
         },
         success: function() {
-            alert("el mensaje ha sido enviado");
+            alert("Mensaje ha sido enviado");
         },
         error: function() {
             alert("Por favor, revise los datos");

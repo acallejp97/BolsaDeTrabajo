@@ -47745,12 +47745,10 @@ $(".abrirMensaje").click(function () {
     });
 });
 
-/*------------------------------------------------------------RESPONDER MENSAJE-----------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------------*/
-
-$("#respuestaEmail").click(function () {
+$(".respuestaEmail").click(function () {
     var array = {
-        respuesta: $(this).val()
+        idMensaje: $(this).val(),
+        respuesta: $('#respuesta' + $(this).val()).val()
     };
 
     var valParam = JSON.stringify(array);
@@ -47765,7 +47763,7 @@ $("#respuestaEmail").click(function () {
             respuestaMail: valParam
         },
         success: function success() {
-            alert("el mensaje ha sido enviado");
+            alert("Mensaje ha sido enviado");
         },
         error: function error() {
             alert("Por favor, revise los datos");
@@ -47855,6 +47853,32 @@ $(".updateOferta").click(function () {
         },
         success: function success() {
             alert("Datos modificados correctamente");
+            location.reload();
+        },
+        error: function error() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});
+
+$(".inscribirse").click(function () {
+    var array = {
+        idoferta: $(this).val()
+    };
+
+    var valParam = JSON.stringify(array);
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./inscribirse",
+        type: "POST",
+        data: {
+            inscripcion: valParam
+        },
+        success: function success() {
+            alert("Inscrito correctamente");
             location.reload();
         },
         error: function error() {

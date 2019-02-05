@@ -11,7 +11,9 @@ use App\Model\Grado;
 use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
+use App\Mail\respuestaMail;
 use Excel;
+use Mail;
 use File;
 use Hash;
 use Illuminate\Http\Request;
@@ -598,42 +600,24 @@ class Profe_AdminController extends Controller
 /*---------------------------------------------------------ENVIAR MENSAJE-----------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------*/
 
-<<<<<<< HEAD
-
-
-
-
-public function respuestaEmail(Request $request)
-{
-    if (!$request->ajax()) {
-        return redirect('/buzon');
-    }
-
-    if (isset($_REQUEST['respuestaCorreo'])) {
-        $enviado = json_decode($_REQUEST['respuestaCorreo']);
-        $respuestaEmail = $enviado->respuestaEmail;
-
-        if ($respuestaEmail != "") {
-            $respuestaCorreo->update(['respuesta' => $respuesta]);
-=======
     public function respuestaEmail(Request $request)
     {
         if (!$request->ajax()) {
-            return redirect('/buzon');
+            return redirect('/');
         }
 
-        if (isset($_REQUEST['respuestaCorreo'])) {
-            $enviado = json_decode($_REQUEST['respuestaCorreo']);
-            $email = $enviado->email;
-            $email->$respuesta = $request->input('respuesta');
-            echo $respuesta;
->>>>>>> 94a90167ad7fa93984b22135bd702c57699f728e
+        if (isset($_REQUEST['respuestaMail'])) {
+            $enviado = json_decode($_REQUEST['respuestaMail']);
+            $idmail = $enviado->idMensaje;
+            $data = $enviado->respuesta;
+
+            $mail=Correo::where('id',$idmail)->first();
+            $usuario=User::where('id',$mail['id_remit']);
+            
+
+            Mail::to('acallejp@gmail.com')
+                ->send(new respuestaMail($data));
         }
 
     }
 }
-<<<<<<< HEAD
-}
-}
-=======
->>>>>>> 94a90167ad7fa93984b22135bd702c57699f728e
