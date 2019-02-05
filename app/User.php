@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
 
-    protected $fillable = ['id', 'email', 'nombre', 'rango', 'apellidos', 'imagen', 'created_at'];
+    protected $fillable = ['id', 'email', 'nombre', 'rango', 'apellidos', 'imagen', 'created_at', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -25,27 +24,26 @@ class User extends Authenticatable
      * @var
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
     public function ofertas()
-{
-    return $this->hasMany(Oferta::class);
-}
-public function grados()
-{
-    return $this->hasMany(Grado::class);
-}
+    {
+        return $this->hasMany(Oferta::class);
+    }
+    public function grados()
+    {
+        return $this->hasMany(Grado::class);
+    }
 
-public function alumno()
-{
-    return $this->belongsTo(Alumno::class);
-}
+    public function alumno()
+    {
+        return $this->belongsTo(Alumno::class);
+    }
 
-public function Correos()
-{
-    return $this->hasMany(Correo::class);
-}
-
+    public function Correos()
+    {
+        return $this->hasMany(Correo::class);
+    }
 
 }
