@@ -6,7 +6,7 @@
     <body>
         <h2>Respuesta correo</h2>
         <div>
-             hola
+            <p>HOLAAAAA</p>
         </div>
     </body>
 </html>

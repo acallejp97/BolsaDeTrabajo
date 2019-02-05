@@ -47718,6 +47718,9 @@ $(".borrarCorreo").click(function () {
     });
 });
 
+/*------------------------------------------------------------ABRIR MENSAJE-------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------*/
+
 $(".abrirMensaje").click(function () {
     var array = {
         nombre: $(this).val()
@@ -47742,6 +47745,7 @@ $(".abrirMensaje").click(function () {
     });
 });
 
+<<<<<<< HEAD
 /*-----------------------------------------------------RESPUESTA EMAIL---------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------*/
 $(".respuestaEmail").click(function () {
@@ -47753,6 +47757,17 @@ $(".respuestaEmail").click(function () {
     var respuesta = $("#respuesta").val();
 
     var valParam = JSON.stringify(respuesta);
+=======
+/*------------------------------------------------------------RESPONDER MENSAJE-----------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------*/
+
+$("#respuestaEmail").click(function () {
+    var array = {
+        respuesta: $(this).val()
+    };
+
+    var valParam = JSON.stringify(array);
+>>>>>>> 1438e0b9a599a8d432326fd75679263a1634808a
 
     $.ajax({
         headers: {
@@ -47761,13 +47776,13 @@ $(".respuestaEmail").click(function () {
         url: "./respuestaEmail",
         type: "POST",
         data: {
-            respuesta: valParam
+            respuestaMail: valParam
         },
         success: function success() {
-            alert(respuesta);
+            alert("el mensaje ha sido enviado");
         },
         error: function error() {
-            alert(respuesta);
+            alert("Por favor, revise los datos");
         }
     });
 });

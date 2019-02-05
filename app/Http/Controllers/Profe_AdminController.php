@@ -594,28 +594,3 @@ class Profe_AdminController extends Controller
         $empre = Empresa::where('id', $id)->first();
         return view('empresas.form_edit', ['empresa' => $empre]);
     }
-
-/*---------------------------------------------------------ENVIAR MENSAJE-----------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------*/
-
-    public function respuestaEmail(Request $request)
-    {
-      
-        if (!$request->ajax()) {
-            return redirect('/buzon');
-        }
-        $actualizarEmpresa = Correo::findOrFail($idcorreo);
-        if (isset($_REQUEST['respuestaCorreo'])) {
-            $enviado = json_decode($_REQUEST['respuestaCorreo']);
-            $email = $enviado->email;
-            $respuesta->$enviando->respuesta;
-            if ($respuesta = "") {
-                alert('hola');
-            }
-        }
-
-    }
-
-
-    
-}

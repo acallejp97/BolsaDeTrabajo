@@ -25,6 +25,10 @@ $(".borrarCorreo").click(function() {
     });
 });
 
+
+/*------------------------------------------------------------ABRIR MENSAJE-------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------*/
+
 $(".abrirMensaje").click(function() {
     var array = {
         nombre: $(this).val()
@@ -51,19 +55,15 @@ $(".abrirMensaje").click(function() {
 
 
 
+/*------------------------------------------------------------RESPONDER MENSAJE-----------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------*/
 
+$("#respuestaEmail").click(function() {
+    var array = {
+        respuesta: $(this).val()
+    };
 
-/*-----------------------------------------------------RESPUESTA EMAIL---------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------*/
-$(".respuestaEmail").click(function() {
-    /*var array = {
-        usuario: ("#usuario").val(),
-        respuesta: $("#respuesta").val()
-    };*/
-
-    var respuesta  = $("#respuesta").val();
-
-    var valParam = JSON.stringify(respuesta);
+    var valParam = JSON.stringify(array);
 
     $.ajax({
         headers: {
@@ -72,13 +72,14 @@ $(".respuestaEmail").click(function() {
         url: "./respuestaEmail",
         type: "POST",
         data: {
-            respuesta: valParam
+            respuestaMail: valParam
         },
         success: function() {
-            alert(respuesta);
+            alert("el mensaje ha sido enviado");
         },
         error: function() {
-            alert(respuesta);
+            alert("Por favor, revise los datos");
         }
     });
 });
+
