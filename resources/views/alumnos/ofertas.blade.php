@@ -2,13 +2,13 @@
 @section('content')
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <div class="row">
-  <div class="page-header">
+  <div   class="page-header text-left col-md-9 ">
     <h3>
       @lang('header.listaofertas')
     </h3>
   </div>
   @foreach ($result['ofertas'] as $oferta)
-  <div style="margin-left: 14em;" class="text-left col-md-9 ">
+  <div  class="text-left col-md-9 ">
     <h3>{{$oferta['titulo']}}</h3>
     <p >{{$oferta['descripcion']}}</p>
     <p> <strong style="color: #b50045;">@lang('header.puestos'): </strong>{{$oferta['puestos-vacantes']}}</p>

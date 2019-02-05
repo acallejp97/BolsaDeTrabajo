@@ -16,7 +16,7 @@ return [
   'profesores' => 'Alta Profesores',
 
   //PERFIL
-  'nombre' => 'Nombre',
+  'nombre' => 'Izena',
   'apellidos' => 'Apellidos',
   'email' => 'Email',
   'guardar' => 'Guardar',
@@ -60,7 +60,7 @@ return [
  
 //login
 'contraseñaolvidada'=> 'Contraseña olvidada ',
-'iniciar'=> 'INICIAR',
+'iniciar'=> 'HASI',
 
  //EMPRESAS
  'añadirempresas' => 'Añadir Empresas',

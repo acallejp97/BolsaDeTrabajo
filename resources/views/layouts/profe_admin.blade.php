@@ -29,15 +29,27 @@
 <body>
   <div class="card text-center">
     <div class="card-header">
-        <div>
-            <li style="display:inline-flex; float:right; margin-right:2em;">
-          
-              <a href="{{ route('change_lang', ['lang' => 'es']) }}"> <img  src='republicana.png' class='img-responsive ' style='margin-right: 6px; margin-top:0.2em; height:29px; width: 30px;' /></a>
-              <a href="{{ route('change_lang', ['lang' => 'en']) }}"><img src='ingles.png' class='img-responsive' style=' margin-right: 6px; height:35px; width: 30px;' /></a>
-              <a href="{{ route('change_lang', ['lang' => 'eu']) }}"><img src='ikurrina.png' class='img-responsive' style=' margin-right: 6px; height:35px; width: 30px;' /></a>
-                      </li>
-          </div>
-      <ul class="nav nav-tabs card-header-tabs">
+      
+      <nav  class="navbar navbar navbar-static-top custom-navbar" role="navigation">
+        <div class="container-fluid">
+          <button style="background:#b50045;" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1"> <span class="sr-only">Toggle navigation</span>
+            <span style="background:white;"class="icon-bar"></span>
+            <span style="background:white;"class="icon-bar"></span>
+                <span style="background:white;"class="icon-bar"></span>
+                
+              </button>
+              
+              <div>
+                  <li style="display:inline-flex; float:right; margin-right:2em;">
+                
+                    <a href="{{ route('change_lang', ['lang' => 'es']) }}"> <img  src='republicana.png' class='img-responsive ' style='margin-right: 6px; margin-top:0.2em; height:29px; width: 30px;' /></a>
+                    <a href="{{ route('change_lang', ['lang' => 'en']) }}"><img src='ingles.png' class='img-responsive' style=' margin-right: 6px; height:35px; width: 30px;' /></a>
+                    <a href="{{ route('change_lang', ['lang' => 'eu']) }}"><img src='ikurrina.png' class='img-responsive' style=' margin-right: 6px; height:35px; width: 30px;' /></a>
+                  </li>
+                </div>
+              <div class="navbar-collapse collapse" id="navbar-collapse-1">
+                <!-- Non-collapsing right-side icons -->
+                <ul class="nav nav-tabs card-header-tabs  nav navbar-nav">
         <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
           <a style="color:#b50045;"class="nav-link" href="{{ route('perfil') }}">@lang('header.perfil')</a>
         </li>
@@ -74,6 +86,10 @@
        
       </ul>
     </div>
+  </div>
+  <!--/.container -->
+</nav>
+  </div>
   </div>
 
   @yield('content')

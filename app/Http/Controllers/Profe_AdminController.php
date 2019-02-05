@@ -594,3 +594,7 @@ class Profe_AdminController extends Controller
         $empre = Empresa::where('id', $id)->first();
         return view('empresas.form_edit', ['empresa' => $empre]);
     }
+
+
+}
+
