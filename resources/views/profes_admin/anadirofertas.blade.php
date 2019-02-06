@@ -11,13 +11,13 @@
       </div>
       <div class="form-group">
         <label for="titulo" class="control-label">@lang('header.titulo')</label>
-        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="John Deer">
+        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="@lang('header.metenombre')">
       </div>
 
       <div class="form-group">
         <label for="descripcion" class="control-label">@lang('header.descripcion')</label>
         <textarea type="text" name="descripcion" class="form-control" rows="4" , cols="164" id="descripcion" style="resize:none,"
-          placeholder="Street address, P.O. box, company name, c/o"></textarea>
+          placeholder="@lang('header.metedescripcion')"></textarea>
 
       </div>
 
@@ -47,7 +47,7 @@
 
       <div class="form-group">
         <label for="puestos" class="control-label">@lang('header.puestos')</label>
-        <input type="text" class="form-control" id="puestos" name="puestos" placeholder="">
+        <input type="text" class="form-control" id="puestos" name="puestos" placeholder="@lang('header.metepuestos')">
       </div>
 
       <div class="form-group">

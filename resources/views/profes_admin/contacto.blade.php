@@ -10,21 +10,21 @@
           <div class="form-group">
             <label class="col-md-3 control-label" for="name">@lang('header.nombre')</label>
             <div class="col-md-9">
-              <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control" value="{{Auth::user()->nombre}}">
+              <input id="nombre" name="nombre" type="text" placeholder="@lang('header.metenombre')" class="form-control" value="{{Auth::user()->nombre}}">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-md-3 control-label" for="asunto">@lang('header.asunto')</label>
             <div class="col-md-9">
-              <input id="asunto" name="asunto" type="text" placeholder="Asunto" class="form-control">
+              <input id="asunto" name="asunto" type="text" placeholder="@lang('header.meteasunto')" class="form-control">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-md-3 control-label" for="message">@lang('header.tumensaje')</label>
             <div class="col-md-9">
-              <textarea id="mensaje" name="mensaje" placeholder="Introduzca su mensaje" class="form-control" rows="5"></textarea>
+              <textarea id="mensaje" name="mensaje" placeholder="@lang('header.metemensaje')" class="form-control" rows="5"></textarea>
             </div>
           </div>
 

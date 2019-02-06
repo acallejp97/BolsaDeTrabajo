@@ -53,23 +53,23 @@
                         </div>
                         <div class="form-group col-lg-12">
                             <label>@lang('header.nombrealu') :</label>
-                            <input type="text" id="nombre" class="form-control" placeholder="Nombre" title="Introduce el nombre del alumno." />
+                            <input type="text" id="nombre" class="form-control" placeholder="@lang('header.metenombre')" title="Introduce el nombre del alumno." />
                         </div>
                         
                         <div class="form-group col-lg-12">
                             <label>@lang('header.apellidoalu') :</label>
-                            <input type="text" id="apellidos" class="form-control" placeholder="Apellidos" title="Introduce los apellidos del alumno."
+                            <input type="text" id="apellidos" class="form-control" placeholder="@lang('header.meteapellidos')" title="Introduce los apellidos del alumno."
                             />
                         </div>
 
                         <div class="form-group col-lg-12">
                             <label>@lang('header.emailalu') :</label>
-                            <input type="text" id="email" class="form-control" placeholder="Email" title="Introduce el email del alumno." />
+                            <input type="text" id="email" class="form-control" placeholder="@lang('header.meteemail')" title="Introduce el email del alumno." />
                         </div>
 
                         <div class="form-group col-lg-12">
                             <label>@lang('header.añofinalu') :</label>
-                            <input type="text" id="anio_fin" class="form-control" placeholder="Año Finalizacion" title="Introduce el año de finalizacion del alumno."
+                            <input type="text" id="anio_fin" class="form-control" placeholder="@lang('header.meteaño')" title="Introduce el año de finalizacion del alumno."
                             />
                         </div>
 

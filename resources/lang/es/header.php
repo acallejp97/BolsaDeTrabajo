@@ -15,6 +15,25 @@ return [
   'contacto' => 'Contacto',
   'profesores' => 'Alta Profesores',
 
+
+  //PLACEHOLDERS
+  'metenombre' => 'Introduce el nombre',
+  'meteapellidos' => 'Introduce el apellidos',
+  'meteemail' => 'Introduce el email',
+  'metedireccion' => 'Introduce la dirección',
+  'metedescripcion' => 'Introduce una descripción',
+  'metemensaje' => 'Introduce tu mensaje',
+  'meteasunto' => 'Asunto del mensaje',
+  'meteidiomas' => '¿Que idiomas sabes?',
+  'meteformacion' => 'Introduce tu formación académica',
+  'meteexperiencia' => 'Introduce tu experiencia laboral',
+  'meteurl' => 'Introduce la url de la empresa',
+  'metetelefono' => 'Introduce un telefono',
+  'meteaño' => '¿Que año acabó?',
+  'meteotrosdatos' => 'Introduce datos extra',
+  'metepuestos' => 'Cuantas vacantes',
+
+
   //PERFIL
   'nombre' => 'Nombre',
   'apellidos' => 'Apellidos',

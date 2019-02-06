@@ -12,8 +12,25 @@ return [
   'buzon' => 'Ontzia',
   'cursos' => 'Kurtsoak',
   'cerrarsesion' => 'Saioa Itxi',
-  'contacto' => 'Kontaktuak',
+  'contacto' => 'Harremanetan jarri',
   'profesores' => 'Irakasleen Alta',
+
+//PLACEHOLDERS
+'metenombre' => 'Sartu hemen izena',
+'meteapellidos' => 'Sartu hemen abizenak',
+'meteemail' => 'Sartu emaila',
+'metedireccion' => 'Sartu helburua',
+'metedescripcion' => 'Sartu deskribapen bat',
+'metemensaje' => 'Sartu zure mezua',
+'meteasunto' => 'Mezuaren gaia',
+'meteidiomas' => 'Zenbat hizkuntzak ezagutzen dituzu?',
+'meteformacion' => 'Sartu zure prestakuntza akademikoa',
+'meteexperiencia' => 'Hemen jarri zure lan esperientzia',
+'meteurl' => 'Idatzi enpresaren URL-a',
+'metetelefono' => 'Sartu telefono bat',
+'meteaño' => 'Zein urtetan amaitu zen?',
+'meteotrosdatos' => 'Datu gehiago dauzkazu?',
+'metepuestos' => 'Zenbat lanpostu daude?',
 
 
   //PERFIL
