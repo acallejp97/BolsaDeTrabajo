@@ -41,14 +41,14 @@
                     <div class="form-group">
                         <div class="col-xs-11">
                             <label for="nombre"><h4>@lang('header.nombre')</h4></label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="{{Auth::user()->nombre}}" title="Introduce tu nombre.">
+                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="@lang('header.metenombre')" value="{{Auth::user()->nombre}}" title="Introduce tu nombre.">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-11">
                             <label for="apellido"><h4>@lang('header.apellidos')</h4></label>
-                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellidos" value="{{Auth::user()->apellidos}}"
+                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="@lang('header.meteapellidos')" value="{{Auth::user()->apellidos}}"
                                 title="Introduce tus apellidos.">
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <div class="col-xs-11">
                             <label for="email"><h4>@lang('header.email')</h4></label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" value="{{Auth::user()->email}}"
+                            <input type="email" class="form-control" name="email" id="email" placeholder="@lang('header.meteemail')" value="{{Auth::user()->email}}"
                                 title="Introduce tu email.">
                         </div>
                     </div>

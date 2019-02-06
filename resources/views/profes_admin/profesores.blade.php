@@ -11,17 +11,17 @@
 
       <div class="form-group">
         <label for="nombre" class="control-label">@lang('header.nombre')</label>
-        <input type="text" class="form-control" id="nombre" placeholder="nombre">
+        <input type="text" class="form-control" id="nombre" placeholder="@lang('header.metenombre')">
       </div>
 
       <div class="form-group">
         <label for="apellidos" class="control-label">@lang('header.apellidos')</label>
-        <input type="text" class="form-control" id="apellidos" placeholder="apellidos">
+        <input type="text" class="form-control" id="apellidos" placeholder="@lang('header.meteapellidos')">
       </div>
 
       <div class="form-group">
         <label for="email" class="control-label">@lang('header.email')</label>
-        <input type="text" class="form-control" id="email" placeholder="email">
+        <input type="text" class="form-control" id="email" placeholder="@lang('header.meteemail')">
       </div>
 
       <div class="form-group">

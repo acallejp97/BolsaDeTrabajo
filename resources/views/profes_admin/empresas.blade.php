@@ -13,33 +13,33 @@
       <div class="form-group">
         <!-- Full Name -->
         <label for="nombre" class="control-label">@lang('header.nombre')</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="John Deer">
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="@lang('header.metenombre')">
       </div>
 
       <div class="form-group">
         <!-- Street 1 -->
         <label for="direccion" class="control-label">@lang('header.direccion')</label>
-        <input type="text" name="direccion" class="form-control" rows="4" , cols="164" id="direccion" style="resize:none," placeholder="">
+        <input type="text" name="direccion" class="form-control" rows="4" , cols="164" id="direccion" style="resize:none," placeholder="@lang('header.meteapellidos')">
 
       </div>
 
       <div class="form-group">
         <!-- Street 1 -->
         <label for="email" class="control-label">@lang('header.email')</label>
-        <input type="email" name="email" class="form-control" id="email" placeholder="">
+        <input type="email" name="email" class="form-control" id="email" placeholder="@lang('header.meteemail')">
 
       </div>
 
       <div class="form-group">
         <!-- Zip Code-->
         <label for="url" class="control-label">@lang('header.url')</label>
-        <input type="text" class="form-control" id="url" name="url" placeholder="">
+        <input type="text" class="form-control" id="url" name="url" placeholder="@lang('header.meteurl')">
       </div>
 
       <div class="form-group">
         <!-- Zip Code-->
         <label for="telefono" class="control-label">@lang('header.telefono')</label>
-        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="">
+        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="@lang('header.metetelefono')">
       </div>
 
       <div class="form-group">

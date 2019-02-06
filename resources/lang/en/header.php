@@ -14,6 +14,24 @@ return [
   'profesores' => 'Register Teachers',
   'cerrarsesion' => 'Logout',
 
+
+  ////////////////////////////////sustituir aqui callejo el ingles
+  //PLACEHOLDERS
+  'metenombre' => 'Introduce tu nombre',
+  'meteapellidos' => 'Introduce tus apellidos',
+  'meteemail' => 'Introduce tu email',
+  'metedireccion' => 'Introduce tu dirección',
+  'metedescripcion' => 'Introduce una descripción',
+  'metemensaje' => 'Introduce tu mensaje',
+  'meteasunto' => 'Asunto del mensaje',
+  'meteidiomas' => '¿Que idiomas sabes?',
+  'meteformacion' => 'Introduce tu formación académica',
+  'meteexperiencia' => 'Introduce tu experiencia laboral',
+  'meteurl' => 'Introduce la url de la empresa',
+  'metetelefono' => 'Introduce un telefono',
+  'meteaño' => '¿Que año acabó?',
+  'meteotrosdatos' => 'Introduce datos extra',
+  'metepuestos' => 'Cuantas vacantes',
 //PERFIL
     'nombre' => 'Name',
     'apellidos' => 'Surnames',

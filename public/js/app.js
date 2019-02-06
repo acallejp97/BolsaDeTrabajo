@@ -58486,8 +58486,8 @@ $("#insertUser").click(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/asier/Proyectos/2DAW/Retos/2Ev/BolsadeTrabajo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/asier/Proyectos/2DAW/Retos/2Ev/BolsadeTrabajo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/jans/carpetaxampp/BolsaDeTrabajo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/jans/carpetaxampp/BolsaDeTrabajo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

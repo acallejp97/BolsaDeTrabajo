@@ -83,7 +83,7 @@
 									<div class="form-group">
 										<label for="comment">@lang('header.responder'):</label>
 										<textarea type="text" name="respuesta" class="form-control" rows="4" , cols="164" id="respuesta<?php echo $correo->id?>"
-										 style="resize:none," placeholder="Ponga aquí su mensaje..."></textarea>
+										 style="resize:none," placeholder="@lang('header.metemensaje')"></textarea>
 									</div>
 									<!-- Modal footer -->
 									<div class="modal-footer">
