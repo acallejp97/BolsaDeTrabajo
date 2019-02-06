@@ -18,6 +18,6 @@ class Curriculum extends Model
 
     public function alumno()
     {
-      return $this->belongsTo(ALumno::class);
+      return $this->belongsTo(Alumno::class);
     }
 }

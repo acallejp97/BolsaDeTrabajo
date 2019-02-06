@@ -13,7 +13,7 @@
 			<div class="widget stacked widget-table action-table">
 				<div class="widget-content">
 					<br/>
-					<table class="table table-striped table-bordered" style="overflow: auto; max-width: 100%; display: block;">
+					<table class="table table-striped table-bordered" style="overflow: auto; max-width: 100%;">
 						<thead style="width:100%;">
 							<tr style="background: #b50045; color:white;">
 								<th id="table_id">ID

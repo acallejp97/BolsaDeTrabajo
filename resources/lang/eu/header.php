@@ -56,6 +56,7 @@ return [
 
     //ACTUALIZAR CV
     'formacion' => 'Formakuntza Akademikoa',
+    'curriculumde'=> '-(t)en Kurrikuluma',
     'experiencia' => 'Esperientzia',
     'otrosdatos' => 'Beste datu Batzuk',
     'guardar' => 'Gorde',
@@ -80,7 +81,7 @@ return [
   'empresa' => 'Enpresa',
   'puestos' => 'Postu hutsa',
   'titulo' => 'Izenburua',
-  'inscribirse' => 'Inscribirse',
+  'inscribirse' => 'Izena eman',
   'publicaroferta' => 'Eskaintza Argitaratu',
   'listaofertas' => 'Eskaintza Zerrenda',
   'profesorpublicado' => 'Argitaratu duen Irakaslea',

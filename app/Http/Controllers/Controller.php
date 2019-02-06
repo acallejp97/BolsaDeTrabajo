@@ -152,7 +152,7 @@ class Controller extends BaseController
             $user->where('email', '=', Auth::user()->email)
                 ->update(['imagen' => $name, 'updated_at' => date('Y-m-d H:m:s')]);
 
-            return view("profes_admin/perfil")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
+            return redirect("/perfil");
         }
     }
 

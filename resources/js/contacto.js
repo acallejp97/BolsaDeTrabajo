@@ -17,7 +17,7 @@ $("#enviarContacto").click(function() {
             nuevoContacto: valParam
         },
         success: function() {
-            alert("Datos modificados correctamente");
+            alert("Mensaje enviado correctamente");
             location.reload();
         },
         error: function() {
