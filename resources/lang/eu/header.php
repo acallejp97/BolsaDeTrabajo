@@ -42,7 +42,7 @@ return [
  'grado' => 'Gradua',
  'subir' => 'Igo',
  'cerrar'=> 'Itzi',
- 'elige' => 'Aukeratu zure xls/csv archiboa',
+ 'elige' => 'Aukeratu zure xls/csv artxiboa',
 
  //USUARIOS
  'registrado' => 'Erregistratua',

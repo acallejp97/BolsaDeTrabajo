@@ -34,14 +34,7 @@
 
         <nav>
             <div class="container">
-                <div>
-                    <li style="display:inline-flex; float:right; margin-right:2em;">
-                  
-                      <a href="{{ route('change_lang', ['lang' => 'es']) }}"> <img  src='republicana.png' class='img-responsive ' style='margin-right: 6px; margin-top:0.2em; height:29px; width: 30px;' /></a>
-                      <a href="{{ route('change_lang', ['lang' => 'en']) }}"><img src='ingles.png' class='img-responsive' style=' margin-right: 6px; height:35px; width: 30px;' /></a>
-                      <a href="{{ route('change_lang', ['lang' => 'eu']) }}"><img src='ikurrina.png' class='img-responsive' style=' margin-right: 6px; height:35px; width: 30px;' /></a>
-                              </li>
-                  </div>
+               
 
                 <a class="navbar-brand" href="{{ url('http://www.fptxurdinaga.hezkuntza.net/web/Guest') }}">
                 <img src="logo.png" style="width: 300px; height: 200px;">
