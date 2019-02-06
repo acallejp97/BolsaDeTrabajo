@@ -37,7 +37,7 @@
 
 
                 <a class="navbar-brand" href="{{ url('http://www.fptxurdinaga.hezkuntza.net/web/Guest') }}">
-                <img src="logo.png" style="width: 300px; height: 200px;">
+                <img src="logo.png" style="width: 70%;float:left;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
