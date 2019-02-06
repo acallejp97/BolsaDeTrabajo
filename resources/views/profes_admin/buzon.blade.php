@@ -11,7 +11,7 @@
 		</div>
 	
 		<div class="widget-content">
-			<table class="table table-striped table-bordered" style="overflow: scroll; max-width: 100%; display: block;">
+			<table class="table table-striped table-bordered" style="overflow: auto; max-width: 100%; display: block;">
 				<thead>
 					<tr style="background: #b50045; color:white;">
 						<th id="table_id">@lang('header.usuario')
