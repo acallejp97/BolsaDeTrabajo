@@ -12,7 +12,7 @@
                 {{csrf_field()}}
                 <div class='form-group'>
 
-                    <img src="{{url("fotosPerfil/" . Auth::user()->imagen)}}" class='img-responsive' style=' height:200px; width: 200px;' />
+                    <img src="{{url("fotosPerfil/ " . Auth::user()->imagen)}}" class='img-responsive' style=' height:200px; width: 200px;' />
 
                     <input style="color: transparent; margin-top: 3em;" type="file" name="image" />
                     <div class='text-danger'>{{$errors->first('image')}}</div>
@@ -62,6 +62,7 @@
                             <label for="email"><h4>@lang('header.email')</h4></label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" value="{{Auth::user()->email}}"
                                 title="Introduce tu email.">
+
                         </div>
                     </div>
                     <div id="passwords">
@@ -72,8 +73,9 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" id="updateUser" style="background: #b50045; float:right;color:white;" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> @lang('header.guardar')</button>@if(Auth::user()->rango!=0)
-                                <button type="submit" class="btn btn-lg btn-success" id="deleteUser" style="background:#D8BFD8; float:right; color:black;">
+                                <button class="btn btn-lg btn-success" onsubmit="return validarFormulario()" id="updateUser" style="background: #b50045; float:right;color:white;"
+                                    type="submit"><i class="glyphicon glyphicon-ok-sign"></i> @lang('header.guardar')</button>@if(Auth::user()->rango!=0)
+                                <button type="submit" class="btn btn-lg btn-success" onclick="validarFormulario3(this)" id="deleteUser" style="background:#D8BFD8; float:right; color:black;">
 										<span class="glyphicon glyphicon-remove" ></span> @lang('header.borrarperfil')
 									</button> @endif
                             </div>
@@ -84,9 +86,26 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
 <script>
     window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};
+    document.getElementById('email').addEventListener('input', function() {
+    campo = event.target;
+    valido = document.getElementById('emailOK');
+        
+    emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (emailRegex.test(campo.value)) {
+    document.getElementById('updateUser').disabled=false;
 
+      valido.innerText = "válido";
+    } else {
+    document.getElementById('updateUser').disabled=true;
+
+      valido.innerText = "incorrecto";
+    }
+});
+
+</script>
+<script>
+    src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js";
 </script>
 @endsection
