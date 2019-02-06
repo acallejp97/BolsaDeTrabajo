@@ -423,18 +423,20 @@ class Profe_AdminController extends Controller
             $nombre = $enviado->nombre;
             $apellido = $enviado->apellidos;
             $email = $enviado->email;
-            $password = Hash::make('prueba');
+            $password = $this->randomPassword();
             $id_depar = $enviado->id_depar;
             $rango = 1;
             $user = new User;
             $profe = new Profe_Admin;
-            $user->insert(['nombre' => $nombre, 'apellidos' => $apellido, 'email' => $email, 'password' => $password, 'rango' => $rango, 'created_at' => date('Y-m-d H:m:s'),
+            $user->insert(['nombre' => $nombre, 'apellidos' => $apellido, 'email' => $email, 'password' => Hash::make($password), 'rango' => $rango, 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')]);
 
             $id_user = User::max('id');
             $profe->insert(['id_depar' => $id_depar, 'id_user' => $id_user, 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')]);
 
+                Mail::to($email)
+                ->send(new contraseniaMail($password));
         }
     }
 

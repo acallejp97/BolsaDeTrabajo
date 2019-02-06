@@ -65,6 +65,7 @@ composer
 curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 yum -y install nodejs
 npm --version
+npm -y install -g npm
 
 #Descargar proyecto
 yum -y install git

@@ -19,9 +19,7 @@ require("./usuario");
 
 window.Vue = require("vue");
 
-import VueMaterial from 'vue-material';
 import VeeValidate from "vee-validate";
-Vue.use(VueMaterial);
 Vue.use(VeeValidate);
 
 /**
@@ -30,7 +28,7 @@ Vue.use(VeeValidate);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component("passwords", require("./components/passwords.vue"));
+Vue.component("passwords", require("./components/passwords.vue").default);
 window.onload = function () {
 new Vue({
     el: '#passwords',

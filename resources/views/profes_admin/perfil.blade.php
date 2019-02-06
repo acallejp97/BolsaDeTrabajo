@@ -26,7 +26,7 @@
                 <?php $fecha = explode(' ', trim(Auth::user()->created_at));?>
                 <div class="panel-body">{{$fecha[0]}}</div>
             </div>
-           
+
             <ul class="list-group">
                 <li class="list-group-item text-muted">@lang('header.actividad') <i class="fa fa-dashboard fa-1x"></i></li>
                 @if(Auth::user()->rango==0)
@@ -65,8 +65,8 @@
                         </div>
                     </div>
                     <div id="passwords">
-                  <passwords>
-                  </passwords>
+                        <passwords>
+                        </passwords>
                     </div>
                     <div class="form-group col-xs-8">
                         <div class="form-group">

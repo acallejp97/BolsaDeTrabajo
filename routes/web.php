@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Admin
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
     Route::get('/profesores', "Profe_AdminController@Profesores")->name('profesores');
-    Route::get('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
+    Route::post('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
     Route::post('/respuestaEmail', "Profe_AdminController@respuestaEmail")->name('respuestaEmail');
     
     //Profe y admin
