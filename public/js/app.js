@@ -45587,34 +45587,34 @@ var render = function() {
             placeholder: "Password, Again",
             "data-vv-as": "password"
           }
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.errors.any(),
-                expression: "errors.any()"
-              }
-            ],
-            staticClass: "alert alert-danger"
-          },
-          [
-            _vm.errors.has("password")
-              ? _c("div", [_vm._v(_vm._s(_vm.errors.first("password")))])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.has("password_confirmation")
-              ? _c("div", [
-                  _vm._v(_vm._s(_vm.errors.first("password_confirmation")))
-                ])
-              : _vm._e()
-          ]
-        )
-      ])
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.errors.any(),
+              expression: "errors.any()"
+            }
+          ],
+          staticClass: "alert alert-danger"
+        },
+        [
+          _vm.errors.has("password")
+            ? _c("div", [_vm._v(_vm._s(_vm.errors.first("password")))])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.has("password_confirmation")
+            ? _c("div", [
+                _vm._v(_vm._s(_vm.errors.first("password_confirmation")))
+              ])
+            : _vm._e()
+        ]
+      )
     ])
   ])
 }
