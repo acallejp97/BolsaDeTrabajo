@@ -435,7 +435,7 @@ class Profe_AdminController extends Controller
             $profe->insert(['id_depar' => $id_depar, 'id_user' => $id_user, 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')]);
 
-                Mail::to($email)
+            Mail::to($email)
                 ->send(new contraseniaMail($password));
         }
     }

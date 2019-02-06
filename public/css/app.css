@@ -10506,6 +10506,6 @@ a.text-dark:focus {
   background: url(/images/fondo.png?ba8061b401d3614629846e7ea3da921f);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  min-height: 625px;
+  height: 100vh;
 }
 

@@ -58328,7 +58328,7 @@ $("#insertProfe").click(function () {
     url: "./insertarProfesores",
     type: "POST",
     data: {
-      nuevaProfe: valParam
+      nuevoProfe: valParam
     },
     success: function success() {
       alert("Profesor añadido correctamente");
