@@ -254,6 +254,7 @@ class Controller extends BaseController
 
             if ($password != "") {
                 $actualizarUsuario->update(['password' => Hash::make($password)]);
+                return redirect("/logout");
             }
 
         } else {
