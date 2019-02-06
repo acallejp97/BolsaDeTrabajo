@@ -17,7 +17,6 @@ class Curriculums extends Migration
         Schema::create('curriculums', function (Blueprint $table) {
             $table->increments('id',5);
             $table->unsignedInteger('id_alumno')->unsigned()->unique('id_alumno', 'curriculum_id_alumno');
-            $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
             $table->string('nombre',300)->nullable();
             $table->string('apellidos',300)->nullable();
             $table->string('imagen')->nullable();
@@ -28,7 +27,8 @@ class Curriculums extends Migration
             $table->string('idiomas',300)->nullable();
             $table->string('otros_datos',3000)->nullable();
             $table->unsignedInteger('telefono')->nullable();
-           
+            
+            $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
            
             $table->timestamps();
             

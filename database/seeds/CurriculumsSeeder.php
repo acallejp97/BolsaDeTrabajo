@@ -13,7 +13,7 @@ class CurriculumsSeeder extends Seeder
      */
     public function run()
     {
-        $dir=public_path('/images');
+        $dir=public_path('/fotosPerfil');
         $faker = Faker\Factory::create('es_ES');
                 $alumnos=Alumno::all();
 
@@ -34,7 +34,7 @@ class CurriculumsSeeder extends Seeder
                 'telefono' => $faker->numberBetween(600000000, 699999999),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
-                'imagen' => $faker->image($dir, $width = 640, $height = 480),
+                'imagen' => $faker->image($dir, $width = 640, $height = 480, 'people', false),
             ));
         }
     }

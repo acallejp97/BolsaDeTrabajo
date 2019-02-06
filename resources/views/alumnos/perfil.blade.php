@@ -12,7 +12,7 @@
                 {{csrf_field()}}
                 <div class='form-group'>
 
-                    <img src="{{url("images/" . ltrim(Auth::user()->imagen, public_path()))}}" class='img-responsive' style=' height:200px; width: 200px;' />
+                    <img src="{{url("fotosPerfil/" . Auth::user()->imagen)}}" class='img-responsive' style=' height:200px; width: 200px;' />
 
                     <input style="color: transparent; margin-top: 3em;" type="file" name="image" />
                     <div class='text-danger'>{{$errors->first('image')}}</div>

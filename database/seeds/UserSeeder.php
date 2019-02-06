@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $dir=public_path('/images');
+        $dir=public_path('/fotosPerfil');
         DB::table('user')->delete();
         $faker = Faker\Factory::create('es_ES');
 

@@ -16,11 +16,11 @@ class Correos extends Migration
         Schema::dropIfExists('correos');
         Schema::create('correos', function (Blueprint $table) {
             $table->increments('id',5);
-            $table->unsignedInteger('id_remit');
+            $table->unsignedInteger('id_remit')->nullable();
             $table->string('asunto',30);
             $table->string('descripcion',3000);
            
-            $table->foreign('id_remit')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('id_remit')->references('id')->on('user')->onDelete('set null');
             $table->timestamps();
         });
     }

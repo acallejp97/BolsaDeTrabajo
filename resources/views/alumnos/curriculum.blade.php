@@ -10,7 +10,7 @@
             <form method='post' action='{{url("fotocv")}}' enctype='multipart/form-data'>
                 @csrf
                 <div class='form-group'>
-                    <img src="{{url("ima" . ltrim($curriculum['imagen'], public_path()))}}" class='img-responsive'
+                    <img src="{{url("fotosPerfil/" .$curriculum['imagen'])}}" class='img-responsive'
                         style=' height:200px; width: 200px;' />
                     <input style="color: transparent; margin-top: 3em;" type="file" name="image" />
                     <div class='text-danger'>{{$errors->first('image')}}</div>

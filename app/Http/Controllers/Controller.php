@@ -147,7 +147,7 @@ class Controller extends BaseController
             return view("profes_admin/perfil")->withErrors($validator);
         } else {
             $name = str_random(10) . '-' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->move('perfiles', $name);
+            $request->file('image')->move('fotosPerfil', $name);
             $user = new User;
             $user->where('email', '=', Auth::user()->email)
                 ->update(['imagen' => $name, 'updated_at' => date('Y-m-d H:m:s')]);

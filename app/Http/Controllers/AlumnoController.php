@@ -44,10 +44,10 @@ class AlumnoController extends Controller
             return redirect('/actualizarCV');
         } else {
             $imagen = str_random(10) . '-' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->move('perfiles', $imagen);
+            $request->file('image')->move('fotosPerfil', $imagen);
             $alumno = Alumno::where('id_user', Auth::user()->id)->first();
             $curriculum = Curriculum::where('id_alumno', $alumno['id']);
-            $curriculum->update(['imagen' => $request->image, 'updated_at' => date('Y-m-d')]);
+            $curriculum->update(['imagen' => $imagen, 'updated_at' => date('Y-m-d')]);
 
             return redirect('/actualizarCV');
         }
