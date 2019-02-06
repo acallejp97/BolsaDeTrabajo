@@ -22,7 +22,7 @@
     @endif 
     @endforeach 
     @endforeach
-    <button type="submit" class="inscribirse btn btn-danger" id="inscribirse" value="{{$oferta['id']}}">Inscribirse</button>
+    <button type="submit" class="inscribirse btn btn-danger" style="background:#b50045;"id="inscribirse" value="{{$oferta['id']}}">Inscribirse</button>
 
   </div>
 
