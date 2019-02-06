@@ -85,3 +85,29 @@ $(".updateOferta").click(function() {
     });
 });
 
+$(".inscribirse").click(function() {
+    var array = {
+        idoferta: $(this).val(),
+    };
+
+    var valParam = JSON.stringify(array);
+
+
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url: "./inscribirse",
+        type: "POST",
+        data: {
+            inscripcion: valParam
+        },
+        success: function() {
+            alert("Inscrito correctamente");
+            location.reload();
+        },
+        error: function() {
+            alert("Por favor, revise los datos");
+        }
+    });
+});

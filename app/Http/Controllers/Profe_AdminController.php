@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Mail\contraseniaMail;
+use App\Mail\respuestaMail;
 use App\Model\Alumno;
 use App\Model\Alumno_Grado;
 use App\Model\Correo;
@@ -16,6 +18,7 @@ use File;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Mail;
 use Session;
 
 class Profe_AdminController extends Controller
@@ -49,14 +52,14 @@ class Profe_AdminController extends Controller
             $nombre = $enviado->nombre;
             $apellidos = $enviado->apellidos;
             $rango = 2;
-            $password = Hash::make('prueba');
+            $password = $this->randomPassword();
             $email = $enviado->email;
-            $aniofin = $enviado->anio_fin;
-            $id_grado = $enviado->id_grado;
+            $aniofin = $enviado->anio;
+            $id_grado = $enviado->idgrado;
 
             $insertarUsuario = new User;
             $insertarUsuario->insert(['nombre' => $nombre, 'apellidos' => $apellidos, 'rango' => $rango, 'email' => $email,
-                'password' => $password, 'created_at' => date('Y-m-d H:m:s'), 'updated_at' => date('Y-m-d H:m:s')]);
+                'password' => Hash::make($password), 'created_at' => date('Y-m-d H:m:s'), 'updated_at' => date('Y-m-d H:m:s')]);
 
             $id_user = User::max('id');
             $insertarAlumno = new Alumno;
@@ -75,6 +78,9 @@ class Profe_AdminController extends Controller
                 'id_alumno' => $id_alumno,
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')]);
+
+            Mail::to($email)
+                ->send(new contraseniaMail($password));
         }
     }
 
@@ -98,14 +104,14 @@ class Profe_AdminController extends Controller
 
                     $siguienteId = 1;
                     foreach ($data as $key => $value) {
-
+                        $password = $this->randomPassword();
                         $id_grado = Grado::where('abreviacion', strtoupper($value->abreviacion_grado))->first();
                         $insertUser[] = [
                             'email' => $value->email,
                             'nombre' => $value->nombre,
                             'rango' => 2,
                             'apellidos' => $value->apellidos,
-                            'password' => Hash::make('prueba'),
+                            'password' => Hash::make($password),
                             'created_at' => date('Y-m-d H:m:s'),
                             'updated_at' => date('Y-m-d H:m:s'),
                         ];
@@ -127,6 +133,9 @@ class Profe_AdminController extends Controller
                             'updated_at' => date('Y-m-d H:m:s'),
                         ];
                         $siguienteId++;
+
+                        Mail::to($value->email)
+                            ->send(new contraseniaMail($password));
                     }
 
                     if (!empty($insertUser)) {
@@ -135,9 +144,9 @@ class Profe_AdminController extends Controller
                         $insertCurriculum = Curriculum::insert($insertCurriculum);
                         $insertGrado = Alumno_Grado::insert($insertGrado);
                         if ($insertData) {
-                            Session::flash('success', 'Your Data has successfully imported');
+                            Session::flash('success', 'Sus datos han sido añadidos correctamente');
                         } else {
-                            Session::flash('error', 'Error inserting the data..');
+                            Session::flash('error', 'Error añadiendo los datos...');
                             return back();
                         }
                     }
@@ -148,6 +157,18 @@ class Profe_AdminController extends Controller
                 return back();
             }
         }
+    }
+
+    public function randomPassword()
+    {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
     }
 
     public function Cursos()
@@ -402,18 +423,20 @@ class Profe_AdminController extends Controller
             $nombre = $enviado->nombre;
             $apellido = $enviado->apellidos;
             $email = $enviado->email;
-            $password = Hash::make('prueba');
+            $password = $this->randomPassword();
             $id_depar = $enviado->id_depar;
             $rango = 1;
             $user = new User;
             $profe = new Profe_Admin;
-            $user->insert(['nombre' => $nombre, 'apellidos' => $apellido, 'email' => $email, 'password' => $password, 'rango' => $rango, 'created_at' => date('Y-m-d H:m:s'),
+            $user->insert(['nombre' => $nombre, 'apellidos' => $apellido, 'email' => $email, 'password' => Hash::make($password), 'rango' => $rango, 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')]);
 
             $id_user = User::max('id');
             $profe->insert(['id_depar' => $id_depar, 'id_user' => $id_user, 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')]);
 
+            Mail::to($email)
+                ->send(new contraseniaMail($password));
         }
     }
 
@@ -601,14 +624,19 @@ class Profe_AdminController extends Controller
     public function respuestaEmail(Request $request)
     {
         if (!$request->ajax()) {
-            return redirect('/buzon');
+            return redirect('/');
         }
 
-        if (isset($_REQUEST['respuestaCorreo'])) {
-            $enviado = json_decode($_REQUEST['respuestaCorreo']);
-            $email = $enviado->email;
-            $email->$respuesta = $request->input('respuesta');
-            echo $respuesta;
+        if (isset($_REQUEST['respuestaMail'])) {
+            $enviado = json_decode($_REQUEST['respuestaMail']);
+            $idmail = $enviado->idMensaje;
+            $data = $enviado->respuesta;
+
+            $mail = Correo::where('id', $idmail)->first();
+            $usuario = User::where('id', $mail['id_remit'])->first();
+
+            Mail::to($usuario['email'])
+                ->send(new respuestaMail($data));
         }
 
     }

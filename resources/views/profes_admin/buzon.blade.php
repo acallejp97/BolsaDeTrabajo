@@ -6,36 +6,23 @@
 
 		<div class="page-header">
 			<h3>
-				Bandeja de entrada
+				@lang('header.bandeja')
 			</h3>
 		</div>
-		<div class="row">
-			<div class="span3 side-by-side clearfix offset4">
-				<form action="#" method="get">
-					<div class="input-group col-md-3 " style="float:right">
-						<input class="form-control" id="system-search" name="q" placeholder="Buscar por" required="">
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-default" style="background: #b50045; color:white;" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
-						</span>
-
-					</div>
-				</form>
-			</div>
-
-		</div><br>
+	
 		<div class="widget-content">
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered" style="overflow: auto; max-width: 100%; display: block;">
 				<thead>
 					<tr style="background: #b50045; color:white;">
-						<th id="table_id">Usuario
+						<th id="table_id">@lang('header.usuario')
 						</th>
-						<th class="text-center" id="">Asunto
+						<th class="text-center" id="">@lang('header.asunto')
 						</th>
-						<th id="">Nombre
+						<th id="">@lang('header.nombre')
 						</th>
-						<th id="">Enviado
+						<th id="">@lang('header.enviado')
 						</th>
-						<th class="text-center" id="">Descripción
+						<th class="text-center" id="">@lang('header.descripcion')
 						</th>
 
 						<th class="td-actions" id="table_action"></th>
@@ -49,108 +36,66 @@
 					@if($correo['id_remit']==$usuarios['id']) @if($usuarios->rango==1)
 					<!--si es profesor que el correo salga de otro color resaltandolo-->
 					<tr id="colorfila" style="background:#DC6E97;">
-						@else
-						<tr id="colorfila">
-							@endif
+						@else @endif
 
-							<div class="media-heading">
+						<div class="media-heading">
 
-								<td><a class="pull-left"> </a>
-									<img src='{{url("./perfiles/".$usuarios["imagen"])}}' class="media-object" style="float:left; height: 50px; width:50px">
-								</td>
-								<td> <a class="m-r-10">{{$correo['asunto']}}</a> </td>
-
-								<td> <span class="badge bg-blue">{{$usuarios['nombre']}}</span></td>
-								<td> <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">{{$correo['created_at']}}</time><i class="zmdi zmdi-attachment-alt"></i> </small>									</td>
-							</div>
-							<td>
-								<p class="msg">{{$correo['descripcion']}} </p>
+							<td><a class="pull-left"> </a>
+								<img src='{{url("./perfiles/".$usuarios["imagen"])}}' class="media-object" style="float:left; height: 50px; width:50px">
 							</td>
+							<td> <a class="m-r-10">{{$correo['asunto']}}</a> </td>
 
-							<td class="td-actions">
-								<button  class="btn btn-default btn-xs" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $correo->id;?>" id="<?php echo $correo->id;?>">
-										<span class="glyphicon glyphicon-pencil"></span> Abrir
+							<td> <span class="badge bg-blue">{{$usuarios['nombre']}}</span></td>
+							<td> <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">{{$correo['created_at']}}</time><i class="zmdi zmdi-attachment-alt"></i> </small>								</td>
+						</div>
+						<td>
+							<p class="msg">{{$correo['descripcion']}} </p>
+						</td>
+
+						<td class="td-actions">
+							<button class="btn btn-default btn-xs" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $correo->id;?>"
+							 id="<?php echo $correo->id;?>">
+										<span class="glyphicon glyphicon-pencil"></span> @lang('header.abrir')
 								</button>
-								<button class=" borrarCorreo btn btn-default btn-xs " style="background: #b50045; color:white;" value="{{$correo['id']}}">
-										<span class="glyphicon glyphicon-remove" ></span> Borrar
+							<button class=" borrarCorreo btn btn-default btn-xs " style="background: #b50045; color:white;" value="{{$correo['id']}}">
+										<span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
 								</button>
 
-							</td>
-							<!---------------------------------------------------------------------borrarCorreo--------------->
+						</td>
+						<!---------------------------------------------------------------------borrarCorreo--------------->
 
-							<!-- The Modal -->
-							<div id="edit-modal-cust-<?php echo $correo->id;?>" class="modal"  >
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<!-- Modal Header -->
-										<div for="nombre" class="modal-header">
-											<h4 id="fid" class="modal-title">{{$usuarios['nombre']}}</h4>
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-										</div>
-										<div id="asunto" for="asunto" class="modal-header">
-											{{$correo['asunto']}}
-										</div>
-										<!-- Modal body -->
-										<div id="descripcion" for="descripcion" for="descripcion" class="modal-body">
-											{{$correo['descripcion']}}
-										</div>
-										<div class="form-group">
-											<label for="comment">Responder:</label>
-											<textarea type="text" name="respuesta" class="form-control" rows="4" , cols="164" id="respuesta" style="resize:none,"
-          									placeholder="Ponga aquí su mensaje..."></textarea>
-						<!--					<textarea class="form-control" rows="5" id="comment" name="respuesta"></textarea>
-										</div>
-										<!-- Modal footer -->
-										<div class="modal-footer">
-											<button id="respuestaEmail" type="button" class="btn btn-danger responderCorreo" data-dismiss="modal" data-toggle="modal" data-target="#modalVacio">Enviar</button>
-										</div>
+						<!-- The Modal -->
+						<div id="edit-modal-cust-<?php echo $correo->id;?>" class="modal">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<!-- Modal Header -->
+									<div for="nombre" class="modal-header">
+										<h4 id="fid" class="modal-title">{{$usuarios['nombre']}}</h4>
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
 									</div>
+									<div id="asunto" for="asunto" class="modal-header">
+										{{$correo['asunto']}}
+									</div>
+									<!-- Modal body -->
+									<div id="descripcion" for="descripcion" for="descripcion" class="modal-body">
+										{{$correo['descripcion']}}
+									</div>
+									<div class="form-group">
+										<label for="comment">@lang('header.responder'):</label>
+										<textarea type="text" name="respuesta" class="form-control" rows="4" , cols="164" id="respuesta<?php echo $correo->id?>"
+										 style="resize:none," placeholder="Ponga aquí su mensaje..."></textarea>
+									</div>
+									<!-- Modal footer -->
+									<div class="modal-footer">
+										<button class="respuestaEmail" type="button" value="{{$correo['id']}}" class="btn btn-danger responderCorreo" data-dismiss="modal"
+										 data-toggle="modal" data-target="#modalEnviado">Enviar</button>
+									</div>
+								
 								</div>
 							</div>
-							<!------------------------------------------------------------------------------------>
-						</tr>
+						</div>
 					</tr>
 					@endif @endif @endforeach @endforeach
-<!--------------------------------------------------MODAL SI EL CAMPO RESPUESTA ESTÁ RELLENADO-------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------->
-								<!-- The Modal -->
-								<div id="modalEnviado" class="modal"  >
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<!-- Modal Header -->
-										<div for="nombre" class="modal-header">
-											<h4 id="fid" class="modal-title">Admin.</h4>
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-										</div>
-										<!-- Modal body -->
-										<div class="form-group">
-											<h3><center>La respuesta ha sido enviada.</center></h3>
-										</div>
-									</div>
-								</div>
-							</div>
-<!------------------------------------------------------------------------------------------------------------------------------------->
-
-
-<!----------------------------------------------------MODAL SI EL CAMPO RESPUESTA ESTÁ VACÍO---------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------->
-								<!-- The Modal -->
-								<div id="modalVacio" class="modal"  >
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<!-- Modal Header -->
-										<div for="nombre" class="modal-header">
-											<h4 id="fid" class="modal-title">Admin.</h4>
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-										</div>
-										<!-- Modal body -->
-										<div class="form-group">
-											<h3><center>Por favor, rellene el campo respuesta.</center></h3>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!------------------------------------------------------------------------------------>
 				</tbody>
 			</table>
 		</div>

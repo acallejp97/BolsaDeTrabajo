@@ -13,6 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $dir=public_path('/images');
         DB::table('user')->delete();
         $faker = Faker\Factory::create('es_ES');
 
@@ -24,7 +25,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin'),
             'created_at' => date('Y-m-d H:m:s'),
             'updated_at' => date('Y-m-d H:m:s'),
-            'imagen' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+            'imagen' => $faker->image($dir, $width = 640, $height = 480, 'people', false),
+
         ));
         DB::table('user')->insert(array(
             'email' => 'a@a.com',
@@ -34,7 +36,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('prueba'),
             'created_at' => date('Y-m-d H:m:s'),
             'updated_at' => date('Y-m-d H:m:s'),
-            'imagen' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+            'imagen' => $faker->image($dir, $width = 640, $height = 480, 'people', false),
+
         ));
         DB::table('user')->insert(array(
             'email' => 'b@b.com',
@@ -44,7 +47,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('prueba'),
             'created_at' => date('Y-m-d H:m:s'),
             'updated_at' => date('Y-m-d H:m:s'),
-            'imagen' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+            'imagen' => $faker->image($dir, $width = 640, $height = 480, 'people', false),
+
         ));
 
         //Cantidad de user a crear
@@ -64,7 +68,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('prueba'),
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s'),
-                'imagen' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+                'imagen' => $faker->image($dir, $width = 640, $height = 480, 'people', false),
             ));
         }
     }

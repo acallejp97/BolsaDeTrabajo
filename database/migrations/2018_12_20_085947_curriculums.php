@@ -20,6 +20,7 @@ class Curriculums extends Migration
             $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
             $table->string('nombre',300)->nullable();
             $table->string('apellidos',300)->nullable();
+            $table->string('imagen')->nullable();
             $table->string('email', 90)->nullable();
             $table->string('direccion',300)->nullable();
             $table->string('experiencia',300)->nullable();
@@ -32,9 +33,6 @@ class Curriculums extends Migration
             $table->timestamps();
             
         });
-
-        DB::statement("ALTER TABLE curriculums 
-        ADD imagen MEDIUMBLOB AFTER apellidos");
     }
     
 

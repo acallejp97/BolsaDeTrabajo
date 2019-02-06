@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\inscripcion;
 use App\Model\Alumno;
+use App\Model\Alumno_Oferta;
 use App\Model\Curriculum;
+use App\Model\Empresa;
+use App\Model\Oferta;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Mail;
 use Validator;
 
 class AlumnoController extends Controller
@@ -19,14 +24,10 @@ class AlumnoController extends Controller
 
     public function ActualizarCV()
     {
-        $id_alumno = Alumno::select('id')->where('id_user', Auth::user()->id)->get();
+        $id_alumno = Alumno::select('id')->where('id_user', Auth::user()->id)->first();
+            $curriculums = Curriculum::where('id_alumno', $id_alumno['id'])->first();
 
-        foreach ($id_alumno as $id) {
-
-            $curriculums = Curriculum::where('id_alumno', $id->id)->get();
-
-        }
-        return view("alumnos/curriculum")->with('curriculums', $curriculums);
+        return view("alumnos/curriculum")->with('curriculum', $curriculums);
     }
 
     public function fotocv(Request $request)
@@ -40,15 +41,15 @@ class AlumnoController extends Controller
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
-            return view("alumnos/curriculum")->withErrors($validator);
+            return redirect('/actualizarCV');
         } else {
-            $name = str_random(10) . '-' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->move('perfiles', $name);
-            $user = new User;
-            $user->where('email', '=', Auth::user()->email)
-                ->update(['imagen' => $name, 'updated_at' => date('Y-m-d')]);
+            $imagen = str_random(10) . '-' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->move('perfiles', $imagen);
+            $alumno = Alumno::where('id_user', Auth::user()->id)->first();
+            $curriculum = Curriculum::where('id_alumno', $alumno['id']);
+            $curriculum->update(['imagen' => $request->image, 'updated_at' => date('Y-m-d')]);
 
-            return view("alumnos/curriculum")->with('status', 'Su imagen de perfil ha sido cambiada con éxito');
+            return redirect('/actualizarCV');
         }
     }
 
@@ -115,4 +116,42 @@ class AlumnoController extends Controller
 
     }
 
+    public function inscribirse(Request $request)
+    {
+
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+
+        if (isset($_REQUEST['inscripcion'])) {
+
+            $enviado = json_decode($_REQUEST['inscripcion']);
+
+            $id_oferta = $enviado->idoferta;
+            $id_usuario = Auth::user()->id;
+            $alumno = Alumno::where('id_user', $id_usuario)->first();
+            $oferta = Oferta::where('id', $id_oferta)->first();
+            $empresa = Empresa::where('id', $oferta['id_empresa'])->first();
+
+            $curriculum = Curriculum::where('id_alumno', $alumno['id'])->first();
+
+            $data = array(
+                'nombre' => $curriculum['nombre'],
+                'idiomas' => $curriculum['idiomas'],
+                'apellidos' => $curriculum['apellidos'],
+                'telefono' => $curriculum['telefono'],
+                'direccion' => $curriculum['direccion'],
+                'email' => $curriculum['email'],
+                'competencias' => $curriculum['competencias'],
+                'experiencia' => $curriculum['experiencia'],
+                'otros_datos' => $curriculum['otros_datos'],
+            );
+
+            Mail::to($empresa['email'])
+                ->send(new inscripcion($data));
+
+            $AlumnoOferta = new Alumno_Oferta;
+            $AlumnoOferta->insert(['id_alumno' => $alumno['id'], 'id_oferta' => $id_oferta]);
+        }
+    }
 }

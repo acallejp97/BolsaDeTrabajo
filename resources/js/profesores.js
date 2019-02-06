@@ -35,7 +35,7 @@ $(".updateProfe").click(function() {
         email: $("#email" + $(this).val()).val()
     };
 
-    alert(array['departamento']);
+   
     var valParam = JSON.stringify(array);
 
     $.ajax({
@@ -77,7 +77,7 @@ $("#insertProfe").click(function() {
         url: "./insertarProfesores",
         type: "POST",
         data: {
-            nuevaProfe: valParam
+            nuevoProfe: valParam
         },
         success: function() {
             alert("Profesor añadido correctamente");

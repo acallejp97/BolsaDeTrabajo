@@ -9,7 +9,14 @@ Route::group(['middleware' => 'auth'], function () {
             return redirect('/login');
         }
     });
-    //Comunes
+   
+//IDIOMA CAMBIOS
+    Route::get('lang/{lang}', function($lang) {
+        \Session::put('lang', $lang);
+        return \Redirect::back();
+      })->middleware('web')->name('change_lang');
+    
+//Comunes
     Route::get('/home', "Controller@Ofertas")->name('home');
     Route::get('/contacto', "Controller@Contacto")->name('contacto');
     Route::get('/perfil', "Controller@Perfil")->name('perfil');
@@ -21,18 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     //Admin
     Route::get('/buzon', "Profe_AdminController@Buzon")->name('buzon');
     Route::get('/profesores', "Profe_AdminController@Profesores")->name('profesores');
-    Route::get('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
-    //-------------------------------------RESPONDER EMAIL---------------------
-    Route::get('respuestaEmail', function () {
-        $data = array(
-            'name' => "Bolsa de Trabajo FP Txurdinaga",
-        );
-        Mail::send('profes_admin/respuestaMail', $data, function ($message) {
-            $message->from('g1bolsadetrabajo@gmail.com', 'Bolsa de Trabajo FP Txurdinaga');
-            $message->to('niniadefresa_94@hotmail.es')->subject('Respuesta sugerencia Bolsa de Trabajo ');
-        });
-        return redirect('/buzon');
-    });
+    Route::post('/insertarProfesores', "Profe_AdminController@insertarProfe")->name('insertarProfe');
+    Route::post('/respuestaEmail', "Profe_AdminController@respuestaEmail")->name('respuestaEmail');
     
     //Profe y admin
     Route::post('/actualizarUsuarios', 'Profe_AdminController@updateUsuarios')->name('actualizarUsuarios');
@@ -64,4 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/actualizarCV', "AlumnoController@ActualizarCV")->name('actualizarCV');
     Route::post('/actualizandoCV', "AlumnoController@updateCV")->name('actualizandoCV');
     Route::post('/fotocv', 'AlumnoController@fotocv')->name('fotocv');
+    Route::post('/inscribirse', 'AlumnoController@inscribirse')->name('inscribirse');
+
+
 });

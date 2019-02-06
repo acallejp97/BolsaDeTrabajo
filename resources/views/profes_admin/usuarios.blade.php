@@ -2,29 +2,35 @@
 @section('content')
 
 <div class="container">
-	<div class="row">
+		<div class="row col-md-12">
+				<div class="page-header">
+					<h3>
+						@lang('header.listausuarios')
+					</h3>
+				</div>
+	
 		<div class="span12">
 			<div class="widget stacked widget-table action-table">
 				<div class="widget-content">
 					<br/>
-					<table class="table table-striped table-bordered">
-						<thead>
+					<table class="table table-striped table-bordered" style="overflow: auto; max-width: 100%;">
+						<thead style="width:100%;">
 							<tr style="background: #b50045; color:white;">
-								<th id="table_id">Usuario ID
+								<th id="table_id">ID
 								</th>
-								<th id="">Nombre
+								<th id="">@lang('header.nombre')
 								</th>
-								<th id="">Apellidos
+								<th id="">@lang('header.apellidos')
 								</th>
-								<th id="">Email
+								<th id="">@lang('header.email')
 								</th>
-								<th id="">Año Fin
+								<th id="">@lang('header.añofinalu')
 								</th>
 								</th>
-								<th id="">Registrado
+								<th id="">@lang('header.registrado')
 
 								</th>
-								<th class="td-actions" id="table_action">Accion</th>
+								<th class="td-actions" id="table_action">@lang('header.accion')</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -45,10 +51,10 @@
 								<td class="td-actions">
 									<button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $user->id;?>"
 									 id="<?php echo $user->id;?>">
-											<span class="glyphicon glyphicon-pencil"></span> Modificar
+											<span class="glyphicon glyphicon-pencil"></span> @lang('header.modificar')
 									</button>
 									<button style="background: #b50045; color:white;" class="btn btn-default btn-xs borrarUsuario" href="javascript:;" value="{{$user['id']}}">
-										<span class="glyphicon glyphicon-remove"></span> Borrar
+										<span class="glyphicon glyphicon-remove"></span> @lang('header.borrar')
 									</button>
 
 								</td>
@@ -60,31 +66,31 @@
 
 										<button class="close" data-dismiss="modal">&times;</button>
 										<div class="modal-header">
-											<h5><b>Nombre:</b>
+											<h5><b>@lang('header.nombre'):</b>
 											</h5>
 											<input value="{{$user['nombre']}}" id="nombre<?php echo $user->id;?>" class="form-control">
 										</div>
 
 										<div class="modal-header">
-											<h5><b> Apellidos:</b>
+											<h5><b> @lang('header.apellidos'):</b>
 											</h5>
 											<textarea id="apellidos<?php echo $user->id;?>" class="form-control">{{$user['apellidos']}}</textarea>
 										</div>
 
 										<div class="modal-header">
-											<h5><b> Email:</b>
+											<h5><b> @lang('header.email'):</b>
 											</h5>
 											<input value="{{$user['email']}}" id="email<?php echo $user->id;?>" class="form-control">
 										</div>
 
 										<div class="modal-header">
-											<h5><b> Año Finalización:</b>
+											<h5><b> @lang('header.añofinalu'):</b>
 											</h5>
 											<input value="{{$alumno['anio_fin']}}" id="anio<?php echo $user->id;?>" class="form-control">
 										</div>
 
 										<div class="modal-footer">
-											<button type="button" value="{{$user->id}}" class="updateUsuarios btn btn-danger" data-dismiss="modal">Guardar</button>
+											<button type="button" value="{{$user->id}}" class="updateUsuarios btn btn-danger" data-dismiss="modal">@lang('header.guardar')</button>
 										</div>
 									</div>
 								</div>
