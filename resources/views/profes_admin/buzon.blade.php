@@ -41,7 +41,7 @@
 						<div class="media-heading">
 
 							<td><a class="pull-left"> </a>
-								<img src='{{url("./perfiles/".$usuarios["imagen"])}}' class="media-object" style="float:left; height: 50px; width:50px">
+								<img src='{{url("./fotosPerfil/".$usuarios["imagen"])}}' class="media-object" style="float:left; height: 50px; width:50px">
 							</td>
 							<td> <a class="m-r-10">{{$correo['asunto']}}</a> </td>
 
