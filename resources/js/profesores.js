@@ -48,7 +48,7 @@ $(".updateProfe").click(function() {
             actualizacionProfe: valParam
         },
         success: function() {
-            alert("Datos modificados correctamente");
+            alert("Profesor actualizado correctamente");
             location.reload();
         },
         error: function() {

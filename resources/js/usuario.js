@@ -58,7 +58,7 @@ $("#insertUsers").click(function() {
             nuevaOferta: valParam
         },
         success: function() {
-            alert("Usuarios correctamente");
+            alert("Añadidos usuarios correctamente");
             location.reload();
         },
         error: function() {
@@ -118,7 +118,7 @@ $("#insertUser").click(function() {
             nuevoUsuario: valParam
         },
         success: function() {
-            alert("Datos modificados correctamente");
+            alert("Usuario añadido correctamente");
             location.reload();
         },
         error: function() {

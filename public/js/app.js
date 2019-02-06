@@ -57890,7 +57890,7 @@ $(".updateEmpresa").click(function () {
       actualizacionEmpresa: valParam
     },
     success: function success() {
-      alert("Datos modificados correctamente");
+      alert("Empresa modificada correctamente");
       location.reload();
     },
     error: function error() {
@@ -58055,7 +58055,7 @@ $(".abrirMensaje").click(function () {
     type: "POST",
     data: {},
     success: function success() {
-      alert("el mensaje ha sido abierto");
+      alert("El mensaje ha sido abierto");
       location.reload();
     },
     error: function error() {
@@ -58079,7 +58079,7 @@ $(".respuestaEmail").click(function () {
       respuestaMail: valParam
     },
     success: function success() {
-      alert("Mensaje ha sido enviado");
+      alert("El mensaje ha sido enviado");
     },
     error: function error() {
       alert("Por favor, revise los datos");
@@ -58165,7 +58165,7 @@ $(".updateOferta").click(function () {
       actualizarOferta: valParam
     },
     success: function success() {
-      alert("Datos modificados correctamente");
+      alert("Oferta modificada correctamente");
       location.reload();
     },
     error: function error() {
@@ -58225,7 +58225,7 @@ $("#updateUser").click(function () {
       actualizacionUsuario: valParam
     },
     success: function success() {
-      alert("Datos modificados correctamente");
+      alert("Perfil actualizado correctamente");
       location.reload();
     },
     error: function error() {
@@ -58302,7 +58302,7 @@ $(".updateProfe").click(function () {
       actualizacionProfe: valParam
     },
     success: function success() {
-      alert("Datos modificados correctamente");
+      alert("Profesor actualizado correctamente");
       location.reload();
     },
     error: function error() {
@@ -58403,7 +58403,7 @@ $("#insertUsers").click(function () {
       nuevaOferta: valParam
     },
     success: function success() {
-      alert("Usuarios correctamente");
+      alert("Añadidos usuarios correctamente");
       location.reload();
     },
     error: function error() {
@@ -58457,7 +58457,7 @@ $("#insertUser").click(function () {
       nuevoUsuario: valParam
     },
     success: function success() {
-      alert("Datos modificados correctamente");
+      alert("Usuario añadido correctamente");
       location.reload();
     },
     error: function error() {
@@ -58486,8 +58486,8 @@ $("#insertUser").click(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/jans/carpetaxampp/BolsaDeTrabajo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/jans/carpetaxampp/BolsaDeTrabajo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/asier/Proyectos/2DAW/Retos/2Ev/BolsadeTrabajo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/asier/Proyectos/2DAW/Retos/2Ev/BolsadeTrabajo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

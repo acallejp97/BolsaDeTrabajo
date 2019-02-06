@@ -245,7 +245,7 @@ class Controller extends BaseController
             }
 
             if ($apellido != "") {
-                $actualizarUsuario->update(['apellido' => $apellido]);
+                $actualizarUsuario->update(['apellidos' => $apellido]);
             }
 
             if ($email != "") {

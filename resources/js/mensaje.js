@@ -44,7 +44,7 @@ $(".abrirMensaje").click(function() {
         type: "POST",
         data: {},
         success: function() {
-            alert("el mensaje ha sido abierto");
+            alert("El mensaje ha sido abierto");
             location.reload();
         },
         error: function() {
@@ -72,7 +72,7 @@ $(".respuestaEmail").click(function() {
             respuestaMail: valParam
         },
         success: function() {
-            alert("Mensaje ha sido enviado");
+            alert("El mensaje ha sido enviado");
         },
         error: function() {
             alert("Por favor, revise los datos");

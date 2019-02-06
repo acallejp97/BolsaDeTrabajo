@@ -19,7 +19,7 @@ $("#updateUser").click(function() {
             actualizacionUsuario: valParam
         },
         success: function() {
-            alert("Datos modificados correctamente");
+            alert("Perfil actualizado correctamente");
             location.reload();
         },
         error: function() {

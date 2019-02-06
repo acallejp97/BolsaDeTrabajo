@@ -75,7 +75,7 @@ $(".updateEmpresa").click(function() {
             actualizacionEmpresa: valParam
         },
         success: function() {
-            alert("Datos modificados correctamente");
+            alert("Empresa modificada correctamente");
             location.reload();
         },
         error: function() {

@@ -76,7 +76,7 @@ $(".updateOferta").click(function() {
             actualizarOferta: valParam
         },
         success: function() {
-            alert("Datos modificados correctamente");
+            alert("Oferta modificada correctamente");
             location.reload();
         },
         error: function() {

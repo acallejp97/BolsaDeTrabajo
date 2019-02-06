@@ -1,4 +1,4 @@
-Cuantas vacantes@extends('layouts.profe_admin') 
+@extends('layouts.profe_admin') 
 @section('content')
 <div class="container">
   <div class="row">
