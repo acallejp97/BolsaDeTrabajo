@@ -53,7 +53,7 @@
 <style>
 @media (min-width: 576px) { 
     #lista{
-        display:block;
+        display: block;
     }
 
 
