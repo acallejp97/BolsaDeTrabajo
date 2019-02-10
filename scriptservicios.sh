@@ -2,17 +2,18 @@ yum clean all
 
 yum -y update
 
+#Instalacion apache2
 yum -y install httpd
 firewall-cmd --permanent --add-port=80/tcp
-firewall-cmd --permanent --add-port=443/tc
+firewall-cmd --permanent --add-port=443/tcp
 firewall-cmd --reload
 
-systemctl start httpd
 systemctl enable httpd
+systemctl start httpd
 systemctl status httpd
 
 #Quitar pagina de inicio
-rm /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.save.conf
+mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.save.conf
 
 #Instalacion MariaDB
 touch /etc/yum.repos.d/MariaDB.repo
@@ -28,7 +29,6 @@ yum -y install MariaDB-server MariaDB-client
 
 systemctl enable mariadb
 systemctl start mariadb
-
 systemctl status mariadb
 
 #!/bin/bash
