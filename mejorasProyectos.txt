@@ -1,2 +1,30 @@
-Filtros de busqueda
-
+MEJORAS DE TXJOBS
+Buscador de ofertas, usuarios y empresas para facilitar a los usuarios encontrar lo que buscan.
+Contraseña olvidada. Se mandará por email si este existe.
+Validaciones en todos los campos.
+Mandar CV en PDF.
+Ofertas por el grado del alumno para que no pueda apuntarse a una oferta que no sea de su especialidad.
+El profesor ve solo sus alumnos para no borrar los alumnos de otro departamento.
+Licencia creative commons.
+Colores diferentes según el usuario, admin color rosa, profesor color azul, alumno color verde.
+Arreglar modal buzon.
+Ir haciendo traducciones.
+Unificar pantallas repetidas
+PLANIFICACIÓN
+1- Asier Callejo:
+- Ofertas por el grado del alumno para que no pueda apuntarse a una oferta que no sea de su especialidad
+- El profesor ve solo sus alumnos para no borrar los alumnos de otro departamento
+- Buscador de ofertas, usuarios y empresas para facilitar a los usuarios encontrar lo que buscan.
+- Unificar pantallas repetidas
+2- Jon Calleja:
+- Mandar CV en PDF.
+- Validaciones en todos los campos.
+- Colores diferentes según el usuario, admin color rosa, profesor color azul, alumno color verde
+3-Jon Benjamin:
+- Contraseña olvidada. Se mandará por email si este existe.
+- Arreglar modal buzon
+- Ir haciendo traducciones
+4- Janire Pérez:
+- Ir haciendo traducciones
+- Buscador de ofertas, usuarios y empresas para facilitar a los usuarios encontrar lo que buscan.
+- Licencia creative commons
