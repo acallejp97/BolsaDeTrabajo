@@ -4,7 +4,7 @@ yum -y update
 
 yum -y install httpd
 firewall-cmd --permanent --add-port=80/tcp
-firewall-cmd --permanent --add-port=443/tc
+firewall-cmd --permanent --add-port=443/tcp
 firewall-cmd --reload
 
 systemctl start httpd
@@ -15,6 +15,7 @@ systemctl status httpd
 rm /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.save.conf
 
 #Instalacion MariaDB
+rm /etc/yum.repos.d/MariaDB.repo
 touch /etc/yum.repos.d/MariaDB.repo
 echo "# MariaDB 10.3 CentOS repository list - created 2018-05-25 19:02 UTC
 # http://downloads.mariadb.org/mariadb/repositories/
@@ -56,6 +57,7 @@ php -v
 yum -y install epel-release
 yum -y install phpmyadmin
 rm /etc/httpd/conf.d/phpMyAdmin.conf
+touch /etc/httpd/conf.d/phpMyAdmin.conf
 echo "# phpMyAdmin - Web based MySQL browser written in php
 # 
 # Allows only localhost by default
@@ -133,11 +135,12 @@ Alias /phpmyadmin /usr/share/phpMyAdmin
 #    </Directory>
 #</IfModule>" >> /etc/httpd/conf.d/phpMyAdmin.conf
 
-rm etc/phpMyAdmin/config.inc.php
+rm /etc/phpMyAdmin/config.inc.php
+touch /etc/phpMyAdmin/config.inc.php
 echo "<?php
 /**
  * phpMyAdmin configuration file, you can use it as base for the manual
- * configuration. For easier setup you can use "setup/".
+ * configuration. For easier setup you can use \"setup/\".
  *
  * All directives are explained in Documentation.html and on phpMyAdmin
  * wiki <http://wiki.phpmyadmin.net>.
@@ -169,8 +172,8 @@ $cfg['Servers'][$i]['compress']      = FALSE;       // Use compressed protocol f
                                                     // (requires PHP >= 4.3.0)
 $cfg['Servers'][$i]['controluser']   = '';          // MySQL control user settings
                                                     // (this user must have read-only
-$cfg['Servers'][$i]['controlpass']   = '';          // access to the "mysql/user"
-                                                    // and "mysql/db" tables).
+$cfg['Servers'][$i]['controlpass']   = '';          // access to the \"mysql/user\"
+                                                    // and \"mysql/db\" tables).
                                                     // The controluser is also
                                                     // used for all relational
                                                     // features (pmadb)
@@ -250,7 +253,7 @@ $cfg['PmaNoRelation_DisableWarning'] = TRUE;
  * are still backported by downstream.
  */
 $cfg['VersionCheck'] = FALSE;
-?>" >> etc/phpMyAdmin/config.inc.php
+?>" >> /etc/phpMyAdmin/config.inc.php
 
 #Instalacion composer
 yum -y install php-cli php-zip wget unzip
