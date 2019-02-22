@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Model\Alumno;
 use App\Model\Correo;
 use App\Model\Departamento;
@@ -19,7 +18,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Validator;
-use App\Model\Alumno_Oferta;
 
 class Controller extends BaseController
 {
@@ -94,17 +92,13 @@ class Controller extends BaseController
         switch (Auth::user()->rango) {
             case 0:
             case 1:
-                return view("profes_admin/contacto");
+            $rango="profe_admin";
+            return view("common/contacto")
+            ->with('rango',$rango);
                 break;
             case 2:
-                return view("alumnos/contacto");
-                $sessionID = session('id');
-                $email = User::selectProfile($sessionID);
-                $nombre = User::select('nombre')
-                    ->where('email', 'like', $email)
-                    ->get();
-
-                return back()->withInput();
+            $rango="alumno";
+            return view("common/contacto")->with('rango',$rango);
                 break;
         }
     }
@@ -119,14 +113,14 @@ class Controller extends BaseController
                     foreach ($id_depar as $id) {
                         $nombreDepar = Departamento::select('nombre')->where('id', $id->id_depar)->get();
                     }
-                    return view("profes_admin/perfil")->with('nombreDepar', $nombreDepar);
+                    return view("common/perfil")->with('nombreDepar', $nombreDepar);
                 } else {
-                    return view("profes_admin/perfil");
+                    return view("common/perfil");
                 }
                 break;
             case 2:
                 $anio = Alumno::select('anio_fin')->where('id_user', Auth::user()->id)->first();
-                return view("alumnos/perfil")->with('anio_fin', $anio);
+                return view("common/perfil")->with('anio_fin', $anio);
                 break;
 
         }
