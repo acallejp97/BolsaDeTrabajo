@@ -70,13 +70,13 @@ class Controller extends BaseController
                 $grados = Grado::all();
 
                 $empresa_oferta = array(
-                'profe_admin' => $profe_admin, 
-                'user' => $user,
-                'empresas' => $empresas,
-                'ofertas' => $ofertas, 
-                'grados' => $grados,
-                'profesor' => $profe);
-                
+                    'profe_admin' => $profe_admin,
+                    'user' => $user,
+                    'empresas' => $empresas,
+                    'ofertas' => $ofertas,
+                    'grados' => $grados,
+                    'profesor' => $profe);
+
                 if (!$empresa_oferta) {
                     return view("alumnos/ofertas");
                 }
@@ -92,13 +92,13 @@ class Controller extends BaseController
         switch (Auth::user()->rango) {
             case 0:
             case 1:
-            $rango="profe_admin";
-            return view("common/contacto")
-            ->with('rango',$rango);
+                $rango = "profe_admin";
+                return view("common/contacto")
+                    ->with('rango', $rango);
                 break;
             case 2:
-            $rango="alumno";
-            return view("common/contacto")->with('rango',$rango);
+                $rango = "alumno";
+                return view("common/contacto")->with('rango', $rango);
                 break;
         }
     }
@@ -107,20 +107,24 @@ class Controller extends BaseController
     {
 
         switch (Auth::user()->rango) {
-            case 0:case 1:
+            case 0:
+            case 1:
+                $rango = 'profe_admin';
                 if (Auth::user()->rango == 1) {
-                    $id_depar = Profe_Admin::select('id_depar')->where('id_user', Auth::user()->id)->get();
-                    foreach ($id_depar as $id) {
-                        $nombreDepar = Departamento::select('nombre')->where('id', $id->id_depar)->get();
-                    }
-                    return view("common/perfil")->with('nombreDepar', $nombreDepar);
+                    $id_depar = Profe_Admin::where('id_user', Auth::user()->id)->first();
+                    $nombreDepar = Departamento::select('nombre')->where('id', $id_depar->id_depar)->get();
+                    $result = array('nombreDepar' => $nombreDepar, 'rango' => $rango);
+                    return view("common/perfil")->with('result', $result);
                 } else {
-                    return view("common/perfil");
+                    $result = array('rango' => $rango);
+                    return view("common/perfil")->with('result', $result);
                 }
                 break;
             case 2:
+                $rango = 'alumno';
                 $anio = Alumno::select('anio_fin')->where('id_user', Auth::user()->id)->first();
-                return view("common/perfil")->with('anio_fin', $anio);
+                $result = array('anio_fin' => $anio, 'rango' => $rango);
+                return view("common/perfil")->with('result', $result);
                 break;
 
         }
