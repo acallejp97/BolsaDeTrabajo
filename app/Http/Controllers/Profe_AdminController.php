@@ -13,6 +13,7 @@ use App\Model\Grado;
 use App\Model\Oferta;
 use App\Model\Profe_Admin;
 use App\User;
+use Auth;
 use Excel;
 use File;
 use Hash;
@@ -187,10 +188,18 @@ class Profe_AdminController extends Controller
 
     public function Usuarios()
     {
+        if (Auth::user()->rango == 1) {
+            $id_departamento = Profe_Admin::where('id_user', Auth::user()->id)->first();
+            $id_grados = Grado::where('id_depar', $id_departamento->id_depar)->get(); //3 grados
+            $id_alumnos = Alumno_Grado::where('id_grado', $id_grados)->get(); //5 alumnos
+            $alumnos = Alumno::where('id', $id_alumnos)->get(); //5 alumnos
+            $user = User::where('rango', 2)->get();
+        } else {
 
-        $user = User::where('rango', 2)->get();
-        $alumno = Alumno::all();
-        $alumnosuser = array('user' => $user, 'alumno' => $alumno);
+            $alumnos = Alumno::all();
+            $user = User::where('rango', 2)->get();
+        }
+        $alumnosuser = array('user' => $user, 'alumno' => $alumnos);
         if (!$alumnosuser) {
             return view("profes_admin/usuarios");
         }

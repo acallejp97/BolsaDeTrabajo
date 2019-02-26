@@ -2,13 +2,13 @@
 @section('content')
 
 <div class="container">
-		<div class="row col-md-12">
-				<div class="page-header">
-					<h3>
-						@lang('header.listausuarios')
-					</h3>
-				</div>
-	
+	<div class="row col-md-12">
+		<div class="page-header">
+			<h3>
+				@lang('header.listausuarios')
+			</h3>
+		</div>
+
 		<div class="span12">
 			<div class="widget stacked widget-table action-table">
 				<div class="widget-content">
@@ -44,7 +44,7 @@
 								<td>{{$user['email']}}</td>
 								<td>{{$alumno['anio_fin']}}</td>
 								<td>
-									<?php $fecha = explode(' ', trim(Auth::user()->created_at));?> {{$fecha[0]}}
+									<?php $fecha = explode(' ', trim($user['created_at']));?> {{$fecha[0]}}
 								</td>
 
 
