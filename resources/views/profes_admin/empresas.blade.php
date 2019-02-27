@@ -1,6 +1,6 @@
 @extends('layouts.profe_admin') 
 @section('content')
-
+<script language="JavaScript" src="../resources/js/buscar.js"></script> 
 <div class="container">
   <div class="row">
     <div class="col-md-3">

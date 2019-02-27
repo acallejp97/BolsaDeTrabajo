@@ -15,6 +15,7 @@ require("./oferta");
 require("./perfil");
 require("./profesores");
 require("./usuario");
+require("./buscar");
 
 
 window.Vue = require("vue");

@@ -1,6 +1,6 @@
 @extends('layouts.profe_admin') 
 @section('content')
-
+<script language="JavaScript" src="../resources/js/buscar.js"></script> 
 <div class="container">
 	<div class="">
 
@@ -10,8 +10,17 @@
 			</h3>
 		</div>
 	
+		<div class="span3 side-by-side clearfix offset4">
+				<form action="#" method="get">
+					<div style="display:inline-flex; float:right;"class="input-group">
+							<input class="form-control" id="searchTerm" type="text" onkeyup="doSearch()" />
+							<i style="color: #b50045;" class="glyphicon glyphicon-search"></i>
+							
+						</div>
+					</form>
+				</div>
 		<div class="widget-content">
-			<table class="table table-striped table-bordered" style="overflow: auto; max-width: 100%; display: block;">
+			<table  id="datos" class="table table-striped table-bordered" style="overflow: auto; max-width: 100%; display: block;">
 				<thead>
 					<tr style="background: #b50045; color:white;">
 						<th id="table_id">@lang('header.usuario')
