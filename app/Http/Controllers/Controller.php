@@ -37,7 +37,7 @@ class Controller extends BaseController
                 $empresas = Empresa::all();
                 $grados = Grado::all();
 
-                $empresa_oferta = array('profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                $empresa_oferta = array('profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe, 'rango' => 'profe_admin');
                 if (!$empresa_oferta) {
                     return view("common/ofertas");
                 }
@@ -97,7 +97,7 @@ class Controller extends BaseController
                 break;
         }
     }
-    
+
     public function console_log($data)
     {
         echo '<script>';
