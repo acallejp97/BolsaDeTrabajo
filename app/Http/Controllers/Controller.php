@@ -18,6 +18,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Validator;
+use App\Model\Alumno_Grado;
 
 class Controller extends BaseController
 {
@@ -38,9 +39,9 @@ class Controller extends BaseController
 
                 $empresa_oferta = array('profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
                 if (!$empresa_oferta) {
-                    return view("profes_admin/anadirofertas");
+                    return view("common/ofertas");
                 }
-                return view("profes_admin/anadirofertas")->with('result', $empresa_oferta);
+                return view("common/ofertas")->with('result', $empresa_oferta);
 
                 break;
 
@@ -48,26 +49,35 @@ class Controller extends BaseController
                 $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
                 $profe_admin = Profe_Admin::all();
 
-                $ofertas = Oferta::all();
+                $grados = Grado::select('id')->where('id_depar', $profe->id_depar)->get(); //3 grados
+                $id_grados = $this->splitQuery($grados, 'id');;
+                $ofertas = Oferta::whereIn('id_grado', $id_grados)->get();
                 $user = User::all();
                 $empresas = Empresa::all();
-                $grados = Grado::all();
 
-                $empresa_oferta = array('profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe);
+                $empresa_oferta = array(
+                    'profe_admin' => $profe_admin, 'user' => $user, 'empresas' => $empresas, 'ofertas' => $ofertas, 'grados' => $grados, 'profesor' => $profe,
+                    'rango' => 'profe_admin');
                 if (!$empresa_oferta) {
-                    return view("profes_admin/anadirofertas");
+                    return view("common/ofertas");
                 }
-                return view("profes_admin/anadirofertas")->with('result', $empresa_oferta);
+                return view("common/ofertas")->with('result', $empresa_oferta);
 
                 break;
 
             case 2:
-                $profe = Profe_Admin::where('id_user', Auth::user()->id)->first();
+                $alumno = Alumno::where('id_user', Auth::user()->id)->first();
+                $grado = Alumno_Grado::where('id_alumno',$alumno->id)->first();
+
+                $departamento=Grado::where('id', $grado->id)->first();
+                $grados = Grado::where('id_depar',$departamento->id)->get();
+                $id_grados = $this->splitQuery($grados, 'id');;
+
+                $ofertas = Oferta::whereIn('id_grado', $id_grados)->get();
+                
                 $profe_admin = Profe_Admin::all();
-                $ofertas = Oferta::all();
                 $user = User::all();
                 $empresas = Empresa::all();
-                $grados = Grado::all();
 
                 $empresa_oferta = array(
                     'profe_admin' => $profe_admin,
@@ -75,16 +85,33 @@ class Controller extends BaseController
                     'empresas' => $empresas,
                     'ofertas' => $ofertas,
                     'grados' => $grados,
-                    'profesor' => $profe);
+                    'profesor' => $alumno,
+                    'rango' => 'alumno'
+                );
 
                 if (!$empresa_oferta) {
-                    return view("alumnos/ofertas");
+                    return view("common/ofertas");
                 }
-                return view("alumnos/ofertas")->with('result', $empresa_oferta);
+                return view("common/ofertas")->with('result', $empresa_oferta);
 
                 break;
         }
+    }
+    
+    public function console_log($data)
+    {
+        echo '<script>';
+        echo 'console.log(' . json_encode($data) . ')';
+        echo '</script>';
+    }
 
+    public function splitQuery($query, $query_function)
+    {
+        $array = [];
+        foreach ($query as $id) {
+            $array[] = $id->$query_function;
+        }
+        return $array;
     }
 
     public function Contacto()
@@ -126,9 +153,7 @@ class Controller extends BaseController
                 $result = array('anio_fin' => $anio, 'rango' => $rango);
                 return view("common/perfil")->with('result', $result);
                 break;
-
         }
-
     }
 
     public function updateProfile(Request $request)
@@ -166,14 +191,14 @@ class Controller extends BaseController
             $descripcion = $enviado->mensaje;
 
             $insertarDepartamento = new Correo;
-            $insertarDepartamento->insert(['asunto' => $asunto,
+            $insertarDepartamento->insert([
+                'asunto' => $asunto,
                 'id_remit' => Auth::user()->id,
                 'descripcion' => $descripcion, 'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')]);
-
+                'updated_at' => date('Y-m-d H:m:s')
+            ]);
         } else {
             $insertarDepartamento->delete();
-
         }
     }
 
@@ -213,12 +238,10 @@ class Controller extends BaseController
             if ($id_profesor != "") {
                 $insertaroferta->update(['id_profesor' => $id_profesor]);
             }
-
         } else {
 
             // $insertaroferta = Oferta::findOrFail(Auth::user()->id)->delete();
         }
-
     }
 
     public function updateUser(Request $request)
@@ -254,11 +277,9 @@ class Controller extends BaseController
                 $actualizarUsuario->update(['password' => Hash::make($password)]);
                 return redirect("/logout");
             }
-
         } else {
             $actualizarUsuario = User::findOrFail(Auth::user()->id)->delete();
         }
-
     }
     public function search()
     {
@@ -273,7 +294,5 @@ class Controller extends BaseController
         }
 
         return $users;
-
     }
-
 }

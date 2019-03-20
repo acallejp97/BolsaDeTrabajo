@@ -1,8 +1,13 @@
-@extends('layouts.profe_admin') 
+@extends('layouts.'.$result['rango'])
 @section('content')
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
 
 <div class="container">
   <div class="row">
+    @if ($result['rango'] == 'profe_admin')
+        
     <div class="col-md-3">
       <div class="page-header">
         <h3>
@@ -60,6 +65,9 @@
       </div>
     </div>
 
+    @endif
+
+
     <div class="row col-md-9">
       <div class="page-header">
         <h3>
@@ -78,17 +86,22 @@
         <h6><strong> @lang('header.profesorpublicado'): </strong>{{$user['nombre']}}</h6>
         @endif @endif @endforeach @endforeach
 
+        @if ($result['rango']=='alumno')
+            
+        <button type="submit" class="inscribirse btn btn-danger" style="background:#b50045;" id="inscribirse" value="{{$oferta['id']}}">@lang('header.inscribirse')</button>
 
+        @else
         <td class="td-actions">
           <button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $oferta->id;?>"
-            id="<?php echo $oferta->id;?>">
+              id="<?php echo $oferta->id;?>">
               <span class="glyphicon glyphicon-pencil"></span> @lang('header.modificar')
             </button>
-          <button value="{{$oferta['id']}}" class="borrarOferta btn btn-default btn-xs" style="background: #b50045; float:right; color:white;">
+            <button value="{{$oferta['id']}}" class="borrarOferta btn btn-default btn-xs" style="background: #b50045; float:right; color:white;">
                 <span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
               </button>
-
-        </td>
+              
+            </td>
+        @endif
       </div>
       <!--modal-->
       <div id="edit-modal-cust-<?php echo $oferta->id;?>" class="modal">

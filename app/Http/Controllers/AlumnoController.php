@@ -116,9 +116,15 @@ class AlumnoController extends Controller
 
     }
 
+    public function console_log($data)
+    {
+        echo '<script>';
+        echo 'console.log(' . json_encode($data) . ')';
+        echo '</script>';
+    }
+
     public function inscribirse(Request $request)
     {
-
         if (!$request->ajax()) {
             return redirect('/');
         }
@@ -128,6 +134,7 @@ class AlumnoController extends Controller
             $enviado = json_decode($_REQUEST['inscripcion']);
 
             $id_oferta = $enviado->idoferta;
+
             $id_usuario = Auth::user()->id;
             $alumno = Alumno::where('id_user', $id_usuario)->first();
             $oferta = Oferta::where('id', $id_oferta)->first();
