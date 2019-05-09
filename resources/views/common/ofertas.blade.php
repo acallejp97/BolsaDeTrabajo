@@ -1,8 +1,14 @@
-@extends('layouts.profe_admin') 
+@extends('layouts.'.$result['rango'])
 @section('content')
+
 <script language="JavaScript" src="../resources/js/buscar.js"></script> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
 <div class="container">
   <div class="row">
+    @if ($result['rango'] == 'profe_admin')
+        
     <div class="col-md-3">
       <div class="page-header">
         <h3>
@@ -60,6 +66,9 @@
       </div>
     </div>
 
+    @endif
+
+
     <div class="row col-md-9">
       <div class="page-header">
         <h3>
@@ -110,17 +119,32 @@
  </td>
 </div>
 
+<<<<<<< HEAD:resources/views/profes_admin/anadirofertas.blade.php
         <td class="td-actions" style="background:white">
+=======
+        @if ($result['rango']=='alumno')
+            
+        <button type="submit" class="inscribirse btn btn-danger" style="background:#b50045;" id="inscribirse" value="{{$oferta['id']}}">@lang('header.inscribirse')</button>
+
+        @else
+        <td class="td-actions">
+>>>>>>> 777dca9c6fb253a6095098b64c200733abd7b4cb:resources/views/common/ofertas.blade.php
           <button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $oferta->id;?>"
-            id="<?php echo $oferta->id;?>">
+              id="<?php echo $oferta->id;?>">
               <span class="glyphicon glyphicon-pencil"></span> @lang('header.modificar')
             </button>
-          <button value="{{$oferta['id']}}" class="borrarOferta btn btn-default btn-xs" style="background: #b50045; float:right; color:white;">
+            <button value="{{$oferta['id']}}" class="borrarOferta btn btn-default btn-xs" style="background: #b50045; float:right; color:white;">
                 <span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
               </button>
+<<<<<<< HEAD:resources/views/profes_admin/anadirofertas.blade.php
 
         </td>
      
+=======
+              
+            </td>
+        @endif
+>>>>>>> 777dca9c6fb253a6095098b64c200733abd7b4cb:resources/views/common/ofertas.blade.php
       </div>
     </tr>
   
