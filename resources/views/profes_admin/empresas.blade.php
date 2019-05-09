@@ -9,6 +9,7 @@
           @lang('header.añadirempresas')
         </h3>
       </div>
+  
 
       <div class="form-group">
         <!-- Full Name -->
@@ -48,23 +49,50 @@
       </div>
     </div>
 
+
+        
     <div class="row col-md-9">
       <div class="page-header">
         <h3>
           @lang('header.listaempresas')
         </h3>
       </div>
+  <!-- buscador -->
+  <div class="span3 side-by-side clearfix offset4">
+    <form action="#" method="get">
+      <div style="display:inline-flex; float:right;"class="input-group">
+          <input class="form-control" id="searchTerm" type="text" onkeyup="doSearch()" />
+          <i style="color: #b50045;" class="glyphicon glyphicon-search"></i>
+          
+        </div>
+      </form>
+    </div>
 
-      <div class="row">
-        @foreach ($empresas as $empre)
 
-      <div class="col-md-12">
+    <table  id="datos" class="table table-striped table-bordered" style=" border:hidden">
+      <thead style="width:100%;">
+        <tr >
+          <th id="table_id">
+          </th>
+          <th id="">
+          </th>
+        </tr>
+      </thead>
+      <tbody style="border:hidden, ">
+
+        <div class="row"  >
+          @foreach ($empresas as $empre)
+            <tr style="border:hidden">
+          <td style="background:white">
+
+      <div class="col-md-12" >
         <h3 class="center">{{$empre['nombre']}}</h3>
         <p>{{$empre['direccion']}}</p>
         <p> <strong> {{$empre['email']}}</strong></p>
         <p>{{$empre['URL']}}</p>
         <p>{{$empre['telefono']}}</p>
-        <td class="td-actions">
+      </td>
+        <td class="td-actions" style="border:hidden; background:white">
           <button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $empre->id;?>" id="<?php echo $empre->id;?>">
               <span class="glyphicon glyphicon-pencil"></span> @lang('header.modificar')
             </button>
@@ -74,8 +102,11 @@
                 <span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
               </button>
         </td>
+      
+ 
       </div>
-
+    </tr>
+  
 
       <!-- The Modal -->
       <div id="edit-modal-cust-<?php echo $empre->id;?>" class="modal">
@@ -120,6 +151,8 @@
         </div>
       </div>
       @endforeach
+    </tbody>
+  </table>
     </div>
   </div>
 </div>

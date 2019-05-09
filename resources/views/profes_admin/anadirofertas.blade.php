@@ -1,6 +1,6 @@
 @extends('layouts.profe_admin') 
 @section('content')
-
+<script language="JavaScript" src="../resources/js/buscar.js"></script> 
 <div class="container">
   <div class="row">
     <div class="col-md-3">
@@ -66,9 +66,39 @@
           @lang('header.listaofertas')
         </h3>
       </div>
-     @foreach ($result['ofertas'] as $oferta)
 
-      <div class="col-md-12">
+        <!-- buscador -->
+        <div class="span3 side-by-side clearfix offset4">
+            <form action="#" method="get">
+              <div style="display:inline-flex; float:right;"class="input-group">
+                  <input class="form-control" id="searchTerm" type="text" onkeyup="doSearch()" />
+                  <i style="color: #b50045;" class="glyphicon glyphicon-search"></i>
+                  
+                </div>
+              </form>
+            </div>
+      <!--comienzo foreach-->
+
+
+
+
+      <table  id="datos"  style=" border:hidden">
+          <thead >
+            <tr >
+              <th id="table_id">
+              </th>
+              <th id="">
+              </th>
+            </tr>
+          </thead>
+          <tbody style="border:hidden, ">
+    
+            <div class="row"  >
+     @foreach ($result['ofertas'] as $oferta)
+     <tr style="border:hidden">
+        <td style="background:white, " class="col-md-9">
+
+      <div >
         <h3 class="center">{{$oferta['titulo']}}</h3>
         <p>{{$oferta['descripcion']}}</p>
         <p> <strong style="color: #b50045;">@lang('header.puestos'): </strong>{{$oferta['puestos-vacantes']}}</p>
@@ -77,9 +107,10 @@
         @if($user['id']==$profe_admin['id_user'])
         <h6><strong> @lang('header.profesorpublicado'): </strong>{{$user['nombre']}}</h6>
         @endif @endif @endforeach @endforeach
+ </td>
+</div>
 
-
-        <td class="td-actions">
+        <td class="td-actions" style="background:white">
           <button class="btn btn-default btn-xs" style="float:right;" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $oferta->id;?>"
             id="<?php echo $oferta->id;?>">
               <span class="glyphicon glyphicon-pencil"></span> @lang('header.modificar')
@@ -89,7 +120,10 @@
               </button>
 
         </td>
+     
       </div>
+    </tr>
+  
       <!--modal-->
       <div id="edit-modal-cust-<?php echo $oferta->id;?>" class="modal">
         <div class="modal-dialog">
@@ -121,6 +155,8 @@
         </div>
       </div>
       @endforeach
+    </tbody>
+  </table>
     </div>
   </div>
 </div>
