@@ -69,7 +69,7 @@
               </th>
               <th id="">@lang('header.registrado')
               </th>
-              <th class="td-actions" id="table_action">@lang('header.accion')</th>
+              <th style="width:10%" class="td-actions " id="table_action">@lang('header.accion')</th>
             </tr>
           </thead>
           <tbody>

@@ -48,6 +48,11 @@
             </li>
           </div>
           <div class="navbar-collapse collapse" id="navbar-collapse-1">
+              <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+              <style>
+              
+              
+              </style>
             <!-- Non-collapsing right-side icons -->
             <ul class="nav nav-tabs card-header-tabs  nav navbar-nav">
               <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
