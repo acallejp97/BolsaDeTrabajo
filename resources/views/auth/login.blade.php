@@ -46,7 +46,8 @@
                                     @lang('header.iniciar')
                                 </button> @if (Route::has('password.request'))
                                 <a class="btn btn-link" style="color:white; font-size: 10px;" href="{{ route('password.request') }}">
-                                    
+                                     He olvidado mi contraseña
+                                   
                                     </a> @endif
                             </div>
                         </div>
