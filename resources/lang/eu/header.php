@@ -2,6 +2,10 @@
  
  ///////////////////////////////////////EUSKERA///////////////////////////////////////////////
 return [
+  //borrar mensaje
+  'atencion' => 'Kontuz...',
+  'seguro' => 'Ziur zaude hau ezabatu nahi duzula?',
+  'definitivo' => 'Ekintza hau behin betikoa da eta ezin duzu datuak berreskuratu.',
   //MENU
   'perfil' => 'Perfila ikusi',
   'actualizarcv' => ' Berriztu CV',

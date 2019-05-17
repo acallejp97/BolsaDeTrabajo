@@ -1,6 +1,10 @@
 <?php
 
 return [
+      //borrar mensaje
+  'atencion' => 'Attention ...',
+  'seguro' => 'Are you sure you want to delete?',
+  'definitivo' => 'This action is final and you will not be able to recover any data.',
   //MENU
   'perfil' => 'View Profile',
   'altausuarios' => 'Register Users',

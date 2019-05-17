@@ -66,12 +66,31 @@
 							 id="<?php echo $correo->id;?>">
 										<span class="glyphicon glyphicon-pencil"></span> @lang('header.abrir')
 								</button>
-							<button class=" borrarCorreo btn btn-default btn-xs " style="background: #b50045; color:white;" value="{{$correo['id']}}">
+							<button data-toggle="modal" data-target="#delete-modal-cust-<?php echo $correo->id;?>" class="  btn btn-default btn-xs " style="background: #b50045; color:white;">
 										<span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
 								</button>
 
 						</td>
 						<!---------------------------------------------------------------------borrarCorreo--------------->
+						<div id="delete-modal-cust-<?php echo $correo->id;?>" class="modal" >
+							<div class="modal-dialog">
+									<div class="modal-content">
+											<center> <h1 style="color: #b50045;">@lang('header.atencion')</h1></center>
+							  <h2>@lang('header.seguro')</h2>
+							<center><img style="width:400px" src='deletemensajepng.png' ></center>
+							<center><button class=" borrarCorreo btn btn-default btn-xl" style="background: #b50045; color:white;" value="{{$correo['id']}}">
+								  <span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
+</button></center>
+							  <h3>@lang('header.definitivo')</h3>
+						
+							<div class='panel__flaps'>
+							  <div class='flap outer flap--left'></div>
+
+							  <div class='flap outer flap--right'></div>
+							</div>
+						  </div>
+						</div>	</div>
+						  
 
 						<!-- The Modal -->
 						<div id="edit-modal-cust-<?php echo $correo->id;?>" class="modal">

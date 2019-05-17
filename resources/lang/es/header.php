@@ -2,6 +2,10 @@
  
  ///////////////////////////CASTELLANO////////////////////////////////////////////
 return [
+  //borrar mensaje
+  'atencion' => 'Atencion...',
+  'seguro' => 'Estas seguro de que quieres borrar?',
+  'definitivo' => 'Esta acción es definitiva y no podrás recuperar ningún dato.',
   //MENU
   'perfil' => 'Ver Perfil',
   'actualizarcv' => 'Actualizar CV',

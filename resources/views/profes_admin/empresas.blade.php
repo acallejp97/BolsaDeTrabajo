@@ -97,15 +97,38 @@
               <span class="glyphicon glyphicon-pencil"></span> @lang('header.modificar')
             </button>
 
-          <button value="{{$empre['id']}}" class="borrarEmpresa btn btn-default btn-xs" style="background: #b50045; float:right; color:white;"
-            href="javascript:;">
+            <button data-toggle="modal" data-target="#delete-modal-cust-<?php echo $empre->id;?>" class="  btn btn-default btn-xs " style="background: #b50045; color:white;">
                 <span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
-              </button>
+            </button>
         </td>
       
  
       </div>
     </tr>
+  
+
+  
+
+</td>
+<!---------------------------------------------------------------------borrarCorreo--------------->
+<div id="delete-modal-cust-<?php echo $empre->id;?>" class="modal" >
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <center> <h1 style="color: #b50045;">@lang('header.atencion')</h1></center>
+    <h2>@lang('header.seguro')</h2>
+  <center><img style="width:400px" src='deletemensajepng.png' ></center>
+  <center><button class=" borrarEmpresa btn btn-default btn-xl" style="background: #b50045; color:white;" value="{{$empre['id']}}">
+      <span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
+</button></center>
+    <h3>@lang('header.definitivo')</h3>
+
+  <div class='panel__flaps'>
+    <div class='flap outer flap--left'></div>
+
+    <div class='flap outer flap--right'></div>
+  </div>
+  </div>
+</div>	</div>
   
 
       <!-- The Modal -->
