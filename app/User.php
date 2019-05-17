@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\MyResetPassword;
 
 class User extends Authenticatable
 {
@@ -45,5 +46,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Correo::class);
     }
-
+public function sendPasswordResetNotification($token)
+{
+    $this->notify(new MyResetPassword($token));
+}
 }
