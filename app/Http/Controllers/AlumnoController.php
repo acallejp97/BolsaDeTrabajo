@@ -13,6 +13,7 @@ use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use Mail;
+use Dompdf\Dompdf;
 use Validator;
 
 class AlumnoController extends Controller
@@ -157,8 +158,13 @@ class AlumnoController extends Controller
             Mail::to($empresa['email'])
                 ->send(new inscripcion($data));
 
-            $AlumnoOferta = new Alumno_Oferta;
-            $AlumnoOferta->insert(['id_alumno' => $alumno['id'], 'id_oferta' => $id_oferta]);
+                $AlumnoOferta = new Alumno_Oferta;
+                $AlumnoOferta->insert(['id_alumno' => $alumno['id'], 'id_oferta' => $id_oferta]);
+            $pdf = new Dompdf;
+            $pdf = Dompdf::loadView('alumnos/prueba',$data); //load view page
+            $pdf->render();
+            return $pdf->download('Curriculum_.pdf');
+            exit;
         }
     }
 }

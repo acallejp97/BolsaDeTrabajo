@@ -20,14 +20,14 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-10">
-                <h1>Curriculum de {{$data['nombre']}}</h1>
+                <h1>Curriculum de {{$nombre}}</h1>
             </div>
             <div class="col-sm-3">
                 <br>
                 <ul class="list-group">
                     <li class="list-group-item text-muted">IDIOMAS<i class="fa fa-dashboard fa-1x"></i></li>
 
-                    <textarea rows="5" style="margin-bottom:10px;">{{$data['idiomas']}}</textarea>
+                    <textarea rows="5" style="margin-bottom:10px;">{{$idiomas}}</textarea>
                 </ul>
             </div>
 
@@ -40,7 +40,7 @@
                                 <label>
                                     <h4>Nombre</h4>
                                 </label>
-                                <label>{{$data['nombre']}}</label>
+                                <label>{{$nombre}}</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -48,7 +48,7 @@
                                 <label>
                                     <h4>Apellido</h4>
                                 </label>
-                                <label>{{$data['apellidos']}}</label>
+                                <label>{{$apellidos}}</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -56,7 +56,7 @@
                                 <label>
                                     <h4>Telefono</h4>
                                 </label>
-                                <label>{{$data['telefono']}}</label>
+                                <label>{{$telefono}}</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -64,7 +64,7 @@
                                 <label>
                                     <h4>Dirección</h4>
                                 </label>
-                                <label>{{$data['direccion']}}</label>
+                                <label>{{$direccion}}</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -72,7 +72,7 @@
                                 <label>
                                     <h4>Email</h4>
                                 </label>
-                                <label>{{$data['email']}}</label>
+                                <label>{{$email}}</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -80,7 +80,7 @@
                                 <label>
                                     <h4>Formación Académica</h4>
                                 </label>
-                                <textarea rows="5">{{$data['competencias']}}</textarea>
+                                <textarea rows="5">{{$competencias}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -88,7 +88,7 @@
                                 <label>
                                     <h4>Experiencia</h4>
                                 </label>
-                                <textarea rows="5">{{$data['experiencia']}}</textarea>
+                                <textarea rows="5">{{$experiencia}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -96,7 +96,7 @@
                                 <label>
                                     <h4>Otros datos</h4>
                                 </label>
-                                <textarea rows="5">{{$data['otros_datos']}}</textarea>
+                                <textarea rows="5">{{$otros_datos}}</textarea>
                             </div>
                         </div>
                     </div>

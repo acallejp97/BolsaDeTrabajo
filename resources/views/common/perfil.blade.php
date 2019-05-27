@@ -1,4 +1,4 @@
-@extends('layouts.'.$result['rango']) 
+@extends('layouts.'.$result['rango'])
 @section('content')
 <div class="container">
     <div class="row">
@@ -12,12 +12,15 @@
                 @csrf
                 <div class='form-group'>
 
-                    <img src="{{url("fotosPerfil/ " . Auth::user()->imagen)}}" class='img-responsive' style=' height:200px; width: 200px;' />
+                    <img src="{{url("fotosPerfil/ " . Auth::user()->imagen)}}" class='img-responsive'
+                        style=' height:200px; width: 200px;' />
 
                     <input style="color: transparent; margin-top: 3em;" type="file" name="image" />
                     <div class='text-danger'>{{$errors->first('image')}}</div>
                 </div>
-                <button type='submit' style="background: #b50045;" class='btn btn-primary'>@lang('header.actualizarimagen')</button>
+                <button type='submit' @if(Auth::user()->rango==0) style="background: #b50045;"
+                    @elseif(Auth::user()->rango==1) style="background: blue;" @else style="background: green;" @endif
+                    class='btn btn-primary'>@lang('header.actualizarimagen')</button>
             </form>
             <br>
 
@@ -42,7 +45,8 @@
             @else
             <ul class="list-group">
                 <li class="list-group-item text-muted">@lang('header.añofinalu')</li>
-                <li class="list-group-item text-center"><span class="pull-center"><strong>{{$result['anio_fin']->anio_fin}}</strong><br/></span> </li>
+                <li class="list-group-item text-center"><span
+                        class="pull-center"><strong>{{$result['anio_fin']->anio_fin}}</strong><br /></span> </li>
             </ul>
             @endif
         </div>
@@ -52,24 +56,33 @@
                     <hr>
                     <div class="form-group">
                         <div class="col-xs-11">
-                            <label for="nombre"><h4>@lang('header.nombre')</h4></label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="@lang('header.metenombre')" value="{{Auth::user()->nombre}}"
+                            <label for="nombre">
+                                <h4>@lang('header.nombre')</h4>
+                            </label>
+                            <input type="text" class="form-control" name="nombre" id="nombre"
+                                placeholder="@lang('header.metenombre')" value="{{Auth::user()->nombre}}"
                                 title="Introduce tu nombre.">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-11">
-                            <label for="apellido"><h4>@lang('header.apellidos')</h4></label>
-                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="@lang('header.meteapellidos')" value="{{Auth::user()->apellidos}}"
+                            <label for="apellido">
+                                <h4>@lang('header.apellidos')</h4>
+                            </label>
+                            <input type="text" class="form-control" name="apellido" id="apellido"
+                                placeholder="@lang('header.meteapellidos')" value="{{Auth::user()->apellidos}}"
                                 title="Introduce tus apellidos.">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-11">
-                            <label for="email"><h4>@lang('header.email')</h4></label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="@lang('header.meteemail')" value="{{Auth::user()->email}}"
+                            <label for="email">
+                                <h4>@lang('header.email')</h4>
+                            </label>
+                            <input type="email" class="form-control" name="email" id="email"
+                                placeholder="@lang('header.meteemail')" value="{{Auth::user()->email}}"
                                 title="Introduce tu email.">
                         </div>
                     </div>
@@ -82,10 +95,18 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" onsubmit="return validarFormulario()" id="updateUser" style="background: #b50045; float:right;color:white;"
-                                    type="submit"><i class="glyphicon glyphicon-ok-sign"></i> @lang('header.guardar')</button>@if(Auth::user()->rango!=0)
-                                <button type="submit" class="btn btn-lg btn-success" onclick="validarFormulario3(this)" id="deleteUser" style="background:#D8BFD8; float:right; color:black;">
-                                    <span class="glyphicon glyphicon-remove" ></span> @lang('header.borrarperfil')
+                                <button class="btn btn-lg btn-success" onsubmit="return validarFormulario()"
+                                    id="updateUser" @if(Auth::user()->rango==0) style="background: #b50045;
+                                    float:right;color:white;" @elseif(Auth::user()->rango==1) style="background: blue;
+                                    float:right;color:white;" @else style="background: green; float:right;color:white;"
+                                    @endif
+
+
+                                    type="submit"><i class="glyphicon glyphicon-ok-sign"></i>
+                                    @lang('header.guardar')</button>@if(Auth::user()->rango!=0)
+                                <button type="submit" class="btn btn-lg btn-success" onclick="validarFormulario3(this)"
+                                    id="deleteUser" style="background:#D8BFD8; float:right; color:black;">
+                                    <span class="glyphicon glyphicon-remove"></span> @lang('header.borrarperfil')
                                 </button> @endif
                             </div>
                         </div>

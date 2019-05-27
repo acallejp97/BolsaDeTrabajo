@@ -1,6 +1,6 @@
-@extends('layouts.profe_admin') 
+@extends('layouts.profe_admin')
 @section('content')
-<script language="JavaScript" src="../resources/js/buscar.js"></script> 
+<script language="JavaScript" src="../resources/js/buscar.js"></script>
 <div class="container">
 	<div class="">
 
@@ -9,20 +9,27 @@
 				@lang('header.bandeja')
 			</h3>
 		</div>
-	
+
 		<div class="span3 side-by-side clearfix offset4">
-				<form action="#" method="get">
-					<div style="display:inline-flex; float:right;"class="input-group">
-							<input class="form-control" id="searchTerm" type="text" onkeyup="doSearch()" />
-							<i style="color: #b50045;" class="glyphicon glyphicon-search"></i>
-							
-						</div>
-					</form>
+			<form action="#" method="get">
+				<div style="display:inline-flex; float:right;" class="input-group">
+					<input class="form-control" id="searchTerm" type="text" onkeyup="doSearch()" />
+					<i @if(Auth::user()->rango==0) style="background: #b50045;"
+						@elseif(Auth::user()->rango==1) style="background: blue;"
+						@else style="background: green;"
+						@endif class="glyphicon glyphicon-search"></i>
+
 				</div>
+			</form>
+		</div>
 		<div class="widget-content">
-			<table  id="datos" class="table table-striped table-bordered" style="overflow: auto; max-width: 100%; display: block;">
+			<table id="datos" class="table table-striped table-bordered"
+				style="overflow: auto; max-width: 100%; display: block;">
 				<thead>
-					<tr style="background: #b50045; color:white;">
+					<tr @if(Auth::user()->rango==0) style="background: #b50045;color:white;"
+						@elseif(Auth::user()->rango==1) style="background: blue; color:white;"
+						@else style="background: green; color:white;"
+						@endif>
 						<th id="table_id">@lang('header.usuario')
 						</th>
 						<th class="text-center" id="">@lang('header.asunto')
@@ -41,56 +48,82 @@
 
 
 					<!--recorre mediante los foreach las tablas y saca lo que se le dice abajo-->
-					@foreach ($user_correos['correos'] as $correo) @foreach ($user_correos['user'] as $usuarios) @if($usuarios->rango==1 or $usuarios->rango==2)
+					@foreach ($user_correos['correos'] as $correo) @foreach ($user_correos['user'] as $usuarios)
+					@if($usuarios->rango==1 or $usuarios->rango==2)
 					@if($correo['id_remit']==$usuarios['id']) @if($usuarios->rango==1)
 					<!--si es profesor que el correo salga de otro color resaltandolo-->
-					<tr id="colorfila" style="background:#DC6E97;">
+					<tr id="colorfila" @if(Auth::user()->rango==0) style="background:
+						#DC6E97;"
+						@elseif(Auth::user()->rango==1) style="background: #99bbff;"
+						@else style="background:#33ffad;"
+						@endif>
+
+						
+						
 						@else @endif
 
 						<div class="media-heading">
 
 							<td><a class="pull-left"> </a>
-								<img src='{{url("./fotosPerfil/".$usuarios["imagen"])}}' class="media-object" style="float:left; height: 50px; width:50px">
+								<img src='{{url("./fotosPerfil/".$usuarios["imagen"])}}' class="media-object"
+									style="float:left; height: 50px; width:50px">
 							</td>
 							<td> <a class="m-r-10">{{$correo['asunto']}}</a> </td>
 
 							<td> <span class="badge bg-blue">{{$usuarios['nombre']}}</span></td>
-							<td> <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">{{$correo['created_at']}}</time><i class="zmdi zmdi-attachment-alt"></i> </small>								</td>
+							<td> <small class="float-right text-muted"><time class="hidden-sm-down"
+										datetime="2017">{{$correo['created_at']}}</time><i
+										class="zmdi zmdi-attachment-alt"></i> </small> </td>
 						</div>
 						<td>
 							<p class="msg">{{$correo['descripcion']}} </p>
 						</td>
 
 						<td class="td-actions">
-							<button class="btn btn-default btn-xs" data-toggle="modal" href="#myModal" data-target="#edit-modal-cust-<?php echo $correo->id;?>"
-							 id="<?php echo $correo->id;?>">
-										<span class="glyphicon glyphicon-pencil"></span> @lang('header.abrir')
-								</button>
-							<button data-toggle="modal" data-target="#delete-modal-cust-<?php echo $correo->id;?>" class="  btn btn-default btn-xs " style="background: #b50045; color:white;">
-										<span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
-								</button>
+							<button class="btn btn-default btn-xs" data-toggle="modal" href="#myModal"
+								data-target="#edit-modal-cust-<?php echo $correo->id;?>" id="<?php echo $correo->id;?>">
+								<span class="glyphicon glyphicon-pencil"></span> @lang('header.abrir')
+							</button>
+							<button data-toggle="modal" data-target="#delete-modal-cust-<?php echo $correo->id;?>"
+								class="  btn btn-default btn-xs " @if(Auth::user()->rango==0) style="background:
+								#b50045;color:white;"
+								@elseif(Auth::user()->rango==1) style="background: blue; color:white;"
+								@else style="background: green; color:white;"
+								@endif>
+								<span class="glyphicon glyphicon-remove"></span> @lang('header.borrar')
+							</button>
 
 						</td>
 						<!---------------------------------------------------------------------borrarCorreo--------------->
-						<div id="delete-modal-cust-<?php echo $correo->id;?>" class="modal" >
+						<div id="delete-modal-cust-<?php echo $correo->id;?>" class="modal">
 							<div class="modal-dialog">
-									<div class="modal-content">
-											<center> <h1 style="color: #b50045;">@lang('header.atencion')</h1></center>
-							  <h2>@lang('header.seguro')</h2>
-							<center><img style="width:400px" src='deletemensajepng.png' ></center>
-							<center><button class=" borrarCorreo btn btn-default btn-xl" style="background: #b50045; color:white;" value="{{$correo['id']}}">
-								  <span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
-</button></center>
-							  <h3>@lang('header.definitivo')</h3>
-						
-							<div class='panel__flaps'>
-							  <div class='flap outer flap--left'></div>
+								<div class="modal-content">
+									<center>
+										<h1 @if(Auth::user()->rango==0) style="background: #b50045;"
+											@elseif(Auth::user()->rango==1) style="background: blue; "
+											@else style="background: green; "
+											@endif>@lang('header.atencion')</h1>
+									</center>
+									<h2>@lang('header.seguro')</h2>
+									<center><img style="width:400px" src='deletemensajepng.png'></center>
+									<center><button class=" borrarCorreo btn btn-default btn-xl"
+											@if(Auth::user()->rango==0) style="background: #b50045;color:white;"
+											@elseif(Auth::user()->rango==1) style="background: blue; color:white;"
+											@else style="background: green; color:white;"
+											@endif value="{{$correo['id']}}">
+											<span class="glyphicon glyphicon-remove"></span> @lang('header.borrar')
+										</button></center>
+									<h3>@lang('header.definitivo')</h3>
 
-							  <div class='flap outer flap--right'></div>
+									<div class='panel__flaps'>
+										<div class='flap outer flap--left'></div>
+
+										<div class='flap outer flap--right'></div>
+									</div>
+								</div>
 							</div>
-						  </div>
-						</div>	</div>
-						  
+						</div>
+
 
 						<!-- The Modal -->
 						<div id="edit-modal-cust-<?php echo $correo->id;?>" class="modal">
@@ -110,15 +143,17 @@
 									</div>
 									<div class="form-group">
 										<label for="comment">@lang('header.responder'):</label>
-										<textarea type="text" name="respuesta" class="form-control" rows="4" , cols="164" id="respuesta<?php echo $correo->id?>"
-										 style="resize:none," placeholder="@lang('header.metemensaje')"></textarea>
+										<textarea type="text" name="respuesta" class="form-control" rows="4" ,
+											cols="164" id="respuesta<?php echo $correo->id?>" style="resize:none,"
+											placeholder="@lang('header.metemensaje')"></textarea>
 									</div>
 									<!-- Modal footer -->
 									<div class="modal-footer">
-										<button class="respuestaEmail" type="button" value="{{$correo['id']}}" class="btn btn-danger responderCorreo" data-dismiss="modal"
-										 data-toggle="modal" data-target="#modalEnviado">Enviar</button>
+										<button class="respuestaEmail" type="button" value="{{$correo['id']}}"
+											class="btn btn-danger responderCorreo" data-dismiss="modal"
+											data-toggle="modal" data-target="#modalEnviado">Enviar</button>
 									</div>
-								
+
 								</div>
 							</div>
 						</div>

@@ -45,7 +45,10 @@
 
       <div class="form-group">
         <!-- Submit Button -->
-        <button type="submit" style="background: #b50045; color:white;" id="insertEmpresa" class="btn btn-primary">@lang('header.publicar')</button>
+        <button type="submit" @if(Auth::user()->rango==0) style="background: #b50045;color:white;"
+          @elseif(Auth::user()->rango==1) style="background: blue; color:white;"
+          @else style="background: green; color:white;"
+          @endif id="insertEmpresa" class="btn btn-primary">@lang('header.publicar')</button>
       </div>
     </div>
 
@@ -62,7 +65,10 @@
     <form action="#" method="get">
       <div style="display:inline-flex; float:right;"class="input-group">
           <input class="form-control" id="searchTerm" type="text" onkeyup="doSearch()" />
-          <i style="color: #b50045;" class="glyphicon glyphicon-search"></i>
+          <i @if(Auth::user()->rango==0) style="background: #b50045"
+            @elseif(Auth::user()->rango==1) style="background: blue;"
+            @else style="background: green;"
+            @endif class="glyphicon glyphicon-search"></i>
           
         </div>
       </form>
@@ -97,7 +103,10 @@
               <span class="glyphicon glyphicon-pencil"></span> @lang('header.modificar')
             </button>
 
-            <button data-toggle="modal" data-target="#delete-modal-cust-<?php echo $empre->id;?>" class="  btn btn-default btn-xs " style="background: #b50045; color:white;">
+            <button data-toggle="modal" data-target="#delete-modal-cust-<?php echo $empre->id;?>" class="  btn btn-default btn-xs " @if(Auth::user()->rango==0) style="background: #b50045;color:white;"
+              @elseif(Auth::user()->rango==1) style="background: blue; color:white;"
+              @else style="background: green; color:white;"
+              @endif>
                 <span class="glyphicon glyphicon-remove" ></span> @lang('header.borrar')
             </button>
         </td>

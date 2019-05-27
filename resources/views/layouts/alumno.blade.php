@@ -15,6 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+    
     {{--
     <script src="{{asset('js/user-function/app.js')}}"></script> --}}
   
@@ -31,7 +32,7 @@
       
       <nav  class="navbar navbar navbar-static-top custom-navbar" role="navigation">
         <div class="container-fluid">
-          <button style="background:#b50045;" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1"> <span class="sr-only">Toggle navigation</span>
+          <button style="background:green;" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1"> <span class="sr-only">Toggle navigation</span>
             <span style="background:white;"class="icon-bar"></span>
             <span style="background:white;"class="icon-bar"></span>
             <span style="background:white;"class="icon-bar"></span>
@@ -50,19 +51,19 @@
             <!-- Non-collapsing right-side icons -->
       <ul class="nav nav-tabs card-header-tabs  nav navbar-nav">
         <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
-          <a  style="color:#b50045;"class="nav-link" href="{{ route('perfil') }}">@lang('header.perfil')</a>
+          <a  style="color:green;"class="nav-link" href="{{ route('perfil') }}">@lang('header.perfil')</a>
         </li>
         <li  class="nav-item {{ request()->is('home') ? 'active' : '' }}" >
-          <a  style="color:#b50045;"class="nav-link" href="{{ route('home') }}">@lang('header.ofertas')</a>
+          <a  style="color:green;"class="nav-link" href="{{ route('home') }}">@lang('header.ofertas')</a>
         </li>
         <li class="nav-item {{ request()->is('contacto') ? 'active' : '' }}">
-          <a  style="color:#b50045;"class="nav-link" href="{{ route('contacto') }}">@lang('header.contacto')</a>
+          <a  style="color:green;"class="nav-link" href="{{ route('contacto') }}">@lang('header.contacto')</a>
         </li>
         <li class="nav-item {{ request()->is('actualizarCV') ? 'active' : '' }}">
-          <a  style="color:#b50045;"class="nav-link" href="{{ route('actualizarCV') }}">@lang('header.actualizarcv')</a>
+          <a  style="color:green;"class="nav-link" href="{{ route('actualizarCV') }}">@lang('header.actualizarcv')</a>
         </li>
         <li class="nav-item">
-          <a style="color:#b50045;"class="nav-link" href="logout">@lang('header.cerrarsesion')</a>
+          <a style="color:green;"class="nav-link" href="logout">@lang('header.cerrarsesion')</a>
         </li>
     
       </ul>

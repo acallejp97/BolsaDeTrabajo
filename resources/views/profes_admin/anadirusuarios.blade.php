@@ -37,7 +37,10 @@
                 {{ csrf_field() }} @lang('header.elige') : <input type="file" name="file" class="form-control" style="padding-bottom: 2.8em;">
                 <br>
                 
-                <input type="submit" class="btn  btn-lg" style="background: #b50045; float:right; color: white;">
+                <input type="submit" class="btn  btn-lg" @if(Auth::user()->rango==0) style="background: #b50045;float:right;color:white;"
+                @elseif(Auth::user()->rango==1) style="background: blue; float:right;color:white;"
+                @else style="background: green; float:right;color:white;"
+                @endif>
             </form>
             <a class="btn btn-lg btn-success" href="{{asset('download/template.csv')}}" download="template.csv" style="background:#D8BFD8; float:right; color:black;" type="submit">
                 <i class="glyphicon glyphicon-download"></i>
@@ -84,7 +87,11 @@
                         <div class="col-xs-12">
                             <br />
 
-                            <button class="btn btn-lg btn-success" id="insertUser" style="background: #b50045; float:right;color:white;" type="submit">
+                            <button class="btn btn-lg btn-success" id="insertUser" @if(Auth::user()->rango==0) style="background: #b50045;float:right;color:white;"
+                                @elseif(Auth::user()->rango==1) style="background: blue; float:right;color:white;"
+                                @else style="background: green; float:right;color:white;"
+                                @endif type="submit">
+                                
                                 <i class="glyphicon glyphicon-ok-sign"></i>
                                 @lang('header.subir')
                             </button>

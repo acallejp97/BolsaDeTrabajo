@@ -63,7 +63,11 @@
       </div>
 
       <div class="form-group">
-        <button type="submit" style="background: #b50045; color:white;" id="insertOferta"
+        <button type="submit" @if(Auth::user()->rango==0) style="background: #b50045;
+          color:white;"
+          @elseif(Auth::user()->rango==1) style="background: blue; color:white;"
+          @else style="background: green; color:white;"
+          @endif id="insertOferta"
           class="btn btn-primary">@lang('header.publicar')</button>
       </div>
     </div>
@@ -83,7 +87,9 @@
         <form action="#" method="get">
           <div style="display:inline-flex; float:right;" class="input-group">
             <input class="form-control" id="searchTerm" type="text" onkeyup="doSearch()" />
-            <i style="color: #b50045;" class="glyphicon glyphicon-search"></i>
+            <i @if(Auth::user()->rango==0) style="background: #b50045;"
+              @elseif(Auth::user()->rango==1) style="background: blue;" @else style="background: green;" @endif
+              class="glyphicon glyphicon-search"></i>
 
           </div>
         </form>
@@ -108,7 +114,9 @@
                 <div>
                   <h3 class="center">{{$oferta['titulo']}}</h3>
                   <p>{{$oferta['descripcion']}}</p>
-                  <p> <strong style="color: #b50045;">@lang('header.puestos'): </strong>{{$oferta['puestos-vacantes']}}
+                  <p> <strong @if(Auth::user()->rango==0) style="background: #b50045;"
+                      @elseif(Auth::user()->rango==1) style="background: blue;" @else style="background: green;"
+                      @endif>@lang('header.puestos'): </strong>{{$oferta['puestos-vacantes']}}
                   </p>
 
                   @foreach ($result['profe_admin'] as $profe_admin) @foreach ($result['user'] as $user)
@@ -122,7 +130,10 @@
           @if ($result['rango']=='alumno')
           <td class="td-actions">
 
-            <button type="submit" class="inscribirse btn btn-danger" style="background:#b50045;" id="inscribirse"
+            <button type="submit" class="inscribirse btn btn-danger" @if(Auth::user()->rango==0) style="background:
+              #b50045;"
+              @elseif(Auth::user()->rango==1) style="background: blue;" @else style="background: green;" @endif
+              id="inscribirse"
               value="{{$oferta['id']}}">@lang('header.inscribirse')</button>
           </td>
 
@@ -133,7 +144,11 @@
               <span class="glyphicon glyphicon-pencil"></span> @lang('header.modificar')
             </button>
             <button data-toggle="modal" data-target="#delete-modal-cust-<?php echo $oferta->id;?>"
-              class="  btn btn-default btn-xs " style="background: #b50045; color:white;">
+              class="  btn btn-default btn-xs " @if(Auth::user()->rango==0) style="background: #b50045;
+              color:white;"
+              @elseif(Auth::user()->rango==1) style="background: blue; color:white;"
+              @else style="background: green; color:white;"
+              @endif>
               <span class="glyphicon glyphicon-remove"></span> @lang('header.borrar')
             </button>
 
@@ -149,11 +164,16 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <center>
-            <h1 style="color: #b50045;">@lang('header.atencion')</h1>
+            <h1 @if(Auth::user()->rango==0) style="background: #b50045;"
+              @elseif(Auth::user()->rango==1) style="background: blue;" @else style="background: green;"
+              @endif>@lang('header.atencion')</h1>
           </center>
           <h2>@lang('header.seguro')</h2>
           <center><img style="width:400px" src='deletemensajepng.png'></center>
-          <center><button class=" borrarOferta btn btn-default btn-xl" style="background: #b50045; color:white;"
+          <center><button class=" borrarOferta btn btn-default btn-xl" @if(Auth::user()->rango==0) style="background: #b50045; color:white;"
+              @elseif(Auth::user()->rango==1) style="background: blue; color:white;"
+              @else style="background: green; color:white;"
+              @endif
               value="{{$oferta['id']}}">
               <span class="glyphicon glyphicon-remove"></span> @lang('header.borrar')
             </button></center>
