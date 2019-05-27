@@ -142,10 +142,10 @@
 										{{$correo['descripcion']}}
 									</div>
 									<div class="form-group">
-										<label for="comment">@lang('header.responder'):</label>
-										<textarea type="text" name="respuesta" class="form-control" rows="4" ,
-											cols="164" id="respuesta<?php echo $correo->id?>" style="resize:none,"
-											placeholder="@lang('header.metemensaje')"></textarea>
+										<label style="margin-left:3%;" class="mr-5"for="comment">@lang('header.responder'):</label>
+										
+										<textarea type="text" name="respuesta" class="form-control" rows="4" , cols="164" id="respuesta<?php echo $correo->id?>"
+										 style="resize:none; margin-right:2%; margin-left:3%; width:94%;" placeholder="@lang('header.metemensaje')"></textarea>
 									</div>
 									<!-- Modal footer -->
 									<div class="modal-footer">
