@@ -53,41 +53,79 @@
               
               
               </style>
-            <!-- Non-collapsing right-side icons -->
-            <ul class="nav nav-tabs card-header-tabs  nav navbar-nav">
-              <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
-                <a style="color:#b50045;" class="nav-link" href="{{ route('perfil') }}">@lang('header.perfil')</a>
-              </li>
-              <li class="nav-item {{ request()->is('altaUsuarios') ? 'active' : '' }}">
-                <a style="color:#b50045;" class="nav-link" href="{{ route('altaUsuarios') }}">@lang('header.altausuarios')</a>
-              </li>
-              <li class="nav-item {{ request()->is('usuarios') ? 'active' : '' }}">
-                <a style="color:#b50045;" class="nav-link" href="{{ route('usuarios') }}">@lang('header.usuarios')</a>
-              </li>
-              <li class="nav-item {{ request()->is('empresas') ? 'active' : '' }}">
-                <a style="color:#b50045;" class="nav-link" href="{{ route('empresas') }}">@lang('header.empresas')</a>
-              </li>
-              <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
-                <a style="color:#b50045;" class="nav-link" href="{{ route('home') }}">@lang('header.ofertas')</a>
-              </li>
-              <li class="nav-item {{ request()->is('cursos') ? 'active' : '' }}">
-                <a style="color:#b50045;" class="nav-link" href="{{ route('cursos') }}">@lang('header.cursos')</a>
-              </li>
-              @if ((Auth::user()->rango)==1)
-              <li class="nav-item {{ request()->is('contacto') ? 'active' : '' }}">
-                <a style="color:#b50045;" class="nav-link" href="{{ route('contacto') }}">@lang('header.contacto')</a>
-              </li>
-              @endif @if ((Auth::user()->rango)==0)
-              <li class="nav-item {{ request()->is('profesores') ? 'active' : '' }}">
-                <a style="color:#b50045;" class="nav-link" href="{{ route('profesores') }}">@lang('header.profesores')</a>
-              </li>
-              <li class="nav-item {{ request()->is('buzon') ? 'active' : '' }}">
-                <a style="color:#b50045;" class="nav-link" href="{{ route('buzon') }}">@lang('header.buzon')</a>
-              </li>
+
+                <!-- Non-collapsing right-side icons -->
+             <ul class="nav nav-tabs card-header-tabs  nav navbar-nav">
+              @if(Auth::user()->rango==0) <!--Admin-->
+                <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
+                  <a style="color:#b50045;" class="nav-link" href="{{ route('perfil') }}">@lang('header.perfil')</a>
+                </li>
+                <li class="nav-item {{ request()->is('altaUsuarios') ? 'active' : '' }}">
+                  <a style="color:#b50045;" class="nav-link" href="{{ route('altaUsuarios') }}">@lang('header.altausuarios')</a>
+                </li>
+                <li class="nav-item {{ request()->is('usuarios') ? 'active' : '' }}">
+                  <a style="color:#b50045;" class="nav-link" href="{{ route('usuarios') }}">@lang('header.usuarios')</a>
+                </li>
+                <li class="nav-item {{ request()->is('empresas') ? 'active' : '' }}">
+                  <a style="color:#b50045;" class="nav-link" href="{{ route('empresas') }}">@lang('header.empresas')</a>
+                </li>
+                <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
+                  <a style="color:#b50045;" class="nav-link" href="{{ route('home') }}">@lang('header.ofertas')</a>
+                </li>
+                <li class="nav-item {{ request()->is('cursos') ? 'active' : '' }}">
+                  <a style="color:#b50045;" class="nav-link" href="{{ route('cursos') }}">@lang('header.cursos')</a>
+                </li>
+                @if ((Auth::user()->rango)==1)
+                <li class="nav-item {{ request()->is('contacto') ? 'active' : '' }}">
+                  <a style="color:#b50045;" class="nav-link" href="{{ route('contacto') }}">@lang('header.contacto')</a>
+                </li>
+                @endif @if ((Auth::user()->rango)==0)
+                <li class="nav-item {{ request()->is('profesores') ? 'active' : '' }}">
+                  <a style="color:#b50045;" class="nav-link" href="{{ route('profesores') }}">@lang('header.profesores')</a>
+                </li>
               @endif
-              <li class="nav-item">
-                <a style="color:#b50045;" class="nav-link" href="logout">@lang('header.cerrarsesion')</a>
-              </li>
+                <li class="nav-item {{ request()->is('buzon') ? 'active' : '' }}">
+                  <a style="color:#b50045;" class="nav-link" href="{{ route('buzon') }}">@lang('header.buzon')</a>
+                </li>
+                <li class="nav-item">
+                  <a style="color:#b50045;" class="nav-link" href="logout">@lang('header.cerrarsesion')</a>
+                </li>
+
+              @else {{-- Profesor --}}
+                <li class="nav-item {{ request()->is('perfil') ? 'active' : '' }}">
+                    <a style="color:#b50045;" class="nav-link" href="{{ route('perfil') }}">@lang('header.perfil')</a>
+                  </li>
+                  <li class="nav-item {{ request()->is('altaUsuarios') ? 'active' : '' }}">
+                    <a style="color:#b50045;" class="nav-link" href="{{ route('altaUsuarios') }}">@lang('header.altausuarios')</a>
+                  </li>
+                  <li class="nav-item {{ request()->is('usuarios') ? 'active' : '' }}">
+                    <a style="color:#b50045;" class="nav-link" href="{{ route('usuarios') }}">@lang('header.usuarios')</a>
+                  </li>
+                  <li class="nav-item {{ request()->is('empresas') ? 'active' : '' }}">
+                    <a style="color:#b50045;" class="nav-link" href="{{ route('empresas') }}">@lang('header.empresas')</a>
+                  </li>
+                  <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
+                    <a style="color:#b50045;" class="nav-link" href="{{ route('home') }}">@lang('header.ofertas')</a>
+                  </li>
+                  @if ((Auth::user()->rango)==1)
+                  <li class="nav-item {{ request()->is('contacto') ? 'active' : '' }}">
+                    <a style="color:#b50045;" class="nav-link" href="{{ route('contacto') }}">@lang('header.contacto')</a>
+                  </li>
+                  @endif @if ((Auth::user()->rango)==0)
+                  <li class="nav-item {{ request()->is('profesores') ? 'active' : '' }}">
+                    <a style="color:#b50045;" class="nav-link" href="{{ route('profesores') }}">@lang('header.profesores')</a>
+                  </li>
+                @endif
+                  <li class="nav-item {{ request()->is('buzon') ? 'active' : '' }}">
+                    <a style="color:#b50045;" class="nav-link" href="{{ route('buzon') }}">@lang('header.buzon')</a>
+                  </li>
+                  <li class="nav-item">
+                    <a style="color:#b50045;" class="nav-link" href="logout">@lang('header.cerrarsesion')</a>
+                  </li>
+
+              @endif
+
+              
 
             </ul>
           </div>
