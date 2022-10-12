@@ -24,7 +24,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "html2pdf.js": "^0.9.1",
+    "html2pdf.js": "^0.10.1",
     "vee-validate": "^2.2.15",
     "vue-material": "^1.0.0-beta-11"
   }
